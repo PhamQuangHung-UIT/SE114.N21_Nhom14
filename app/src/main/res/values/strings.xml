@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">S-plus</string>
+
+    <string name="action_home_vn">Trang chủ</string>
+    <string name="action_home_en">Home</string>
+
+    <string name="action_class_vn">Lớp học</string>
+    <string name="action_class_en">Class</string>
+
+    <string name="action_homework_vn">Bài tập</string>
+    <string name="action_homework_en">Homework</string>
+
+    <string name="action_assign_vn">Giao bài tập</string>
+    <string name="action_assign_en">Assign</string>
+
+    <string name="action_setting_en">Setting</string>
+    <string name="action_setting_vn">Cài đặt</string>
+
+    <string name="welcome_home">Welcome to S-plus!</string>
+    <string name="hint_search_box">Search for subject …</string>
+
+</resources>

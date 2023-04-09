@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/welcomeHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/welcome_home"
+        android:textColor="@color/green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:hint="@string/hint_search_box"
+        android:fontFamily="@font/montserrat"
+        android:layout_below="@+id/welcomeHome"
+        android:drawableEnd="@drawable/search_icon"
+        android:background="@drawable/shape"
+        android:padding="20dp"
+
+        tools:ignore="VisualLintTextFieldSize" />
+
+
+</RelativeLayout>
