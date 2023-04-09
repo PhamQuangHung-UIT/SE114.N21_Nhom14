@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp">
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:alpha=".5"
+        android:contentDescription="@string/logo_des"
+        android:src="@drawable/splus_logo_back_green"
+        tools:ignore="ImageContrastCheck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/itemImage"
+        android:layout_marginStart="10dp"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/item_name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/itemDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_italic"
+            android:paddingStart="20dp"
+            android:text="@string/item_des"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+    </LinearLayout>
+</RelativeLayout>
