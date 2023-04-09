@@ -16,7 +16,22 @@
     <string name="action_setting_en">Setting</string>
     <string name="action_setting_vn">Cài đặt</string>
 
-    <string name="welcome_home">Welcome to S-plus!</string>
-    <string name="hint_search_box">Search for subject …</string>
+    <string name="welcome_home_title">Welcome to S-plus!</string>
+    <string name="search_box_hint">Search for subject …</string>
+
+    <string name="recent_ls_title">Recent lessons</string>
+
+    <string name="logo_des">Splus Official Logo</string>
+
+    <string name="item_name">Item name</string>
+    <string name="item_des">Description</string>
+
+    <string name="subject_name">Subject name</string>
+
+    <string name="class_info_en">Class information</string>
+    <string name="class_info">Thông tin lớp</string>
+    <string name="teacher_info_en">Contact teacher</string>
+    <string name="teacher_info">Liên hệ GV</string>
+
 
 </resources>
