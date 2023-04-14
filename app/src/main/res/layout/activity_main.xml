@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/menu_bot_nav"
-        app:itemBackground="@color/green"
+        app:itemBackground="@color/light_grey"
         app:itemIconTint="@color/custom_color_botnav"
         app:itemTextColor="@color/custom_color_botnav"
         tools:ignore="VisualLintBottomNav" />
