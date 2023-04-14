@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">S-plus</string>
 
+    <string name="sign_up">ĐĂNG KÝ</string>
+    <string name="log_in">ĐĂNG NHẬP</string>
+
+    <string name="hint_username">Tên người dùng</string>
+    <string name="hint_password">Mật khẩu</string>
+
+    <string name="loginSuccessful">Đăng nhập thành công</string>
+    <string name="loginUnsuccessful">Đăng nhập thất bại</string>
+
     <string name="action_home_vn">Trang chủ</string>
     <string name="action_home_en">Home</string>
 
@@ -32,6 +41,9 @@
     <string name="class_info">Thông tin lớp</string>
     <string name="teacher_info_en">Contact teacher</string>
     <string name="teacher_info">Liên hệ GV</string>
+
+    <string name="app_des_1">ỨNG DỤNG HỌC TOÁN</string>
+    <string name="app_des_2">TỐT NHẤT VIỆT NAM</string>
 
 
 </resources>

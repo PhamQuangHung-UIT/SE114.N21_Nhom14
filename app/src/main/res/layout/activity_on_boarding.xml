@@ -3,41 +3,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudyActivity">
+    tools:context=".OnBoardingActivity">
 
-    <TextView
-        android:id="@+id/subjectName"
+    <ImageView
+        android:id="@+id/appLogoOnBoarding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/logo_des"
+        android:src="@drawable/splus_logo"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/appDescription1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appLogoOnBoarding"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/subject_name"
+        android:text="@string/app_des_1"
+        android:textColor="@color/green"
+        android:textSize="22sp"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/appDescription2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appDescription1"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_black"
+        android:text="@string/app_des_2"
         android:textColor="@color/green"
         android:textSize="22sp"
         tools:ignore="TextContrastCheck" />
 
     <LinearLayout
-        android:id="@+id/classLayoutButton"
+        android:id="@+id/layoutButtonLogIn"
         android:layout_width="fill_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/subjectName"
+        android:layout_below="@+id/appDescription2"
         android:layout_marginTop="20dp"
         android:gravity="center"
         >
 
         <Button
-            android:id="@+id/buttonClassInformation"
+            android:id="@+id/buttonLogin"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:background="@drawable/my_button"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/class_info"
-            android:textSize="10sp"
+            android:text="@string/log_in"
+            android:textSize="12sp"
             tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
         <Space
             android:layout_width="20dp"
@@ -45,25 +68,14 @@
             />
 
         <Button
-            android:id="@+id/buttonContactTeacher"
+            android:id="@+id/buttonSignUp"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:background="@drawable/my_button"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/teacher_info"
-            android:textSize="10sp"
+            android:text="@string/sign_up"
+            android:textSize="12sp"
             tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
     </LinearLayout>
-    
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listSubject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_below="@+id/classLayoutButton"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"/>
 
 </RelativeLayout>
