@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/buttonClassInformation"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/my_button"
             android:fontFamily="@font/montserrat_bold"
@@ -46,7 +46,7 @@
 
         <Button
             android:id="@+id/buttonContactTeacher"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/my_button"
             android:fontFamily="@font/montserrat_bold"

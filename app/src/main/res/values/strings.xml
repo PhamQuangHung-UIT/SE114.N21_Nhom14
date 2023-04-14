@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">S-plus</string>
 
-    <string name="sign_up">ĐĂNG KÝ</string>
-    <string name="log_in">ĐĂNG NHẬP</string>
+    <string name="sign_up_upper">ĐĂNG KÝ</string>
+    <string name="log_in_upper">ĐĂNG NHẬP</string>
+    <string name="log_out_upper">ĐĂNG XUẤT</string>
+
+    <string name="support_upper">HỖ TRỢ</string>
+
+    <string name="sign_up"><u>Đăng ký</u></string>
+    <string name="log_in">Đăng nhập</string>
 
     <string name="hint_username">Tên người dùng</string>
     <string name="hint_password">Mật khẩu</string>
+
+    <string name="ask_if_not_have_account">Chưa có tài khoản?</string>
+    <string name="ask_if_have_account">Đã có tài khoản?</string>
 
     <string name="loginSuccessful">Đăng nhập thành công</string>
     <string name="loginUnsuccessful">Đăng nhập thất bại</string>
@@ -23,7 +32,7 @@
     <string name="action_assign_en">Assign</string>
 
     <string name="action_setting_en">Setting</string>
-    <string name="action_setting_vn">Cài đặt</string>
+    <string name="action_setting_vn">CÀI ĐẶT</string>
 
     <string name="welcome_home_title">Welcome to S-plus!</string>
     <string name="search_box_hint">Search for subject …</string>
@@ -43,7 +52,20 @@
     <string name="teacher_info">Liên hệ GV</string>
 
     <string name="app_des_1">ỨNG DỤNG HỌC TOÁN</string>
-    <string name="app_des_2">TỐT NHẤT VIỆT NAM</string>
+    <string name="app_des_2">THẾ HỆ MỚI</string>
 
+    <string name="lable_name">Họ và tên</string>
+    <string name="lable_id">MSSV:</string>
+    <string name="lable_birth">Ngày sinh</string>
+    <string name="lable_class">Lớp sinh hoạt</string>
+    <string name="lable_email">Email</string>
+    <string name="lable_subject">Môn học</string>
+
+    <string name="des_avatar">Ảnh đại diện</string>
+    <string name="ex_name">Nguyễn Văn A</string>
+    <string name="ex_birth">30/02/2003</string>
+    <string name="ex_class">Lớp Diuuu</string>
+    <string name="ex_email">todo@example.splus.vn</string>
+    <string name="ex_stdID">19520001</string>
 
 </resources>
