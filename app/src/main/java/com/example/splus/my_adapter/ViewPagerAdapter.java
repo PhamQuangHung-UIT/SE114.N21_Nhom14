@@ -1,9 +1,14 @@
-package com.example.splus;
+package com.example.splus.my_adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.splus.my_fragment.ClassFragment;
+import com.example.splus.my_fragment.HomeFragment;
+import com.example.splus.my_fragment.HomeworkFragment;
+import com.example.splus.my_fragment.SettingFragment;
 
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {

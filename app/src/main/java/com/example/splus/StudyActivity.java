@@ -2,15 +2,21 @@ package com.example.splus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.splus.my_data.ClassData;
+import com.example.splus.my_data.LessonData;
+
 public class StudyActivity extends AppCompatActivity {
 
-    private Button classInfoButton;
-    private Button contactTeacherButton;
+    TextView lessonName;
+    TextView lessonContent;
+    TextView className, teacherName;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +27,16 @@ public class StudyActivity extends AppCompatActivity {
             return;
         }
 
-        ItemData item = (ItemData) bundle.get("object_item");
+        LessonData lesson = (LessonData) bundle.get("lesson_data");
 
-        String teacherName = item.getItemDes();
-        int classSize = 20;
-        ClassData mClass = new ClassData(item, teacherName, classSize);
+        lessonName = findViewById(R.id.lessonName);
+        lessonContent = findViewById(R.id.lessonContent);
+        className = findViewById(R.id.className);
+        teacherName = findViewById(R.id.teacherName);
 
-        TextView subjectName = findViewById(R.id.subjectName);
-        subjectName.setText(mClass.getItemName());
-
+        lessonName.setText(lesson.getLessonName());
+        lessonContent.setText(lesson.getLessonContent());
+        className.setText(lesson.getClassName());
+        teacherName.setText(lesson.getTeacherName());
     }
 }
