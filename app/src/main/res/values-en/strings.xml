@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="sign_up_upper">SIGN UP</string>
+
+    <string name="sign_up">Sign up</string>
+
+    <string name="sign_up_style_u"><u>Sign up</u></string>
+
+    <string name="log_in_upper">LOG IN</string>
+
+    <string name="log_in_style_u"><u>Log in</u></string>
+
+    <string name="log_in">Log in</string>
+
+    <string name="log_out_upper">LOG OUT</string>
+
+    <string name="support_upper">SUPPORT</string>
+
+    <string name="hint_username">Enter your username</string>
+
+    <string name="hint_password">Password</string>
+
+    <string name="hint_repassword">Rewrite password</string>
+
+    <string name="ask_if_not_have_account">Don\'t have an account?</string>
+    <string name="ask_if_have_account">Had an account?</string>
+
+    <string name="loginSuccessful">Đăng nhập thành công</string>
+    <string name="loginUnsuccessful">Đăng nhập thất bại</string>
+
+    <string name="action_home">Home</string>
+
+    <string name="action_class">Class</string>
+
+    <string name="action_homework">Homework</string>
+
+    <string name="action_assign">Assign</string>
+
+    <string name="action_setting">Setting</string>
+
+    <string name="welcome_home_title">Welcome to S-plus!</string>
+
+    <string name="search_box_hint">Search for subject …</string>
+
+    <string name="recent_ls_title">Recent lessons</string>
+
+    <string name="subject_name">Subject name</string>
+
+    <string name="lesson_name">Lesson name</string>
+    <string name="class_title">Class:</string>
+    <string name="class_name">Class name</string>
+    <string name="teacher_name">Teacher:</string>
+    <string name="teacher_name_title">Teacher</string>
+    <string name="making_question_button">Ask question</string>
+    <string name="class_info">Class information</string>
+
+    <string name="teacher_info">Contact teacher</string>
+
+    <string name="language">Language</string>
+
+    <string name="app_des_1">DIGITAL MATH EDUCATOR</string>
+    <string name="app_des_2">THẾ HỆ MỚI</string>
+
+    <string name="lable_name">Name</string>
+    <string name="lable_id">Student ID</string>
+    <string name="lable_birth">Date of birth</string>
+    <string name="lable_class">Class</string>
+    <string name="lable_email">Email</string>
+    <string name="lable_subject">Subject</string>
+
+    <string name="des_avatar">Profile Pics</string>
+</resources>

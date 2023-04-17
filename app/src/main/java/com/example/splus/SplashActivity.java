@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-@SuppressLint("CustomSplashScreen")
+//@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
     ImageView imageView;
     TextView textView1, textView2;

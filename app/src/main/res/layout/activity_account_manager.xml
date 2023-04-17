@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/green"
+        android:fontFamily="@font/montserrat_bold"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
+        android:text="@string/action_setting"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/setting_title"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_launcher_background"
+        android:adjustViewBounds="true"
+        android:foreground="@drawable/crop_frame"
+        android:contentDescription="@string/logo_des" />
+
+    <TextView
+        android:id="@+id/textFullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/avatarImage"
+        android:layout_toEndOf="@+id/avatarImage"
+        android:layout_marginStart="20dp"
+        android:text="@string/ex_name"
+        android:textSize="18sp"
+        android:textColor="@color/green"
+        android:fontFamily="@font/montserrat_bold"
+        />
+
+
+    <TextView
+        android:id="@+id/labelID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textFullname"
+        android:layout_toEndOf="@+id/avatarImage"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/lable_id"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"/>
+
+    <TextView
+        android:id="@+id/textID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/labelID"
+        android:layout_toEndOf="@+id/labelID"
+        android:layout_marginStart="10dp"
+        android:text="@string/ex_stdID"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <TextView
+        android:id="@+id/subDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/avatarImage"
+        android:layout_marginTop="20dp"
+        android:text="@string/lable_birth"
+        android:textSize="15sp"
+        android:textColor="@color/green"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <TextView
+        android:id="@+id/textDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/subDateOfBirth"
+        android:text="@string/ex_birth"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/subClassName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/textDateOfBirth"
+        android:text="@string/lable_class"
+        android:textSize="15sp"
+        android:textColor="@color/green"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <TextView
+        android:id="@+id/textClassName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/subClassName"
+        android:text="@string/ex_class"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/subEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/textClassName"
+        android:text="@string/lable_email"
+        android:textSize="15sp"
+        android:textColor="@color/green"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <TextView
+        android:id="@+id/textEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/subEmailAddress"
+        android:text="@string/ex_email"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <Button
+        android:id="@+id/buttonLogOut"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/avatarImage"
+        android:layout_below="@+id/textEmailAddress"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/my_button_border"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/log_out_upper"
+        android:textSize="12sp"
+        android:textColor="@color/green"
+        tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+
+    <Button
+        android:id="@+id/buttonSupport"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonLogOut"
+        android:layout_marginStart="66dp"
+        android:layout_toEndOf="@+id/buttonLogOut"
+        android:background="@drawable/my_button"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/support_upper"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+
+</RelativeLayout>

@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editTextUsername, editTextPassword;
     Button loginButton;
     TextView leadToSignUp;
-    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.buttonLogin);
         leadToSignUp = findViewById(R.id.textLeadToSignUp);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        loginButton.setOnClickListener(v -> {
                 int index = 0;
                 while (index < numOfPair) {
                     if (editTextUsername.getText().toString().equals(username[index])) {
@@ -55,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (index == numOfPair) {
                     Toast.makeText(LoginActivity.this, R.string.loginUnsuccessful, Toast.LENGTH_SHORT).show();
                 }
-            }
         });
 
         leadToSignUp.setOnClickListener(new View.OnClickListener() {
