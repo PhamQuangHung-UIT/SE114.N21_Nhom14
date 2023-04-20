@@ -12,27 +12,7 @@
 
     <string name="language_radio_button_vn" translatable="false">Tiếng Việt</string>
 
-<<<<<<< HEAD
-    <string name="welcome_home_title">Welcome to S-plus!</string>
-    <string name="search_box_hint">Search for subject …</string>
-
-    <string name="recent_ls_title">Recent lessons</string>
-
-    <string name="logo_des">Splus Official Logo</string>
-
-    <string name="item_name">Item name</string>
-    <string name="item_des">Description</string>
-
-    <string name="subject_name">Subject name</string>
-
-    <string name="class_info_en">Class information</string>
-    <string name="class_info">Thông tin lớp</string>
-    <string name="teacher_info_en">Contact teacher</string>
-    <string name="teacher_info">Liên hệ GV</string>
-
-=======
     <string name="language_radio_button_en" translatable="false">English</string>
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
 
     <string name="locale_vn" translatable="false">vn</string>
 

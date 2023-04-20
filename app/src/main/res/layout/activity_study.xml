@@ -1,77 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-<<<<<<< HEAD
-=======
     android:id="@+id/lessonLayout"
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudyActivity">
 
     <TextView
-<<<<<<< HEAD
-        android:id="@+id/subjectName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/subject_name"
-        android:textColor="@color/green"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
-
-    <LinearLayout
-        android:id="@+id/classLayoutButton"
-        android:layout_width="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/subjectName"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        >
-
-        <Button
-            android:id="@+id/buttonClassInformation"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/my_button"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/class_info"
-            android:textSize="11sp"
-            tools:ignore="TextContrastCheck,TextSizeCheck" />
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            />
-
-        <Button
-            android:id="@+id/buttonContactTeacher"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/my_button"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/teacher_info"
-            android:textSize="11sp"
-            tools:ignore="TextContrastCheck" />
-    </LinearLayout>
-    
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listSubject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_below="@+id/classLayoutButton"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"/>
-=======
         android:id="@+id/lessonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -170,7 +105,5 @@
         android:textSize="11sp"
         android:textStyle="bold"
         tools:ignore="TextContrastCheck" />
-
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
 
 </RelativeLayout>

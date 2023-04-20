@@ -7,11 +7,7 @@
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/red</item>
-<<<<<<< HEAD
-        <item name="colorSecondaryVariant">@color/yellow</item>
-=======
         <item name="colorSecondaryVariant">@color/green</item>
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

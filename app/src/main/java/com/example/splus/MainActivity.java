@@ -17,11 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mNavigationView;
     private ViewPager2 mViewPager;
 
-<<<<<<< HEAD
-    @SuppressLint("MissingInflatedId")
-=======
     @SuppressLint("NonConstantResourceId")
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

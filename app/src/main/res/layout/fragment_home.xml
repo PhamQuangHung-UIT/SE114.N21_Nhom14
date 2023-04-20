@@ -48,10 +48,6 @@
         android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:alpha=".1"
-<<<<<<< HEAD
-        android:background="@drawable/splus_logo_black"
-=======
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
         android:contentDescription="@string/logo_des" />
 
     <TextView
@@ -60,11 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchBox"
         android:layout_marginTop="20dp"
-<<<<<<< HEAD
-        android:fontFamily="@font/montserrat_bold"
-=======
         android:fontFamily="@font/montserrat"
->>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:text="@string/recent_ls_title"
