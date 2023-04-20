@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/action_home"
-        android:title="@string/action_home_en"
+        android:title="@string/action_home"
         android:icon="@drawable/home_icon" />
 
     <item android:id="@+id/action_class"
-        android:title="@string/action_class_en"
+        android:title="@string/action_class"
         android:icon="@drawable/class_icon" />
 
     <item android:id="@+id/action_homework"
-        android:title="@string/action_homework_en"
+        android:title="@string/action_homework"
         android:icon="@drawable/homework_icon" />
 
     <item android:id="@+id/action_setting"
-        android:title="@string/action_setting_en"
+        android:title="@string/action_setting"
         android:icon="@drawable/account_icon" />
 
 </menu>

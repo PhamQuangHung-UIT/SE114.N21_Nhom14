@@ -1,4 +1,4 @@
-package com.example.splus;
+package com.example.splus.my_fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +18,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+import com.example.splus.R;
 
+<<<<<<< HEAD:app/src/main/java/com/example/splus/HomeFragment.java
+=======
+public class AssignFragment extends Fragment {
+>>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc:app/src/main/java/com/example/splus/my_fragment/AssignFragment.java
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
