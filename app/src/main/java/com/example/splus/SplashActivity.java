@@ -1,8 +1,5 @@
 package com.example.splus;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +8,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-@SuppressLint("CustomSplashScreen")
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.splus.my_class.ActivityManager;
+
+//@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
     ImageView imageView;
     TextView textView1, textView2;
@@ -20,6 +21,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        ActivityManager.add(this);
 
         imageView = findViewById(R.id.splusLogo);
         textView1 = findViewById(R.id.description1);

@@ -1,181 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/setting_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/green"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/action_setting_vn"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/avatarImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/setting_title"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/ic_launcher_background"
-        android:adjustViewBounds="true"
-        android:foreground="@drawable/crop_frame"
-        android:contentDescription="@string/logo_des" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/action_setting"
+            android:textAppearance="@style/TextLarge"
+            android:textSize="30sp" />
 
-    <!-- FULL NAME -->
-    <TextView
-        android:id="@+id/textFullname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/avatarImage"
-        android:layout_toEndOf="@+id/avatarImage"
-        android:layout_marginStart="20dp"
-        android:text="@string/ex_name"
-        android:textSize="18sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/accountManagerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/setting_button_color_light"
+            android:clickable="true"
+            android:padding="10dp">
 
-    <!-- STUDENT ID -->
-    <TextView
-        android:id="@+id/lableID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textFullname"
-        android:layout_toEndOf="@+id/avatarImage"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/lable_id"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"/>
+            <ImageView
+                android:id="@+id/avatarSmallView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="16dp"
+                android:adjustViewBounds="true"
+                android:foreground="@drawable/crop_frame"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/accountNameTextView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/lableID"
-        android:layout_toEndOf="@+id/lableID"
-        android:layout_marginStart="10dp"
-        android:text="@string/ex_stdID"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+            <TextView
+                android:id="@+id/accountNameTextView"
+                style="@style/TextLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:text="@string/ex_name"
+                app:layout_constraintBottom_toBottomOf="@+id/avatarSmallView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/avatarSmallView"
+                app:layout_constraintVertical_bias="0.15" />
 
-    <!-- DATE OF BIRTH -->
-    <TextView
-        android:id="@+id/subDateOfBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/avatarImage"
-        android:layout_marginTop="20dp"
-        android:text="@string/lable_birth"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ex_email"
+                app:layout_constraintBottom_toBottomOf="@+id/avatarSmallView"
+                app:layout_constraintEnd_toEndOf="@+id/accountNameTextView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/accountNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/accountNameTextView"
+                app:layout_constraintVertical_bias="0.85" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textDateOfBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/subDateOfBirth"
-        android:text="@string/ex_birth"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/language_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/setting_button_color_light"
+            android:clickable="true"
+            android:padding="10dp">
 
-    <!-- CLASS NAME -->
-    <TextView
-        android:id="@+id/subClassName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/textDateOfBirth"
-        android:text="@string/lable_class"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+            <TextView
+                android:id="@+id/languageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/language"
+                android:textAppearance="@style/TextLarge"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textClassName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/subClassName"
-        android:text="@string/ex_class"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+            <TextView
+                android:id="@+id/currentLanguageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/current_language"
+                android:textAppearance="@style/TextSmall"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/languageTextView"
+                app:layout_constraintTop_toBottomOf="@+id/languageTextView" />
 
-    <!-- EMAIL ADDRESS -->
-    <TextView
-        android:id="@+id/subEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/textClassName"
-        android:text="@string/lable_email"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
-
-    <TextView
-        android:id="@+id/textEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/subEmailAddress"
-        android:text="@string/ex_email"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
-
-    <Button
-        android:id="@+id/buttonLogOut"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/textEmailAddress"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/my_button_border"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/log_out_upper"
-        android:textSize="12sp"
-        android:textColor="@color/green"
-        tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
-
-    <Button
-        android:id="@+id/buttonSupport"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/buttonLogOut"
-        android:layout_alignBaseline="@+id/buttonLogOut"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/my_button"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/support_upper"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
-
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/language"
+                app:layout_constraintBottom_toBottomOf="@+id/currentLanguageTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/languageTextView"
+                app:srcCompat="@drawable/language_icon"
+                app:tint="@color/green" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

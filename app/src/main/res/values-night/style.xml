@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextLarge" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextSmall" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+    <style name="RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/purple_200</item>
+        <item name="android:textAppearance">@style/TextLarge</item>
+    </style>
+</resources>

@@ -1,16 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">S-plus</string>
+    <!--Default strings for all language type-->
+
+    <string name="app_name" translatable="false">S-plus</string>
+
+    <string name="logo_des" translatable="false">Splus Official Logo</string>
+
+    <string name="item_name" translatable="false">Item name</string>
+
+    <string name="item_des" translatable="false">Description</string>
+
+    <string name="language_radio_button_vn" translatable="false">Tiếng Việt</string>
+
+    <string name="language_radio_button_en" translatable="false">English</string>
+
+    <string name="locale_vn" translatable="false">vn</string>
+
+    <string name="locale_en" translatable="false">en</string>
+
+    <string name="ex_name" translatable="false">Nguyễn Văn A</string>
+    <string name="ex_birth" translatable="false">30/02/2003</string>
+    <string name="ex_class" translatable="false">Lớp Diuuu</string>
+    <string name="ex_email" translatable="false">todo@example.splus.vn</string>
+    <string name="ex_stdID" translatable="false">19520001</string>
+    <!--Vietnamese-->
 
     <string name="sign_up_upper">ĐĂNG KÝ</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="sign_up_style_u"><u>Đăng ký</u></string>
+
+    <string name="log_in">Đăng nhập</string>
+    <string name="log_in_style_u"><u>Đăng nhập</u></string>
     <string name="log_in_upper">ĐĂNG NHẬP</string>
+
     <string name="log_out_upper">ĐĂNG XUẤT</string>
 
     <string name="support_upper">HỖ TRỢ</string>
-
-    <string name="sign_up_style_u"><u>Đăng ký</u></string>
-    <string name="log_in_style_u"><u>Đăng nhập</u></string>
-    <string name="sign_up">Đăng ký</string>
-    <string name="log_in">Đăng nhập</string>
 
     <string name="hint_username">Tên người dùng</string>
     <string name="hint_password">Mật khẩu</string>
@@ -22,36 +47,27 @@
     <string name="loginSuccessful">Đăng nhập thành công</string>
     <string name="loginUnsuccessful">Đăng nhập thất bại</string>
 
-    <string name="action_home_vn">Trang chủ</string>
-    <string name="action_home_en">Home</string>
+    <string name="action_home">Trang chủ</string>
 
-    <string name="action_class_vn">Lớp học</string>
-    <string name="action_class_en">Class</string>
+    <string name="action_class">Lớp học</string>
 
-    <string name="action_homework_vn">Bài tập</string>
-    <string name="action_homework_en">Homework</string>
+    <string name="action_homework">Bài tập</string>
 
-    <string name="action_assign_vn">Giao bài tập</string>
-    <string name="action_assign_en">Assign</string>
+    <string name="action_assign">Giao bài tập</string>
 
-    <string name="action_setting_en">Setting</string>
-    <string name="action_setting_vn">CÀI ĐẶT</string>
+    <string name="action_setting">Cài đặt</string>
 
-    <string name="welcome_home_title">Welcome to S-plus!</string>
-    <string name="search_box_hint">Search for subject …</string>
+    <string name="welcome_home_title">Chào mừng bạn đến với S-plus!</string>
 
-    <string name="recent_ls_title">Recent lessons</string>
+    <string name="search_box_hint">Tìm kiếm môn học …</string>
 
-    <string name="logo_des">Splus Official Logo</string>
+    <string name="recent_ls_title">Bài học gần đây</string>
 
-    <string name="item_name">Item name</string>
-    <string name="item_des">Description</string>
+    <string name="subject_name">Tên môn học</string>
 
-    <string name="subject_name">Subject name</string>
-
-    <string name="lesson_id_example">SPLUS-MATHEMATICS</string>
+    <string name="lesson_id_example" translatable="false">SPLUS-MATHEMATICS</string>
     <string name="lesson_name">Tên bài học</string>
-    <string name="lesson_content_example">
+    <string name="lesson_content_example" translatable="false">
         <br><b>1. Tổng quan về bài học</b>\n</br>
         <br>\tTrong bài học này chúng ta sẽ tìm hiểu về những khái niệm có liên quan, các chức năng quan trọng chủ yếu và những ứng dụng thực tế của nó.\n</br>
         <br>2. Các khái niệm liên quan\n</br>
@@ -80,17 +96,18 @@
     <string name="class_name">Tên lớp học</string>
     <string name="teacher_name">Tên giảng viên</string>
 
-    <string name="class_name_example">Nhập môn Toán học</string>
-    <string name="lesson_name_example">Tầm quan trọng của Toán học</string>
+    <string name="class_name_example" translatable="false">Nhập môn Toán học</string>
+    <string name="lesson_name_example" translatable="false">Tầm quan trọng của Toán học</string>
     <string name="teacher_name_title">Giảng viên:</string>
-    <string name="teacher_name_example">S-Plus</string>
+    <string name="teacher_name_example" translatable="false">S-Plus</string>
 
     <string name="making_question_button">Đặt câu hỏi</string>
 
-    <string name="class_info_en">Class information</string>
     <string name="class_info">Thông tin lớp</string>
-    <string name="teacher_info_en">Contact teacher</string>
+
     <string name="teacher_info">Liên hệ GV</string>
+
+    <string name="language">Ngôn ngữ</string>
 
     <string name="app_des_1">ỨNG DỤNG HỌC TOÁN</string>
     <string name="app_des_2">THẾ HỆ MỚI</string>
@@ -103,10 +120,6 @@
     <string name="lable_subject">Môn học</string>
 
     <string name="des_avatar">Ảnh đại diện</string>
-    <string name="ex_name">Nguyễn Văn A</string>
-    <string name="ex_birth">30/02/2003</string>
-    <string name="ex_class">Lớp Diuuu</string>
-    <string name="ex_email">todo@example.splus.vn</string>
-    <string name="ex_stdID">19520001</string>
 
+    <string name="current_language">Tiếng Việt</string>
 </resources>

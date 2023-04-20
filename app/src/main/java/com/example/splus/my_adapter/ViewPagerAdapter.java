@@ -3,7 +3,8 @@ package com.example.splus.my_adapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.splus.my_fragment.ClassFragment;
 import com.example.splus.my_fragment.HomeFragment;
@@ -11,19 +12,17 @@ import com.example.splus.my_fragment.HomeworkFragment;
 import com.example.splus.my_fragment.SettingFragment;
 
 
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+public class ViewPagerAdapter extends FragmentStateAdapter {
 
 
-    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
+    public ViewPagerAdapter(@NonNull FragmentManager fm, Lifecycle lifecycle) {
+        super(fm, lifecycle);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         switch (position) {
-            case 0:
-                return new HomeFragment();
             case 1:
                 return new ClassFragment();
             case 2:
@@ -36,7 +35,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return 4;
     }
 }

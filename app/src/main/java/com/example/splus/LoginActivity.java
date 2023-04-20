@@ -1,8 +1,5 @@
 package com.example.splus;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.splus.my_class.ActivityManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,20 +27,20 @@ public class LoginActivity extends AppCompatActivity {
     EditText editTextUsername, editTextPassword;
     Button loginButton;
     TextView leadToSignUp;
-    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ActivityManager.add(this);
 
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
         loginButton = findViewById(R.id.buttonLogin);
         leadToSignUp = findViewById(R.id.textLeadToSignUp);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        loginButton.setOnClickListener(v -> {
                 int index = 0;
                 while (index < numOfPair) {
                     if (editTextUsername.getText().toString().equals(username[index])) {
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, R.string.loginSuccessful, Toast.LENGTH_SHORT).show();
                             Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(mainIntent);
+                            finish();
                             break;
                         }
                     }
@@ -55,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (index == numOfPair) {
                     Toast.makeText(LoginActivity.this, R.string.loginUnsuccessful, Toast.LENGTH_SHORT).show();
                 }
-            }
         });
 
         leadToSignUp.setOnClickListener(new View.OnClickListener() {
