@@ -24,10 +24,10 @@
     <string name="hint_repassword">Rewrite password</string>
 
     <string name="ask_if_not_have_account">Don\'t have an account?</string>
-    <string name="ask_if_have_account">Had an account?</string>
+    <string name="ask_if_have_account">Already have an account?</string>
 
-    <string name="loginSuccessful">Đăng nhập thành công</string>
-    <string name="loginUnsuccessful">Đăng nhập thất bại</string>
+    <string name="loginSuccessful">Login Successful</string>
+    <string name="loginUnsuccessful">Login Failed</string>
 
     <string name="action_home">Home</string>
 
@@ -60,15 +60,15 @@
     <string name="language">Language</string>
 
     <string name="app_des_1">DIGITAL MATH EDUCATOR</string>
-    <string name="app_des_2">THẾ HỆ MỚI</string>
+    <string name="app_des_2">NEW GENERATION</string>
 
     <string name="lable_name">Name</string>
-    <string name="lable_id">Student ID</string>
+    <string name="lable_id">ID</string>
     <string name="lable_birth">Date of birth</string>
     <string name="lable_class">Class</string>
     <string name="lable_email">Email</string>
     <string name="lable_subject">Subject</string>
 
-    <string name="des_avatar">Profile Pics</string>
+    <string name="des_avatar">Avatar</string>
     <string name="current_language">English</string>
 </resources>

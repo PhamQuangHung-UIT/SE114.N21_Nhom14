@@ -98,7 +98,7 @@
 
     <string name="class_name_example" translatable="false">Nhập môn Toán học</string>
     <string name="lesson_name_example" translatable="false">Tầm quan trọng của Toán học</string>
-    <string name="teacher_name_title">Giảng viên:</string>
+    <string name="teacher_name_title">Giảng viên</string>
     <string name="teacher_name_example" translatable="false">S-Plus</string>
 
     <string name="making_question_button">Đặt câu hỏi</string>
@@ -113,7 +113,7 @@
     <string name="app_des_2">THẾ HỆ MỚI</string>
 
     <string name="lable_name">Họ và tên</string>
-    <string name="lable_id">MSSV:</string>
+    <string name="lable_id">MSSV</string>
     <string name="lable_birth">Ngày sinh</string>
     <string name="lable_class">Lớp sinh hoạt</string>
     <string name="lable_email">Email</string>
