@@ -10,8 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bot_nav"
+<<<<<<< HEAD
+        tools:ignore="SpeakableTextPresentCheck" />
+=======
         tools:ignore="SpeakableTextPresentCheck" />-->
 
+>>>>>>> acd84aaf57af25db1b445cfffe11a67e171e5efc
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bot_nav"
