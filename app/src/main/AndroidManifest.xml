@@ -48,11 +48,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".StudyActivity"
-            android:exported="true">
-        </activity>
-
     </application>
 
 </manifest>
