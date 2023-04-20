@@ -70,4 +70,5 @@
     <string name="lable_subject">Subject</string>
 
     <string name="des_avatar">Profile Pics</string>
+    <string name="current_language">English</string>
 </resources>

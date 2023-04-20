@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.splus.my_adapter.ViewPagerAdapter;
+import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_class.LocaleHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActivityManager.add(this);
 
         mNavigationView = findViewById(R.id.bot_nav);
         mViewPager = findViewById(R.id.view_pager_2);

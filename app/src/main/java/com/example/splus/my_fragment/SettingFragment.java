@@ -34,6 +34,7 @@ public class SettingFragment extends Fragment {
         View languageBtn = view.findViewById(R.id.language_button);
         languageBtn.setOnClickListener(v -> {
             Dialog chooseLangDlg = new LanguageOptionsDialog(view.getContext());
+            chooseLangDlg.setOwnerActivity(getActivity());
             chooseLangDlg.show();
         });
         return view;

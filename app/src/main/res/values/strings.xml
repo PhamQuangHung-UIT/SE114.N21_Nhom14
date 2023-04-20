@@ -10,10 +10,19 @@
 
     <string name="item_des" translatable="false">Description</string>
 
-    <string name="language_type_vn" translatable="false">Tiếng Việt</string>
+    <string name="language_radio_button_vn" translatable="false">Tiếng Việt</string>
 
-    <string name="language_type_en" translatable="false">English</string>
+    <string name="language_radio_button_en" translatable="false">English</string>
 
+    <string name="locale_vn" translatable="false">vn</string>
+
+    <string name="locale_en" translatable="false">en</string>
+
+    <string name="ex_name" translatable="false">Nguyễn Văn A</string>
+    <string name="ex_birth" translatable="false">30/02/2003</string>
+    <string name="ex_class" translatable="false">Lớp Diuuu</string>
+    <string name="ex_email" translatable="false">todo@example.splus.vn</string>
+    <string name="ex_stdID" translatable="false">19520001</string>
     <!--Vietnamese-->
 
     <string name="sign_up_upper">ĐĂNG KÝ</string>
@@ -111,10 +120,6 @@
     <string name="lable_subject">Môn học</string>
 
     <string name="des_avatar">Ảnh đại diện</string>
-    <string name="ex_name" translatable="false">Nguyễn Văn A</string>
-    <string name="ex_birth" translatable="false">30/02/2003</string>
-    <string name="ex_class" translatable="false">Lớp Diuuu</string>
-    <string name="ex_email" translatable="false">todo@example.splus.vn</string>
-    <string name="ex_stdID" translatable="false">19520001</string>
 
+    <string name="current_language">Tiếng Việt</string>
 </resources>
