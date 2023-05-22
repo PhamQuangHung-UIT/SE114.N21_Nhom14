@@ -1,109 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lessonLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
     tools:context=".StudyActivity">
 
-    <TextView
-        android:id="@+id/lessonName"
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearTitleBarStudyAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/green"
-        android:fontFamily="@font/montserrat"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:text="@string/lesson_name_example"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
 
-    <TextView
-        android:id="@+id/className"
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
+        <ImageButton
+            android:id="@+id/buttonBackStudyAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:id="@+id/textClassNameDetailClass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/study_activity_title"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/notification_title"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            tools:ignore="ImageContrastCheck"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- LESSON TITLE -->
+    <LinearLayout
+        android:id="@+id/linearLessonTitleStudyAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lessonName"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/green"
-        android:fontFamily="@font/montserrat"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="0dp"
-        android:paddingBottom="10dp"
-        android:text="@string/class_name_example"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        tools:ignore="TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/lessonContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/className"
-        android:layout_above="@+id/teacherNameTitle"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/lesson_content_example"
-        android:textSize="12sp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="20dp"
-        tools:ignore="VisualLintLongText" />
-
-    <Button
-        android:id="@+id/buttonMakingQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_below="@+id/linearTitleBarStudyAct"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:text="@string/making_question_button"
-        android:textSize="11sp"
-        tools:ignore="RelativeOverlap,TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/teacherNameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/buttonMakingQuestion"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/montserrat"
+        android:orientation="vertical"
         android:gravity="center_vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        android:text="@string/teacher_name_title"
-        android:textColor="@color/green"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="@color/white">
 
-    <TextView
-        android:id="@+id/teacherName"
-        android:layout_width="wrap_content"
+        <!-- LESSON NAME -->
+        <TextView
+            android:id="@+id/textLessonNameStudyAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/lesson_name_example"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <!-- CLASS BELONG TO -->
+        <TextView
+            android:id="@+id/textClassNameStudyAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/lesson_name_example"
+            android:textAlignment="center"
+            android:textColor="@color/dark_grey"
+            android:textSize="14sp"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+
+    <!-- LESSON CONTENT -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLessonTitleStudyAct"
+        android:layout_above="@+id/linearFooterStudyAct">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"/>
+
+        <TextView
+            android:id="@+id/lessonContentStudyAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/lesson_content_example"
+            android:textSize="14sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="20dp"
+            tools:ignore="VisualLintLongText" />
+    </FrameLayout>
+
+    <!-- FOOTER -->
+    <LinearLayout
+        android:id="@+id/linearFooterStudyAct"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/buttonMakingQuestion"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/teacherNameTitle"
-        android:fontFamily="@font/montserrat"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:text="@string/teacher_name_example"
-        android:textColor="@color/dark_grey"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textTeacherNameStudyAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
+            android:text="@string/teacher_name_example"
+            android:textColor="@color/green"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/baseline_person_24"
+            app:drawableTint="@color/green"
+            tools:ignore="TextContrastCheck" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/buttonMakingQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/making_question_button"
+            android:textSize="12sp"
+            tools:ignore="TextContrastCheck" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

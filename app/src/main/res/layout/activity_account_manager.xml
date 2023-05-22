@@ -5,76 +5,98 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/setting_title"
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearTitleAccountManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/green"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/action_setting"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- BACK BUTTON -->
+        <!-- back to fragment setting-->
+        <ImageButton
+            android:id="@+id/buttonBackAccountManager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/action_setting"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="3"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/avatarImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_below="@+id/linearTitleAccountManager"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/setting_title"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/ic_launcher_background"
-        android:adjustViewBounds="true"
+        android:contentDescription="@string/logo_des"
         android:foreground="@drawable/crop_frame"
-        android:contentDescription="@string/logo_des" />
+        android:src="@color/green"
+        tools:ignore="ImageContrastCheck" />
 
-    <TextView
-        android:id="@+id/textFullname"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/avatarImage"
+        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/avatarImage"
-        android:layout_toEndOf="@+id/avatarImage"
-        android:layout_marginStart="20dp"
-        android:text="@string/ex_name"
-        android:textSize="18sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"
-        />
+        android:layout_alignBottom="@+id/avatarImage"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        >
 
+        <TextView
+            android:id="@+id/textFullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/ex_name"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
 
-    <TextView
-        android:id="@+id/labelID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textFullname"
-        android:layout_toEndOf="@+id/avatarImage"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/lable_id"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"/>
+        <TextView
+            android:id="@+id/textID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/ex_stdID"
+            android:textSize="16sp"
+            android:textColor="@color/dark_grey"
 
-    <TextView
-        android:id="@+id/textID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/labelID"
-        android:layout_toEndOf="@+id/labelID"
-        android:layout_marginStart="10dp"
-        android:text="@string/ex_stdID"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+            android:fontFamily="@font/montserrat"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/subDateOfBirth"
@@ -84,9 +106,9 @@
         android:layout_below="@+id/avatarImage"
         android:layout_marginTop="20dp"
         android:text="@string/lable_birth"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+        android:textSize="12sp"
+        android:textColor="@color/dark_grey"
+        android:fontFamily="@font/montserrat"/>
 
     <TextView
         android:id="@+id/textDateOfBirth"
@@ -95,7 +117,8 @@
         android:layout_alignStart="@+id/avatarImage"
         android:layout_below="@+id/subDateOfBirth"
         android:text="@string/ex_birth"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey"
         android:fontFamily="@font/montserrat"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
@@ -107,9 +130,9 @@
         android:layout_alignStart="@+id/avatarImage"
         android:layout_below="@+id/textDateOfBirth"
         android:text="@string/lable_class"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+        android:textSize="12sp"
+        android:textColor="@color/dark_grey"
+        android:fontFamily="@font/montserrat"/>
 
     <TextView
         android:id="@+id/textClassName"
@@ -118,7 +141,8 @@
         android:layout_alignStart="@+id/avatarImage"
         android:layout_below="@+id/subClassName"
         android:text="@string/ex_class"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey"
         android:fontFamily="@font/montserrat"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
@@ -130,9 +154,9 @@
         android:layout_alignStart="@+id/avatarImage"
         android:layout_below="@+id/textClassName"
         android:text="@string/lable_email"
-        android:textSize="15sp"
-        android:textColor="@color/green"
-        android:fontFamily="@font/montserrat_bold"/>
+        android:textSize="12sp"
+        android:textColor="@color/dark_grey"
+        android:fontFamily="@font/montserrat"/>
 
     <TextView
         android:id="@+id/textEmailAddress"
@@ -141,37 +165,69 @@
         android:layout_alignStart="@+id/avatarImage"
         android:layout_below="@+id/subEmailAddress"
         android:text="@string/ex_email"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey"
         android:fontFamily="@font/montserrat"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
 
-    <Button
-        android:id="@+id/buttonLogOut"
-        android:layout_width="130dp"
+    <LinearLayout
+        android:id="@+id/linearButtonClassAct"
+        android:layout_width="fill_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_below="@+id/textEmailAddress"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/my_button_border"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/log_out_upper"
-        android:textSize="12sp"
-        android:textColor="@color/green"
-        tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+        android:layout_marginTop="20dp">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+        <!-- BUTTON GET CLASS INFO -->
+        <Button
+            android:id="@+id/buttonLogoutAccountManager"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_button_border"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/log_out_upper"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+        <!-- BUTTON REQUEST SUPPORT -->
+        <Button
+            android:id="@+id/buttonSupportAccountManager"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_button"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/support_upper"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonSupport"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonLogOut"
-        android:layout_marginStart="66dp"
-        android:layout_toEndOf="@+id/buttonLogOut"
-        android:background="@drawable/my_button"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/support_upper"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
 
 </RelativeLayout>

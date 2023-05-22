@@ -16,29 +16,32 @@
         android:theme="@style/Theme.Splus"
         tools:targetApi="31">
         <activity
+            android:name=".ClassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailClassActivity"
+            android:exported="false" />
+        <activity
             android:name=".AccountManagerActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".my_dialog.LanguageOptionsDialog"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:configChanges="keyboardHidden|orientation|screenSize" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".StudyActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -47,7 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

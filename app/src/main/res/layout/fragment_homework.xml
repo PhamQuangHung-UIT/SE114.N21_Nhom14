@@ -1,17 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearTitleBarHwFragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/action_homework"
-        android:textSize="30sp"
-        android:textColor="@color/green"
-        android:layout_centerInParent="true"
-        android:fontFamily="@font/montserrat_black" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/hw_fragment_title"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:id="@+id/buttonNotificationHwFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/notification_title"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutHwFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearTitleBarHwFragment"
+        android:background="@color/green"
+        android:backgroundTint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:backgroundTint="@color/white"
+            android:text="@string/unfinished" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:backgroundTint="@color/red"
+            android:text="@string/finished" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLayoutHwFragment"
+        />
 
 
 </RelativeLayout>

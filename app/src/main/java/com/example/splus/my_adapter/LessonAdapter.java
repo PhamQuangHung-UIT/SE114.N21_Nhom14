@@ -3,7 +3,6 @@ package com.example.splus.my_adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,7 +39,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.UserViewHo
         if (lesson == null) {
             return;
         }
-        holder.lessonImage.setImageResource(lesson.getLessonImage());
         holder.lessonName.setText(lesson.getLessonName());
         holder.className.setText(lesson.getClassName());
         holder.teacherName.setText(lesson.getTeacherName());
@@ -65,18 +63,16 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.UserViewHo
     public static class UserViewHolder extends RecyclerView.ViewHolder {
 
         private final RelativeLayout lessonItem;
-        private final ImageView lessonImage;
         private final TextView lessonName;
         private final TextView className;
         private final TextView teacherName;
 
         public UserViewHolder(@NonNull View lessonView) {
             super(lessonView);
-            lessonItem = lessonView.findViewById(R.id.itemLessonLayout);
-            lessonImage = lessonView.findViewById(R.id.lessonImage);
-            lessonName = lessonView.findViewById(R.id.lessonName);
-            className = lessonView.findViewById(R.id.className);
-            teacherName = lessonView.findViewById(R.id.teacherName);
+            lessonItem = lessonView.findViewById(R.id.relativeItemLesson);
+            lessonName = lessonView.findViewById(R.id.textLessonNameItemLesson);
+            className = lessonView.findViewById(R.id.textClassNameItemLesson);
+            teacherName = lessonView.findViewById(R.id.textTeacherNameItemLesson);
         }
     }
 }
