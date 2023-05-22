@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailClassActivity">
+
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearTitleBarDetailClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
+        <ImageButton
+            android:id="@+id/buttonBackDetailClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/class_info_upper"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="3"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!-- CLASS NAME -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearTitleBarDetailClass"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/class_title"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/textClassNameDetailClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearTitleBarDetailClass"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="120dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/class_name_example"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+    <!-- TEACHER NAME -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textClassNameDetailClass"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/teacher_name_title"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/textTeacherNameDetailClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textClassNameDetailClass"
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@+id/textClassNameDetailClass"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/teacher_name_example"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+    <!-- EMAIL TEACHER -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTeacherNameDetailClass"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/email_teacher_title"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/textEmailTeacherDetailClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTeacherNameDetailClass"
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@+id/textClassNameDetailClass"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/ex_email"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/textStudentListTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textEmailTeacherDetailClass"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/student_list_title"
+        android:textAlignment="center"
+        android:textColor="@color/green"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+    <ListView
+        android:id="@+id/listLessonDetailClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textStudentListTitle"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>

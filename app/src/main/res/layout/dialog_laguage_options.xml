@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/popup_background"
-    android:layout_width="350dp"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".my_dialog.LanguageOptionsDialog">
 
         <RadioGroup
             android:id="@+id/languageRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp">
 
             <RadioButton
                 android:id="@+id/Vietnamese"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:fontFamily="@font/montserrat"
                 android:tag="@string/locale_vn"
-                android:text="@string/language_radio_button_vn" />
+                android:text="@string/language_radio_button_vn"
+                android:padding="10dp"/>
 
             <RadioButton
                 android:id="@+id/English"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:fontFamily="@font/montserrat"
                 android:tag="@string/locale_en"
-                android:text="@string/language_radio_button_en" />
+                android:text="@string/language_radio_button_en"
+                android:padding="10dp"/>
         </RadioGroup>
 
     <Button
         android:id="@+id/button_ok"
         android:layout_width="101dp"
         android:layout_height="50dp"
-        android:text="OK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/languageRadioGroup"
-        app:layout_constraintVertical_bias="0.01" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@+id/languageRadioGroup"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/ok"
+        android:textSize="14sp"
+        android:backgroundTint="@color/green"
+        />
+</RelativeLayout>

@@ -1,67 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/titleBarHomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- LOGO -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/splus_logo_white_small"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <!-- SEARCH BAR -->
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:background="@drawable/shape"
+            android:drawableStart="@drawable/search_icon"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/dark_grey"
+            android:fontFamily="@font/montserrat"
+            android:hint="@string/search_box_hint"
+            android:textColorHint="@color/dark_grey"
+            android:inputType="text"
+            android:lines="1"
+            android:paddingStart="15dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/notification_title"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/welcomeHomeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/titleBarHomeFragment"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="@string/welcome_home_title"
         android:textColor="@color/green"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textStyle="normal"
         tools:ignore="TextContrastCheck" />
-
-    <EditText
-        android:id="@+id/searchBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_below="@+id/welcomeHomeTitle"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:hint="@string/search_box_hint"
-        android:fontFamily="@font/montserrat"
-        android:lines="1"
-        android:drawableEnd="@drawable/search_icon"
-        android:background="@drawable/shape"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        tools:ignore="RtlSymmetry,VisualLintTextFieldSize"
-        android:inputType="text"
-        android:autofillHints="name"
-        />
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true"
-        android:alpha=".1"
-        android:contentDescription="@string/logo_des" />
 
     <TextView
         android:id="@+id/recentLessonTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchBox"
+        android:layout_below="@+id/welcomeHomeTitle"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:text="@string/recent_ls_title"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         tools:ignore="TextContrastCheck" />
 
@@ -69,10 +95,9 @@
         android:id="@+id/recentLessonList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@+id/recentLessonTitle"
-        android:layout_marginTop="20dp"
         />
 
 </RelativeLayout>

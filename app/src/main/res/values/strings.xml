@@ -20,7 +20,7 @@
 
     <string name="ex_name" translatable="false">Nguyễn Văn A</string>
     <string name="ex_birth" translatable="false">30/02/2003</string>
-    <string name="ex_class" translatable="false">Lớp Diuuu</string>
+    <string name="ex_class" translatable="false">KHMT2021</string>
     <string name="ex_email" translatable="false">todo@example.splus.vn</string>
     <string name="ex_stdID" translatable="false">19520001</string>
     <!--Vietnamese-->
@@ -55,7 +55,7 @@
 
     <string name="action_assign">Giao bài tập</string>
 
-    <string name="action_setting">Cài đặt</string>
+    <string name="action_setting">Tài khoản</string>
 
     <string name="welcome_home_title">Chào mừng bạn đến với S-plus!</string>
 
@@ -92,7 +92,7 @@
         <br>\t\tỨng dụng trong tài chính.\n</br>
     </string>
 
-    <string name="class_title">Lớp học:</string>
+    <string name="class_title">Lớp học</string>
     <string name="class_name">Tên lớp học</string>
     <string name="teacher_name">Tên giảng viên</string>
 
@@ -122,4 +122,16 @@
     <string name="des_avatar">Ảnh đại diện</string>
 
     <string name="current_language">Tiếng Việt</string>
+    <string name="notification_title">THÔNG BÁO</string>
+    <string name="class_fragment_title">LỚP HỌC</string>
+    <string name="study_activity_title">NỘI DUNG BÀI HỌC</string>
+    <string name="class_info_upper">THÔNG TIN LỚP</string>
+    <string name="email_teacher_title" translatable="false">Email GV</string>
+    <string name="student_list_title">DANH SÁCH LỚP</string>
+    <string name="hw_fragment_title">BÀI TẬP</string>
+    <string name="unfinished">CHƯA LÀM</string>
+    <string name="finished">ĐÃ HOÀN THÀNH</string>
+    <string name="setting_fragment_title">TÀI KHOẢN</string>
+    <string name="display_setting_title">Cài đặt hiển thị</string>
+    <string name="ok">OK</string>
 </resources>

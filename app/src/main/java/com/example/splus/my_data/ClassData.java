@@ -3,44 +3,32 @@ package com.example.splus.my_data;
 import java.io.Serializable;
 
 public class ClassData implements Serializable {
-    private int lessonImage;
-    private String lessonID;
-    private String lessonName;
-    private String lessonContent;
+    private int classImage;
+    private String classID;
     private String className;
     private String teacherName;
 
-    public ClassData(int lessonImage, String lessonID, String lessonName, String lessonContent, String className, String teacherName) {
-        this.lessonImage = lessonImage;
-        this.lessonID = lessonID;
-        this.lessonName = lessonName;
-        this.lessonContent = lessonContent;
+    public ClassData(int classImage, String classID, String className, String teacherName) {
+        this.classImage = classImage;
+        this.classID = classID;
         this.className = className;
         this.teacherName = teacherName;
     }
 
-    public int getLessonImage() {
-        return lessonImage;
+    public int getClassImage() {
+        return classImage;
     }
 
-    public void setLessonImage(int lessonImage) {
-        this.lessonImage = lessonImage;
+    public void setClassImage(int classImage) {
+        this.classImage = classImage;
     }
 
-    public String getLessonID() {
-        return lessonID;
+    public String getClassID() {
+        return classID;
     }
 
-    public void setLessonID(String lessonID) {
-        this.lessonID = lessonID;
-    }
-
-    public String getLessonName() {
-        return lessonName;
-    }
-
-    public void setLessonName(String lessonName) {
-        this.lessonName = lessonName;
+    public void setClassID(String classID) {
+        this.classID = classID;
     }
 
     public String getClassName() {
@@ -57,13 +45,5 @@ public class ClassData implements Serializable {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
-    }
-
-    public String getLessonContent() {
-        return lessonContent;
-    }
-
-    public void setLessonContent(String lessonContent) {
-        this.lessonContent = lessonContent;
     }
 }

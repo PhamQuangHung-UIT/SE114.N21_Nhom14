@@ -2,12 +2,11 @@ package com.example.splus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.splus.my_data.ClassData;
 import com.example.splus.my_data.LessonData;
 
 public class StudyActivity extends AppCompatActivity {
@@ -16,7 +15,8 @@ public class StudyActivity extends AppCompatActivity {
     TextView lessonContent;
     TextView className, teacherName;
 
-    @SuppressLint("MissingInflatedId")
+    ImageButton buttonBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +29,28 @@ public class StudyActivity extends AppCompatActivity {
 
         LessonData lesson = (LessonData) bundle.get("lesson_data");
 
-        lessonName = findViewById(R.id.lessonName);
-        lessonContent = findViewById(R.id.lessonContent);
-        className = findViewById(R.id.className);
-        teacherName = findViewById(R.id.teacherName);
+        lessonName = findViewById(R.id.textLessonNameStudyAct);
+        lessonContent = findViewById(R.id.lessonContentStudyAct);
+        className = findViewById(R.id.textClassNameStudyAct);
+        teacherName = findViewById(R.id.textTeacherNameStudyAct);
 
         lessonName.setText(lesson.getLessonName());
         lessonContent.setText(lesson.getLessonContent());
         className.setText(lesson.getClassName());
         teacherName.setText(lesson.getTeacherName());
+
+        buttonBack = findViewById(R.id.buttonBackStudyAct);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        finish();
     }
 }

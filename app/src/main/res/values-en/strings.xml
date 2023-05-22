@@ -37,7 +37,7 @@
 
     <string name="action_assign">Assign</string>
 
-    <string name="action_setting">Setting</string>
+    <string name="action_setting">Account</string>
 
     <string name="welcome_home_title">Welcome to S-plus!</string>
 
@@ -48,9 +48,9 @@
     <string name="subject_name">Subject name</string>
 
     <string name="lesson_name">Lesson name</string>
-    <string name="class_title">Class:</string>
+    <string name="class_title">Class</string>
     <string name="class_name">Class name</string>
-    <string name="teacher_name">Teacher:</string>
+    <string name="teacher_name">Teacher</string>
     <string name="teacher_name_title">Teacher</string>
     <string name="making_question_button">Ask question</string>
     <string name="class_info">Class information</string>
@@ -71,4 +71,15 @@
 
     <string name="des_avatar">Avatar</string>
     <string name="current_language">English</string>
+    <string name="notification_title">NOTIFICATIONS</string>
+    <string name="class_fragment_title">CLASSES</string>
+    <string name="study_activity_title">LESSON</string>
+    <string name="class_info_upper">CLASS INFORMATION</string>
+    <string name="student_list_title">STUDENT LIST</string>
+    <string name="hw_fragment_title">ASSIGNMENTS</string>
+    <string name="unfinished">UNFINISHED</string>
+    <string name="finished">FINISHED</string>
+    <string name="setting_fragment_title">ACCOUNT</string>
+    <string name="display_setting_title">Display setting</string>
+    <string name="ok">OK</string>
 </resources>
