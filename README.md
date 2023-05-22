@@ -25,6 +25,18 @@
 ### Main Activity
 - Chứa 4 fragment có thể chuyển qua lại, bao gồm: trang chủ, lớp học, bài tập, cài đặt tài khoản
 - Hầu hết sử dụng RecyclerView để hiển thị các items và các Adapter để mount data và xử lí nút nhấn bằng các Interface
+#### Home Fragment
+Hiển thị thanh tìm kiếm (bài học, lớp học, tên giảng viên), nút thông báo và danh sách các bài học gần nhất
+#### Class Fragment
+Hiển thị thanh tìm kiếm, nút thông báo và danh sách lớp học đang học (đối với học viên) hoặc danh sách lớp đang quản lý (đối với giảng viên)
+#### Homework Fragment
+Hiển thị danh sách bài tập, được phân loại theo 2 TAB gồm Sắp đến hạn nhưng chưa hoàn thành và Đã hết hạn.
+TAB Sắp hết hạn sẽ hiển thị chữ đỏ
+TAB Đã hết hạn sẽ hiển thị trạng thái đã làm bài hay chưa và số điểm sau khi được hệ thống hoặc giảng viên chấm điểm.
+#### Assign Fragment
+Hiển thị các bài tập đã tạo và nút "Tạo bài tập" (chỉ dành cho đối tượng là giảng viên)
+#### Setting Fragment
+Hiển thị thẻ thông tin người dùng (nhấn vào để chuyển sang trang cài đặt tài khoản) và các thẻ cài đặt hiển thị (ngôn ngữ, cỡ chữ, chế độ sáng tối, ...)
 
 ### Study Activity
 - Hiển thị nội dung bài học
