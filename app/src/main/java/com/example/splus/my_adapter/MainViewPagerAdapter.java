@@ -11,14 +11,10 @@ import com.example.splus.my_fragment.HomeFragment;
 import com.example.splus.my_fragment.HomeworkFragment;
 import com.example.splus.my_fragment.SettingFragment;
 
-
-public class ViewPagerAdapter extends FragmentStateAdapter {
-
-
-    public ViewPagerAdapter(@NonNull FragmentManager fm, Lifecycle lifecycle) {
+public class MainViewPagerAdapter extends FragmentStateAdapter {
+    public MainViewPagerAdapter(@NonNull FragmentManager fm, Lifecycle lifecycle) {
         super(fm, lifecycle);
     }
-
     @NonNull
     @Override
     public Fragment createFragment(int position) {
@@ -33,7 +29,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
                 return new HomeFragment();
         }
     }
-
     @Override
     public int getItemCount() {
         return 4;

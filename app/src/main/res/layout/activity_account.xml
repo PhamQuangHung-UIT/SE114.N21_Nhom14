@@ -7,7 +7,7 @@
 
     <!-- TITLE BAR -->
     <LinearLayout
-        android:id="@+id/linearTitleAccountManager"
+        android:id="@+id/linearTitleAccountAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
         <!-- BACK BUTTON -->
         <!-- back to fragment setting-->
         <ImageButton
-            android:id="@+id/buttonBackAccountManager"
+            android:id="@+id/buttonBackAccountAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"
@@ -53,7 +53,7 @@
         android:id="@+id/avatarImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/linearTitleAccountManager"
+        android:layout_below="@+id/linearTitleAccountAct"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
@@ -188,7 +188,7 @@
             />
         <!-- BUTTON GET CLASS INFO -->
         <Button
-            android:id="@+id/buttonLogoutAccountManager"
+            android:id="@+id/buttonLogoutAccountAct"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/my_button_border"
@@ -208,7 +208,7 @@
             />
         <!-- BUTTON REQUEST SUPPORT -->
         <Button
-            android:id="@+id/buttonSupportAccountManager"
+            android:id="@+id/buttonSupportAccountAct"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/my_button"

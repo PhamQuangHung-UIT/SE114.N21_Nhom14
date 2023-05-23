@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoHomeworkActivity">
+
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearTitleBarDoHwAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
+        <ImageButton
+            android:id="@+id/buttonBackDoHwAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:id="@+id/textClassNameClassAct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/pre_do_homework_title"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:id="@+id/buttonNotificationDoHwAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/notification_title"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+    </LinearLayout>
+
+    <!-- HOMEWORK TITLE -->
+    <TextView
+        android:id="@+id/textHomeworkNameDoHwAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearTitleBarDoHwAct"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/homework_title"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/red"
+        />
+
+    <!-- HOMEWORK FORMAT -->
+    <LinearLayout
+        android:id="@+id/linearFormatDoHwAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textHomeworkNameDoHwAct"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="left"
+        android:showDividers="middle"
+        android:divider="@drawable/divider_horizontal"
+        tools:ignore="RtlHardcoded">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_format_title"/>
+        <TextView
+            android:id="@+id/textFormatDoHwAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_format"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- HOMEWORK QUANTITY -->
+    <LinearLayout
+        android:id="@+id/linearQuantityDoHwAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearFormatDoHwAct"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_numbers_title" />
+
+        <TextView
+            android:id="@+id/textNumberDoHwAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_number"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- HOMEWORK TIME -->
+    <LinearLayout
+        android:id="@+id/linearTimeDoHwAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearQuantityDoHwAct"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_time_title" />
+
+        <TextView
+            android:id="@+id/textTimeDoHwAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_time"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- HOMEWORK DEADLINE -->
+    <LinearLayout
+        android:id="@+id/linearDeadlineDoHwAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearTimeDoHwAct"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_deadline_title" />
+
+        <TextView
+            android:id="@+id/textDeadlineDoHwAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/timestamp_ex"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- BUTTON SUBMIT -->
+    <Button
+        android:id="@+id/buttonEnterDoHwAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearDeadlineDoHwAct"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/button_enter_exam"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+</RelativeLayout>

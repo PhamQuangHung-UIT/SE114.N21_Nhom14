@@ -34,7 +34,7 @@
 
         <!-- NOTIFICATION BUTTON -->
         <ImageButton
-            android:id="@+id/buttonNotificationHwFragment"
+            android:id="@+id/buttonNotifySettingFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"

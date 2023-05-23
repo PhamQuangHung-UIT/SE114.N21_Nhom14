@@ -1,17 +1,20 @@
 package com.example.splus.my_fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.splus.AccountManagerActivity;
+import com.example.splus.AccountActivity;
+import com.example.splus.NotifyActivity;
 import com.example.splus.R;
 import com.example.splus.my_dialog.LanguageOptionsDialog;
 
@@ -24,7 +27,7 @@ public class SettingFragment extends Fragment {
         //Account manager
         View accountManagerBtn = view.findViewById(R.id.accountManagerButton);
         accountManagerBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AccountManagerActivity.class);
+            Intent intent = new Intent(getContext(), AccountActivity.class);
             Bundle bundle = new Bundle();
             intent.putExtras(bundle);
             startActivity(intent);
@@ -37,6 +40,19 @@ public class SettingFragment extends Fragment {
             chooseLangDlg.setOwnerActivity(getActivity());
             chooseLangDlg.show();
         });
+
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotifySettingFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
         return view;
+    }
+
+    private void onClickGoToNotification() {
+        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        startActivity(intent);
     }
 }

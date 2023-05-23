@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.ClassActivity;
+import com.example.splus.NotifyActivity;
 import com.example.splus.R;
+import com.example.splus.StudyActivity;
 import com.example.splus.my_adapter.ClassAdapter;
 import com.example.splus.my_data.ClassData;
 
@@ -33,7 +36,20 @@ public class ClassFragment extends Fragment {
         ClassAdapter classAdapter = new ClassAdapter(getListClass(), this::onClickGoToClass);
 
         myClass.setAdapter(classAdapter);
+
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotifyClassFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
         return view;
+    }
+
+    private void onClickGoToNotification() {
+        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        startActivity(intent);
     }
 
     @NonNull

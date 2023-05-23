@@ -7,7 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.splus.my_adapter.ViewPagerAdapter;
+import com.example.splus.my_adapter.MainViewPagerAdapter;
 import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_class.LocaleHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpViewPager() {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
+        MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
 
         mViewPager.setAdapter(adapter);
 

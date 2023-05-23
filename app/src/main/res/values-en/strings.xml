@@ -82,4 +82,22 @@
     <string name="setting_fragment_title">ACCOUNT</string>
     <string name="display_setting_title">Display setting</string>
     <string name="ok">OK</string>
+    <string name="study_notif_fragment_title">STUDY</string>
+    <string name="other_notif_fragment_title">OTHERS</string>
+    <string name="homework_title">Final Exam</string>
+    <string name="remaining_time">1 hour 15 minutes left</string>
+    <string name="timestamp_ex">11:59 04/04/2023</string>
+    <string name="point_ex">9.8</string>
+    <string name="pre_do_homework_title">READY TO DO</string>
+    <string name="homework_format_title">Format</string>
+    <string name="homework_format">Multiple choice</string>
+    <string name="homework_format_2">Essay</string>
+    <string name="homework_numbers_title">Quantity</string>
+    <string name="homework_number">10</string>
+    <string name="homework_time_title">Time</string>
+    <string name="homework_time">30 mins</string>
+    <string name="homework_deadline_title">Deadline</string>
+    <string name="button_submit">SUBMIT</string>
+    <string name="button_enter_exam">START</string>
+    <string name="detail_submit_title">DETAIL SUBMISSION</string>
 </resources>

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ActivityManager {
 
-    private static List<Activity> activityList = new ArrayList<>();
+    private static final List<Activity> activityList = new ArrayList<>();
 
     public static void add(Activity activity)
     {
