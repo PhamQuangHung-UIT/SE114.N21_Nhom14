@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeItemHwUnfinished"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:background="@drawable/bg_light_white">
+
+    <TextView
+        android:id="@+id/textHwNameUnfinishedHwFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/homework_title"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingStart="20dp"
+        tools:ignore="RtlSymmetry"
+        />
+
+    <TextView
+        android:id="@+id/textClassNameUnfinishedHwFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textHwNameUnfinishedHwFragment"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/class_name_example"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        android:paddingStart="20dp"
+        tools:ignore="RtlSymmetry"
+        />
+
+    <TextView
+        android:id="@+id/textRemainingTimeUnfinishedHwFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textClassNameUnfinishedHwFragment"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/remaining_time"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        tools:ignore="TextContrastCheck" />
+
+</RelativeLayout>

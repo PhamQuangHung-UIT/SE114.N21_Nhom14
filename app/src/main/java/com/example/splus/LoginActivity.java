@@ -14,14 +14,18 @@ import com.example.splus.my_class.ActivityManager;
 
 public class LoginActivity extends AppCompatActivity {
 
-    final int numOfPair = 2;
+    final int numOfPair = 4;
     final String[] username = {
             "duongtd0109",
-            "admin"
+            "admin",
+            "ad",
+            ""
     };
     final String[] password = {
             "12345679",
-            "abc123"
+            "abc123",
+            "1",
+            ""
     };
 
     EditText editTextUsername, editTextPassword;

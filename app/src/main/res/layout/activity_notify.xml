@@ -4,63 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    tools:context=".NotifyActivity">
 
     <!-- TITLE BAR -->
     <LinearLayout
-        android:id="@+id/linearTitleBarHwFragment"
+        android:id="@+id/linearTitleBarNotifyAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
         android:background="@color/green">
 
-        <!-- TITLE CLASS NAME -->
-        <TextView
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/hw_fragment_title"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
-
-        <!-- NOTIFICATION BUTTON -->
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
         <ImageButton
-            android:id="@+id/buttonNotifyHwFragment"
+            android:id="@+id/buttonBackNotifyAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"
-            android:contentDescription="@string/notification_title"
             android:padding="15dp"
-            android:src="@drawable/baseline_notifications_active_24"
-            app:tint="@color/white"
-            tools:ignore="ImageContrastCheck" />
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:id="@+id/textTitleNotifyAct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/notification_title"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/baseline_more_vert_24"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <!-- TAB -->
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutHwFragment"
+        android:id="@+id/tabLayoutNotifyAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearTitleBarHwFragment"
+        android:layout_below="@+id/linearTitleBarNotifyAct"
         android:background="@color/light_grey"
         style="@style/MyCustomTabLayout"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerHwFragment"
+        android:id="@+id/viewPagerNotifyAct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabLayoutHwFragment"
+        android:layout_below="@+id/tabLayoutNotifyAct"
         tools:ignore="SpeakableTextPresentCheck" />
-
 
 </RelativeLayout>

@@ -135,7 +135,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         tools:ignore="TextContrastCheck" />
-    <ListView
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listLessonDetailClass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

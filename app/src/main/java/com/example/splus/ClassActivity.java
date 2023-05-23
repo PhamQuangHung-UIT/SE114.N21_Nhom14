@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.splus.my_adapter.LessonAdapter;
 import com.example.splus.my_data.ClassData;
@@ -23,6 +24,9 @@ public class ClassActivity extends AppCompatActivity {
     TextView className;
 
     ImageButton buttonBack;
+
+    TextView buttonDetailClass;
+    TextView buttonContactTeacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,31 @@ public class ClassActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        buttonDetailClass = findViewById(R.id.buttonInfoDetailClass);
+        buttonDetailClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToDetailClass(myClass);
+            }
+        });
+
+        buttonContactTeacher = findViewById(R.id.buttonContactDetailClass);
+        buttonContactTeacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ClassActivity.this, "Contact button is pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void onClickGoToDetailClass(ClassData myClass) {
+        Intent intent = new Intent(ClassActivity.this, DetailClassActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("detail_class_data", myClass);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void onClickGoToLesson(LessonData lessonData) {

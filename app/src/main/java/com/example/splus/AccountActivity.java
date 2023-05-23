@@ -11,16 +11,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class AccountManagerActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
 
     ImageButton buttonBack;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_manager);
+        setContentView(R.layout.activity_account);
 
-        buttonBack = findViewById(R.id.buttonBackAccountManager);
+        buttonBack = findViewById(R.id.buttonBackAccountAct);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +33,7 @@ public class AccountManagerActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         /*
-        Intent intent = new Intent(AccountManagerActivity.this, MainActivity.class);
+        Intent intent = new Intent(AccountActActivity.this, MainActivity.class);
         intent.putExtra("Check",1);
         startActivity(intent);
          */

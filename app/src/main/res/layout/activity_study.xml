@@ -32,7 +32,7 @@
 
         <!-- TITLE CLASS NAME -->
         <TextView
-            android:id="@+id/textClassNameDetailClass"
+            android:id="@+id/textTitleStudyAct"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
@@ -46,6 +46,7 @@
 
         <!-- NOTIFICATION BUTTON -->
         <ImageButton
+            android:id="@+id/imageNotifyStudyAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"

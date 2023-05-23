@@ -8,36 +8,26 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.splus.my_data.ClassData;
+import com.example.splus.my_data.HomeworkData;
 
-public class DetailClassActivity extends AppCompatActivity {
+public class DetailHomeworkActivity extends AppCompatActivity {
 
-    ImageButton buttonBack;
-
-    TextView textClassName;
-    TextView textTeacherName;
-    TextView textEmailTeacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_class);
+        setContentView(R.layout.activity_detail_homework);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             return;
         }
 
-        ClassData myClass = (ClassData) bundle.get("detail_class_data");
+        HomeworkData mySubmission = (HomeworkData) bundle.get("hw_data");
 
-        textClassName = findViewById(R.id.textClassNameDetailClass);
-        textClassName.setText(myClass.getClassName());
+        TextView hw_name = findViewById(R.id.textHomeworkNameDetailSubmission);
+        hw_name.setText(mySubmission.getHomework_name());
 
-        textTeacherName = findViewById(R.id.textTeacherNameDetailClass);
-        textTeacherName.setText(myClass.getTeacherName());
-
-        textEmailTeacher = findViewById(R.id.textEmailTeacherDetailClass);
-        textEmailTeacher.setText(R.string.ex_email);
-
-        buttonBack = findViewById(R.id.buttonBackDetailClass);
+        ImageButton buttonBack = findViewById(R.id.buttonBackDetailSubmission);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

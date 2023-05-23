@@ -1,10 +1,12 @@
 package com.example.splus.my_fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.splus.NotifyActivity;
 import com.example.splus.R;
 import com.example.splus.StudyActivity;
 import com.example.splus.my_adapter.LessonAdapter;
@@ -33,7 +36,20 @@ public class HomeFragment extends Fragment {
         LessonAdapter lessonAdapter = new LessonAdapter(getRecentLesson(), this::onClickGoToLesson);
 
         recentLesson.setAdapter(lessonAdapter);
+
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageButton imageButtonNotif = view.findViewById(R.id.imageNotifyHomeFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
         return view;
+    }
+
+    private void onClickGoToNotification() {
+        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        startActivity(intent);
     }
 
     @NonNull
