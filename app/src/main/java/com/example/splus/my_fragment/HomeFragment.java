@@ -1,6 +1,5 @@
 package com.example.splus.my_fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.splus.NotifyActivity;
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.StudyActivity;
 import com.example.splus.my_adapter.LessonAdapter;
@@ -37,7 +36,7 @@ public class HomeFragment extends Fragment {
 
         recentLesson.setAdapter(lessonAdapter);
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageButton imageButtonNotif = view.findViewById(R.id.imageNotifyHomeFragment);
+        ImageButton imageButtonNotif = view.findViewById(R.id.imageNotifyHomeFragment);
         imageButtonNotif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +47,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void onClickGoToNotification() {
-        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
         startActivity(intent);
     }
 
@@ -56,15 +55,7 @@ public class HomeFragment extends Fragment {
     private List<LessonData> getRecentLesson() {
         List<LessonData> list = new ArrayList<>();
 
-        LessonData lessonExample = new LessonData(
-                R.drawable.splus_logo,
-                getString(R.string.lesson_id_example),
-                getString(R.string.lesson_name_example),
-                getString(R.string.lesson_content_example),
-                getString(R.string.class_name_example),
-                getString(R.string.teacher_name_example)
-        );
-
+        LessonData lessonExample = new LessonData();
         list.add(lessonExample);
 
         list.add( new LessonData(

@@ -1,4 +1,7 @@
 package com.example.splus.my_data;
+
+import com.example.splus.R;
+
 import java.io.Serializable;
 
 public class LessonData implements Serializable {
@@ -16,6 +19,15 @@ public class LessonData implements Serializable {
         this.lessonContent = lessonContent;
         this.className = className;
         this.teacherName = teacherName;
+    }
+
+    public LessonData() {
+        this.lessonImage = R.drawable.splus_logo;
+        this.lessonID = "SPLUS-MATHEMATICS";
+        this.lessonName = "Tầm quan trọng của Toán học";
+        this.lessonContent = "Nội dung bài học";
+        this.className = "Nhập môn Toán học";
+        this.teacherName = "S-Plus";
     }
 
     public int getLessonImage() {

@@ -55,8 +55,6 @@
 
     <string name="action_assign">Giao bài tập</string>
 
-    <string name="action_setting">Tài khoản</string>
-
     <string name="welcome_home_title">Chào mừng bạn đến với S-plus!</string>
 
     <string name="search_box_hint">Tìm kiếm môn học …</string>
@@ -131,7 +129,7 @@
     <string name="hw_fragment_title">BÀI TẬP</string>
     <string name="unfinished">CHƯA NỘP</string>
     <string name="finished">ĐÃ NỘP</string>
-    <string name="setting_fragment_title">TÀI KHOẢN</string>
+    <string name="setting_fragment_title">CÀI ĐẶT</string>
     <string name="display_setting_title">Cài đặt hiển thị</string>
     <string name="ok">OK</string>
     <string name="study_notif_fragment_title">HỌC VỤ</string>
@@ -153,5 +151,26 @@
     <string name="button_submit">NỘP BÀI</string>
     <string name="button_enter_exam">VÀO THI</string>
     <string name="detail_submit_title">CHI TIẾT BÀI LÀM</string>
+    <string name="notif_title">Tiêu đề thông báo</string>
+    <string name="notif_content">Nội dung thông báo dạng rút gọn</string>
+    <string name="image_for_notification">image for notification</string>
+    <string name="notif_time">05/04/2023 14:31</string>
+    <string name="account_information">Thông tin tài khoản</string>
+    <string name="update_information_title">SỬA THÔNG TIN</string>
+    <string name="making_question_title">ĐẶT CÂU HỎI</string>
+    <string name="hint_make_question">Viết câu hỏi để gửi cho giảng viên …</string>
+    <string name="action_setting">Tài khoản</string>
+    <string name="update_button">CẬP NHẬT</string>
+    <string name="hint_fullname">Vd: Nguyễn Văn A</string>
+    <string name="lable_phone">Số điện thoại</string>
+    <string name="ex_phone">0987654321</string>
+    <string name="lable_gender">Giới tính</string>
+    <string name="gender_male">Nam</string>
+    <string name="gender_female">Nữ</string>
+    <string name="gender_other">Khác</string>
+    <string name="do_homework_title">TRANG LÀM BÀI</string>
+    <string name="remaining_time_title">Thời gian còn lại:</string>
+    <string name="remaining_time_ex">59:32</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 </resources>

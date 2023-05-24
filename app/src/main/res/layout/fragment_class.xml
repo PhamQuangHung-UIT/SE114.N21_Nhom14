@@ -70,7 +70,7 @@
         android:paddingEnd="15dp"
         android:paddingBottom="8dp"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
     <!-- LIST CLASS -->

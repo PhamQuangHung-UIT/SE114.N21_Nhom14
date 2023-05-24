@@ -32,7 +32,7 @@
 
         <!-- TITLE CLASS NAME -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/class_info_upper"
@@ -40,13 +40,15 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_weight="3"
+            android:layout_weight="1"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_square_24"
+            android:padding="15dp"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 

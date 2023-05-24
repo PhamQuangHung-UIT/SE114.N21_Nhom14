@@ -1,5 +1,9 @@
 package com.example.splus.my_data;
 
+import android.content.res.Resources;
+
+import com.example.splus.R;
+
 import java.io.Serializable;
 
 public class HomeworkData implements Serializable {
@@ -9,19 +13,38 @@ public class HomeworkData implements Serializable {
     private String deadline;
     private String class_id;
     private String class_name;
-    private int type;   // 0: trac nghiem, 1: tu luan dien khuyet, 2: tu luan trinh bay
+    private int format;   // 0: trac nghiem, 1: tu luan dien khuyet, 2: tu luan trinh bay
     // private JSONOBJ content;
-    private double point;
+    private double point;   // not include point in homework table, get in submission table based on task_id
 
-    public HomeworkData(int id, String homework_name, String time, String deadline, String class_id, String class_name, int type, double point) {
+    private boolean finished;
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+    public HomeworkData(int id, String homework_name, String time, String deadline, String class_id, String class_name, int format, double point, boolean finished) {
         this.id = id;
         this.homework_name = homework_name;
         this.time = time;
         this.deadline = deadline;
         this.class_id = class_id;
         this.class_name = class_name;
-        this.type = type;
+        this.format = format;
         this.point = point;
+        this.finished = finished;
+    }
+
+    public HomeworkData(boolean finished) {
+        this.id = 1;
+        this.homework_name = "Bài kiểm tra Chương 1";
+        this.time = "30 phút";
+        this.deadline = "00:00 25/05/2023";
+        this.class_id = "SPLUS-MATHEMATICS";
+        this.class_name = "Nhập môn Toán học";
+        this.format = 0;
+        this.point = 9.8;
+        this.finished = finished;
     }
 
     public int getId() {
@@ -64,12 +87,12 @@ public class HomeworkData implements Serializable {
         this.class_id = class_id;
     }
 
-    public int getType() {
-        return type;
+    public int getFormat() {
+        return format;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setFormat(int format) {
+        this.format = format;
     }
 
     public String getClass_name() {
@@ -87,4 +110,11 @@ public class HomeworkData implements Serializable {
     public void setPoint(double point) {
         this.point = point;
     }
+
+    public boolean isFinished() {
+        return this.finished;
+        // check if (task_id, acc_id) match a record in submission table
+    }
+
+
 }

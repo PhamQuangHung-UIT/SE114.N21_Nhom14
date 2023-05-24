@@ -103,16 +103,12 @@
     </LinearLayout>
 
     <!-- LESSON CONTENT -->
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/linearLessonTitleStudyAct"
-        android:layout_above="@+id/linearFooterStudyAct">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/light_grey"/>
+        android:layout_above="@+id/linearFooterStudyAct"
+        android:background="@color/light_grey">
 
         <TextView
             android:id="@+id/lessonContentStudyAct"
@@ -123,11 +119,9 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/lesson_content_example"
             android:textSize="14sp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="20dp"
+            android:padding="10dp"
             tools:ignore="VisualLintLongText" />
-    </FrameLayout>
+    </ScrollView>
 
     <!-- FOOTER -->
     <LinearLayout
@@ -165,7 +159,7 @@
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/buttonMakingQuestion"
+            android:id="@+id/buttonMakingQuestionStudyAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"

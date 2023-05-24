@@ -37,8 +37,6 @@
 
     <string name="action_assign">Assign</string>
 
-    <string name="action_setting">Account</string>
-
     <string name="welcome_home_title">Welcome to S-plus!</string>
 
     <string name="search_box_hint">Search for subject …</string>
@@ -52,7 +50,7 @@
     <string name="class_name">Class name</string>
     <string name="teacher_name">Teacher</string>
     <string name="teacher_name_title">Teacher</string>
-    <string name="making_question_button">Ask question</string>
+    <string name="making_question_button">Make a question</string>
     <string name="class_info">Class information</string>
 
     <string name="teacher_info">Contact teacher</string>
@@ -79,7 +77,7 @@
     <string name="hw_fragment_title">ASSIGNMENTS</string>
     <string name="unfinished">UNFINISHED</string>
     <string name="finished">FINISHED</string>
-    <string name="setting_fragment_title">ACCOUNT</string>
+    <string name="setting_fragment_title">SETTING</string>
     <string name="display_setting_title">Display setting</string>
     <string name="ok">OK</string>
     <string name="study_notif_fragment_title">STUDY</string>
@@ -100,4 +98,24 @@
     <string name="button_submit">SUBMIT</string>
     <string name="button_enter_exam">START</string>
     <string name="detail_submit_title">DETAIL SUBMISSION</string>
+    <string name="notif_title">Notification title</string>
+    <string name="notif_content">Notification content on short form</string>
+    <string name="image_for_notification">image for notification</string>
+    <string name="notif_time">05/04/2023 14:31</string>
+    <string name="account_information">Account information</string>
+    <string name="update_information_title">UPDATE INFORMATION</string>
+    <string name="making_question_title">MAKE A QUESTION</string>
+    <string name="hint_make_question">Write a question to send to the teacher …</string>
+    <string name="action_setting">Account</string>
+    <string name="update_button">UPDATE</string>
+    <string name="hint_fullname">Eg: James Lincoln</string>
+    <string name="lable_phone">Phone number</string>
+    <string name="ex_phone">0987654321</string>
+    <string name="lable_gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
+    <string name="do_homework_title">DO HOMEWORK PAGE</string>
+    <string name="remaining_time_title">Remaining time:</string>
+    <string name="remaining_time_ex">59:32</string>
 </resources>

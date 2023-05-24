@@ -48,13 +48,13 @@
 
     <ImageView
         android:id="@+id/imageAvatarSettingFragment"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@+id/linearTitleSettingFragment"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
         android:foreground="@drawable/crop_frame"
-        android:src="@drawable/account_icon"
+        android:src="@color/green"
         android:scaleX="0.8"
         android:scaleY="0.8"
         tools:ignore="ContentDescription,ImageContrastCheck"
@@ -67,7 +67,7 @@
         android:layout_alignTop="@+id/imageAvatarSettingFragment"
         android:layout_alignBottom="@+id/imageAvatarSettingFragment"
         android:layout_toEndOf="@+id/imageAvatarSettingFragment"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:orientation="vertical"
         android:gravity="center_vertical">
 
@@ -90,7 +90,18 @@
             android:textSize="16sp"/>
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/buttonUpdateSettingFragment"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/imageAvatarSettingFragment"
+        android:layout_alignBottom="@+id/imageAvatarSettingFragment"
+        android:background="@drawable/circle"
+        android:src="@drawable/baseline_edit_24"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
+
     <LinearLayout
+        android:id="@+id/linearListDisplaySetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageAvatarSettingFragment"
@@ -107,8 +118,8 @@
             android:text="@string/display_setting_title"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/dark_grey"
-            />
+            android:textColor="@color/dark_grey" />
+
         <RelativeLayout
             android:id="@+id/buttonLanguageSettingFragment"
             android:layout_width="match_parent"
@@ -147,5 +158,69 @@
                 android:textStyle="bold"
                 tools:ignore="TextContrastCheck" />
         </RelativeLayout>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearButtonClassAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+        <!-- BUTTON GET CLASS INFO -->
+        <Button
+            android:id="@+id/buttonLogoutAccountAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_button_border"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/log_out_upper"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+        <!-- BUTTON REQUEST SUPPORT -->
+        <Button
+            android:id="@+id/buttonSupportAccountAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_button"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/support_upper"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
 </RelativeLayout>
