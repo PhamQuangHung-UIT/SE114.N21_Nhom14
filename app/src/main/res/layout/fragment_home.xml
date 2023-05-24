@@ -46,9 +46,9 @@
             android:paddingEnd="15dp"
             android:paddingBottom="8dp"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_weight="1"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         <ImageButton
             android:id="@+id/imageNotifyHomeFragment"

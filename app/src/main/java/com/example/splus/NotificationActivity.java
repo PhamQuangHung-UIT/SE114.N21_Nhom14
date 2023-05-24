@@ -1,7 +1,6 @@
 package com.example.splus;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -11,23 +10,23 @@ import android.widget.ImageButton;
 import com.example.splus.my_adapter.NotifViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class NotifyActivity extends AppCompatActivity {
+public class NotificationActivity extends AppCompatActivity {
 
     ImageButton buttonBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notify);
+        setContentView(R.layout.activity_notification);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayoutNotifyAct);
-        ViewPager viewPager = findViewById(R.id.viewPagerNotifyAct);
+        TabLayout tabLayout = findViewById(R.id.tabLayoutNotificationActivity);
+        ViewPager viewPager = findViewById(R.id.viewPagerNotificationActivity);
 
         NotifViewPagerAdapter notifViewPagerAdapter = new NotifViewPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(notifViewPagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
 
-        buttonBack = findViewById(R.id.buttonBackNotifyAct);
+        buttonBack = findViewById(R.id.buttonBackNotificationActivity);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

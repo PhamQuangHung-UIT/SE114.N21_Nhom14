@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotifyActivity">
+    tools:context=".NotificationActivity">
 
     <!-- TITLE BAR -->
     <LinearLayout
-        android:id="@+id/linearTitleBarNotifyAct"
+        android:id="@+id/linearTitleBarNotificationActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -19,7 +19,7 @@
         <!-- BACK BUTTON -->
         <!-- back to fragment class-->
         <ImageButton
-            android:id="@+id/buttonBackNotifyAct"
+            android:id="@+id/buttonBackNotificationActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"
@@ -29,7 +29,7 @@
 
         <!-- TITLE CLASS NAME -->
         <TextView
-            android:id="@+id/textTitleNotifyAct"
+            android:id="@+id/textTitleNotificationActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
@@ -54,19 +54,19 @@
 
     <!-- TAB -->
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutNotifyAct"
+        android:id="@+id/tabLayoutNotificationActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearTitleBarNotifyAct"
+        android:layout_below="@+id/linearTitleBarNotificationActivity"
         android:background="@color/light_grey"
         style="@style/MyCustomTabLayout"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerNotifyAct"
+        android:id="@+id/viewPagerNotificationActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabLayoutNotifyAct"
+        android:layout_below="@+id/tabLayoutNotificationActivity"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </RelativeLayout>

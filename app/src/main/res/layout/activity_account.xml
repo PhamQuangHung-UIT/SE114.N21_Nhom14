@@ -31,203 +31,240 @@
 
         <!-- TITLE CLASS NAME -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/action_setting"
+            android:text="@string/update_information_title"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_weight="3"
+            android:layout_weight="1"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_square_24"
+            android:padding="15dp"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/avatarImage"
+        android:id="@+id/imageAvatarAccountActivity"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/linearTitleAccountAct"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/logo_des"
         android:foreground="@drawable/crop_frame"
         android:src="@color/green"
         tools:ignore="ImageContrastCheck" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textUsernameAccountActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageAvatarAccountActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/hint_username"
+        android:textColor="@color/green"
+        android:textSize="14sp"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textUsernameAccountActivity"
+        android:layout_above="@+id/buttonUpdateAccountActivity"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        tools:ignore="ScrollViewCount">
+
+        <LinearLayout
+            android:id="@+id/linearFullNameAccountActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/divider_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lable_name"
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/editFullNameAccountActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_fullname"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:inputType="text"
+                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lable_gender"
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <RadioButton
+                    android:id="@+id/radioMaleAccountActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/gender_male"
+                    android:textSize="14sp"
+                    tools:ignore="VisualLintButtonSize" />
+                <RadioButton
+                    android:id="@+id/radioFemaleAccountActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/gender_female"
+                    android:textSize="14sp"
+                    tools:ignore="VisualLintButtonSize" />
+                <RadioButton
+                    android:id="@+id/radioOtherAccountActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/gender_other"
+                    android:textSize="14sp"
+                    tools:ignore="VisualLintButtonSize" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/editIdAccountActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/ex_stdID"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:inputType="text"
+                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lable_birth"
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/editBirthdayAccountActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/ex_birth"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:inputType="text"
+                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lable_class"
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/editClassAccountActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/ex_class"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:inputType="text"
+                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lable_phone"
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/editPhoneAccountActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/ex_phone"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:inputType="text"
+                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/lable_email"
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/editEmailAccountActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/ex_email"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:inputType="text"
+                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonUpdateAccountActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/avatarImage"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/avatarImage"
-        android:layout_alignBottom="@+id/avatarImage"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        >
-
-        <TextView
-            android:id="@+id/textFullname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/ex_name"
-            android:textColor="@color/green"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
-
-        <TextView
-            android:id="@+id/textID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/ex_stdID"
-            android:textSize="16sp"
-            android:textColor="@color/dark_grey"
-
-            android:fontFamily="@font/montserrat"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/subDateOfBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/avatarImage"
-        android:layout_marginTop="20dp"
-        android:text="@string/lable_birth"
-        android:textSize="12sp"
-        android:textColor="@color/dark_grey"
-        android:fontFamily="@font/montserrat"/>
-
-    <TextView
-        android:id="@+id/textDateOfBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/subDateOfBirth"
-        android:text="@string/ex_birth"
-        android:textSize="16sp"
-        android:textColor="@color/dark_grey"
-        android:fontFamily="@font/montserrat"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/subClassName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/textDateOfBirth"
-        android:text="@string/lable_class"
-        android:textSize="12sp"
-        android:textColor="@color/dark_grey"
-        android:fontFamily="@font/montserrat"/>
-
-    <TextView
-        android:id="@+id/textClassName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/subClassName"
-        android:text="@string/ex_class"
-        android:textSize="16sp"
-        android:textColor="@color/dark_grey"
-        android:fontFamily="@font/montserrat"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
-
-    <TextView
-        android:id="@+id/subEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/textClassName"
-        android:text="@string/lable_email"
-        android:textSize="12sp"
-        android:textColor="@color/dark_grey"
-        android:fontFamily="@font/montserrat"/>
-
-    <TextView
-        android:id="@+id/textEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/avatarImage"
-        android:layout_below="@+id/subEmailAddress"
-        android:text="@string/ex_email"
-        android:textSize="16sp"
-        android:textColor="@color/dark_grey"
-        android:fontFamily="@font/montserrat"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
-
-    <LinearLayout
-        android:id="@+id/linearButtonClassAct"
-        android:layout_width="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_below="@+id/textEmailAddress"
-        android:layout_marginTop="20dp">
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-        <!-- BUTTON GET CLASS INFO -->
-        <Button
-            android:id="@+id/buttonLogoutAccountAct"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/my_button_border"
-            android:fontFamily="@font/montserrat"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/log_out_upper"
-            android:textAlignment="center"
-            android:textColor="@color/green"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-        <!-- BUTTON REQUEST SUPPORT -->
-        <Button
-            android:id="@+id/buttonSupportAccountAct"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/my_button"
-            android:backgroundTint="@color/green"
-            android:fontFamily="@font/montserrat"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/support_upper"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-    </LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="10dp"
+        android:text="@string/update_button"
+        android:textSize="14sp"
+        tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 
 
 </RelativeLayout>

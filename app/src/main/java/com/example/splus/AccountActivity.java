@@ -1,11 +1,10 @@
 package com.example.splus;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AccountActivity extends AppCompatActivity {
 
     ImageButton buttonBack;
-    @SuppressLint("WrongViewCast")
+
+    Button buttonUpdate;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,15 @@ public class AccountActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        buttonUpdate = findViewById(R.id.buttonUpdateAccountActivity);
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AccountActivity.this, "Update successful", Toast.LENGTH_SHORT).show();
                 onBackPressed();
             }
         });

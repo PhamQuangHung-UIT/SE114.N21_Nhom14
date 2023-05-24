@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeItemNotification"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:background="@drawable/bg_light_white">
+
+    <ImageView
+        android:id="@+id/imageNotificationActivity"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/image_for_notification"
+        android:padding="5dp"
+        android:src="@drawable/splus_icon"
+        tools:ignore="ImageContrastCheck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/imageNotificationActivity"
+        android:layout_alignTop="@+id/imageNotificationActivity"
+        android:layout_alignBottom="@+id/imageNotificationActivity"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textTitleNotificationAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/notif_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_grey"
+            />
+
+        <TextView
+            android:id="@+id/textContentNotificationAct"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/notif_content"
+            android:textColor="@color/dark_grey"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textTimeNotificationAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageNotificationActivity"
+        android:layout_alignStart="@+id/imageNotificationActivity"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/notif_time"
+        android:textAlignment="textEnd"
+        android:textColor="@color/dark_grey"
+        android:textSize="12sp" />
+
+</RelativeLayout>

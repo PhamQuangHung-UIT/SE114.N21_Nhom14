@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.splus.AccountActivity;
-import com.example.splus.NotifyActivity;
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.my_dialog.LanguageOptionsDialog;
 
@@ -23,6 +23,14 @@ public class SettingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
+
+        ImageButton buttonUpdateInfo = view.findViewById(R.id.buttonUpdateSettingFragment);
+        buttonUpdateInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AccountActivity.class);
+            Bundle bundle = new Bundle();
+            intent.putExtras(bundle);
+            startActivity(intent);
+        });
 
         //Account manager
         View accountManagerBtn = view.findViewById(R.id.accountManagerButton);
@@ -52,7 +60,7 @@ public class SettingFragment extends Fragment {
     }
 
     private void onClickGoToNotification() {
-        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
         startActivity(intent);
     }
 }

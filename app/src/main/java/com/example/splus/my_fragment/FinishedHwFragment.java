@@ -13,10 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.splus.DetailHomeworkActivity;
-import com.example.splus.DoHomeworkActivity;
 import com.example.splus.R;
-import com.example.splus.my_adapter.FinishedHwAdapter;
-import com.example.splus.my_adapter.UnfinishedHwAdapter;
+import com.example.splus.SubmissionActivity;
+import com.example.splus.my_adapter.HomeworkAdapter;
 import com.example.splus.my_data.HomeworkData;
 
 import java.util.ArrayList;
@@ -79,7 +78,7 @@ public class FinishedHwFragment extends Fragment {
         RecyclerView myFinishedHw = view.findViewById(R.id.recyclerListFinishedHwFragment);
         myFinishedHw.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        FinishedHwAdapter finishedHwAdapter = new FinishedHwAdapter(getListFinishedHw(), this::onClickGoToFinishedHw);
+        HomeworkAdapter finishedHwAdapter = new HomeworkAdapter(getListFinishedHw(), this::onClickGoToFinishedHw);
 
         myFinishedHw.setAdapter(finishedHwAdapter);
         /*
@@ -95,7 +94,7 @@ public class FinishedHwFragment extends Fragment {
     }
 
     private void onClickGoToFinishedHw(HomeworkData homeworkData) {
-        Intent intent = new Intent(this.getActivity(), DetailHomeworkActivity.class);
+        Intent intent = new Intent(this.getActivity(), SubmissionActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("hw_data", homeworkData);
         intent.putExtras(bundle);
@@ -114,7 +113,8 @@ public class FinishedHwFragment extends Fragment {
                 "SPLUS00001",
                 "Nhập môn Toán học",
                 0,
-                9.8
+                9.8,
+                true
         );
         homeworkData.add(example);
         homeworkData.add(example);

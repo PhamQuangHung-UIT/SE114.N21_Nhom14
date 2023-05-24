@@ -15,9 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.ClassActivity;
-import com.example.splus.NotifyActivity;
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
-import com.example.splus.StudyActivity;
 import com.example.splus.my_adapter.ClassAdapter;
 import com.example.splus.my_data.ClassData;
 
@@ -48,7 +47,7 @@ public class ClassFragment extends Fragment {
     }
 
     private void onClickGoToNotification() {
-        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
         startActivity(intent);
     }
 

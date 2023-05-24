@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,11 +23,9 @@ import java.util.List;
 public class ClassActivity extends AppCompatActivity {
 
     TextView className;
-
     ImageButton buttonBack;
-
-    TextView buttonDetailClass;
-    TextView buttonContactTeacher;
+    Button buttonDetailClass;
+    Button buttonContactTeacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +37,6 @@ public class ClassActivity extends AppCompatActivity {
         }
 
         ClassData myClass = (ClassData) bundle.get("class_data");
-
-        System.out.println(myClass.getClassName());
 
         className = findViewById(R.id.textClassNameClassAct);
         className.setText(myClass.getClassName());
@@ -74,7 +71,6 @@ public class ClassActivity extends AppCompatActivity {
                 Toast.makeText(ClassActivity.this, "Contact button is pressed", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void onClickGoToDetailClass(ClassData myClass) {

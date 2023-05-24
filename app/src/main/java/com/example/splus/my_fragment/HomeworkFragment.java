@@ -1,20 +1,18 @@
 package com.example.splus.my_fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.splus.NotifyActivity;
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.my_adapter.HomeworkViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -42,7 +40,7 @@ public class HomeworkFragment extends Fragment {
     }
 
     private void onClickGoToNotification() {
-        Intent intent = new Intent(this.getActivity(), NotifyActivity.class);
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
         startActivity(intent);
     }
 }

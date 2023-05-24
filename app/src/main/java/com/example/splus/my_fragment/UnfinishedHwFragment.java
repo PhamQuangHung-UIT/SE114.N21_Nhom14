@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.splus.DoHomeworkActivity;
+import com.example.splus.DetailHomeworkActivity;
 import com.example.splus.R;
-import com.example.splus.my_adapter.UnfinishedHwAdapter;
+import com.example.splus.my_adapter.HomeworkAdapter;
 import com.example.splus.my_data.HomeworkData;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class UnfinishedHwFragment extends Fragment {
         RecyclerView myUnfinishedHw = view.findViewById(R.id.recyclerListUnfinishedHwFragment);
         myUnfinishedHw.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        UnfinishedHwAdapter unfinishedHwAdapter = new UnfinishedHwAdapter(getListUnfinishedHw(), this::onClickGoToUnfinishedHw);
+        HomeworkAdapter unfinishedHwAdapter = new HomeworkAdapter(getListUnfinishedHw(), this::onClickGoToUnfinishedHw);
 
         myUnfinishedHw.setAdapter(unfinishedHwAdapter);
         /*
@@ -97,7 +97,7 @@ public class UnfinishedHwFragment extends Fragment {
     */
 
     private void onClickGoToUnfinishedHw(HomeworkData homeworkData) {
-        Intent intent = new Intent(this.getActivity(), DoHomeworkActivity.class);
+        Intent intent = new Intent(this.getActivity(), DetailHomeworkActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("hw_data", homeworkData);
         intent.putExtras(bundle);
@@ -116,7 +116,8 @@ public class UnfinishedHwFragment extends Fragment {
                 "SPLUS00001",
                 "Nhập môn Toán học",
                 0,
-                0
+                0,
+                false
         );
         homeworkData.add(example);
         homeworkData.add(example);
