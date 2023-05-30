@@ -6,25 +6,35 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.splus.my_fragment.ClassFragment;
+import com.example.splus.my_fragment.AccountFragment;
+import com.example.splus.my_fragment.AssignFragment;
+import com.example.splus.my_fragment.AssignmentFragment;
+import com.example.splus.my_fragment.CourseFragment;
 import com.example.splus.my_fragment.HomeFragment;
-import com.example.splus.my_fragment.HomeworkFragment;
-import com.example.splus.my_fragment.SettingFragment;
 
 public class MainViewPagerAdapter extends FragmentStateAdapter {
-    public MainViewPagerAdapter(@NonNull FragmentManager fm, Lifecycle lifecycle) {
+    private final int role;
+    public MainViewPagerAdapter(@NonNull FragmentManager fm, Lifecycle lifecycle, int role) {
         super(fm, lifecycle);
+        this.role = role;
     }
     @NonNull
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
-                return new ClassFragment();
+                //return new ClassFragment();
+                return new CourseFragment();
             case 2:
-                return new HomeworkFragment();
+                if (role==0) {
+                    //return new HomeworkFragment();
+                    return new AssignmentFragment();
+                } else {
+                    return new AssignFragment();
+                }
             case 3:
-                return new SettingFragment();
+                // return new SettingFragment();
+                return new AccountFragment();
             default:
                 return new HomeFragment();
         }

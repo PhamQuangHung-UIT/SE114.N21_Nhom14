@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearBottomSheetAssignment"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/textNameAssignmentBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/homework_title"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/red"
+        android:textAlignment="center"/>
+
+    <!-- HOMEWORK FORMAT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:gravity="left"
+        android:showDividers="middle"
+        android:divider="@drawable/divider_horizontal"
+        tools:ignore="RtlHardcoded">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_format_title"/>
+        <TextView
+            android:id="@+id/textFormatAssignmentBottomSheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_format"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- HOMEWORK QUANTITY -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/title_homework_number" />
+
+        <TextView
+            android:id="@+id/textQuantityAssignmentBottomSheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_number"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- HOMEWORK TIME -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/title_homework_time" />
+
+        <TextView
+            android:id="@+id/textTimeAssignmentBottomSheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/homework_time"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- HOMEWORK DEADLINE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/title_homework_deadline" />
+
+        <TextView
+            android:id="@+id/textDeadlineAssignmentBottomSheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/timestamp_ex"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- BUTTON ENTER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonCancelAssignmentBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_grey"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/button_cancel"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+        <Button
+            android:id="@+id/buttonEnterAssignmentBottomSheet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/button_enter_assignment"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+    </LinearLayout>
+
+
+</LinearLayout>

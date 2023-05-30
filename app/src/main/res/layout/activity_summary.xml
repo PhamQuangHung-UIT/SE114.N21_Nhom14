@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SummaryActivity">
+
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearTitleBarSummaryAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
+        <ImageButton
+            android:id="@+id/buttonBackSummaryAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/title_activity_summary"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:id="@+id/buttonNotificationSummaryAct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/title_notification"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textTitleHomeworkSummaryAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearTitleBarSummaryAct"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/homework_title"
+        android:textStyle="bold"
+        android:textColor="@color/dark_grey"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutSummaryAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitleHomeworkSummaryAct"
+        android:layout_marginTop="10dp"
+        android:background="@color/light_grey"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabLayoutSummaryAct"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</RelativeLayout>

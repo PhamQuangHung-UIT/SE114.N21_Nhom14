@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey"
+    tools:context=".CourseActivity">
+
+    <!-- TITLE BAR -->
+    <LinearLayout
+        android:id="@+id/linearHeaderCourseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
+        <ImageButton
+            android:id="@+id/buttonBackCourseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:id="@+id/textNameCourseActivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/text_class_name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:id="@+id/buttonNotificationCourseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/title_notification"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            app:tint="@color/white"
+            tools:ignore="ImageContrastCheck" />
+
+    </LinearLayout>
+
+    <!-- DETAIL & CONTACT BUTTON -->
+    <LinearLayout
+        android:id="@+id/linearButtonCourseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/white" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/buttonInfoCourseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/class_info"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/buttonContactCourseActivity"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/teacher_info"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listCourseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/linearHeaderCourseActivity"
+        android:layout_above="@+id/linearButtonCourseActivity"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>

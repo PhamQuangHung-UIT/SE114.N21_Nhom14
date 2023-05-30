@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.R;
-import com.example.splus.my_data.LessonData;
+import com.example.splus.my_data.Lesson;
 import com.example.splus.my_interface.IClickLessonListener;
 
 import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.UserViewHolder> {
 
-    private final List<LessonData> mListLesson;
+    private final List<Lesson> lessonList;
     private final IClickLessonListener iClickLessonListener;
 
-    public LessonAdapter(List<LessonData> mListLesson, IClickLessonListener iClickLessonListener) {
-        this.mListLesson = mListLesson;
+    public LessonAdapter(List<Lesson> lessonList, IClickLessonListener iClickLessonListener) {
+        this.lessonList = lessonList;
         this.iClickLessonListener = iClickLessonListener;
     }
 
@@ -35,12 +35,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.UserViewHo
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        LessonData lesson = mListLesson.get(position);
+        Lesson lesson = lessonList.get(position);
         if (lesson == null) {
             return;
         }
         holder.lessonName.setText(lesson.getLessonName());
-        holder.className.setText(lesson.getClassName());
+        holder.courseName.setText(lesson.getCourseName());
         holder.teacherName.setText(lesson.getTeacherName());
 
         holder.lessonItem.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +53,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.UserViewHo
 
     @Override
     public int getItemCount() {
-        if (mListLesson != null) {
-            return mListLesson.size();
+        if (lessonList != null) {
+            return lessonList.size();
         }
         return 0;
     }
@@ -64,14 +64,14 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.UserViewHo
 
         private final RelativeLayout lessonItem;
         private final TextView lessonName;
-        private final TextView className;
+        private final TextView courseName;
         private final TextView teacherName;
 
         public UserViewHolder(@NonNull View lessonView) {
             super(lessonView);
             lessonItem = lessonView.findViewById(R.id.relativeItemLesson);
             lessonName = lessonView.findViewById(R.id.textLessonNameItemLesson);
-            className = lessonView.findViewById(R.id.textClassNameItemLesson);
+            courseName = lessonView.findViewById(R.id.textClassNameItemLesson);
             teacherName = lessonView.findViewById(R.id.textTeacherNameItemLesson);
         }
     }

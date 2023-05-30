@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_light_white">
+
+    <ImageView
+        android:id="@+id/imageItemAccount"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:foreground="@drawable/crop_frame"
+        android:foregroundTint="@color/light_grey"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:src="@color/green"
+        app:tint="@color/green"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearItemAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageItemAccount"
+        android:layout_alignBottom="@+id/imageItemAccount"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/imageItemAccount"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textNameItemAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/ex_name"
+            android:textColor="@color/dark_grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textIdItemAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/ex_email"
+            android:textColor="@color/dark_grey"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>

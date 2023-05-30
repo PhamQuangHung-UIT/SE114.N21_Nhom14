@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearSplashActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white"
     tools:context=".SplashActivity">
 
     <ImageView
-        android:id="@+id/splusLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
         android:contentDescription="@string/logo_des"
         android:src="@drawable/splus_logo"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/description1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/splusLogo"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/app_des_1"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/splash_description_1"
         android:textColor="@color/green"
-        android:textSize="22sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/description2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/description1"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/app_des_2"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/splash_description_2"
         android:textColor="@color/green"
         android:textSize="35sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         tools:ignore="TextContrastCheck" />
 
-
-</RelativeLayout>
+</LinearLayout>

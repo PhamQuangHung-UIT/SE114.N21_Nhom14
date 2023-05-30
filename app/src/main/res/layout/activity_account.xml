@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/update_information_title"
+            android:text="@string/title_update_information"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/lable_name"
+                android:text="@string/label_name"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp"/>
             <EditText
@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:layout_weight="1"
-                    android:text="@string/gender_male"
+                    android:text="@string/text_gender_male"
                     android:textSize="14sp"
                     tools:ignore="VisualLintButtonSize" />
                 <RadioButton
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:layout_weight="1"
-                    android:text="@string/gender_female"
+                    android:text="@string/text_gender_female"
                     android:textSize="14sp"
                     tools:ignore="VisualLintButtonSize" />
                 <RadioButton
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:layout_weight="1"
-                    android:text="@string/gender_other"
+                    android:text="@string/text_gender_others"
                     android:textSize="14sp"
                     tools:ignore="VisualLintButtonSize" />
             </RadioGroup>
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/lable_birth"
+                android:text="@string/label_birthday"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp"/>
             <EditText
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/lable_class"
+                android:text="@string/label_courses"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp"/>
             <EditText
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/lable_phone"
+                android:text="@string/label_phone"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp"/>
             <EditText
@@ -234,7 +234,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/lable_email"
+                android:text="@string/label_email"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp"/>
             <EditText

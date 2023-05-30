@@ -42,10 +42,10 @@ public class NotifViewPagerAdapter extends FragmentStatePagerAdapter {
         String title = "";
         switch (position) {
             case 0:
-                title = context.getString(R.string.study_notif_fragment_title);
+                title = context.getString(R.string.tab_study_notification);
                 break;
             case 1:
-                title = context.getString(R.string.other_notif_fragment_title);
+                title = context.getString(R.string.tab_other_notification);
                 break;
         }
         return title;

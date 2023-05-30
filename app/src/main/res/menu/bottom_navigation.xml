@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/navigationHomeFragment"
+        android:title="@string/title_fragment_home"
+        android:icon="@drawable/home_icon" />
+
+    <item android:id="@+id/navigationCourseFragment"
+        android:title="@string/title_fragment_course"
+        android:icon="@drawable/class_icon" />
+
+    <item android:id="@+id/navigationAssignmentFragment"
+        android:title="@string/title_fragment_assignment"
+        android:icon="@drawable/homework_icon" />
+
+    <item android:id="@+id/navigationSettingFragment"
+        android:title="@string/action_setting"
+        android:icon="@drawable/account_icon" />
+
+</menu>

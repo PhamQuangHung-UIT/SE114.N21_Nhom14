@@ -17,7 +17,7 @@ import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.StudyActivity;
 import com.example.splus.my_adapter.LessonAdapter;
-import com.example.splus.my_data.LessonData;
+import com.example.splus.my_data.Lesson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,39 +52,37 @@ public class HomeFragment extends Fragment {
     }
 
     @NonNull
-    private List<LessonData> getRecentLesson() {
-        List<LessonData> list = new ArrayList<>();
-
-        LessonData lessonExample = new LessonData();
-        list.add(lessonExample);
-
-        list.add( new LessonData(
-                R.drawable.splus_logo,
-                "MA006.K17",
-                "Giới thiệu môn học",
-                "Môn Giải tích giúp cho người học có kiến thức cơ bản về phép tính vi phân hàm nhiều biến;" +
-                        " phép tính tích phân hàm nhiều biến (tích phân bội); tích phân đường, tích phân mặt;" +
-                        " cũng như là kỹ năng khảo sát chuỗi số, chuỗi hàm, tích phân suy rộng, …" +
-                        " cùng với việc nhận dạng và giải quyết một số phương trình vi phân cấp một, cấp cao, …",
-                "Giải tích",
-                "ThS. Lê Hoàng Tuấn")
-        );
-
-        list.add( new LessonData(
-                R.drawable.splus_logo,
-                "MA003.K17",
-                "Giới thiệu môn học",
-                "Môn học Đại số tuyến tính giúp cho sinh viên nắm được khái niệm và làm được các phép toán" +
-                        " về ma trận, hạng, định thức, hệ phương trình tuyến tính; cách giải hệ phương trình tuyến tính" +
-                        " bằng phương pháp Cramer, phương pháp Gauss, phương pháp Gauss-Jordan; về không gian vector," +
-                        " sự phụ thuộc, độc lập tuyến tính, tập sinh, cơ sở và số chiều của không gian vector;" +
-                        " ma trận chéo hóa và ý nghĩa của việc chéo hóa ma trận; về ánh xạ tuyến tính, toán tử tuyến tính," +
-                        " dạng toàn phương và phép đưa dạng toàn phương về dạng chính tắc; …",
-                "Đại số tuyến tính",
-                "TS. Dương Ngọc Hảo")
-        );
-
-        return list;
+    private List<Lesson> getRecentLesson() {
+        List<Lesson> lessonList = new ArrayList<>();
+        lessonList.add(new Lesson(
+                0,
+                "Lesson 1",
+                "Content",
+                "Course name",
+                "Teacher name"
+        ));
+        lessonList.add(new Lesson(
+                0,
+                "Lesson 2",
+                "Content",
+                "Course name",
+                "Teacher name"
+        ));
+        lessonList.add(new Lesson(
+                0,
+                "Lesson 3",
+                "Content",
+                "Course name",
+                "Teacher name"
+        ));
+        lessonList.add(new Lesson(
+                0,
+                "Lesson 4",
+                "Content",
+                "Course name",
+                "Teacher name"
+        ));
+        return lessonList;
     }
 
     @Override
@@ -92,10 +90,10 @@ public class HomeFragment extends Fragment {
         super.onDestroy();
     }
 
-    private void onClickGoToLesson(LessonData lesson) {
+    private void onClickGoToLesson(Lesson lesson) {
         Intent intent = new Intent(this.getActivity(), StudyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("lesson_data", lesson);
+        bundle.putSerializable("lesson", lesson);
         intent.putExtras(bundle);
         startActivity(intent);
     }
