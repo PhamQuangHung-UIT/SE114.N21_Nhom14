@@ -10,36 +10,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.example.splus.DetailHomeworkActivity;
+import com.example.splus.DoHomeworkActivity;
 import com.example.splus.MainActivity;
 import com.example.splus.QnaActivity;
 import com.example.splus.R;
 import com.example.splus.StudyActivity;
 import com.example.splus.SubmissionActivity;
 import com.example.splus.my_adapter.NotificationAdapter;
-import com.example.splus.my_data.HomeworkData;
-import com.example.splus.my_data.LessonData;
+import com.example.splus.my_data.Assignment;
+import com.example.splus.my_data.Lesson;
 import com.example.splus.my_data.NotificationData;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StudyNotifFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class StudyNotifFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private static final int NOTIFICATION_LESSON = 1;
     private static final int NOTIFICATION_HOMEWORK = 2;
@@ -48,24 +37,6 @@ public class StudyNotifFragment extends Fragment {
 
     public StudyNotifFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StudyNotifFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StudyNotifFragment newInstance(String param1, String param2) {
-        StudyNotifFragment fragment = new StudyNotifFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -141,26 +112,106 @@ public class StudyNotifFragment extends Fragment {
             case NOTIFICATION_LESSON:
                 intent = new Intent(this.getActivity(), StudyActivity.class);
                 // get a lesson data from lesson_id = sourceId
-                LessonData lessonData = new LessonData();
-                bundle.putSerializable("lesson_data", lessonData);
+                Lesson lesson = new Lesson(
+                        0,
+                        "Lesson 1",
+                        "Content",
+                        "Course name",
+                        "Teacher name"
+                );
+                bundle.putSerializable("lesson", lesson);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             case NOTIFICATION_HOMEWORK:
-                intent = new Intent(this.getActivity(), DetailHomeworkActivity.class);
-                HomeworkData homeworkData = new HomeworkData(false);
-                bundle.putSerializable("hw_data", homeworkData);
+                Assignment assignment = new Assignment(
+                        1,
+                        "Kiểm tra cuối khoá",
+                        10,
+                        "30m",
+                        "2023-06-10 00:00:00",
+                        "",
+                        0,
+                        "Nhập môn toán học",
+                        0,
+                        0
+                );
+                bundle.putSerializable("assignment", assignment);
+                onClickGoToOngoingAssignment(assignment);
                 break;
             case NOTIFICATION_SUBMISSION:
                 intent = new Intent(this.getActivity(), SubmissionActivity.class);
-                HomeworkData submissionData = new HomeworkData(true);
-                bundle.putSerializable("submit_data", submissionData);
+                Assignment submission = new Assignment(
+                        1,
+                        "Kiểm tra giữa khoá",
+                        10,
+                        "30m",
+                        "2023-05-10 00:00:00",
+                        "",
+                        0,
+                        "Nhập môn toán học",
+                        0,
+                        0
+                );
+                submission.setResult(9.8);
+                submission.setSubmit_time("2023-05-09 23:59:12");
+                bundle.putSerializable("submission", submission);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             case NOTIFICATION_TEACHER_RESPONSE:
                 intent = new Intent(this.getActivity(), QnaActivity.class);
                 bundle.putSerializable("cmt_data", notificationData);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             default:
                 intent = new Intent(this.getActivity(), MainActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
         }
+    }
+
+    private void onClickGoToOngoingAssignment(Assignment assignment) {
+        View viewDialog = getLayoutInflater().inflate(R.layout.assignment_bottom_sheet, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this.getContext());
+        bottomSheetDialog.setContentView(viewDialog);
+        bottomSheetDialog.show();
+
+        TextView assignmentName = viewDialog.findViewById(R.id.textNameAssignmentBottomSheet);
+        assignmentName.setText(assignment.getAssignName());
+
+        TextView assignmentFormat = viewDialog.findViewById(R.id.textFormatAssignmentBottomSheet);
+        assignmentFormat.setText(assignment.getAssignFormat()==0? "Trắc nghiệm":"Tự luận");
+
+        TextView assignmentQuantity = viewDialog.findViewById(R.id.textQuantityAssignmentBottomSheet);
+        assignmentQuantity.setText(assignment.getQuantity());
+
+        TextView assignmentTime = viewDialog.findViewById(R.id.textTimeAssignmentBottomSheet);
+        assignmentTime.setText(assignment.getAssignTime());
+
+        TextView assignmentDeadline = viewDialog.findViewById(R.id.textDeadlineAssignmentBottomSheet);
+        assignmentDeadline.setText(assignment.getAssignDeadline());
+
+        Button buttonCancel = viewDialog.findViewById(R.id.buttonCancelAssignmentBottomSheet);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        Button buttonEnter = viewDialog.findViewById(R.id.buttonEnterAssignmentBottomSheet);
+        buttonEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToDoAssignment(assignment);
+            }
+        });
+    }
+    private void onClickGoToDoAssignment(Assignment assignment) {
+        Intent intent = new Intent(this.getActivity(), DoHomeworkActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("assignment", assignment);
         intent.putExtras(bundle);
         startActivity(intent);
     }

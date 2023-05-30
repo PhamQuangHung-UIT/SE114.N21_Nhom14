@@ -3,189 +3,317 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".SignUpActivity">
 
+    <!-- HEADER -->
     <TextView
-        android:id="@+id/sign_up_title"
+        android:id="@+id/headerSignUpActivity"
+        android:background="@color/green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/green"
         android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/sign_up_upper"
+        android:text="@string/title_sign_up"
+        android:textAllCaps="true"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="20dp"
         tools:ignore="TextContrastCheck" />
 
-    <!-- USER NAME -->
-    <TextView
-        android:id="@+id/titleTextUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_up_title"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/hint_username"
-        android:textColor="@color/dark_grey"
-        android:textSize="15sp"
-        tools:ignore="RtlSymmetry,TextSizeCheck,TextContrastCheck" />
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleTextUsername"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:background="#F0F0F0"
-        android:hint="@string/hint_username"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dark_grey"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        tools:ignore="DuplicateSpeakableTextCheck,LabelFor,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
-
-    <!-- PASS WORD -->
-    <TextView
-        android:id="@+id/titleTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUsername"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/hint_password"
-        android:textColor="@color/dark_grey"
-        android:textSize="15sp"
-        tools:ignore="RtlSymmetry,TextSizeCheck,TextContrastCheck" />
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleTextPassword"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:background="@color/light_grey"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dark_grey"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        tools:ignore="DuplicateSpeakableTextCheck,LabelFor,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
-
-    <!-- RE PASS WORD -->
-    <TextView
-        android:id="@+id/titleTextRePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextPassword"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/hint_repassword"
-        android:textColor="@color/dark_grey"
-        android:textSize="15sp"
-        tools:ignore="RtlSymmetry,TextSizeCheck,TextContrastCheck" />
-    <EditText
-        android:id="@+id/editTextRePassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleTextRePassword"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:background="@color/light_grey"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dark_grey"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        tools:ignore="DuplicateSpeakableTextCheck,LabelFor,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
-
-    <!-- ASK IF ALREADY HAS AN EXISTING ACCOUNT -->
+    <!-- FOOTER -->
+    <!-- SUGGESTION -->
     <LinearLayout
-        android:id="@+id/layoutTextAskToLogin"
+        android:id="@+id/linearSuggestLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/editTextRePassword"
-        android:layout_marginTop="20dp"
-        android:gravity="center" >
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="@font/montserrat"
-            android:text="@string/ask_if_have_account"
-            android:textColor="@color/green"
-            android:textSize="18sp"
+            android:text="@string/text_suggest_log_in"
             android:textAlignment="center"
-            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            tools:ignore="TextContrastCheck" />
+
         <Space
-            android:layout_width="20dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            />
+            android:layout_weight="1" />
+
         <TextView
-            android:id="@+id/textLeadToLogin"
+            android:id="@+id/textSuggestionLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/log_in_style_u"
-            android:textColor="@color/green"
-            android:textSize="18sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/text_log_in_underline"
             android:textAlignment="center"
-            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonSignUp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_below="@+id/layoutTextAskToLogin"
-        android:layout_marginTop="18dp"
+        android:layout_above="@+id/linearSuggestLogin"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@color/green"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:text="@string/sign_up"
+        android:fontFamily="@font/montserrat"
+        android:padding="15dp"
+        android:text="@string/title_sign_up"
         android:textColor="@color/white"
         android:textSize="14sp"
-        tools:ignore="VisualLintButtonSize,DuplicateSpeakableTextCheck,TextContrastCheck" />
+        android:textStyle="bold"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize" />
+
+    <!-- FILL OUT INFORMATIONS -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/headerSignUpActivity"
+        android:layout_above="@+id/buttonSignUp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            android:divider="@drawable/divider_vertical"
+            android:showDividers="middle">
+
+            <!-- USERNAME -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/hint_username"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/editUsernameSignUpActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/light_grey"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_username"
+                android:inputType="text"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp"
+                android:padding="15dp"
+                tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+
+            <!-- PASSWORD -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/hint_password"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/editPasswordSignUpActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/light_grey"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp"
+                android:padding="15dp"
+                tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+
+            <!-- RETYPE PASSWORD -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/hint_repassword"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/editRetypePasswordSignUpActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/light_grey"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_repassword"
+                android:inputType="textPassword"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp"
+                android:padding="15dp"
+                tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+
+            <!-- FULL NAME -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/label_fullname"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/editFullnameSignUpActivity"
+                android:background="@color/light_grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_fullname"
+                android:inputType="text"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp"
+                android:padding="15dp"
+                tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+            <!-- GENDER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/lable_gender"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <RadioButton
+                    android:id="@+id/radioMaleSignUpActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/text_gender_male"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    tools:ignore="VisualLintButtonSize" />
+                <RadioButton
+                    android:id="@+id/radioFemaleSignUpActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/text_gender_female"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    tools:ignore="VisualLintButtonSize" />
+                <RadioButton
+                    android:id="@+id/radioOtherSignUpActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/text_gender_others"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    tools:ignore="VisualLintButtonSize" />
+            </RadioGroup>
+
+            <!-- BIRTHDAY -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/label_birthday"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/editBirthdaySignUpActivity"
+                android:background="@color/light_grey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_birthday"
+                android:inputType="text"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp"
+                android:padding="15dp"
+                tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+            <!-- ROLE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/label_role"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+            <RadioGroup
+                android:id="@+id/radioGroupRole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <RadioButton
+                    android:id="@+id/radioStudentRoleSignUpActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/text_role_student"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    tools:ignore="VisualLintButtonSize" />
+                <RadioButton
+                    android:id="@+id/radioTeacherRoleSignUpActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_weight="1"
+                    android:text="@string/text_role_teacher"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="14sp"
+                    android:padding="10dp"
+                    tools:ignore="VisualLintButtonSize" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

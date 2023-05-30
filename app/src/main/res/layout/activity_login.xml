@@ -3,128 +3,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <TextView
-        android:id="@+id/login_title"
+        android:id="@+id/headerLoginActivity"
+        android:background="@color/green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/green"
         android:fontFamily="@font/montserrat_bold"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/log_in_upper"
+        android:text="@string/title_log_in"
+        android:textAllCaps="true"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="20dp"
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editUsernameLoginActivity"
+        android:background="@color/light_grey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_title"
+        android:layout_below="@+id/headerLoginActivity"
         android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:background="@color/light_grey"
+        android:fontFamily="@font/montserrat"
         android:hint="@string/hint_username"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:textColor="@color/dark_grey"
+        android:textColorHint="@color/dark_grey"
+        android:textSize="14sp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dark_grey"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        tools:ignore="DuplicateSpeakableTextCheck,LabelFor,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/editPasswordLoginActivity"
+        android:background="@color/light_grey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUsername"
+        android:layout_below="@+id/editUsernameLoginActivity"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:background="@color/light_grey"
+        android:fontFamily="@font/montserrat"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
+        android:textColor="@color/dark_grey"
+        android:textColorHint="@color/dark_grey"
+        android:textSize="14sp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dark_grey"
-        android:textSize="18sp"
-        android:fontFamily="@font/montserrat"
-        tools:ignore="DuplicateSpeakableTextCheck,LabelFor,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
-
-    <LinearLayout
-        android:id="@+id/layoutTextAskToSignUp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/editTextPassword"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        >
-
-        <TextView
-            android:id="@+id/textAskIfNotHasAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/ask_if_not_have_account"
-            android:textColor="@color/green"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/textLeadToSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/sign_up_style_u"
-            android:textColor="@color/green"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
-    </LinearLayout>
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_below="@+id/layoutTextAskToSignUp"
-        android:layout_marginTop="18dp"
         android:backgroundTint="@color/green"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:text="@string/log_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPasswordLoginActivity"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/title_log_in"
         android:textColor="@color/white"
         android:textSize="14sp"
-        tools:ignore="VisualLintButtonSize,DuplicateSpeakableTextCheck,TextContrastCheck" />
+        android:textStyle="bold"
+        android:padding="15dp"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize" />
+
+    <LinearLayout
+        android:id="@+id/linearSuggestSignUp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLogin"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/text_suggest_sign_up"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            tools:ignore="TextContrastCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textSuggestSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/text_sign_up_underline"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
 
 </RelativeLayout>
 

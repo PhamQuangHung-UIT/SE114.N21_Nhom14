@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/detail_submit_title"
+            android:text="@string/title_detail_submission"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"

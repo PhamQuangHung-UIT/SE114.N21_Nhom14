@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.splus.my_data.LessonData;
+import com.example.splus.my_data.Lesson;
 
 public class StudyActivity extends AppCompatActivity {
 
     TextView lessonName;
     TextView lessonContent;
-    TextView className, teacherName;
+    TextView courseName, teacherName;
 
     ImageButton buttonBack;
     Button buttonMakingQuestion;
@@ -30,16 +30,16 @@ public class StudyActivity extends AppCompatActivity {
             return;
         }
 
-        LessonData lesson = (LessonData) bundle.get("lesson_data");
+        Lesson lesson = (Lesson) bundle.get("lesson");
 
         lessonName = findViewById(R.id.textLessonNameStudyAct);
         lessonContent = findViewById(R.id.lessonContentStudyAct);
-        className = findViewById(R.id.textClassNameStudyAct);
+        courseName = findViewById(R.id.textClassNameStudyAct);
         teacherName = findViewById(R.id.textTeacherNameStudyAct);
 
         lessonName.setText(lesson.getLessonName());
         lessonContent.setText(lesson.getLessonContent());
-        className.setText(lesson.getClassName());
+        courseName.setText(lesson.getCourseName());
         teacherName.setText(lesson.getTeacherName());
 
         buttonBack = findViewById(R.id.buttonBackStudyAct);

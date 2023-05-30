@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="sign_up_upper">SIGN UP</string>
+    <string name="title_sign_up">Sign up</string>
 
-    <string name="sign_up">Sign up</string>
-
-    <string name="sign_up_style_u"><u>Sign up</u></string>
-
-    <string name="log_in_upper">LOG IN</string>
-
-    <string name="log_in_style_u"><u>Log in</u></string>
-
-    <string name="log_in">Log in</string>
-
-    <string name="log_out_upper">LOG OUT</string>
+    <string name="title_log_in">Log in</string>
 
     <string name="support_upper">SUPPORT</string>
 
@@ -23,19 +13,17 @@
 
     <string name="hint_repassword">Rewrite password</string>
 
-    <string name="ask_if_not_have_account">Don\'t have an account?</string>
-    <string name="ask_if_have_account">Already have an account?</string>
+    <string name="text_suggest_sign_up">Don\'t have an account?</string>
+    <string name="text_suggest_log_in">Already have an account?</string>
 
-    <string name="loginSuccessful">Login Successful</string>
-    <string name="loginUnsuccessful">Login Failed</string>
+    <string name="toast_login_successful">Login Successful</string>
+    <string name="toast_login_unsuccessful">Login Failed</string>
 
-    <string name="action_home">Home</string>
+    <string name="title_fragment_home">Home</string>
 
-    <string name="action_class">Class</string>
+    <string name="title_fragment_course">Courses</string>
 
-    <string name="action_homework">Homework</string>
-
-    <string name="action_assign">Assign</string>
+    <string name="title_fragment_assignment">Assignments</string>
 
     <string name="welcome_home_title">Welcome to S-plus!</string>
 
@@ -46,42 +34,38 @@
     <string name="subject_name">Subject name</string>
 
     <string name="lesson_name">Lesson name</string>
-    <string name="class_title">Class</string>
-    <string name="class_name">Class name</string>
-    <string name="teacher_name">Teacher</string>
-    <string name="teacher_name_title">Teacher</string>
+    <string name="label_course">Class</string>
+    <string name="label_class_name">Class name</string>
+    <string name="label_teacher_name">Teacher</string>
+    <string name="title_teacher_name">Teacher</string>
     <string name="making_question_button">Make a question</string>
     <string name="class_info">Class information</string>
 
     <string name="teacher_info">Contact teacher</string>
 
-    <string name="language">Language</string>
+    <string name="splash_description_1">Digital Math Educator</string>
+    <string name="splash_description_2">New Generation</string>
 
-    <string name="app_des_1">DIGITAL MATH EDUCATOR</string>
-    <string name="app_des_2">NEW GENERATION</string>
-
-    <string name="lable_name">Name</string>
-    <string name="lable_id">ID</string>
-    <string name="lable_birth">Date of birth</string>
-    <string name="lable_class">Class</string>
-    <string name="lable_email">Email</string>
-    <string name="lable_subject">Subject</string>
+    <string name="label_name">Name</string>
+    <string name="label_id">ID</string>
+    <string name="label_birthday">Date of birth</string>
+    <string name="label_courses">Class</string>
+    <string name="label_email">Email</string>
+    <string name="label_subject">Subject</string>
 
     <string name="des_avatar">Avatar</string>
     <string name="current_language">English</string>
-    <string name="notification_title">NOTIFICATIONS</string>
-    <string name="class_fragment_title">CLASSES</string>
+    <string name="title_notification">Notification</string>
     <string name="study_activity_title">LESSON</string>
     <string name="class_info_upper">CLASS INFORMATION</string>
     <string name="student_list_title">STUDENT LIST</string>
-    <string name="hw_fragment_title">ASSIGNMENTS</string>
-    <string name="unfinished">UNFINISHED</string>
-    <string name="finished">FINISHED</string>
-    <string name="setting_fragment_title">SETTING</string>
+    <string name="tab_unfinished_assignment">UNFINISHED</string>
+    <string name="tab_finished_assignment">FINISHED</string>
+    <string name="title_fragment_setting">Setting</string>
     <string name="display_setting_title">Display setting</string>
     <string name="ok">OK</string>
-    <string name="study_notif_fragment_title">STUDY</string>
-    <string name="other_notif_fragment_title">OTHERS</string>
+    <string name="tab_study_notification">STUDY</string>
+    <string name="tab_other_notification">OTHERS</string>
     <string name="homework_title">Final Exam</string>
     <string name="remaining_time">1 hour 15 minutes left</string>
     <string name="timestamp_ex">11:59 04/04/2023</string>
@@ -90,32 +74,60 @@
     <string name="homework_format_title">Format</string>
     <string name="homework_format">Multiple choice</string>
     <string name="homework_format_2">Essay</string>
-    <string name="homework_numbers_title">Quantity</string>
+    <string name="title_homework_number">Quantity</string>
     <string name="homework_number">10</string>
-    <string name="homework_time_title">Time</string>
+    <string name="title_homework_time">Time</string>
     <string name="homework_time">30 mins</string>
-    <string name="homework_deadline_title">Deadline</string>
+    <string name="title_homework_deadline">Deadline</string>
     <string name="button_submit">SUBMIT</string>
-    <string name="button_enter_exam">START</string>
-    <string name="detail_submit_title">DETAIL SUBMISSION</string>
-    <string name="notif_title">Notification title</string>
+    <string name="button_enter_assignment">Start</string>
+    <string name="title_detail_submission">DETAIL SUBMISSION</string>
+    <string name="title_item_notification">Notification title</string>
     <string name="notif_content">Notification content on short form</string>
     <string name="image_for_notification">image for notification</string>
     <string name="notif_time">05/04/2023 14:31</string>
     <string name="account_information">Account information</string>
-    <string name="update_information_title">UPDATE INFORMATION</string>
-    <string name="making_question_title">MAKE A QUESTION</string>
+    <string name="title_update_information">UPDATE INFORMATION</string>
+    <string name="button_ask">Ask teacher</string>
     <string name="hint_make_question">Write a question to send to the teacher …</string>
     <string name="action_setting">Account</string>
     <string name="update_button">UPDATE</string>
     <string name="hint_fullname">Eg: James Lincoln</string>
-    <string name="lable_phone">Phone number</string>
+    <string name="label_phone">Phone number</string>
     <string name="ex_phone">0987654321</string>
     <string name="lable_gender">Gender</string>
-    <string name="gender_male">Male</string>
-    <string name="gender_female">Female</string>
-    <string name="gender_other">Other</string>
-    <string name="do_homework_title">DO HOMEWORK PAGE</string>
-    <string name="remaining_time_title">Remaining time:</string>
+    <string name="text_gender_male">Male</string>
+    <string name="text_gender_female">Female</string>
+    <string name="text_gender_others">Other</string>
+    <string name="title_do_homework">Do homework page</string>
+    <string name="title_remaining_time">Remaining time:</string>
     <string name="remaining_time_ex">59:32</string>
+    <string name="button_give_hw">GIVE A ASSIGNMENT</string>
+    <string name="title_given_homework">Given assignments</string>
+    <string name="title_fragment_assign">Assignments</string>
+    <string name="spinner_choose_class">Choose your course</string>
+    <string name="title_activity_summary">HOMEWORK SUMMARY</string>
+    <string name="title_fragment">Fragment name</string>
+    <string name="text_log_in_underline"><u>Log in</u></string>
+    <string name="text_sign_up_underline"><u>Sign up</u></string>
+    <string name="label_fullname">Full name</string>
+    <string name="hint_birthday">dd/mm/yyyy</string>
+    <string name="label_role">Your role</string>
+    <string name="text_role_student">Student</string>
+    <string name="text_role_teacher">Teacher</string>
+    <string name="toast_sign_up_successful">Sign up succcessful</string>
+    <string name="toast_sign_up_unsuccessful">Fail to sign up</string>
+    <string name="toast_empty_alert">This field cannot be left blank</string>
+    <string name="toast_password_matching_alert">Re-enter password does not match</string>
+    <string name="toast_gender_alert">Choose your gender please</string>
+    <string name="toast_role_alert">Choose your role please</string>
+    <string name="title_setting">Setting</string>
+    <string name="label_language">Language</string>
+    <string name="label_notification">Notification</string>
+    <string name="label_receive_notification">Receive notification</string>
+    <string name="label_change_password">Change password</string>
+    <string name="label_setting">Setting</string>
+    <string name="label_log_out">Log out</string>
+    <string name="label_support">Support</string>
+    <string name="button_cancel">Cancel</string>
 </resources>

@@ -16,6 +16,18 @@
         android:theme="@style/Theme.Splus"
         tools:targetApi="31">
         <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SummaryActivity"
+            android:exported="false" />
+        <activity
             android:name=".DoHomeworkActivity"
             android:exported="false" />
         <activity
@@ -31,18 +43,9 @@
             android:name=".QnaActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailHomeworkActivity"
-            android:exported="false" />
-        <activity
             android:name=".AccountActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity
-            android:name=".ClassActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DetailClassActivity"
-            android:exported="false" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />

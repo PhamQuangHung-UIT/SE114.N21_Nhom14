@@ -32,7 +32,7 @@
         android:layout_below="@+id/textHwNameUnfinishedHwFragment"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/montserrat"
-        android:text="@string/class_name_example"
+        android:text="@string/text_class_name"
         android:textColor="@color/dark_grey"
         android:textSize="14sp"
         android:paddingStart="20dp"

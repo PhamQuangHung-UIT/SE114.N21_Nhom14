@@ -25,15 +25,9 @@
     <string name="ex_stdID" translatable="false">19520001</string>
     <!--Vietnamese-->
 
-    <string name="sign_up_upper">ĐĂNG KÝ</string>
-    <string name="sign_up">Đăng ký</string>
-    <string name="sign_up_style_u"><u>Đăng ký</u></string>
+    <string name="title_sign_up">Đăng ký</string>
 
-    <string name="log_in">Đăng nhập</string>
-    <string name="log_in_style_u"><u>Đăng nhập</u></string>
-    <string name="log_in_upper">ĐĂNG NHẬP</string>
-
-    <string name="log_out_upper">ĐĂNG XUẤT</string>
+    <string name="title_log_in">Đăng nhập</string>
 
     <string name="support_upper">HỖ TRỢ</string>
 
@@ -41,19 +35,17 @@
     <string name="hint_password">Mật khẩu</string>
     <string name="hint_repassword">Nhập lại mật khẩu</string>
 
-    <string name="ask_if_not_have_account">Chưa có tài khoản?</string>
-    <string name="ask_if_have_account">Đã có tài khoản?</string>
+    <string name="text_suggest_sign_up">Chưa có tài khoản?</string>
+    <string name="text_suggest_log_in">Đã có tài khoản?</string>
 
-    <string name="loginSuccessful">Đăng nhập thành công</string>
-    <string name="loginUnsuccessful">Đăng nhập thất bại</string>
+    <string name="toast_login_successful">Đăng nhập thành công</string>
+    <string name="toast_login_unsuccessful">Đăng nhập thất bại</string>
 
-    <string name="action_home">Trang chủ</string>
+    <string name="title_fragment_home">Trang chủ</string>
 
-    <string name="action_class">Lớp học</string>
+    <string name="title_fragment_course">Lớp học</string>
 
-    <string name="action_homework">Bài tập</string>
-
-    <string name="action_assign">Giao bài tập</string>
+    <string name="title_fragment_assignment">Bài tập</string>
 
     <string name="welcome_home_title">Chào mừng bạn đến với S-plus!</string>
 
@@ -90,13 +82,13 @@
         <br>\t\tỨng dụng trong tài chính.\n</br>
     </string>
 
-    <string name="class_title">Lớp học</string>
-    <string name="class_name">Tên lớp học</string>
-    <string name="teacher_name">Tên giảng viên</string>
+    <string name="label_course">Lớp học</string>
+    <string name="label_class_name">Tên lớp học</string>
+    <string name="label_teacher_name">Tên giảng viên</string>
 
-    <string name="class_name_example" translatable="false">Nhập môn Toán học</string>
-    <string name="lesson_name_example" translatable="false">Tầm quan trọng của Toán học</string>
-    <string name="teacher_name_title">Giảng viên</string>
+    <string name="text_class_name" translatable="false">Nhập môn Toán học</string>
+    <string name="text_lesson_name" translatable="false">Tầm quan trọng của Toán học</string>
+    <string name="title_teacher_name">Giảng viên</string>
     <string name="teacher_name_example" translatable="false">S-Plus</string>
 
     <string name="making_question_button">Đặt câu hỏi</string>
@@ -105,35 +97,31 @@
 
     <string name="teacher_info">Liên hệ GV</string>
 
-    <string name="language">Ngôn ngữ</string>
+    <string name="splash_description_1">Ứng dụng học toán</string>
+    <string name="splash_description_2">Thế hệ mới</string>
 
-    <string name="app_des_1">ỨNG DỤNG HỌC TOÁN</string>
-    <string name="app_des_2">THẾ HỆ MỚI</string>
-
-    <string name="lable_name">Họ và tên</string>
-    <string name="lable_id">MSSV</string>
-    <string name="lable_birth">Ngày sinh</string>
-    <string name="lable_class">Lớp sinh hoạt</string>
-    <string name="lable_email">Email</string>
-    <string name="lable_subject">Môn học</string>
+    <string name="label_name">Họ và tên</string>
+    <string name="label_id">MSSV</string>
+    <string name="label_birthday">Ngày sinh</string>
+    <string name="label_courses">Lớp sinh hoạt</string>
+    <string name="label_email">Email</string>
+    <string name="label_subject">Môn học</string>
 
     <string name="des_avatar">Ảnh đại diện</string>
 
     <string name="current_language">Tiếng Việt</string>
-    <string name="notification_title">THÔNG BÁO</string>
-    <string name="class_fragment_title">LỚP HỌC</string>
+    <string name="title_notification">Thông báo</string>
     <string name="study_activity_title">NỘI DUNG BÀI HỌC</string>
     <string name="class_info_upper">THÔNG TIN LỚP</string>
     <string name="email_teacher_title" translatable="false">Email GV</string>
     <string name="student_list_title">DANH SÁCH LỚP</string>
-    <string name="hw_fragment_title">BÀI TẬP</string>
-    <string name="unfinished">CHƯA NỘP</string>
-    <string name="finished">ĐÃ NỘP</string>
-    <string name="setting_fragment_title">CÀI ĐẶT</string>
+    <string name="tab_unfinished_assignment">CHƯA NỘP</string>
+    <string name="tab_finished_assignment">ĐÃ NỘP</string>
+    <string name="title_fragment_setting">Cài đặt</string>
     <string name="display_setting_title">Cài đặt hiển thị</string>
     <string name="ok">OK</string>
-    <string name="study_notif_fragment_title">HỌC VỤ</string>
-    <string name="other_notif_fragment_title">KHÁC</string>
+    <string name="tab_study_notification">HỌC VỤ</string>
+    <string name="tab_other_notification">KHÁC</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="homework_title">Bài tập Cuối khoá</string>
     <string name="remaining_time">Còn 1 giờ 15 phút</string>
@@ -143,34 +131,61 @@
     <string name="homework_format_title">Hình thức</string>
     <string name="homework_format">Trắc nghiệm</string>
     <string name="homework_format_2">Tự luận</string>
-    <string name="homework_numbers_title">Số câu</string>
+    <string name="title_homework_number">Số câu</string>
     <string name="homework_number">10</string>
-    <string name="homework_time_title">Thời gian</string>
+    <string name="title_homework_time">Ứng dụng học toán</string>
     <string name="homework_time">30 phút</string>
-    <string name="homework_deadline_title">Hạn nộp</string>
+    <string name="title_homework_deadline">Hạn nộp</string>
     <string name="button_submit">NỘP BÀI</string>
-    <string name="button_enter_exam">VÀO THI</string>
-    <string name="detail_submit_title">CHI TIẾT BÀI LÀM</string>
-    <string name="notif_title">Tiêu đề thông báo</string>
+    <string name="button_enter_assignment">Vào thì</string>
+    <string name="title_detail_submission">CHI TIẾT BÀI LÀM</string>
+    <string name="title_item_notification">Tiêu đề thông báo</string>
     <string name="notif_content">Nội dung thông báo dạng rút gọn</string>
     <string name="image_for_notification">image for notification</string>
     <string name="notif_time">05/04/2023 14:31</string>
     <string name="account_information">Thông tin tài khoản</string>
-    <string name="update_information_title">SỬA THÔNG TIN</string>
-    <string name="making_question_title">ĐẶT CÂU HỎI</string>
+    <string name="title_update_information">SỬA THÔNG TIN</string>
+    <string name="button_ask">Đặt câu hỏi</string>
     <string name="hint_make_question">Viết câu hỏi để gửi cho giảng viên …</string>
     <string name="action_setting">Tài khoản</string>
     <string name="update_button">CẬP NHẬT</string>
     <string name="hint_fullname">Vd: Nguyễn Văn A</string>
-    <string name="lable_phone">Số điện thoại</string>
+    <string name="label_phone">Số điện thoại</string>
     <string name="ex_phone">0987654321</string>
     <string name="lable_gender">Giới tính</string>
-    <string name="gender_male">Nam</string>
-    <string name="gender_female">Nữ</string>
-    <string name="gender_other">Khác</string>
-    <string name="do_homework_title">TRANG LÀM BÀI</string>
-    <string name="remaining_time_title">Thời gian còn lại:</string>
+    <string name="text_gender_male">Nam</string>
+    <string name="text_gender_female">Nữ</string>
+    <string name="text_gender_others">Khác</string>
+    <string name="title_do_homework">Trang làm bài</string>
+    <string name="title_remaining_time">Thời gian còn lại:</string>
     <string name="remaining_time_ex">59:32</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="button_give_hw">TẠO BÀI TẬP</string>
+    <string name="title_given_homework">Bài tập đã giao</string>
+    <string name="title_fragment_assign">Giao bài tập</string>
+    <string name="spinner_choose_class">Chọn lớp</string>
+    <string name="title_activity_summary">BÁO CÁO BÀI LÀM</string>
+    <string name="title_fragment">Tên fragment</string>
+    <string name="text_log_in_underline"><u>Đăng nhập</u></string>
+    <string name="text_sign_up_underline"><u>Đăng ký</u></string>
+    <string name="label_fullname">Họ và tên</string>
+    <string name="hint_birthday">dd/mm/yyyy</string>
+    <string name="label_role">Chọn vai trò</string>
+    <string name="text_role_student">Học sinh</string>
+    <string name="text_role_teacher">Giáo viên</string>
+    <string name="toast_sign_up_successful">Đăng ký tài khoản thành công</string>
+    <string name="toast_sign_up_unsuccessful">Đăng ký thất bại</string>
+    <string name="toast_empty_alert">Không được để trống trường này</string>
+    <string name="toast_password_matching_alert">Nhập lại mật khẩu không khớp</string>
+    <string name="toast_gender_alert">Vui lòng chọn giới tính</string>
+    <string name="toast_role_alert">Vui lòng chọn vai trò</string>
+    <string name="title_setting">Cài đặt</string>
+    <string name="label_language">Ngôn ngữ</string>
+    <string name="label_notification">Thông báo</string>
+    <string name="label_receive_notification">Nhận thông báo</string>
+    <string name="label_change_password">Đổi mật khẩu</string>
+    <string name="label_setting">Cài đặt</string>
+    <string name="label_log_out">Đăng xuất</string>
+    <string name="label_support">Hỗ trợ</string>
+    <string name="button_cancel">Đóng</string>
 
 </resources>

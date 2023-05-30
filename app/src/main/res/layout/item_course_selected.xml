@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@color/light_grey">
+
+    <TextView
+        android:id="@+id/textItemCourseSelected"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/montserrat"
+        android:padding="15dp"
+        android:text="@string/text_class_name"
+        android:textColor="@color/green"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:src="@drawable/baseline_arrow_drop_down_24"
+        app:tint="@color/green"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+</LinearLayout>
