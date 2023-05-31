@@ -3,6 +3,7 @@ package com.example.splus.my_fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,12 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.SummaryActivity;
-import com.example.splus.my_adapter.AssignmentAdapter;
+import com.example.splus.my_adapter.AssignAdapter;
 import com.example.splus.my_adapter.SpinnerCourseAdapter;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
@@ -28,7 +31,7 @@ public class AssignFragment extends Fragment {
 
     private Spinner spinnerChooseClass;
     private RecyclerView listAssignment;
-    private AssignmentAdapter assignmentAdapter;
+    private AssignAdapter assignAdapter;
     private SpinnerCourseAdapter spinnerCourseAdapter;
 
     public AssignFragment() {
@@ -42,31 +45,45 @@ public class AssignFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_assign, container, false);
 
+        ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAssignFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
+
         spinnerChooseClass = view.findViewById(R.id.spinnerAssignFragment);
         listAssignment = view.findViewById(R.id.recyclerListAssignFragment);
         listAssignment.setLayoutManager(new LinearLayoutManager(getActivity()));
-        assignmentAdapter = new AssignmentAdapter(getAllAssignment(), this::onClickGoToSummary);
+        assignAdapter = new AssignAdapter(getAllAssignment(), this::onClickGoToSummary);
 
-        spinnerCourseAdapter = new SpinnerCourseAdapter(this.getContext(), R.layout.item_course_selected, getListCourse());
+        spinnerCourseAdapter = new SpinnerCourseAdapter(requireActivity(), R.layout.item_course_selected, getListCourse());
         spinnerChooseClass.setAdapter(spinnerCourseAdapter);
 
         spinnerChooseClass.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                assignmentAdapter.setData(getAssignment(spinnerCourseAdapter.getItem(position).getCourseID()));
+                assignAdapter.setData(getAssignment(spinnerCourseAdapter.getItem(position).getCourseID()));
                 Toast.makeText(parent.getContext(), spinnerCourseAdapter.getItem(position).getCourseName(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                assignmentAdapter.setData(getAllAssignment());
+                assignAdapter.setData(getAllAssignment());
             }
         });
         return view;
     }
 
-    private List<Assignment> getAssignment(int classID) {
+    private void onClickGoToNotification() {
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
+        startActivity(intent);
+    }
+
+    @NonNull
+    private List<Assignment> getAssignment(int courseID) {
         // Query SELECT * FROM assignment WHERE assign_id= :classID
         List<Assignment> assignmentList = new ArrayList<>();
 
@@ -77,7 +94,7 @@ public class AssignFragment extends Fragment {
                 "30m",
                 "2023-06-10 00:00:00",
                 "",
-                0,
+                courseID,
                 "Nhập môn toán học",
                 0,
                 0
@@ -90,6 +107,7 @@ public class AssignFragment extends Fragment {
         return assignmentList;
     }
 
+    @NonNull
     private List<Assignment> getAllAssignment() {
         List<Assignment> assignmentList = new ArrayList<>();
 
@@ -114,6 +132,7 @@ public class AssignFragment extends Fragment {
         return assignmentList;
     }
 
+    @NonNull
     private List<Course> getListCourse() {
         List<Course> courseList = new ArrayList<>();
 

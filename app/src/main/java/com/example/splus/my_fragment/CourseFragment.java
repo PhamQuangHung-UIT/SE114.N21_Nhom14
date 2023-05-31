@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.splus.CourseActivity;
 import com.example.splus.R;
@@ -33,10 +34,20 @@ public class CourseFragment extends Fragment {
         CourseAdapter courseAdapter = new CourseAdapter(getAllCourses(), this::onClickGoToCourseActivity);
         recyclerList.setAdapter(courseAdapter);
 
+        ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationCourseFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
 
         EditText editSearchBox = view.findViewById(R.id.searchBoxCourseFragment);
         // handle searching
         return view;
+    }
+
+    private void onClickGoToNotification() {
     }
 
     private void onClickGoToCourseActivity(Course course) {
@@ -51,13 +62,11 @@ public class CourseFragment extends Fragment {
     private List<Course> getAllCourses() {
         List<Course> courseList = new ArrayList<>();
 
-        Course classExample = new Course(
+        courseList.add(new Course(
                 0,
-                getString(R.string.text_class_name),
-                getString(R.string.teacher_name_example)
-        );
-
-        courseList.add(classExample);
+                "Nhập môn Toán học",
+                "Splus"
+        ));
 
         courseList.add( new Course(
                 0,

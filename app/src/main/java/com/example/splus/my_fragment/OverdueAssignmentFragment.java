@@ -35,7 +35,8 @@ public class OverdueAssignmentFragment extends Fragment {
         RecyclerView list = view.findViewById(R.id.recyclerOverdueAssignmentFragment);
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        AssignmentAdapter finishedHwAdapter = new AssignmentAdapter(getListOverdueAssignment(), this::onClickGoToOverdueAssignment);
+        AssignmentAdapter finishedHwAdapter = new AssignmentAdapter(this::onClickGoToOverdueAssignment);
+        finishedHwAdapter.setData(getListOverdueAssignment());
 
         list.setAdapter(finishedHwAdapter);
         return view;

@@ -6,11 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".my_fragment.AssignFragment">
 
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/headerAssignFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/title_fragment_assign"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:id="@+id/buttonNotificationAssignFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/title_notification"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            tools:ignore="ImageContrastCheck"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
     <Spinner
         android:id="@+id/spinnerAssignFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/headerAssignFragment"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"

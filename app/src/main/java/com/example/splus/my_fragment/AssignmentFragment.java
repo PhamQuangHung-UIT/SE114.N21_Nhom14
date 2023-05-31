@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,6 +29,15 @@ public class AssignmentFragment extends Fragment {
         AssignmentViewPagerAdapter assignmentViewPagerAdapter = new AssignmentViewPagerAdapter(getParentFragmentManager(), this.getActivity());
         viewPager.setAdapter(assignmentViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAssignmentFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
+
         return view;
     }
 

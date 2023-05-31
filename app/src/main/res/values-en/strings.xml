@@ -130,4 +130,8 @@
     <string name="label_log_out">Log out</string>
     <string name="label_support">Support</string>
     <string name="button_cancel">Cancel</string>
+    <string name="title_fragment_account">Account</string>
+    <string name="lable_question_number">"Question "</string>
+    <string name="text_question">Content of question, can be display by English or Vietnamese</string>
+    <string name="text_answer">Content of answer</string>
 </resources>

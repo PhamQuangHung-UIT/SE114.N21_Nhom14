@@ -35,7 +35,7 @@ public class CourseActivity extends AppCompatActivity {
             return;
         }
 
-        Course myClass = (Course) bundle.get("class_data");
+        Course myClass = (Course) bundle.get("course");
 
         className = findViewById(R.id.textNameCourseActivity);
         className.setText(myClass.getCourseName());

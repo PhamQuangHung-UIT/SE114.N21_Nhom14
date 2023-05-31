@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/headerAssignmentFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/green">
+
+        <!-- TITLE CLASS NAME -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/title_fragment_assignment"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            tools:ignore="TextContrastCheck" />
+
+        <!-- NOTIFICATION BUTTON -->
+        <ImageButton
+            android:id="@+id/buttonNotificationAssignmentFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:contentDescription="@string/title_notification"
+            android:padding="15dp"
+            android:src="@drawable/baseline_notifications_active_24"
+            tools:ignore="ImageContrastCheck"
+            app:tint="@color/white" />
+
+    </LinearLayout>
 
     <!-- TAB LAYOUT -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabAssignmentFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/headerAssignmentFragment"
         android:background="@color/light_grey"
         style="@style/MyCustomTabLayout"
         tools:ignore="SpeakableTextPresentCheck" />

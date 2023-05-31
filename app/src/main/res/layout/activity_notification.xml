@@ -16,15 +16,15 @@
         android:paddingBottom="3dp"
         android:background="@color/green">
 
-        <!-- BACK BUTTON -->
+        <!-- CLOSE BUTTON -->
         <!-- back to fragment class-->
         <ImageButton
-            android:id="@+id/buttonBackNotificationActivity"
+            android:id="@+id/buttonCloseNotificationActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"
             android:padding="15dp"
-            android:src="@drawable/back_icon"
+            android:src="@drawable/baseline_close_24"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <!-- TITLE CLASS NAME -->
