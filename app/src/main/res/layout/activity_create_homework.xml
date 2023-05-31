@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/activity_homework"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/action_homework"
+        android:textColor="@color/green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listHomework"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/classLayoutButton"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        tools:ignore="UnknownIdInLayout" />
+
+    <LinearLayout
+        android:id="@+id/button_add_homework"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|end"
+        android:layout_margin="50dp"
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/"
+            android:src="@drawable/baseline_add_circle_outline_24"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tao_bt"
+            android:textColor="@color/green"
+            tools:ignore="TextSizeCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="MissingDefaultResource">
+
+        <TextView
+            android:id="@+id/activity_homework"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="@string/title"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="DuplicateIds,TextContrastCheck" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:autofillHints=""
+            android:background="@drawable/popup_background"
+            android:hint="@string/vd_title"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:padding="5dp"
+            tools:ignore="TextSizeCheck,VisualLintTextFieldSize" />
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/de_bai"
+            tools:ignore="TextSizeCheck"
+            android:layout_margin="5dp"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:padding="5dp"
+            android:id="@+id/edit_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:autofillHints=""
+            android:background="@drawable/popup_background"
+            android:hint="@string/edit_de_bai"
+            android:inputType="textMultiLine"
+            android:minLines="6"
+            tools:ignore="LabelFor,TextSizeCheck,VisualLintTextFieldSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|end">
+            <Button
+                android:id="@+id/btn_upload_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:drawableStart="@drawable/baseline_file_upload_24"
+                android:text="@string/add_file"
+                tools:ignore="TextSizeCheck"
+                style="?android:attr/buttonBarButtonStyle"
+                android:background="@drawable/my_button_border"
+                android:padding="5dp"/>
+
+            <Button
+                android:id="@+id/btn_calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:drawableStart="@drawable/baseline_calculate_24"
+                android:text="@string/calculate"
+                tools:ignore="RtlHardcoded,TextSizeCheck"
+                style="?android:attr/buttonBarButtonStyle"
+                android:background="@drawable/my_button_border"
+                android:padding="5dp"/>
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+            <TableRow
+                android:id="@+id/answer_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent"
+                android:layout_marginBottom="5dp">
+
+                <RadioButton
+                    android:id="@+id/radiobutton_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_answer_a"
+                    tools:ignore="RtlSymmetry,TextSizeCheck"
+                    android:paddingEnd="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_answer_a"
+                    android:layout_width="358dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/popup_background"
+                    android:hint="@string/enter_answer"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    tools:ignore="TextSizeCheck,TouchTargetSizeCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/answer_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent"
+                android:layout_marginBottom="5dp">
+
+                <RadioButton
+                    android:id="@+id/radiobutton_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_answer_b"
+                    tools:ignore="RtlSymmetry,TextSizeCheck"
+                    android:paddingEnd="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_answer_b"
+                    android:layout_width="358dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/popup_background"
+                    android:hint="@string/enter_answer"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    tools:ignore="TextSizeCheck,TouchTargetSizeCheck,VisualLintBounds" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/answer_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent"
+                android:layout_marginBottom="5dp">
+
+                <RadioButton
+                    android:id="@+id/radiobutton_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_answer_c"
+                    tools:ignore="RtlSymmetry,TextSizeCheck"
+                    android:paddingEnd="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_answer_c"
+                    android:layout_width="358dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/popup_background"
+                    android:hint="@string/enter_answer"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    tools:ignore="TextSizeCheck,TouchTargetSizeCheck,VisualLintBounds" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/answer_d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent"
+                android:layout_marginBottom="5dp">
+
+                <RadioButton
+                    android:id="@+id/radiobutton_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_answer_d"
+                    tools:ignore="RtlSymmetry,TextSizeCheck"
+                    android:paddingEnd="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_answer_d"
+                    android:layout_width="358dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/popup_background"
+                    android:hint="@string/enter_answer"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    tools:ignore="TextSizeCheck,TouchTargetSizeCheck,VisualLintBounds" />
+            </TableRow>
+        </TableLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_button_border"
+                android:padding="5dp"
+                android:text="@string/save_homework"
+                tools:ignore="TextSizeCheck"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_marginEnd="10dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_button_border"
+                android:padding="5dp"
+                android:text="@string/add_the_same_tile_homework"
+                tools:ignore="TextSizeCheck"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_marginEnd="10dp"/>
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/my_button_border_red"
+                android:padding="5dp"
+                android:text="@string/exit"
+                tools:ignore="TextSizeCheck" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
