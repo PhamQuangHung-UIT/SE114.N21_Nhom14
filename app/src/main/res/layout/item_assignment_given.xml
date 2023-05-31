@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeItemHwFinished"
+    android:id="@+id/relativeItemAssignmentGiven"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -11,13 +11,13 @@
     android:background="@drawable/bg_light_white">
 
     <TextView
-        android:id="@+id/textHwNameFinishedHwFragment"
-        android:layout_width="match_parent"
+        android:id="@+id/textNameItemAssignmentGiven"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat"
-        android:paddingStart="20dp"
+        android:layout_centerHorizontal="true"
         android:text="@string/homework_title"
         android:textColor="@color/green"
         android:textSize="16sp"
@@ -25,45 +25,30 @@
         tools:ignore="RtlSymmetry,TextContrastCheck" />
 
     <TextView
-        android:id="@+id/textClassNameFinishedHwFragment"
+        android:id="@+id/textClassItemAssignmentGiven"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textHwNameFinishedHwFragment"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textNameItemAssignmentGiven"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/text_class_name"
         android:textColor="@color/dark_grey"
         android:textSize="14sp"
-        android:paddingStart="20dp"
         tools:ignore="RtlSymmetry"
         />
     <TextView
-        android:id="@+id/textTimestampFinishedHwFragment"
+        android:id="@+id/textTimestampItemAssignmentGiven"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textClassNameFinishedHwFragment"
+        android:layout_below="@+id/textClassItemAssignmentGiven"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/timestamp_ex"
         android:textColor="@color/dark_grey"
         android:textSize="14sp"
-        android:paddingStart="20dp"
         tools:ignore="RtlSymmetry"
         />
-
-    <TextView
-        android:id="@+id/textPointFinishedHwFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_centerVertical="true"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/point_ex"
-        android:textColor="@color/red"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:ignore="RelativeOverlap" />
 
 </RelativeLayout>

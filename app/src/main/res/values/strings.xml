@@ -187,5 +187,9 @@
     <string name="label_log_out">Đăng xuất</string>
     <string name="label_support">Hỗ trợ</string>
     <string name="button_cancel">Đóng</string>
+    <string name="title_fragment_account">Tài khoản</string>
+    <string name="lable_question_number">"Câu "</string>
+    <string name="text_question">Nội dung câu hỏi ở dạng văn bản có thể trình bày theo ngôn ngữ tiếng Việt hoặc tiếng Anh</string>
+    <string name="text_answer">Nội dung đáp án</string>
 
 </resources>

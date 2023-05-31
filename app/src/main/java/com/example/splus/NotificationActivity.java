@@ -11,8 +11,6 @@ import com.example.splus.my_adapter.NotifViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class NotificationActivity extends AppCompatActivity {
-
-    ImageButton buttonBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +24,8 @@ public class NotificationActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        buttonBack = findViewById(R.id.buttonBackNotificationActivity);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonClose = findViewById(R.id.buttonCloseNotificationActivity);
+        buttonClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

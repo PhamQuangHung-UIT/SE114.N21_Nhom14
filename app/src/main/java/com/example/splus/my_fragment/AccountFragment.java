@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.splus.AccountActivity;
-import com.example.splus.DoHomeworkActivity;
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.SettingActivity;
 import com.example.splus.SplashActivity;
@@ -26,6 +26,14 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAccountFragment);
+        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToNotification();
+            }
+        });
 
         ImageView avatar = view.findViewById(R.id.imageAvatarAccountFragment);
         avatar.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +108,11 @@ public class AccountFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void onClickGoToNotification() {
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
+        startActivity(intent);
     }
 
 }

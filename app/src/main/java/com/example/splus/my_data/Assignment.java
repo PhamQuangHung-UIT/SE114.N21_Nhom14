@@ -1,8 +1,10 @@
 package com.example.splus.my_data;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Assignment implements Serializable {
     private final int id;
@@ -104,43 +106,38 @@ public class Assignment implements Serializable {
         Timestamp timestamp = Timestamp.valueOf(this.deadline);
         Date date = new Date();
         int compare = timestamp.compareTo(date);
-        if (compare < 0) {
-            return true;
-        } else {
-            return false;
+        return compare < 0;
+    }
+
+    public Question getQuestion(int number) {
+
+        int index_begin = 0, index_end;
+        int counter = 0;
+        for (int i=0; i<this.content.length(); i++) {
+            if ('#' == this.content.charAt(i)) {
+                counter = counter + 1;
+            }
+            if (number == counter) {
+                index_begin = i;
+                break;
+            }
         }
+        index_end = index_begin + 1;
+        while (this.content.charAt(index_end) != '#') {
+            index_end = index_end + 1;
+        }
+
+        String str_content = this.content.substring(index_begin, index_end);
+
+        List<String> items = Arrays.asList(str_content.split("\n"));
+
+        String question = items.get(1);
+        String answerA = items.get(2);
+        String answerB = items.get(3);
+        String answerC = items.get(4);
+        String answerD = items.get(5);
+
+        return new Question(number, question, answerA, answerB, answerC, answerD);
     }
 }
 
-class Question {
-    private final String question;
-    private final String answerA, answerB, answerC, answerD;
-
-    public Question(String question, String answerA, String answerB, String answerC, String answerD) {
-        this.question = question;
-        this.answerA = answerA;
-        this.answerB = answerB;
-        this.answerC = answerC;
-        this.answerD = answerD;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getAnswerA() {
-        return answerA;
-    }
-
-    public String getAnswerB() {
-        return answerB;
-    }
-
-    public String getAnswerC() {
-        return answerC;
-    }
-
-    public String getAnswerD() {
-        return answerD;
-    }
-}

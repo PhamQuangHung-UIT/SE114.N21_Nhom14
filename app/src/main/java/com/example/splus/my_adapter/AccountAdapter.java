@@ -46,7 +46,8 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.UserView
         if (account == null) {
             return;
         }
-        holder.accountAvatar.setImageResource(account.getAvatarID());
+        //holder.accountAvatar.setImageResource(account.getAvatarID());
+        holder.accountAvatar.setImageResource(R.drawable.account_box);
         holder.accountName.setText(account.getFullname());
         holder.accountID.setText(account.getAccountID());
 

@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
 
         recentLesson.setAdapter(lessonAdapter);
 
-        ImageButton imageButtonNotif = view.findViewById(R.id.imageNotifyHomeFragment);
+        ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationHomeFragment);
         imageButtonNotif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
