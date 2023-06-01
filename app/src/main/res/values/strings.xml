@@ -97,8 +97,7 @@
 
     <string name="teacher_info">Liên hệ GV</string>
 
-    <string name="splash_description_1">Ứng dụng học toán</string>
-    <string name="splash_description_2">Thế hệ mới</string>
+    <string name="splash_description_1">Ứng dụng học toán\ncao cấp</string>
 
     <string name="label_name">Họ và tên</string>
     <string name="label_id">MSSV</string>
