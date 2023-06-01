@@ -1,5 +1,6 @@
 package com.example.splus;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,11 +19,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textTitleFragment;
     private BottomNavigationView navigation;
     private ViewPager2 pager;
     private Account account;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         account = (Account) bundle.get("account");
 
-        textTitleFragment = findViewById(R.id.textTitleMainActivity);
         navigation = findViewById(R.id.bottomNavigationMainActivity);
         pager = findViewById(R.id.pagerMainActivity);
 
@@ -47,39 +47,25 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigationHomeFragment:
                     pager.setCurrentItem(0);
-                    textTitleFragment.setText(R.string.title_fragment_home);
                     // Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.navigationCourseFragment:
                     pager.setCurrentItem(1);
-                    textTitleFragment.setText(R.string.title_fragment_course);
                     // Toast.makeText(MainActivity.this, "Courses", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.navigationAssignmentFragment:
                     pager.setCurrentItem(2);
-                    textTitleFragment.setText(R.string.title_fragment_assignment);
                     if (account.getRole() == 1) {
                         item.setTitle(R.string.title_fragment_assign);
-                        textTitleFragment.setText(R.string.title_fragment_assign);
                     }
                     // Toast.makeText(MainActivity.this, "Assignments", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.navigationSettingFragment:
                     pager.setCurrentItem(3);
-                    textTitleFragment.setText(R.string.title_fragment_setting);
                     // Toast.makeText(MainActivity.this, "Setting", Toast.LENGTH_SHORT).show();
                     break;
             }
             return true;
-        });
-
-        ImageButton imageButtonNotification = findViewById(R.id.imageButtonNotificationMainActivity);
-        imageButtonNotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
-                startActivity(intent);
-            }
         });
     }
 

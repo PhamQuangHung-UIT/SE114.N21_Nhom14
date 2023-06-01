@@ -187,47 +187,9 @@
     <string name="label_log_out">Đăng xuất</string>
     <string name="label_support">Hỗ trợ</string>
     <string name="button_cancel">Đóng</string>
-    
-    <!-- button on calculate -->
-    <string name="app_name">keyboard</string>
-    <string name="btn_del" translatable="false"> ⌫ </string>
-    <string name="btn_tich_phan" translatable="false">∫(x)dx</string>
-    <string name="btn_mu" translatable="true">^</string>
-    <string name="btn_tri_tuyet_doi" translatable="false">|x|</string>
-    <string name="btn_tong" translatable="false">∑f(x)</string>
-    <string name="btn_tich" translatable="false">∏f(x)</string>
-    <string name="btn_pi" translatable="false">𝜋</string>
-    <string name="btn_can_hai" translatable="true">√x</string>
-    <string name="btn_equal" translatable="true">=</string>
-    <string name="btn_add">+</string>
-    <string name="btn_3">3</string>
-    <string name="btn_2">2</string>
-    <string name="btn_1">1</string>
-    <string name="btn_except">-</string>
-    <string name="btn_6">6</string>
-    <string name="btn_5">5</string>
-    <string name="btn_4">4</string>
-    <string name="btn_mul">*</string>
-    <string name="btn_9">9</string>
-    <string name="btn_8">8</string>
-    <string name="btn_7">7</string>
-    <string name="btn_div">/</string>
-    <string name="btn_per">%</string>
-    <string name="ac">AC</string>
-    <string name="btn_0">0</string>
-    <string name="e">e</string>
-    <string name="btn_sin">sin</string>
-    <string name="btn_cos">cos</string>
-    <string name="btn_tan">tan</string>
-    <string name="btn_cot">cot</string>
-    <string name="f_x">f(x)</string>
-    <string name="btn_log">log</string>
-    <string name="btn_ln">ln</string>
-    <string name="btn_mo_ngoac">(</string>
-    <string name="btn_dong_ngoac">)</string>
-    <string name="dot">.</string>
-    <string name="x">x</string>
-    <string name="giai_thua">x!</string>
-    <string name="dao_ham">f(x)\'</string>
+    <string name="title_fragment_account">Tài khoản</string>
+    <string name="lable_question_number">"Câu "</string>
+    <string name="text_question">Nội dung câu hỏi ở dạng văn bản có thể trình bày theo ngôn ngữ tiếng Việt hoặc tiếng Anh</string>
+    <string name="text_answer">Nội dung đáp án</string>
 
 </resources>

@@ -18,35 +18,37 @@ import java.util.List;
 
 public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int TYPE_ASSIGNMENT_FINISHED = 1;
-    private static final int TYPE_ASSIGNMENT_UNFINISHED = 2;
+    private static final int TYPE_ASSIGNMENT_OVERDUE = 1;
+    private static final int TYPE_ASSIGNMENT_ONGOING = 2;
 
     private List<Assignment> listAssignment;
 
     private final IClickAssignmentListener iClickAssignmentListener;
 
-    public AssignmentAdapter(List<Assignment> listAssignment, IClickAssignmentListener iClickAssignmentListener) {
-        this.listAssignment = listAssignment;
+    public AssignmentAdapter(IClickAssignmentListener iClickAssignmentListener) {
         this.iClickAssignmentListener = iClickAssignmentListener;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<Assignment> listAssignment) {
         this.listAssignment = listAssignment;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (TYPE_ASSIGNMENT_FINISHED == viewType) {
+        if (TYPE_ASSIGNMENT_OVERDUE == viewType) {
             // TAB Assignment finished
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hw_finished, parent, false);
-            return new FinishedAssignmentViewHolder(view);
-        } else if (TYPE_ASSIGNMENT_UNFINISHED == viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_assignment_overdue, parent, false);
+            return new OverdueAssignmentViewHolder(view);
+        } else if (TYPE_ASSIGNMENT_ONGOING == viewType) {
             // TAB Assignment unfinished
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hw_unfinished, parent, false);
-            return new UnfinishedAssignmentViewHolder(view);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_assignment_ongoing, parent, false);
+            return new OngoingAssignmentViewHolder(view);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @SuppressLint("SetTextI18n")
@@ -57,30 +59,30 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             return;
         }
 
-        if (TYPE_ASSIGNMENT_FINISHED == holder.getItemViewType()) {
+        if (TYPE_ASSIGNMENT_OVERDUE == holder.getItemViewType()) {
             // bind view holder for Assignment finished
-            FinishedAssignmentViewHolder finishedAssignmentViewHolder = (FinishedAssignmentViewHolder) holder;
+            OverdueAssignmentViewHolder ongoingAssignmentViewHolder = (OverdueAssignmentViewHolder) holder;
 
-            finishedAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
-            finishedAssignmentViewHolder.courseName.setText(assignment.getCourseName());
-            finishedAssignmentViewHolder.timestampt.setText(assignment.getAssignDeadline());
-            finishedAssignmentViewHolder.point.setText(Double.toString(assignment.getResult()));
+            ongoingAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
+            ongoingAssignmentViewHolder.courseName.setText(assignment.getCourseName());
+            ongoingAssignmentViewHolder.timestampt.setText(assignment.getAssignDeadline());
+            ongoingAssignmentViewHolder.point.setText(Double.toString(assignment.getResult()));
 
-            finishedAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
+            ongoingAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     iClickAssignmentListener.onClickAssignment(assignment);
                 }
             });
-        } else if (TYPE_ASSIGNMENT_UNFINISHED == holder.getItemViewType()) {
+        } else if (TYPE_ASSIGNMENT_ONGOING == holder.getItemViewType()) {
             // bind view holder for Assignment unfinished
-            UnfinishedAssignmentViewHolder unfinishedAssignmentViewHolder = (UnfinishedAssignmentViewHolder) holder;
+            OngoingAssignmentViewHolder overdueAssignmentViewHolder = (OngoingAssignmentViewHolder) holder;
 
-            unfinishedAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
-            unfinishedAssignmentViewHolder.courseName.setText(assignment.getCourseName());
-            unfinishedAssignmentViewHolder.remainingTime.setText(assignment.getAssignTime());
+            overdueAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
+            overdueAssignmentViewHolder.courseName.setText(assignment.getCourseName());
+            overdueAssignmentViewHolder.remainingTime.setText(assignment.getAssignTime());
 
-            unfinishedAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
+            overdueAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     iClickAssignmentListener.onClickAssignment(assignment);
@@ -101,40 +103,40 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public int getItemViewType(int position) {
         Assignment assignment = this.listAssignment.get(position);
         if (assignment.isFinish()) {
-            return TYPE_ASSIGNMENT_FINISHED;
+            return TYPE_ASSIGNMENT_OVERDUE;
         } else {
-            return TYPE_ASSIGNMENT_UNFINISHED;
+            return TYPE_ASSIGNMENT_ONGOING;
         }
     }
 
-    public static class FinishedAssignmentViewHolder extends RecyclerView.ViewHolder {
+    public static class OverdueAssignmentViewHolder extends RecyclerView.ViewHolder {
         private final RelativeLayout assignmentLayout;
         private final TextView assignmentName;
         private final TextView courseName;
         private final TextView timestampt;
         private final TextView point;
 
-        public FinishedAssignmentViewHolder(@NonNull View viewFinishedAssignment) {
-            super(viewFinishedAssignment);
-            assignmentLayout = viewFinishedAssignment.findViewById(R.id.relativeItemHwFinished);
-            assignmentName = viewFinishedAssignment.findViewById(R.id.textHwNameFinishedHwFragment);
-            courseName = viewFinishedAssignment.findViewById(R.id.textClassNameFinishedHwFragment);
-            timestampt = viewFinishedAssignment.findViewById(R.id.textTimestampFinishedHwFragment);
-            point = viewFinishedAssignment.findViewById(R.id.textPointFinishedHwFragment);
+        public OverdueAssignmentViewHolder(@NonNull View view) {
+            super(view);
+            assignmentLayout = view.findViewById(R.id.relativeItemAssignmentOverdue);
+            assignmentName = view.findViewById(R.id.textNameItemAssignmentOverdue);
+            courseName = view.findViewById(R.id.textClassItemAssignmentOverdue);
+            timestampt = view.findViewById(R.id.textTimestampItemAssignmentOverdue);
+            point = view.findViewById(R.id.textPointItemAssignmentOverdue);
         }
     }
 
-    public static class UnfinishedAssignmentViewHolder extends RecyclerView.ViewHolder {
+    public static class OngoingAssignmentViewHolder extends RecyclerView.ViewHolder {
         private final RelativeLayout assignmentLayout;
         private final TextView assignmentName;
         private final TextView courseName;
         private final TextView remainingTime;
-        public UnfinishedAssignmentViewHolder(@NonNull View viewUnfinishedAssignment) {
-            super(viewUnfinishedAssignment);
-            assignmentLayout = viewUnfinishedAssignment.findViewById(R.id.relativeItemHwUnfinished);
-            assignmentName = viewUnfinishedAssignment.findViewById(R.id.textHwNameUnfinishedHwFragment);
-            courseName = viewUnfinishedAssignment.findViewById(R.id.textClassNameUnfinishedHwFragment);
-            remainingTime = viewUnfinishedAssignment.findViewById(R.id.textRemainingTimeUnfinishedHwFragment);
+        public OngoingAssignmentViewHolder(@NonNull View view) {
+            super(view);
+            assignmentLayout = view.findViewById(R.id.relativeItemAssignmentOngoing);
+            assignmentName = view.findViewById(R.id.textNameItemAssignmentOngoing);
+            courseName = view.findViewById(R.id.textClassItemAssignmentOngoing);
+            remainingTime = view.findViewById(R.id.textTimeItemAssignmentOngoing);
         }
     }
 }

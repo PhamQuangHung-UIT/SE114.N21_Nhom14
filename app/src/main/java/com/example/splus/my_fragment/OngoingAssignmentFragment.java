@@ -1,8 +1,10 @@
 package com.example.splus.my_fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +38,8 @@ public class OngoingAssignmentFragment extends Fragment {
         RecyclerView list = view.findViewById(R.id.recyclerOngoingAssignmentFragment);
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        AssignmentAdapter adapter = new AssignmentAdapter(getListOngoingAssignment(), this::onClickGoToOngoingAssignment);
+        AssignmentAdapter adapter = new AssignmentAdapter(this::onClickGoToOngoingAssignment);
+        adapter.setData(getListOngoingAssignment());
         list.setAdapter(adapter);
 
         return view;
@@ -48,10 +51,19 @@ public class OngoingAssignmentFragment extends Fragment {
         Assignment example = new Assignment(
                 1,
                 "Kiểm tra cuối khoá",
-                10,
+                5,
                 "30m",
                 "2023-06-10 00:00:00",
-                "",
+                "#1\nHow to get there?\n" +
+                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
+                        "#2\nHow to get there?\n" +
+                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
+                        "#3\nHow to get there?\n" +
+                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
+                        "#4\nHow to get there?\n" +
+                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
+                        "#5\nHow to get there?\n" +
+                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n#",
                 0,
                 "Nhập môn toán học",
                 0,
@@ -65,9 +77,10 @@ public class OngoingAssignmentFragment extends Fragment {
         return assignmentList;
     }
 
-    private void onClickGoToOngoingAssignment(Assignment assignment) {
-        View viewDialog = getLayoutInflater().inflate(R.layout.assignment_bottom_sheet, null);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this.getContext());
+    @SuppressLint("SetTextI18n")
+    private void onClickGoToOngoingAssignment(@NonNull Assignment assignment) {
+        @SuppressLint("InflateParams") View viewDialog = getLayoutInflater().inflate(R.layout.assignment_bottom_sheet, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(requireActivity());
         bottomSheetDialog.setContentView(viewDialog);
         bottomSheetDialog.show();
 
@@ -78,7 +91,7 @@ public class OngoingAssignmentFragment extends Fragment {
         assignmentFormat.setText(assignment.getAssignFormat()==0? "Trắc nghiệm":"Tự luận");
 
         TextView assignmentQuantity = viewDialog.findViewById(R.id.textQuantityAssignmentBottomSheet);
-        assignmentQuantity.setText(assignment.getQuantity());
+        assignmentQuantity.setText(Integer.toString(assignment.getQuantity()));
 
         TextView assignmentTime = viewDialog.findViewById(R.id.textTimeAssignmentBottomSheet);
         assignmentTime.setText(assignment.getAssignTime());
@@ -97,6 +110,7 @@ public class OngoingAssignmentFragment extends Fragment {
         buttonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bottomSheetDialog.dismiss();
                 onClickGoToDoAssignment(assignment);
             }
         });

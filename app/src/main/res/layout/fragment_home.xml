@@ -51,7 +51,7 @@
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         <ImageButton
-            android:id="@+id/imageNotifyHomeFragment"
+            android:id="@+id/buttonNotificationHomeFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/green"

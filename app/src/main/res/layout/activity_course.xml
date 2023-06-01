@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_grey"
+    android:background="@color/white"
     tools:context=".CourseActivity">
 
     <!-- TITLE BAR -->
@@ -108,14 +108,21 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listCourseActivity"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/linearHeaderCourseActivity"
         android:layout_above="@+id/linearButtonCourseActivity"
-        android:layout_marginTop="20dp" />
+        android:background="@color/light_grey">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listCourseActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:background="@drawable/bg_light_white"
+            android:backgroundTint="@color/white"/>
+    </FrameLayout>
 
 </RelativeLayout>
