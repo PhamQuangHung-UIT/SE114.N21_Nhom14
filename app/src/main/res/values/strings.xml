@@ -232,5 +232,6 @@
     <string name="x" translatable="false">x</string>
     <string name="giai_thua" translatable="false">x!</string>
     <string name="dao_ham" translatable="false">f(x)\'</string>
+    <string name="edit_topic_question">Chủ đề</string>
 
 </resources>
