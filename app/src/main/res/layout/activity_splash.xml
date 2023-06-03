@@ -28,16 +28,4 @@
         android:textAllCaps="true"
         tools:ignore="TextContrastCheck" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/splash_description_2"
-        android:textColor="@color/green"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        tools:ignore="TextContrastCheck" />
-
 </LinearLayout>
