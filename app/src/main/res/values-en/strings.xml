@@ -134,6 +134,6 @@
     <string name="lable_question_number">"Question "</string>
     <string name="text_question">Content of question, can be display by English or Vietnamese</string>
     <string name="text_answer">Content of answer</string>
-    <string name="TitleCreateAssignment">Title</string>
+    <string name="edit_assigment_content">Content</string>
     <string name="edit_topic_question">Topic</string>
 </resources>
