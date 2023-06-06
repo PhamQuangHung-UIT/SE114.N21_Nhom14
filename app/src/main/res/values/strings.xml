@@ -232,5 +232,11 @@
     <string name="x" translatable="false">x</string>
     <string name="giai_thua" translatable="false">x!</string>
     <string name="dao_ham" translatable="false">f(x)\'</string>
+    <string name="title_create_course">Tạo lớp học</string>
+    <string name="label_teacher">Giảng viên:</string>
+    <string name="hint_course">Tên lớp học</string>
+    <string name="title_done">Hoàn tất</string>
+    <string name="hint_quantity">Sĩ số</string>
+    <string name="hint_course_code">Mã lớp học</string>
 
 </resources>

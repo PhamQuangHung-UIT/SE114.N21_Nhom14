@@ -15,19 +15,33 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.splus.CourseActivity;
+import com.example.splus.CreateCourseActivity;
+import com.example.splus.MainActivity;
+import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.my_adapter.CourseAdapter;
+import com.example.splus.my_data.Account;
 import com.example.splus.my_data.Course;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CourseFragment extends Fragment {
 
+    public static final int STUDENT = 0;
+    public static final int TEACHER = 1;
+
+    MainActivity activity;
+    Account account;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course, container, false);
+
+        activity = (MainActivity) getActivity();
+        account = activity.getAccount();
 
         RecyclerView recyclerList = view.findViewById(R.id.recyclerListCourseFragment);
         recyclerList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -44,10 +58,32 @@ public class CourseFragment extends Fragment {
 
         EditText editSearchBox = view.findViewById(R.id.searchBoxCourseFragment);
         // handle searching
+
+        // get role - 0: student, 1: teacher
+        FloatingActionButton buttonCreateCourse = view.findViewById(R.id.buttonCreateCourseFragment);
+        if (account.getRole()==STUDENT) {
+            buttonCreateCourse.setEnabled(false);
+        }
+        buttonCreateCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToCreateCourse();
+            }
+        });
         return view;
     }
 
+    private void onClickGoToCreateCourse() {
+        Intent intent = new Intent(this.getActivity(), CreateCourseActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("account_teacher", this.account);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     private void onClickGoToNotification() {
+        Intent intent = new Intent(this.getActivity(), NotificationActivity.class);
+        startActivity(intent);
     }
 
     private void onClickGoToCourseActivity(Course course) {

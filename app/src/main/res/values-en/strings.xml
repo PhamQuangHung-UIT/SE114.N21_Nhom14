@@ -134,4 +134,10 @@
     <string name="lable_question_number">"Question "</string>
     <string name="text_question">Content of question, can be display by English or Vietnamese</string>
     <string name="text_answer">Content of answer</string>
+    <string name="title_create_course">Create a course</string>
+    <string name="label_teacher">Teacher:</string>
+    <string name="hint_course">Course name</string>
+    <string name="title_done">Done</string>
+    <string name="hint_quantity">Course size</string>
+    <string name="hint_course_code">Course code</string>
 </resources>
