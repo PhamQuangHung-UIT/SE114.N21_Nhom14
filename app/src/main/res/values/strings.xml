@@ -238,5 +238,6 @@
     <string name="title_done">Hoàn tất</string>
     <string name="hint_quantity">Sĩ số</string>
     <string name="hint_course_code">Mã lớp học</string>
+    <string name="edit_topic_question">Chủ đề</string>
 
 </resources>

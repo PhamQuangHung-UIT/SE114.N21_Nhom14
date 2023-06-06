@@ -140,4 +140,6 @@
     <string name="title_done">Done</string>
     <string name="hint_quantity">Course size</string>
     <string name="hint_course_code">Course code</string>
+    <string name="TitleCreateAssignment">Title</string>
+    <string name="edit_topic_question">Topic</string>
 </resources>
