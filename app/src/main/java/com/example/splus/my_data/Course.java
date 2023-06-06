@@ -1,89 +1,47 @@
 package com.example.splus.my_data;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Course implements Serializable {
-    private final int courseID;
-    private final String courseName;
-    private final String teacherName;
+public class Course {
+    private String courseId;         // ID of the course
+    private String courseName;       // Name of the course
+    private String courseTeacherName; // Name of the course teacher
 
-    public Course(int courseID, String courseName, String teacherName) {
-        this.courseID = courseID;
+    public Course() {
+        // Default constructor for Firebase Firestore
+    }
+
+    public Course(String courseId, String courseName, String courseTeacherName) {
+        this.courseId = courseId;
         this.courseName = courseName;
-        this.teacherName = teacherName;
+        this.courseTeacherName = courseTeacherName;
     }
 
-    public List<Account> getListStudent() {
-        // Query SELECT * FROM enrollment WHERE course_id= :courseID
-        List<Account> accountList = new ArrayList<>();
-        accountList.add(new Account(
-                0,
-                "Nguyen Van A",
-                0
-        ));
-        accountList.add(new Account(
-                1,
-                "Nguyen Van B",
-                0
-        ));
-        accountList.add(new Account(
-                2,
-                "Nguyen Van C",
-                0
-        ));
-        accountList.add(new Account(
-                3,
-                "Nguyen Van D",
-                0
-        ));
-        return accountList;
+    // Getters and setters for the attributes
+
+    public String getCourseId() {
+        return courseId;
     }
 
-    public List<Lesson> getListLesson() {
-        // Query SELECT * FROM lesson WHERE course_id= :courseID
-        List<Lesson> lessonList = new ArrayList<>();
-        lessonList.add(new Lesson(
-                0,
-                "Lesson 1",
-                "Content",
-                "Course name",
-                "Teacher name"
-        ));
-        lessonList.add(new Lesson(
-                0,
-                "Lesson 2",
-                "Content",
-                "Course name",
-                "Teacher name"
-        ));
-        lessonList.add(new Lesson(
-                0,
-                "Lesson 3",
-                "Content",
-                "Course name",
-                "Teacher name"
-        ));
-        lessonList.add(new Lesson(
-                0,
-                "Lesson 4",
-                "Content",
-                "Course name",
-                "Teacher name"
-        ));
-        return lessonList;
-    }
-
-    public int getCourseID() {
-        return courseID;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {
         return courseName;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getCourseTeacherName() {
+        return courseTeacherName;
+    }
+
+    public void setCourseTeacherName(String courseTeacherName) {
+        this.courseTeacherName = courseTeacherName;
     }
 }

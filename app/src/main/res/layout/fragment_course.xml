@@ -86,4 +86,18 @@
 
     </LinearLayout>
 
+    <Button
+        android:visibility="gone"
+        android:id="@+id/buttonAssignFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="15dp"
+        android:text="Tạo lớp học"
+        android:textSize="14sp"
+        tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 </RelativeLayout>
