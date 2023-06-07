@@ -200,4 +200,47 @@
     <string name="n_replies">%1$d phản hồi</string>
     <string name="just_now">Vừa xong</string>
     <string name="write_a_comment">Viết bình luận…</string>
+
+    <!-- button on calculate -->
+    <string name="btn_del" translatable="false"> ⌫ </string>
+    <string name="btn_tich_phan" translatable="false">∫(x)dx</string>
+    <string name="btn_mu" translatable="false">^</string>
+    <string name="btn_tri_tuyet_doi" translatable="false">|x|</string>
+    <string name="btn_tong" translatable="false">∑f(x)</string>
+    <string name="btn_tich" translatable="false">∏f(x)</string>
+    <string name="btn_pi" translatable="false">𝜋</string>
+    <string name="btn_can_hai" translatable="false">√x</string>
+    <string name="btn_equal" translatable="false">=</string>
+    <string name="btn_add" translatable="false">+</string>
+    <string name="btn_3" translatable="false">3</string>
+    <string name="btn_2" translatable="false">2</string>
+    <string name="btn_1" translatable="false">1</string>
+    <string name="btn_except" translatable="false">-</string>
+    <string name="btn_6" translatable="false">6</string>
+    <string name="btn_5" translatable="false">5</string>
+    <string name="btn_4" translatable="false">4</string>
+    <string name="btn_mul" translatable="false">*</string>
+    <string name="btn_9" translatable="false">9</string>
+    <string name="btn_8" translatable="false">8</string>
+    <string name="btn_7" translatable="false">7</string>
+    <string name="btn_div" translatable="false">/</string>
+    <string name="btn_per" translatable="false">%</string>
+    <string name="ac" translatable="false">AC</string>
+    <string name="btn_0" translatable="false">0</string>
+    <string name="e" translatable="false">e</string>
+    <string name="btn_sin" translatable="false">sin</string>
+    <string name="btn_cos" translatable="false">cos</string>
+    <string name="btn_tan" translatable="false">tan</string>
+    <string name="btn_cot" translatable="false">cot</string>
+    <string name="f_x" translatable="false">f(x)</string>
+    <string name="btn_log" translatable="false">log</string>
+    <string name="btn_ln" translatable="false">ln</string>
+    <string name="btn_mo_ngoac" translatable="false">(</string>
+    <string name="btn_dong_ngoac" translatable="false">)</string>
+    <string name="dot" translatable="false">.</string>
+    <string name="x" translatable="false">x</string>
+    <string name="giai_thua" translatable="false">x!</string>
+    <string name="dao_ham" translatable="false">f(x)\'</string>
+    <string name="edit_topic_question">Chủ đề</string>
+
 </resources>

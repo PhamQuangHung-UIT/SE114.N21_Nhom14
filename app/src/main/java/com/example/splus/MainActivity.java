@@ -88,4 +88,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public Account getAccount() {
+        return this.account;
+    }
 }

@@ -12,15 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.splus.CreateAssignmentActivity;
+import com.example.splus.MainActivity;
 import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.SummaryActivity;
 import com.example.splus.my_adapter.AssignAdapter;
 import com.example.splus.my_adapter.SpinnerCourseAdapter;
+import com.example.splus.my_data.Account;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
 
@@ -34,6 +38,8 @@ public class AssignFragment extends Fragment {
     private AssignAdapter assignAdapter;
     private SpinnerCourseAdapter spinnerCourseAdapter;
 
+    private Button buttonCreateAssignment;
+
     public AssignFragment() {
         // Required empty public constructor
     }
@@ -44,6 +50,10 @@ public class AssignFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_assign, container, false);
+
+        MainActivity activity = (MainActivity) getActivity();
+
+        Account account = activity.getAccount();
 
         ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAssignFragment);
         imageButtonNotif.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +82,18 @@ public class AssignFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 assignAdapter.setData(getAllAssignment());
+            }
+        });
+
+        buttonCreateAssignment = view.findViewById(R.id.buttonAssignFragment);
+        buttonCreateAssignment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CreateAssignmentActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("teacher_account", account);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         return view;
