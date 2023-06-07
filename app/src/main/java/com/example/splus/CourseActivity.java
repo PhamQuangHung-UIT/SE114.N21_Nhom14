@@ -1,23 +1,21 @@
 package com.example.splus;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.splus.my_adapter.LessonAdapter;
-import com.example.splus.my_data.Course;
-import com.example.splus.my_data.Lesson;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager2.widget.ViewPager2;
 
-import java.util.List;
+import com.example.splus.my_adapter.CourseViewPagerAdapter;
+import com.example.splus.my_data.Course;
+import com.example.splus.my_viewmodel.CourseViewModel;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class CourseActivity extends AppCompatActivity {
     TextView className;
@@ -30,72 +28,59 @@ public class CourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
+        CourseViewModel model = new ViewModelProvider(this).get(CourseViewModel.class);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             return;
         }
 
-        Course myClass = (Course) bundle.get("course");
+        model.setCurrentCourse((Course)bundle.get("course"));
 
-        className = findViewById(R.id.textNameCourseActivity);
-        className.setText(myClass.getCourseName());
+        TabLayout tabLayout = findViewById(R.id.tabLayout_CourseActivity);
+        ViewPager2 viewPager = findViewById(R.id.viewPagerCourse);
 
-        RecyclerView recyclerList = findViewById(R.id.listCourseActivity);
-        recyclerList.setLayoutManager(new LinearLayoutManager(CourseActivity.this));
-
-        LessonAdapter lessonAdapter = new LessonAdapter(getAllLesson(myClass), this::onClickGoToLesson);
-
-        recyclerList.setAdapter(lessonAdapter);
-
-        buttonBack = findViewById(R.id.buttonBackCourseActivity);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+        CourseViewPagerAdapter adapter = new CourseViewPagerAdapter(this);
+        tabLayout.addOnTabSelectedListener(adapter);
+        viewPager.setAdapter(adapter);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onClick(View v) {
-                onBackPressed();
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                adapter.onTabUnselected(tabLayout.getTabAt(positionOffset < 0.5 ? 1 - position : position));
+                adapter.onTabSelected(tabLayout.getTabAt(positionOffset < 0.5 ? position : 1 - position));
             }
         });
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+           if (position == 0) {
+               tab.setText(R.string.lesson_list);
+           } else {
+               tab.setText(R.string.comments);
+               tab.setIcon(R.drawable.baseline_comment_24);
+           }
+        }).attach();
+
+        className = findViewById(R.id.textNameCourseActivity);
+        className.setText(model.getCurrentCourse().getCourseName());
+
+        buttonBack = findViewById(R.id.buttonBackCourseActivity);
+        buttonBack.setOnClickListener(v -> onBackPressed());
 
         buttonDetailClass = findViewById(R.id.buttonInfoCourseActivity);
-        buttonDetailClass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickGoToDetailClass(myClass);
-            }
+        buttonDetailClass.setOnClickListener(view -> {
+            Intent intent = new Intent(CourseActivity.this, DetailCourseActivity.class);
+            Bundle b = new Bundle();
+            b.putSerializable("detail_course", model.getCurrentCourse());
+            intent.putExtras(b);
+            startActivity(intent);
         });
 
         buttonContactTeacher = findViewById(R.id.buttonContactCourseActivity);
-        buttonContactTeacher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CourseActivity.this, "Contact button is pressed", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void onClickGoToDetailClass(Course course) {
-        Intent intent = new Intent(CourseActivity.this, DetailCourseActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("detail_course", course);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-
-    private void onClickGoToLesson(Lesson lesson) {
-        Intent intent = new Intent(CourseActivity.this, StudyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("lesson", lesson);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-
-    @NonNull
-    private List<Lesson> getAllLesson(@NonNull Course course) {
-        return course.getListLesson();
+        buttonContactTeacher.setOnClickListener(view
+                -> Toast.makeText(CourseActivity.this, "Contact button is pressed", Toast.LENGTH_SHORT).show());
     }
 
     @Override
     public void onBackPressed() {
-        // super.onBackPressed();
         finish();
     }
 }
