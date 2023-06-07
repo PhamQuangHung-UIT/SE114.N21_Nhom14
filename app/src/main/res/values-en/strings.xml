@@ -39,7 +39,9 @@
     <string name="label_teacher_name">Teacher</string>
     <string name="title_teacher_name">Teacher</string>
     <string name="making_question_button">Make a question</string>
-    <string name="class_info">Class information</string>
+    <string name="class_detail">Class detail</string>
+    <string name="lesson_list">Lesson list</string>
+    <string name="comments">Comments</string>
 
     <string name="teacher_info">Contact teacher</string>
 
@@ -133,4 +135,9 @@
     <string name="lable_question_number">"Question "</string>
     <string name="text_question">Content of question, can be display by English or Vietnamese</string>
     <string name="text_answer">Content of answer</string>
+    <string name="reply">Reply</string>
+    <string name="one_reply">1 Reply</string>
+    <string name="n_replies">%1$d Replies</string>
+    <string name="just_now">Just now</string>
+    <string name="write_a_comment">Write a comment…</string>
 </resources>
