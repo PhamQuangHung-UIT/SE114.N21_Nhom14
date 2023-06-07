@@ -1,5 +1,6 @@
 package com.example.splus;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.splus.my_class.ActivityManager;
+import com.example.splus.my_class.LocaleHelper;
 import com.example.splus.my_data.Account;
 
 import java.util.ArrayList;
@@ -62,6 +64,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
     private List<Account> checkLogin(String username, String password) {
         List<Account> accountList = new ArrayList<>();
         int role = password.equals("0")? 0:1;
