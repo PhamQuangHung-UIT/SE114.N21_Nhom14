@@ -3,80 +3,59 @@ package com.example.splus.my_adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.splus.ClassModel;
 import com.example.splus.R;
-import com.example.splus.my_data.Course;
-import com.example.splus.my_interface.IClickCourseListener;
+
 
 import java.util.List;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.UserViewHolder> {
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
 
-    private final List<Course> courseList;
-    private final IClickCourseListener iClickCourseListener;
+    private List<ClassModel> classList;
 
-    public CourseAdapter(List<Course> courseList, IClickCourseListener iClickCourseListener) {
-        this.courseList = courseList;
-        this.iClickCourseListener = iClickCourseListener;
+    public CourseAdapter(List<ClassModel> classList) {
+        this.classList = classList;
     }
 
     @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_course, parent, false);
-        return new UserViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Course course = courseList.get(position);
-        if (course == null) {
-            return;
-        }
-        holder.courseName.setText(course.getCourseName());
-        holder.teacherName.setText(course.getTeacherName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ClassModel classModel = classList.get(position);
 
-        holder.courseItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                iClickCourseListener.onClickCourse(course);
-            }
-        });
+        // Set the class data to the TextViews
+        holder.textViewClassId.setText(classModel.getClassId());
+        holder.textViewClassName.setText(classModel.getClassName());
+        holder.textViewInstructorName.setText(classModel.getInstructorName());
     }
 
     @Override
     public int getItemCount() {
-        if (courseList != null) {
-            return courseList.size();
-        }
-        return 0;
+        return classList.size();
     }
 
-    public List<Course> getCourseList() {
-        return courseList;
-    }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-    public IClickCourseListener getiClickCourseListener() {
-        return iClickCourseListener;
-    }
+        private TextView textViewClassId;
+        private TextView textViewClassName;
+        private TextView textViewInstructorName;
 
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-    public static class UserViewHolder extends RecyclerView.ViewHolder {
-
-        private final RelativeLayout courseItem;
-        private final TextView courseName;
-        private final TextView teacherName;
-
-        public UserViewHolder(@NonNull View view) {
-            super(view);
-            courseItem = view.findViewById(R.id.relativeItemCourse);
-            courseName = view.findViewById(R.id.textClassNameItemCourse);
-            teacherName = view.findViewById(R.id.textTeacherNameItemCourse);
+            textViewClassId = itemView.findViewById(R.id.textItemCourseSelected);
+            textViewClassName = itemView.findViewById(R.id.textViewClassName);
+            textViewInstructorName = itemView.findViewById(R.id.textViewInstructorName);
         }
     }
 }

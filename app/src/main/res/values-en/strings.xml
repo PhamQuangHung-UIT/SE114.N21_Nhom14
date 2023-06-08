@@ -136,4 +136,6 @@
     <string name="text_answer">Content of answer</string>
     <string name="edit_assigment_content">Content</string>
     <string name="edit_topic_question">Topic</string>
+    <string name="edit_ID_lop_hoc">ID\'s class</string>
+    <string name="btn_create_class">Create class</string>
 </resources>

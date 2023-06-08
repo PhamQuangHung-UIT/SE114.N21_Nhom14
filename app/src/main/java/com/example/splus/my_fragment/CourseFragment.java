@@ -1,9 +1,8 @@
 package com.example.splus.my_fragment;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,75 +10,77 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
 
-import com.example.splus.CourseActivity;
+import com.example.splus.ClassModel;
 import com.example.splus.R;
 import com.example.splus.my_adapter.CourseAdapter;
-import com.example.splus.my_data.Course;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CourseFragment extends Fragment {
 
+    private CourseAdapter courseAdapter;
+    private List<ClassModel> classList;
+
+    private FirebaseFirestore firestore;
+
+    // ...
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course, container, false);
 
-        RecyclerView recyclerList = view.findViewById(R.id.recyclerListCourseFragment);
-        recyclerList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CourseAdapter courseAdapter = new CourseAdapter(getAllCourses(), this::onClickGoToCourseActivity);
-        recyclerList.setAdapter(courseAdapter);
+        // Initialize Firestore
+        firestore = FirebaseFirestore.getInstance();
 
-        ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationCourseFragment);
-        imageButtonNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickGoToNotification();
-            }
-        });
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerListCourseFragment);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        EditText editSearchBox = view.findViewById(R.id.searchBoxCourseFragment);
-        // handle searching
+        classList = new ArrayList<>();
+        courseAdapter = new CourseAdapter(classList);
+
+        recyclerView.setAdapter(courseAdapter);
+
+        // Load class data from Firestore
+        loadClasses();
+
         return view;
     }
 
-    private void onClickGoToNotification() {
-    }
+    // Load class data from Firestore
+    private void loadClasses() {
+        CollectionReference classesCollection = firestore.collection("classes");
 
-    private void onClickGoToCourseActivity(Course course) {
-        Intent intent = new Intent(this.getActivity(), CourseActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("course", course);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
+        classesCollection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        // Extract class data from Firestore document
+                        String classId = documentSnapshot.getString("classId");
+                        String className = documentSnapshot.getString("className");
+                        String instructorName = documentSnapshot.getString("instructorName");
 
-    @NonNull
-    private List<Course> getAllCourses() {
-        List<Course> courseList = new ArrayList<>();
+                        // Create a ClassModel object
+                        ClassModel classModel = new ClassModel(classId, className, instructorName);
 
-        courseList.add(new Course(
-                0,
-                "Nhập môn Toán học",
-                "Splus"
-        ));
+                        // Add classModel to the classList
+                        classList.add(classModel);
+                    }
 
-        courseList.add( new Course(
-                0,
-                "Giải tích",
-                "ThS. Lê Hoàng Tuấn"
-        ));
-
-        courseList.add( new Course(
-                0,
-                "Đại số tuyến tính",
-                "TS. Dương Ngọc Hảo"
-        ));
-
-        return courseList;
+                    // Notify the adapter that the data has changed
+                    courseAdapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 }

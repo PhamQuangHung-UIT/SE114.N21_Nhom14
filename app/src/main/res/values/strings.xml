@@ -234,5 +234,7 @@
     <string name="dao_ham" translatable="false">f(x)\'</string>
     <string name="edit_topic_question">Chủ đề</string>
     <string name="edit_assigment_content">Nội dung bài tập</string>
+    <string name="btn_create_class">Tạo Lớp</string>
+    <string name="edit_ID_lop_hoc">ID lớp học</string>
 
 </resources>
