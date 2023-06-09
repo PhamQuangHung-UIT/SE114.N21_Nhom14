@@ -19,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CreateCourseActivity extends AppCompatActivity {
   private EditText editTextCourseName;
   private EditText editTextCreatorName;
-  private Button buttonCreateCourse;
   private DatabaseReference databaseReference;
 
   @Override
@@ -31,7 +30,7 @@ public class CreateCourseActivity extends AppCompatActivity {
 
     editTextCourseName = findViewById(R.id.editTextCourseName);
     editTextCreatorName = findViewById(R.id.editTextCreatorName);
-    buttonCreateCourse = findViewById(R.id.buttonCreateCourse);
+    Button buttonCreateCourse = findViewById(R.id.buttonCreateCourse);
 
     buttonCreateCourse.setOnClickListener(new View.OnClickListener() {
       @Override
