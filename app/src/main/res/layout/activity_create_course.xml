@@ -3,60 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".CreateClassActivity">
+    android:padding="16dp"
+    tools:context=".CreateCourseActivity">
 
-    <EditText
-        android:id="@+id/editClassId"
+    <TextView
+        android:textColor="@color/green"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/edit_ID_lop_hoc"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        android:padding="10dp"
+        android:text="@string/title_create_course"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_course_name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editClassName"
+        android:id="@+id/editTextCreatorName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/label_class_name"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/editInstructorName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/label_teacher_name"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/label_teacher_name"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        android:padding="10dp"
+        android:hint="@string/edit_creater_name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/btnCreateClass"
+        android:layout_gravity="center"
+        android:id="@+id/buttonCreateCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_create_class"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:text="@string/btn_create"/>
 
 </LinearLayout>

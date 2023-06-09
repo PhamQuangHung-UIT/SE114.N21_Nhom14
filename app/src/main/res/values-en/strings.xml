@@ -137,9 +137,12 @@
     <string name="edit_assigment_content">Content</string>
     <string name="edit_topic_question">Topic</string>
     <string name="edit_ID_lop_hoc">ID\'s class</string>
-    <string name="btn_create_class">Create class</string>
     <string name="TitleCourseName">Course Name</string>
     <string name="TabCourseName">Course tab\'s name</string>
     <string name="TabAssignment">Assignment tab\'s name</string>
     <string name="Search_course">Search for a course ...</string>
+    <string name="title_create_course">CREATE COURSE</string>
+    <string name="btn_create">Create</string>
+    <string name="edit_course_name">Course name</string>
+    <string name="edit_creater_name">Creater name</string>
 </resources>

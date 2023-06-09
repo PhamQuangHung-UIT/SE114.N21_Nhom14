@@ -75,7 +75,7 @@ public class AssignFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                assignAdapter.setData(getAssignment(spinnerCourseAdapter.getItem(position).getCourseID()));
+                assignAdapter.setData(getAssignment(spinnerCourseAdapter.getItem(position).getCourseId()));
                 Toast.makeText(parent.getContext(), spinnerCourseAdapter.getItem(position).getCourseName(), Toast.LENGTH_SHORT).show();
             }
 
