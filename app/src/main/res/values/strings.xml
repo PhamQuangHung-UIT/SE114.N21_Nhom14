@@ -236,5 +236,9 @@
     <string name="edit_assigment_content">Nội dung bài tập</string>
     <string name="btn_create_class">Tạo Lớp</string>
     <string name="edit_ID_lop_hoc">ID lớp học</string>
+    <string name="TitleCourseName">TÊN LỚP HỌC</string>
+    <string name="TabCourseName">Tên các tabs của course</string>
+    <string name="TabAssignment">Tên các tabs của mục bài tập</string>
+    <string name="Search_course">Tìm khóa học...</string>
 
 </resources>

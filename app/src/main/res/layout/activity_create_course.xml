@@ -40,6 +40,17 @@
         android:padding="10dp"
         android:autofillHints="" />
 
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/label_teacher_name"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:autofillHints="" />
+
     <Button
         android:id="@+id/btnCreateClass"
         android:layout_width="wrap_content"
