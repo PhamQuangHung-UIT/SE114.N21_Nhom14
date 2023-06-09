@@ -8,54 +8,71 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.splus.ClassModel;
 import com.example.splus.R;
+import com.example.splus.my_data.Course;
 
 
 import java.util.List;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-    private List<ClassModel> classList;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-    public CourseAdapter(List<ClassModel> classList) {
-        this.classList = classList;
+import java.util.List;
+
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
+
+  private List<Course> courseList;
+
+  public CourseAdapter(List<Course> courseList) {
+    this.courseList = courseList;
+  }
+
+  @NonNull
+  @Override
+  public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_course, parent, false);
+    return new CourseViewHolder(view);
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
+    Course course = courseList.get(position);
+    holder.bindData(course);
+  }
+
+  @Override
+  public int getItemCount() {
+    return courseList.size();
+  }
+
+  public class CourseViewHolder extends RecyclerView.ViewHolder {
+    private TextView courseIDTextView;
+    private TextView courseNameTextView;
+    private TextView creatorTextView;
+    private TextView creationTimeTextView;
+    private TextView studentCountTextView;
+
+    public CourseViewHolder(@NonNull View itemView) {
+      super(itemView);
+
+      courseIDTextView = itemView.findViewById(R.id.courseIdTextView);
+      courseNameTextView = itemView.findViewById(R.id.courseNameTextView);
+      creatorTextView = itemView.findViewById(R.id.creatorTextView);
+      creationTimeTextView = itemView.findViewById(R.id.creationTimeTextView);
+      studentCountTextView = itemView.findViewById(R.id.studentCountTextView);
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_course, parent, false);
-        return new ViewHolder(view);
+    public void bindData(Course course) {
+      courseIDTextView.setText("ID: " + course.getCourseId());
+      courseNameTextView.setText(course.getCourseName());
+      creatorTextView.setText("Created by: " + course.getCreaterName());
+      creationTimeTextView.setText("Created at: " + course.getCreationTime());
+      studentCountTextView.setText("Students: " + course.getStudentCount());
     }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ClassModel classModel = classList.get(position);
-
-        // Set the class data to the TextViews
-        holder.textViewClassId.setText(classModel.getClassId());
-        holder.textViewClassName.setText(classModel.getClassName());
-        holder.textViewInstructorName.setText(classModel.getInstructorName());
-    }
-
-    @Override
-    public int getItemCount() {
-        return classList.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView textViewClassId;
-        private TextView textViewClassName;
-        private TextView textViewInstructorName;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            textViewClassId = itemView.findViewById(R.id.textItemCourseSelected);
-            textViewClassName = itemView.findViewById(R.id.textViewClassName);
-            textViewInstructorName = itemView.findViewById(R.id.textViewInstructorName);
-        }
-    }
+  }
 }
