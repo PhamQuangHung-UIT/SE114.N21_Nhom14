@@ -1,9 +1,12 @@
 package com.example.splus;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,18 +14,33 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+
+
+
 public class SignUpActivity extends AppCompatActivity {
 
     EditText editUsername, editPassword, editRePassword, editFullname, editBirthday;
     RadioGroup radioGroupGender, radioGroupRole;
     Button buttonSignUp;
     TextView textSuggestLogin;
+
+    FirebaseAuth mAuth ;
+   // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://se114-n21-default-rtdb.firebaseio.com/");
     private int gender = -1;         // 0: male, 1: female, 2: others
     private int role = -1;           // 0: student, 1: teacher
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+
         setContentView(R.layout.activity_sign_up);
 
         editUsername = findViewById(R.id.editUsernameSignUpActivity);
@@ -79,6 +97,8 @@ public class SignUpActivity extends AppCompatActivity {
                 // local checking
                 // empty or week username
                 String username = editUsername.getText().toString();
+                String birthday = editBirthday.getText().toString();
+                String fullname = editFullname.getText().toString();
                 if (username.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, R.string.toast_empty_alert, Toast.LENGTH_SHORT).show();
                     editUsername.setSelection(0);
@@ -101,9 +121,29 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, R.string.toast_role_alert, Toast.LENGTH_SHORT).show();
                     return;
                 }
+                mAuth.createUserWithEmailAndPassword(username, password)
+                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+
+                                    Toast.makeText(SignUpActivity.this, "Authentication successfuly.",
+                                            Toast.LENGTH_SHORT).show();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+
+                                } else {
+                                    Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                // databaseReference.child("users").child(username).child("Fullname").setValue(fullname);
+                //    databaseReference.child("users").child(username).child("Birthday").setValue(birthday);
+                //   databaseReference.child("users").child(username).child("Password").setValue(password);
+
                 // query SELECT username FROM account WHERE account_username= :username
                 // if result list<account> != null && list<account> is empty
-                Toast.makeText(SignUpActivity.this, R.string.toast_sign_up_successful, Toast.LENGTH_SHORT).show();
                 // insert a new record into account table
                 // String username = editUsername.getText().toString();
                 // String password = editPassword.getText().toString().sha256();
@@ -111,7 +151,7 @@ public class SignUpActivity extends AppCompatActivity {
                 // String birthday = editBirthday.getText().toString();
                 // (global variable, datatype:int) gender
                 // (global variable, datatype:int) role
-                nextActivity();
+               // nextActivity();
                 // else
                 // Toast.makeText(SignUpActivity.this, R.string.toast_sign_up_unsuccessful, Toast.LENGTH_SHORT).show();
             }
