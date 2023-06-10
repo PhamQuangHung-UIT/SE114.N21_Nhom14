@@ -4,19 +4,23 @@ import com.example.splus.R;
 
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 public class Account implements Serializable {
-    private int accountID;
+    private String accountID;
     private int avatarID;
+
     private String username;
     private int role;           // 0: student, 1: teacher
     private String fullname;
+
     private String birthday;
     private int gender;         // 0: male, 1: female, 2: others
     private String email;
     private String phone;
 
     public Account() {
-        this.accountID = 0;
+        this.accountID = "123";
         this.avatarID = R.drawable.account_box;
         this.username = "username";
         this.role = 0;
@@ -26,7 +30,7 @@ public class Account implements Serializable {
         this.email = "todo@splus.edu.vn";
         this.phone = "0987654321";
     }
-    public Account(int accountID, String username, int role) {
+    public Account(String accountID, String username, int role) {
         this.accountID = accountID;
         this.avatarID = R.drawable.account_box;
         this.username = username;
@@ -37,10 +41,22 @@ public class Account implements Serializable {
         this.email = "todo@splus.edu.vn";
         this.phone = "0987654321";
     }
-    public int getAccountID() {
+    public Account(String accountID,String username,int role,String Fullname, String birthday,
+                   int gender, String email) {
+        this.accountID = accountID;
+        this.avatarID = R.drawable.account_box;
+        this.username = username;
+        this.role = role;
+        this.fullname = "Nguyễn Văn A";
+        this.birthday = "01/01/2001";
+        this.gender = 0;
+        this.email = "todo@splus.edu.vn";
+        this.phone = "0987654321";
+    }
+    public String getAccountID() {
         return accountID;
     }
-    public void setAccountID(int accountID) {
+    public void setAccountID(String accountID) {
         this.accountID = accountID;
     }
     public int getAvatarID() {
@@ -88,7 +104,10 @@ public class Account implements Serializable {
     public String getPhone() {
         return phone;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {this.phone = phone; }
+
+    public String toJson(){
+        Gson gson =new Gson();
+        return gson.toJson(this);
     }
 }

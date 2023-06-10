@@ -14,24 +14,28 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.splus.my_data.Account;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText editUsername, editPassword, editRePassword, editFullname, editBirthday;
+    EditText editUsername, editPassword, editRePassword, editFullname, editBirthday,editEmail;
     RadioGroup radioGroupGender, radioGroupRole;
     Button buttonSignUp;
     TextView textSuggestLogin;
 
     FirebaseAuth mAuth ;
+    FirebaseFirestore fireStore;
    // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://se114-n21-default-rtdb.firebaseio.com/");
     private int gender = -1;         // 0: male, 1: female, 2: others
     private int role = -1;           // 0: student, 1: teacher
@@ -40,13 +44,14 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        fireStore = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.activity_sign_up);
 
         editUsername = findViewById(R.id.editUsernameSignUpActivity);
         editPassword = findViewById(R.id.editPasswordSignUpActivity);
         editRePassword = findViewById(R.id.editRetypePasswordSignUpActivity);
-
+        editEmail=findViewById(R.id.editEmailSignUpActivity);
         editFullname = findViewById(R.id.editFullnameSignUpActivity);
         editBirthday = findViewById(R.id.editBirthdaySignUpActivity);
 
@@ -96,9 +101,11 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // local checking
                 // empty or week username
+
                 String username = editUsername.getText().toString();
                 String birthday = editBirthday.getText().toString();
                 String fullname = editFullname.getText().toString();
+                String email = editEmail.getText().toString();
                 if (username.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, R.string.toast_empty_alert, Toast.LENGTH_SHORT).show();
                     editUsername.setSelection(0);
@@ -106,10 +113,16 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 String password = editPassword.getText().toString();
                 String repasswd = editRePassword.getText().toString();
+
                 if (!password.equals(repasswd)) {
                     Toast.makeText(SignUpActivity.this, R.string.toast_password_matching_alert, Toast.LENGTH_SHORT).show();
                     editPassword.setText("");
                     editRePassword.setText("");
+                    editPassword.setSelection(0);
+                    return;
+                }
+                if (password.length()<6) {
+                    Toast.makeText(SignUpActivity.this, R.string.toast_password_min_length_alert, Toast.LENGTH_SHORT).show();
                     editPassword.setSelection(0);
                     return;
                 }
@@ -121,7 +134,8 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, R.string.toast_role_alert, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mAuth.createUserWithEmailAndPassword(username, password)
+
+                mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
 
                             @Override
@@ -130,17 +144,23 @@ public class SignUpActivity extends AppCompatActivity {
 
                                     Toast.makeText(SignUpActivity.this, "Authentication successfuly.",
                                             Toast.LENGTH_SHORT).show();
-                                    FirebaseUser user = mAuth.getCurrentUser();
-
+                                    String UserID =mAuth.getCurrentUser().getUid();
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("email", email);
+                                    user.put("username", username);
+                                    user.put("fullname", fullname);
+                                    user.put("password", password);
+                                    user.put("birthday",birthday);
+                                    user.put("gender",gender);
+                                    user.put("role",role);
+                                   fireStore.collection("Users").document(UserID).set(user);
                                 } else {
                                     Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-                // databaseReference.child("users").child(username).child("Fullname").setValue(fullname);
-                //    databaseReference.child("users").child(username).child("Birthday").setValue(birthday);
-                //   databaseReference.child("users").child(username).child("Password").setValue(password);
+
 
                 // query SELECT username FROM account WHERE account_username= :username
                 // if result list<account> != null && list<account> is empty
@@ -151,7 +171,7 @@ public class SignUpActivity extends AppCompatActivity {
                 // String birthday = editBirthday.getText().toString();
                 // (global variable, datatype:int) gender
                 // (global variable, datatype:int) role
-               // nextActivity();
+                nextActivity();
                 // else
                 // Toast.makeText(SignUpActivity.this, R.string.toast_sign_up_unsuccessful, Toast.LENGTH_SHORT).show();
             }

@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
                                 Toast.makeText(LoginActivity.this, R.string.toast_login_successful, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 Bundle bundle = new Bundle();
@@ -60,9 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             } else {
                                 // If sign in fails, display a message to the user.
-                                //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                //Log.w(TAG, "signInWithEmail:failure", task.getException()
                                 Toast.makeText(LoginActivity.this, R.string.toast_login_unsuccessful, Toast.LENGTH_SHORT).show();
-                                //updateUI(null);
                             }
                         }
                     });
@@ -81,8 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     private List<Account> checkLogin(String username, String password) {
         List<Account> accountList = new ArrayList<>();
         int role = password.equals("0")? 0:1;
-        accountList.add(new Account(0, username, role));
+        accountList.add(new Account("", username, role));
         return accountList;
-
     }
 }
