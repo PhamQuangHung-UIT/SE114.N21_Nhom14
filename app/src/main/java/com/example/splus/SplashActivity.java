@@ -21,6 +21,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
         ActivityManager.add(this);
 
         slashScreen = findViewById(R.id.linearSplashActivity);

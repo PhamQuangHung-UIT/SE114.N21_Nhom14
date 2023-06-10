@@ -1,6 +1,7 @@
 package com.example.splus.my_adapter;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.splus.R;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_interface.IClickAssignmentListener;
+
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -65,13 +68,23 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             ongoingAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
             ongoingAssignmentViewHolder.courseName.setText(assignment.getCourseName());
-            ongoingAssignmentViewHolder.timestampt.setText(assignment.getAssignDeadline());
-            ongoingAssignmentViewHolder.point.setText(Double.toString(assignment.getResult()));
+
+            if (assignment.isSubmitted()) {
+                ongoingAssignmentViewHolder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_check_circle_24, 0, 0, 0);
+                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_submitted));
+            } else {
+                ongoingAssignmentViewHolder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_cancel_24, 0, 0, 0);
+                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_unsubmitted));
+            }
 
             ongoingAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    iClickAssignmentListener.onClickAssignment(assignment);
+                    try {
+                        iClickAssignmentListener.onClickAssignment(assignment);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
         } else if (TYPE_ASSIGNMENT_ONGOING == holder.getItemViewType()) {
@@ -85,7 +98,11 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             overdueAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    iClickAssignmentListener.onClickAssignment(assignment);
+                    try {
+                        iClickAssignmentListener.onClickAssignment(assignment);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
         }
@@ -102,7 +119,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public int getItemViewType(int position) {
         Assignment assignment = this.listAssignment.get(position);
-        if (assignment.isFinish()) {
+        if (assignment.isExpired()) {
             return TYPE_ASSIGNMENT_OVERDUE;
         } else {
             return TYPE_ASSIGNMENT_ONGOING;
@@ -113,16 +130,14 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         private final RelativeLayout assignmentLayout;
         private final TextView assignmentName;
         private final TextView courseName;
-        private final TextView timestampt;
-        private final TextView point;
+        private final TextView status;
 
         public OverdueAssignmentViewHolder(@NonNull View view) {
             super(view);
             assignmentLayout = view.findViewById(R.id.relativeItemAssignmentOverdue);
             assignmentName = view.findViewById(R.id.textNameItemAssignmentOverdue);
             courseName = view.findViewById(R.id.textClassItemAssignmentOverdue);
-            timestampt = view.findViewById(R.id.textTimestampItemAssignmentOverdue);
-            point = view.findViewById(R.id.textPointItemAssignmentOverdue);
+            status = view.findViewById(R.id.textStatusItemAssignmentOverdue);
         }
     }
 

@@ -1,52 +1,51 @@
 package com.example.splus.my_data;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 import java.sql.Timestamp;
-import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Assignment implements Serializable {
-    private final int id;
+    private final String id;
     private final String name;
-    private final int quantity;     // number of question
-    private final String time;
-    private final String deadline;
-    private final String content;
-    private final int format;   // 0: multiple-choice, 1: essay
-    private double result;
-    private String submit_time;
-    private final int courseID;
+    private final String details;
+    private int quantity;
+    private int format;   // 0: multiple-choice, 1: essay
+    private int minutes;
+    private String deadline;
+    private int showAnswer;       // 0: no, 1: yes
     private final String courseName;
-    private final int showAnswer;       // 0: no, 1: yes
+    private boolean status;
 
-    public Assignment(int id, String name, int quantity, String time, String deadline, String content, int courseID, String courseName, int format, int showAnswer) {
+    public static final int MULTIPLE_CHOICE = 0;
+    public static final int ESSAY = 1;
+
+    public static final boolean SUBMITTED = true;
+    public static final boolean UNSUBMITTED = false;
+
+    public Assignment(String id, String name, String details, String courseName) throws JSONException {
         this.id = id;
         this.name = name;
-        this.quantity = quantity;
-        this.time = time;
-        this.deadline = deadline;
-        this.content = content;
-        this.format = format;
-        this.courseID = courseID;
+        this.details = details;
         this.courseName = courseName;
-        this.showAnswer = showAnswer;
+        setDetails();
     }
 
     public Assignment() {
-        this.id = 0;
+        this.id = "";
         this.name = "Assignment name";
-        this.quantity = 10;
-        this.time = "1h30m";
+        this.minutes = 90;
         this.deadline = "2023-05-01 00:00:00";
-        this.content = "";
-        this.courseID = 0;
+        this.details = "";
         this.courseName = "Course name";
-        this.format = 0;
+        this.format = MULTIPLE_CHOICE;
         this.showAnswer = 0;
+        this.status = UNSUBMITTED;
     }
 
-    public int getAssignID() {
+    public String getAssignID() {
         return id;
     }
 
@@ -54,24 +53,16 @@ public class Assignment implements Serializable {
         return name;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public String getAssignTime() {
-        return time;
+    public int getAssignTime() {
+        return minutes;
     }
 
     public String getAssignDeadline() {
         return deadline;
     }
 
-    public String getAssignContent() {
-        return content;
-    }
-
-    public int getCourseID() {
-        return courseID;
+    public String getAssignDetails() {
+        return details;
     }
 
     public String getCourseName() {
@@ -86,35 +77,13 @@ public class Assignment implements Serializable {
         return showAnswer;
     }
 
-    public double getResult() {
-        return result;
-    }
-
-    public void setResult(double result) {
-        this.result = result;
-    }
-
-    public String getSubmit_time() {
-        return submit_time;
-    }
-
-    public void setSubmit_time(String submit_time) {
-        this.submit_time = submit_time;
-    }
-
-    public boolean isFinish() {
-        Timestamp timestamp = Timestamp.valueOf(this.deadline);
-        Date date = new Date();
-        int compare = timestamp.compareTo(date);
-        return compare < 0;
-    }
-
+    /*
     public Question getQuestion(int number) {
 
         int index_begin = 0, index_end;
         int counter = 0;
-        for (int i=0; i<this.content.length(); i++) {
-            if ('#' == this.content.charAt(i)) {
+        for (int i=0; i<this.details.length(); i++) {
+            if ('#' == this.details.charAt(i)) {
                 counter = counter + 1;
             }
             if (number == counter) {
@@ -123,13 +92,13 @@ public class Assignment implements Serializable {
             }
         }
         index_end = index_begin + 1;
-        while (this.content.charAt(index_end) != '#') {
+        while (this.details.charAt(index_end) != '#') {
             index_end = index_end + 1;
         }
 
-        String str_content = this.content.substring(index_begin, index_end);
+        String str_details = this.details.substring(index_begin, index_end);
 
-        List<String> items = Arrays.asList(str_content.split("\n"));
+        List<String> items = Arrays.asList(str_details.split("\n"));
 
         String question = items.get(1);
         String answerA = items.get(2);
@@ -138,6 +107,59 @@ public class Assignment implements Serializable {
         String answerD = items.get(5);
 
         return new Question(number, question, answerA, answerB, answerC, answerD);
+    }
+
+     */
+
+    public boolean isExpired() {
+        Timestamp ts = Timestamp.valueOf(deadline);
+        // timestamp_example = "2018-09-01 09:01:15";
+        Date today = new Date();
+        int result = ts.compareTo(today);
+        return result < 0;
+    }
+
+    public boolean isSubmitted() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setDetails() throws JSONException {
+        JSONObject object = new JSONObject(details).getJSONObject("assignment");
+        this.format = object.getInt("format");
+        this.showAnswer = object.getInt("mode");
+        this.deadline = object.getString("deadline");
+        this.minutes = object.getInt("minutes");
+        this.quantity = object.getJSONArray("content").length();
+    }
+
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    public int getFormat() {
+        return this.format;
+    }
+
+    public int getMinutes() {
+        return this.minutes;
+    }
+
+    public Question getQuestion(int index) throws JSONException {
+        String question, answerA, answerB, answerC, answerD;
+        char answerkey;
+        JSONObject object = new JSONObject(details).getJSONObject("assignment").getJSONArray("content").getJSONObject(index);
+        question = object.getString("question");
+        answerA = object.getString("a");
+        answerB = object.getString("b");
+        answerC = object.getString("c");
+        answerD = object.getString("d");
+        answerkey = object.getString("key").charAt(0);
+
+        return new Question(index, question, answerA, answerB, answerC, answerD, answerkey);
     }
 }
 

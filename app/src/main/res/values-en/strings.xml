@@ -142,4 +142,6 @@
     <string name="hint_course_code">Course code</string>
     <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
+    <string name="text_submitted">Submitted</string>
+    <string name="text_unsubmitted">Unsubmitted</string>
 </resources>
