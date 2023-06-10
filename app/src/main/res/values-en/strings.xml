@@ -9,6 +9,7 @@
 
     <string name="hint_username">Enter your username</string>
 
+    <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
 
     <string name="hint_repassword">Rewrite password</string>
@@ -118,6 +119,7 @@
     <string name="text_role_teacher">Teacher</string>
     <string name="toast_sign_up_successful">Sign up succcessful</string>
     <string name="toast_sign_up_unsuccessful">Fail to sign up</string>
+    <string name="toast_min_length_alert">Password must be at least 6 characters</string>
     <string name="toast_empty_alert">This field cannot be left blank</string>
     <string name="toast_password_matching_alert">Re-enter password does not match</string>
     <string name="toast_gender_alert">Choose your gender please</string>
@@ -142,4 +144,5 @@
     <string name="write_a_comment">Write a comment…</string>
     <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
+    <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
 </resources>
