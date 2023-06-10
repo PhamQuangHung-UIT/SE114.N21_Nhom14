@@ -137,6 +137,19 @@
     <string name="lable_question_number">"Question "</string>
     <string name="text_question">Content of question, can be display by English or Vietnamese</string>
     <string name="text_answer">Content of answer</string>
+
+    <string name="edit_assigment_content">Content</string>
+    <string name="edit_topic_question">Topic</string>
+    <string name="edit_ID_lop_hoc">ID\'s class</string>
+    <string name="TitleCourseName">Course Name</string>
+    <string name="TabCourseName">Course tab\'s name</string>
+    <string name="TabAssignment">Assignment tab\'s name</string>
+    <string name="Search_course">Search for a course ...</string>
+    <string name="title_create_course">CREATE COURSE</string>
+    <string name="btn_create">Create</string>
+    <string name="edit_course_name">Course name</string>
+    <string name="edit_creater_name">Creater name</string>
+
     <string name="reply">Reply</string>
     <string name="one_reply">1 Reply</string>
     <string name="n_replies">%1$d Replies</string>
@@ -145,4 +158,5 @@
     <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
     <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
+
 </resources>

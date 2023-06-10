@@ -12,20 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
-        android:gravity="end|bottom"
         android:fontFamily="@font/montserrat"
+        android:gravity="end|bottom"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:padding="15dp"
         android:text="@string/app_name"
-        android:paddingTop="60dp"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"/>
+        android:textSize="24sp" />
 
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:paddingBottom="20dp"
         tools:ignore="UselessParent">
 
         <TableRow
@@ -35,8 +34,8 @@
             <Button
                 android:id="@+id/btn_x"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/x"
                 android:textAllCaps="false"
@@ -45,50 +44,51 @@
             <Button
                 android:id="@+id/percent"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_per"
                 android:textColor="@color/green"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_divide"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_div"
                 android:textColor="@color/green"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_all_clear"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/ac"
                 android:textColor="@color/red"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_del"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_del"
                 android:textColor="@color/red"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
         </TableRow>
+
         <TableRow>
 
             <Button
                 android:id="@+id/btn_fx"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/f_x"
                 android:textAllCaps="false"
@@ -97,17 +97,17 @@
             <Button
                 android:id="@+id/btn_cos"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_cos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/btn_cos"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_sin"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/btn_sin"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -115,8 +115,8 @@
             <Button
                 android:id="@+id/btn_tan"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/btn_tan"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -124,8 +124,8 @@
             <Button
                 android:id="@+id/btn_cot"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/btn_cot"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -137,8 +137,8 @@
             <Button
                 android:id="@+id/btn_pi"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/btn_pi"
                 tools:ignore="TextContrastCheck" />
@@ -146,38 +146,38 @@
             <Button
                 android:id="@+id/btn_7"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                android:text="@string/btn_7"
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_8"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                android:text="@string/btn_8"
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_9"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                android:text="@string/btn_9"
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_multiply"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_mul"
                 android:textColor="@color/green"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         </TableRow>
@@ -187,47 +187,47 @@
             <Button
                 android:id="@+id/btn_giai_thua"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/giai_thua"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/giai_thua"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_4"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/btn_4"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_5"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/btn_5"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_6"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/btn_6"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_except"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_except"
                 android:textColor="@color/green"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
         </TableRow>
 
@@ -236,35 +236,35 @@
             <Button
                 android:id="@+id/btn_dao_ham"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/dao_ham"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_1"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/btn_1"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_2"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/btn_2"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_3"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/btn_3"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -272,62 +272,62 @@
             <Button
                 android:id="@+id/btn_add"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_add"
                 android:textColor="@color/green"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck,TextContrastCheck" />
         </TableRow>
 
         <TableRow>
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_change"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:background="@drawable/change"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/white"
                 android:contentDescription="@android:string/untitled"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                android:src="@drawable/baseline_table_view_24"
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_e"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/e"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:text="@string/e"
                 android:textAllCaps="false"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_0"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/btn_0"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_dot"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/dot"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_equal"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="@string/btn_equal"
                 android:textColor="@color/green"
-                android:layout_weight="1"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
         </TableRow>
@@ -335,13 +335,13 @@
 
     <TableLayout
         android:id="@+id/table2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="bottom"
         android:paddingBottom="20dp"
-        tools:ignore="UselessParent"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:ignore="UselessParent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -350,8 +350,8 @@
             <Button
                 android:id="@+id/btn_x_1"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/x"
                 android:textAllCaps="false"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
@@ -359,39 +359,39 @@
 
             <Button
                 android:id="@+id/percent_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_per"
                 android:textColor="@color/green"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_divide_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_div"
                 android:textColor="@color/green"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_all_clear_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/ac"
                 android:textColor="@color/red"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_del_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_del"
                 android:textColor="@color/red"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
         </TableRow>
 
         <TableRow>
@@ -399,8 +399,8 @@
             <Button
                 android:id="@+id/btn_fx_1"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/f_x"
                 android:textAllCaps="false"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
@@ -408,36 +408,36 @@
             <Button
                 android:id="@+id/btn_can_hai"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_can_hai"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_mo_ngoac"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_mo_ngoac"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_dong_ngoac"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_dong_ngoac"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_tich_phan"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_tich_phan"
                 android:textAllCaps="false"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
         </TableRow>
 
@@ -446,44 +446,44 @@
             <Button
                 android:id="@+id/btn_log"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_log"
                 android:textAllCaps="false"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_7_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_7"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_8_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_8"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_9_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_9"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_multiply_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_mul"
                 android:textColor="@color/green"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
         </TableRow>
 
@@ -492,44 +492,44 @@
             <Button
                 android:id="@+id/btn_ln"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_ln"
                 android:textAllCaps="false"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_4_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_4"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_5_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_5"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_6_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_6"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_except_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_except"
                 android:textColor="@color/green"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
         </TableRow>
 
@@ -538,86 +538,88 @@
             <Button
                 android:id="@+id/btn_mu"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_mu"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_1_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_1"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_2_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_2"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_3_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_3"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_add_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_add"
                 android:textColor="@color/green"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
         </TableRow>
 
         <TableRow>
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_change_1"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:background="@drawable/change"
-                android:contentDescription="@android:string/untitled" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:contentDescription="@android:string/untitled"
+                android:src="@drawable/baseline_table_view_24"
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_tri_tuyet_doi"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_tri_tuyet_doi"
                 tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_0_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_0"
-                tools:ignore="TextSizeCheck, TextContrastCheck"
-                style="?android:attr/buttonBarButtonStyle" />
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_dot_1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 style="?android:attr/buttonBarButtonStyle"
-                android:text="@string/dot"/>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/dot" />
 
             <Button
                 android:id="@+id/btn_equal_1"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btn_equal"
                 android:textColor="@color/green"
-                tools:ignore="TextSizeCheck, TextContrastCheck"/>
+                tools:ignore="TextSizeCheck, TextContrastCheck" />
 
         </TableRow>
     </TableLayout>

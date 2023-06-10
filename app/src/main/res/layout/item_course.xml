@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeItemCourse"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,33 +7,55 @@
     android:layout_marginBottom="10dp"
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
-    android:background="@drawable/bg_light_white">
+    android:background="@drawable/bg_light_white"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textClassNameItemCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/label_class_name"
-        android:textColor="@color/green"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:ignore="RtlSymmetry,TextContrastCheck" />
+        <TextView
+            android:id="@+id/courseIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="Id khóa học"
+            android:textColor="@color/green"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/textTeacherNameItemCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textClassNameItemCourse"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/label_teacher_name"
-        android:textColor="@color/dark_grey"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/courseNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Tên khóa học"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/creatorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/label_teacher_name"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/creationTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Thời gian tạo lớp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/studentCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Số lượng sinh viên tham gia"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"/>
+
+</LinearLayout>

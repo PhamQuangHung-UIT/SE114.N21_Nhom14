@@ -37,7 +37,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         textCourseName.setText(course.getCourseName());
 
         textTeacherName = findViewById(R.id.textTeacherDetailCourse);
-        textTeacherName.setText(course.getTeacherName());
+        textTeacherName.setText(course.getCreaterName());
 
         RecyclerView recyclerListStudent = findViewById(R.id.recyclerListStudentDetailCourse);
         recyclerListStudent.setLayoutManager(new LinearLayoutManager(DetailCourseActivity.this));

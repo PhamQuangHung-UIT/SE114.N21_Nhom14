@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".CreateCourseActivity">
+
+    <TextView
+        android:textColor="@color/green"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_create_course"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_course_name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/editTextCreatorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_creater_name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/buttonCreateCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_create"/>
+
+</LinearLayout>
