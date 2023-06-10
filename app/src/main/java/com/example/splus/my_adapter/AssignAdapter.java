@@ -14,6 +14,8 @@ import com.example.splus.R;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_interface.IClickAssignmentListener;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 public class AssignAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -56,7 +58,11 @@ public class AssignAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         givenAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iClickAssignmentListener.onClickAssignment(assignment);
+                try {
+                    iClickAssignmentListener.onClickAssignment(assignment);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

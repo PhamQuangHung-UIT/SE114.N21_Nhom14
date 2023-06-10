@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeItemAssignmentOverdue"
     android:layout_width="match_parent"
@@ -19,7 +20,7 @@
         android:fontFamily="@font/montserrat"
         android:paddingStart="20dp"
         android:text="@string/homework_title"
-        android:textColor="@color/green"
+        android:textColor="@color/dark_grey"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:ignore="RtlSymmetry,TextContrastCheck" />
@@ -38,32 +39,21 @@
         tools:ignore="RtlSymmetry"
         />
     <TextView
-        android:id="@+id/textTimestampItemAssignmentOverdue"
+        android:id="@+id/textStatusItemAssignmentOverdue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textClassItemAssignmentOverdue"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/montserrat"
-        android:text="@string/timestamp_ex"
+        android:text="@string/text_submitted"
         android:textColor="@color/dark_grey"
         android:textSize="14sp"
         android:paddingStart="20dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
         tools:ignore="RtlSymmetry"
-        />
-
-    <TextView
-        android:id="@+id/textPointItemAssignmentOverdue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_centerVertical="true"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/point_ex"
-        android:textColor="@color/red"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:ignore="RelativeOverlap" />
+        app:drawableStartCompat="@drawable/baseline_check_circle_24"
+    />
 
 </RelativeLayout>
