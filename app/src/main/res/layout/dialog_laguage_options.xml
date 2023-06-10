@@ -19,9 +19,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:fontFamily="@font/montserrat"
+                android:padding="10dp"
                 android:tag="@string/locale_vn"
-                android:text="@string/language_radio_button_vn"
-                android:padding="10dp"/>
+                android:text="@string/language_radio_button_vn" />
 
             <RadioButton
                 android:id="@+id/English"

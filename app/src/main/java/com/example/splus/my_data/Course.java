@@ -21,6 +21,7 @@ public class Course {
         this.createrName = courseTeacherName;
         this.creationTime = creationTime;
         this.studentCount = studentCount;
+
     }
 
     // Getters and setters for the attributes

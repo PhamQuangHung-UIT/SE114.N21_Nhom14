@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Default strings for all language type-->
-
+    <!--TODO: Default strings for all language type-->
     <string name="app_name" translatable="false">S-plus</string>
 
     <string name="logo_des" translatable="false">Splus Official Logo</string>
-
-    <string name="item_name" translatable="false">Item name</string>
 
     <string name="item_des" translatable="false">Description</string>
 
@@ -23,40 +20,10 @@
     <string name="ex_class" translatable="false">KHMT2021</string>
     <string name="ex_email" translatable="false">todo@example.splus.vn</string>
     <string name="ex_stdID" translatable="false">19520001</string>
-    <!--Vietnamese-->
 
-    <string name="title_sign_up">Đăng ký</string>
-
-    <string name="title_log_in">Đăng nhập</string>
-
-    <string name="support_upper">HỖ TRỢ</string>
-
-    <string name="hint_username">Tên người dùng</string>
-    <string name="hint_password">Mật khẩu</string>
-    <string name="hint_repassword">Nhập lại mật khẩu</string>
-
-    <string name="text_suggest_sign_up">Chưa có tài khoản?</string>
-    <string name="text_suggest_log_in">Đã có tài khoản?</string>
-
-    <string name="toast_login_successful">Đăng nhập thành công</string>
-    <string name="toast_login_unsuccessful">Đăng nhập thất bại</string>
-
-    <string name="title_fragment_home">Trang chủ</string>
-
-    <string name="title_fragment_course">Lớp học</string>
-
-    <string name="title_fragment_assignment">Bài tập</string>
-
-    <string name="welcome_home_title">Chào mừng bạn đến với S-plus!</string>
-
-    <string name="search_box_hint">Tìm kiếm môn học …</string>
-
-    <string name="recent_ls_title">Bài học gần đây</string>
-
-    <string name="subject_name">Tên môn học</string>
-
-    <string name="lesson_id_example" translatable="false">SPLUS-MATHEMATICS</string>
-    <string name="lesson_name">Tên bài học</string>
+    <string name="teacher_name_example" translatable="false">S-Plus</string>
+    <string name="text_class_name" translatable="false">Nhập môn Toán học</string>
+    <string name="text_lesson_name" translatable="false">Tầm quan trọng của Toán học</string>
     <string name="lesson_content_example" translatable="false">
         <br><b>1. Tổng quan về bài học</b>\n</br>
         <br>\tTrong bài học này chúng ta sẽ tìm hiểu về những khái niệm có liên quan, các chức năng quan trọng chủ yếu và những ứng dụng thực tế của nó.\n</br>
@@ -82,23 +49,62 @@
         <br>\t\tỨng dụng trong tài chính.\n</br>
     </string>
 
+    <string name="ex_comment" translatable="false">Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you</string>
+    <string name="formatted_displayName_createDateOffset" translatable="false"><b>%1$s</b>    %2$s</string>
+    <string name="ex_DisplayName_CreatedDateOffset" translatable="false"><b>Rick Astley</b>    Vừa xong</string>
+    <!--__________Vietnamese__________-->
+
+    <string name="title_sign_up">Đăng ký</string>
+
+    <string name="title_log_in">Đăng nhập</string>
+
+    <string name="support_upper">HỖ TRỢ</string>
+
+    <string name="hint_username">Tên người dùng</string>
+    <string name="hint_email">email</string>
+
+    <string name="hint_password">Mật khẩu</string>
+    <string name="hint_repassword">Nhập lại mật khẩu</string>
+
+    <string name="text_suggest_sign_up">Chưa có tài khoản?</string>
+    <string name="text_suggest_log_in">Đã có tài khoản?</string>
+
+    <string name="toast_login_successful">Đăng nhập thành công</string>
+    <string name="toast_login_unsuccessful">Đăng nhập thất bại</string>
+
+    <string name="title_fragment_home">Trang chủ</string>
+
+    <string name="title_fragment_course">Lớp học</string>
+
+    <string name="title_fragment_assignment">Bài tập</string>
+
+    <string name="welcome_home_title">Chào mừng bạn đến với S-plus!</string>
+
+    <string name="search_box_hint">Tìm kiếm môn học …</string>
+
+    <string name="recent_ls_title">Bài học gần đây</string>
+
+    <string name="subject_name">Tên môn học</string>
+
+    <string name="lesson_id_example" translatable="false">SPLUS-MATHEMATICS</string>
+    <string name="lesson_name">Tên bài học</string>
+
     <string name="label_course">Lớp học</string>
     <string name="label_class_name">Tên lớp học</string>
     <string name="label_teacher_name">Tên giảng viên</string>
-
-    <string name="text_class_name" translatable="false">Nhập môn Toán học</string>
-    <string name="text_lesson_name" translatable="false">Tầm quan trọng của Toán học</string>
     <string name="title_teacher_name">Giảng viên</string>
-    <string name="teacher_name_example" translatable="false">S-Plus</string>
 
     <string name="making_question_button">Đặt câu hỏi</string>
 
-    <string name="class_info">Thông tin lớp</string>
+    <string name="lesson_list">Danh sách lớp</string>
+
+    <string name="comments">Bình luận</string>
+
+    <string name="class_detail">Thông tin lớp</string>
 
     <string name="teacher_info">Liên hệ GV</string>
 
-    <string name="splash_description_1">Ứng dụng học toán</string>
-    <string name="splash_description_2">Thế hệ mới</string>
+    <string name="splash_description_1">Ứng dụng học toán\ncao cấp</string>
 
     <string name="label_name">Họ và tên</string>
     <string name="label_id">MSSV</string>
@@ -122,7 +128,7 @@
     <string name="ok">OK</string>
     <string name="tab_study_notification">HỌC VỤ</string>
     <string name="tab_other_notification">KHÁC</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="homework_title">Bài tập Cuối khoá</string>
     <string name="remaining_time">Còn 1 giờ 15 phút</string>
     <string name="timestamp_ex">11:59 04/04/2023</string>
@@ -175,7 +181,9 @@
     <string name="toast_sign_up_successful">Đăng ký tài khoản thành công</string>
     <string name="toast_sign_up_unsuccessful">Đăng ký thất bại</string>
     <string name="toast_empty_alert">Không được để trống trường này</string>
+
     <string name="toast_password_matching_alert">Nhập lại mật khẩu không khớp</string>
+    <string name="toast_password_min_length_alert" >Mật khẩu chứa tối thiểu 6 kí tự</string>
     <string name="toast_gender_alert">Vui lòng chọn giới tính</string>
     <string name="toast_role_alert">Vui lòng chọn vai trò</string>
     <string name="title_setting">Cài đặt</string>
@@ -191,6 +199,11 @@
     <string name="lable_question_number">"Câu "</string>
     <string name="text_question">Nội dung câu hỏi ở dạng văn bản có thể trình bày theo ngôn ngữ tiếng Việt hoặc tiếng Anh</string>
     <string name="text_answer">Nội dung đáp án</string>
+    <string name="reply">Phản hồi</string>
+    <string name="one_reply">1 phản hồi</string>
+    <string name="n_replies">%1$d phản hồi</string>
+    <string name="just_now">Vừa xong</string>
+    <string name="write_a_comment">Viết bình luận…</string>
 
     <!-- button on calculate -->
     <string name="btn_del" translatable="false"> ⌫ </string>
@@ -233,6 +246,7 @@
     <string name="giai_thua" translatable="false">x!</string>
     <string name="dao_ham" translatable="false">f(x)\'</string>
     <string name="edit_topic_question">Chủ đề</string>
+
     <string name="edit_assigment_content">Nội dung bài tập</string>
     <string name="btn_create">Tạo</string>
     <string name="TitleCourseName">TÊN KHÓA HỌC</string>
@@ -242,5 +256,8 @@
     <string name="title_create_course">TẠO KHÓA HỌC</string>
     <string name="edit_course_name">Tên khóa học</string>
     <string name="edit_creater_name">Tên người tạo</string>
+
+    <string name="toast_min_length_alert">Mật khẩu tối thiểu 6 ký tự</string>
+
 
 </resources>

@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
+                super.onPageSelected(position);
                 navigation.getMenu().getItem(position).setChecked(true);
             }
         });

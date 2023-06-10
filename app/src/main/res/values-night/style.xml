@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="TextLarge" parent="TextAppearance.AppCompat.Large">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/light_grey</item>
     </style>
     <style name="TextSmall" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">@color/grey</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+    <style name="TextMedium.Comment" parent="TextMedium">
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+    <style name="TextSmall.Selection.ReplyButton"  parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextSmall.Selection</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:background">@drawable/button_nobackground</item>
+        <item name="iconTint">@color/light_grey</item>
+    </style>
+    <style name="LikeButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/button_nobackground</item>
+        <item name="buttonTint">@color/light_grey</item>
     </style>
     <style name="RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
         <item name="buttonTint">@color/purple_200</item>
         <item name="android:textAppearance">@style/TextLarge</item>
     </style>
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+    <style name="NotificationTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">@color/green</item>
         <item name="tabIndicatorHeight">3dp</item>
-        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabTextAppearance">@style/NotificationTextAppearance</item>
         <item name="tabSelectedTextColor">@color/green</item>
     </style>
-    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+    <style name="NotificationTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textStyle">bold</item>
         <item name="textAllCaps">true</item>
         <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+    <style name="AvatarForeground">
+        <item name="android:foregroundTint">@android:color/background_dark</item>
+    </style>
+    <style name="ImageButton">
+        <item name="android:tint">@color/light_grey</item>
     </style>
 </resources>
