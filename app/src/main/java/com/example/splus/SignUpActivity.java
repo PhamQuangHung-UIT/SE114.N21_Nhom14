@@ -154,6 +154,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     user.put("gender",gender);
                                     user.put("role",role);
                                    fireStore.collection("Users").document(UserID).set(user);
+
                                 } else {
                                     Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();

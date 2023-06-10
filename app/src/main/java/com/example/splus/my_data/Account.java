@@ -24,7 +24,7 @@ public class Account implements Serializable {
         this.avatarID = R.drawable.account_box;
         this.username = "username";
         this.role = 0;
-        this.fullname = "Nguyễn Văn A";
+        this.fullname = "Nguyễn Văn B";
         this.birthday = "01/01/2001";
         this.gender = 0;
         this.email = "todo@splus.edu.vn";
@@ -35,23 +35,23 @@ public class Account implements Serializable {
         this.avatarID = R.drawable.account_box;
         this.username = username;
         this.role = role;
-        this.fullname = "Nguyễn Văn A";
+        this.fullname = "Nguyễn Văn C";
         this.birthday = "01/01/2001";
         this.gender = 0;
         this.email = "todo@splus.edu.vn";
         this.phone = "0987654321";
     }
-    public Account(String accountID,String username,int role,String Fullname, String birthday,
+    public Account(String accountID,String username,int role,String fullname, String birthday,
                    int gender, String email) {
         this.accountID = accountID;
         this.avatarID = R.drawable.account_box;
         this.username = username;
         this.role = role;
-        this.fullname = "Nguyễn Văn A";
-        this.birthday = "01/01/2001";
-        this.gender = 0;
-        this.email = "todo@splus.edu.vn";
-        this.phone = "0987654321";
+        this.fullname = fullname;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.email = email;
+        this.phone = "";
     }
     public String getAccountID() {
         return accountID;
