@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
-import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONException;
 import org.json.JSONObject;
