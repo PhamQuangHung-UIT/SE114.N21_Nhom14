@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/headerAssignmentFragment"
         android:background="@color/light_grey"
-        style="@style/MyCustomTabLayout"
+        style="@style/NotificationTabLayout"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager
