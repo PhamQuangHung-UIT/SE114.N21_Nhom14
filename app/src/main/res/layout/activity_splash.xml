@@ -22,10 +22,11 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/splash_description_1"
-        android:textColor="@color/green"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="@color/green"
+        android:textSize="24sp"
+        android:textStyle="bold"
         tools:ignore="TextContrastCheck" />
 
 </LinearLayout>

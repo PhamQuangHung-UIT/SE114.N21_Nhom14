@@ -9,6 +9,7 @@
 
     <string name="hint_username">Enter your username</string>
 
+    <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
 
     <string name="hint_repassword">Rewrite password</string>
@@ -39,12 +40,13 @@
     <string name="label_teacher_name">Teacher</string>
     <string name="title_teacher_name">Teacher</string>
     <string name="making_question_button">Make a question</string>
-    <string name="class_info">Class information</string>
+    <string name="class_detail">Class detail</string>
+    <string name="lesson_list">Lesson list</string>
+    <string name="comments">Comments</string>
 
     <string name="teacher_info">Contact teacher</string>
 
-    <string name="splash_description_1">Digital Math Educator</string>
-    <string name="splash_description_2">New Generation</string>
+    <string name="splash_description_1">High quality\nMath Educator</string>
 
     <string name="label_name">Name</string>
     <string name="label_id">ID</string>
@@ -117,6 +119,7 @@
     <string name="text_role_teacher">Teacher</string>
     <string name="toast_sign_up_successful">Sign up succcessful</string>
     <string name="toast_sign_up_unsuccessful">Fail to sign up</string>
+    <string name="toast_min_length_alert">Password must be at least 6 characters</string>
     <string name="toast_empty_alert">This field cannot be left blank</string>
     <string name="toast_password_matching_alert">Re-enter password does not match</string>
     <string name="toast_gender_alert">Choose your gender please</string>
@@ -140,8 +143,28 @@
     <string name="title_done">Done</string>
     <string name="hint_quantity">Course size</string>
     <string name="hint_course_code">Course code</string>
+
+    <string name="edit_assigment_content">Content</string>
+    <string name="edit_topic_question">Topic</string>
+    <string name="edit_ID_lop_hoc">ID\'s class</string>
+    <string name="TitleCourseName">Course Name</string>
+    <string name="TabCourseName">Course tab\'s name</string>
+    <string name="TabAssignment">Assignment tab\'s name</string>
+    <string name="Search_course">Search for a course ...</string>
+    <string name="title_create_course">CREATE COURSE</string>
+    <string name="btn_create">Create</string>
+    <string name="edit_course_name">Course name</string>
+    <string name="edit_creater_name">Creater name</string>
+
+    <string name="reply">Reply</string>
+    <string name="one_reply">1 Reply</string>
+    <string name="n_replies">%1$d Replies</string>
+    <string name="just_now">Just now</string>
+    <string name="write_a_comment">Write a comment…</string>
     <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
     <string name="text_submitted">Submitted</string>
     <string name="text_unsubmitted">Unsubmitted</string>
+    <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
+
 </resources>

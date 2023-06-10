@@ -3,20 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".CreateAssignmentActivity">
 
+    <EditText
+        android:id="@+id/editNameTopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="start|top"
+        android:hint="@string/edit_topic_question"
+        android:inputType="textMultiLine"
+        android:padding="15dp" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="0dp"
+        android:id="@+id/editNumberOfQuestion"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:hint="@string/edit_topic_question"
-        android:padding="15dp"
         android:layout_marginTop="20dp"
-        android:background="@color/light_grey"
-        android:layout_margin="20dp"/>
+        android:hint="Số câu hỏi"
+        android:inputType="number"
+        android:padding="15dp" />
+
+    <DatePicker
+        android:id="@+id/datePickerAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="calendar"
+        android:headerBackground="@color/green" />
+
+    <LinearLayout
+        android:id="@+id/btnCreateAssign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCreateAssignment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:drawableLeft="@drawable/baseline_done_24"
+            android:text="Tạo" />
+
+        <Button
+            android:id="@+id/btnCancelCreateAssign"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/baseline_close_24"
+            android:text="Hủy" />
+    </LinearLayout>
+
+
 </LinearLayout>
