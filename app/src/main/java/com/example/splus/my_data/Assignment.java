@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class Assignment implements Serializable {
     private final int id;
     private final String name;
+
     private final int quantity;     // number of question
     private final String time;
     private final String deadline;
