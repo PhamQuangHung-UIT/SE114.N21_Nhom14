@@ -242,5 +242,9 @@
     <string name="title_create_course">TẠO KHÓA HỌC</string>
     <string name="edit_course_name">Tên khóa học</string>
     <string name="edit_creater_name">Tên người tạo</string>
-
+    <string name="empty_state_message">không tím thấy kết quả</string>
+    <string name="edit_ID_lop_hoc">ID lớp học</string>
+    <string name="btn_save">Lưu</string>
+    <string name="btn_edit">Chỉnh sửa</string>
+    <string name="btn_delete">Xóa</string>
 </resources>

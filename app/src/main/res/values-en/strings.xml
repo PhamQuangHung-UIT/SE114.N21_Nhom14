@@ -136,6 +136,7 @@
     <string name="text_answer">Content of answer</string>
     <string name="edit_assigment_content">Content</string>
     <string name="edit_topic_question">Topic</string>
+    <string name="empty_state_message">No results found</string>
     <string name="edit_ID_lop_hoc">ID\'s class</string>
     <string name="TitleCourseName">Course Name</string>
     <string name="TabCourseName">Course tab\'s name</string>
@@ -145,4 +146,7 @@
     <string name="btn_create">Create</string>
     <string name="edit_course_name">Course name</string>
     <string name="edit_creater_name">Creater name</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_delete">Delete</string>
 </resources>

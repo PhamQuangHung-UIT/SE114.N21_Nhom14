@@ -3,6 +3,7 @@ package com.example.splus.my_adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,38 +12,29 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.splus.R;
 import com.example.splus.my_data.Course;
 
-
 import java.util.List;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
-
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
 
   private List<Course> courseList;
+  private OnItemClickListener listener;
 
-  public CourseAdapter(List<Course> courseList) {
+  public CourseAdapter(List<Course> courseList, OnItemClickListener listener) {
     this.courseList = courseList;
+    this.listener = listener;
   }
 
   @NonNull
   @Override
-  public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+  public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_course, parent, false);
-    return new CourseViewHolder(view);
+    return new ViewHolder(view);
   }
 
   @Override
-  public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
+  public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     Course course = courseList.get(position);
-    holder.bindData(course);
+    holder.bind(course, listener);
   }
 
   @Override
@@ -50,29 +42,45 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     return courseList.size();
   }
 
-  public class CourseViewHolder extends RecyclerView.ViewHolder {
-    private TextView courseIDTextView;
-    private TextView courseNameTextView;
-    private TextView creatorTextView;
-    private TextView creationTimeTextView;
-    private TextView studentCountTextView;
+  public class ViewHolder extends RecyclerView.ViewHolder {
+    private TextView textViewCourseName;
+    private TextView textViewCreatorName;
+    private Button buttonEdit;
+    private Button buttonDelete;
 
-    public CourseViewHolder(@NonNull View itemView) {
+    public ViewHolder(@NonNull View itemView) {
       super(itemView);
-
-      courseIDTextView = itemView.findViewById(R.id.courseIdTextView);
-      courseNameTextView = itemView.findViewById(R.id.courseNameTextView);
-      creatorTextView = itemView.findViewById(R.id.creatorTextView);
-      creationTimeTextView = itemView.findViewById(R.id.creationTimeTextView);
-      studentCountTextView = itemView.findViewById(R.id.studentCountTextView);
+      textViewCourseName = itemView.findViewById(R.id.courseNameTextView);
+      textViewCreatorName = itemView.findViewById(R.id.creatorTextView);
+      buttonEdit = itemView.findViewById(R.id.editButton);
+      buttonDelete = itemView.findViewById(R.id.deleteButton);
     }
 
-    public void bindData(Course course) {
-      courseIDTextView.setText("ID: " + course.getCourseId());
-      courseNameTextView.setText(course.getCourseName());
-      creatorTextView.setText("Created by: " + course.getCreaterName());
-      creationTimeTextView.setText("Created at: " + course.getCreationTime());
-      studentCountTextView.setText("Students: " + course.getStudentCount());
+    public void bind(Course course, OnItemClickListener listener) {
+      textViewCourseName.setText(course.getCourseName());
+      textViewCreatorName.setText(course.getCreatorName());
+
+      buttonEdit.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          listener.onEditButtonClick(course);
+        }
+      });
+
+      buttonDelete.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          listener.onDeleteButtonClick(course);
+        }
+      });
     }
+  }
+
+  public interface OnItemClickListener {
+    void onItemClick(Course course);
+
+    void onEditButtonClick(Course course);
+
+    void onDeleteButtonClick(Course course);
   }
 }

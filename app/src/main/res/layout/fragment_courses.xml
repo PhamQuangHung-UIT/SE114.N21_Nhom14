@@ -18,7 +18,8 @@
         android:gravity="center_vertical"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
-        android:background="@color/green">
+        android:background="@color/green"
+        tools:ignore="ObsoleteLayoutParam">
 
         <!-- TITLE CLASS NAME -->
         <TextView
@@ -67,13 +68,43 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <!-- LIST COURSES -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerListCoursesFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- PROGRESS BAR -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible" />
+
+    <!-- EMPTY VIEW -->
+    <TextView
+        android:id="@+id/emptyStateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/empty_state_message"
+        android:textColor="@color/dark_grey"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_create_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btn_create"
+        tools:ignore="TextContrastCheck" />
 
 </LinearLayout>
