@@ -12,7 +12,7 @@ public class CourseViewModel extends ViewModel {
         return currentCourse.getValue();
     }
 
-     public void setCurrentCourse(Course newCourse) {
+    public void setCurrentCourse(Course newCourse) {
         currentCourse.setValue(newCourse);
-     }
+    }
 }

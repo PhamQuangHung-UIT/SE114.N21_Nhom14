@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_WriteComment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/unfocused_background"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:alpha="1"
+        android:background="@drawable/popup_background"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/imageView_Avatar_writeComment"
+            style="@style/AvatarForeground"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:foreground="@drawable/crop_frame"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/green" />
+
+        <EditText
+            android:id="@+id/editText_WriteComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/background_edittext_border_round"
+            android:ems="10"
+            android:hint="@string/write_a_comment"
+            android:inputType="text"
+            android:textAppearance="@style/TextSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_CommitComment"
+            app:layout_constraintStart_toEndOf="@+id/imageView_Avatar_writeComment"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/button_CommitComment"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_round_nobackground"
+            android:clickable="true"
+            android:contentDescription="@string/send"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_send" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

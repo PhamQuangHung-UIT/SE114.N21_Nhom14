@@ -200,6 +200,8 @@
     <string name="n_replies">%1$d phản hồi</string>
     <string name="just_now">Vừa xong</string>
     <string name="write_a_comment">Viết bình luận…</string>
+    <string name="send">Gửi</string>
+
 
     <!-- button on calculate -->
     <string name="btn_del" translatable="false"> ⌫ </string>

@@ -4,89 +4,90 @@ import java.util.Date;
 
 public class Comment {
     private String id;
-    private String ownerId;
+    private String ownerDisplayName;
+    private String ownerID;
     private String courseID;
     private String text;
     private int likeCount;
     private int dislikeCount;
     private Date createdDate;
     private Boolean isLike;
-    private int repliesCount;
+    private int replyCount;
 
-    public Comment(String id, String ownerId, String courseID) {
+    public Comment(String id) {
         this.id = id;
-        this.ownerId = ownerId;
-        this.courseID = courseID;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getOwnerId() {
-        return ownerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getCourseId() {return courseID;}
+    public String getOwnerDisplayName() {
+        return ownerDisplayName;
+    }
+
+    public void setOwnerDisplayName(String ownerDisplayName) {
+        this.ownerDisplayName = ownerDisplayName;
+    }
+
+    public String getCourseId() {
+        return courseID;
+    }
 
     public String getText() {
         return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public int getLikeCount() {
         return likeCount;
     }
 
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
     public int getDislikeCount() {
         return dislikeCount;
-    }
-
-    public int getRepliesCount() {
-        return repliesCount;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public Boolean IsLike() {
-        return isLike;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
     }
 
     public void setDislikeCount(int dislikeCount) {
         this.dislikeCount = dislikeCount;
     }
 
+    public int getReplyCount() {
+        return replyCount;
+    }
+
+    public void setReplyCount(int replyCount) {
+        this.replyCount = replyCount;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Boolean IsLike() {
+        return isLike;
+    }
+
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
+    }
+
     public void setLike(Boolean isLike) {
         this.isLike = isLike;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public void setRepliesCount(int repliesCount) {
-        this.repliesCount = repliesCount;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public void Like() {
@@ -109,5 +110,13 @@ public class Comment {
     public void Undislike() {
         dislikeCount--;
         isLike = null;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
     }
 }

@@ -12,8 +12,9 @@
     <color name="red">#FF2D2D</color>
     <color name="yellow">#FFFF00</color>
     <color name="light_grey">#EEEEEE</color>
-    <color name="grey">#A6A6A6</color>
+    <color name="grey">#969696</color>
     <color name="medium_grey">#EFEFEF</color>
     <color name="unselected">#AAAACAAA</color>
-    <color name="pressed">#5FAAAAAA</color>
+    <color name="pressed">#4FAAAAAA</color>
+    <color name="unfocused_background">#44000000</color>
 </resources>

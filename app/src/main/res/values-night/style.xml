@@ -10,13 +10,19 @@
         <item name="android:textColor">@color/light_grey</item>
     </style>
     <style name="TextSmall.Selection.ReplyButton"  parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextMedium</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:background">@drawable/button_round_nobackground</item>
+        <item name="iconTint">@color/light_grey</item>
+    </style>
+    <style name="TextMedium.CommentButton"  parent="Widget.MaterialComponents.Button">
         <item name="android:textAppearance">@style/TextSmall.Selection</item>
         <item name="android:textColor">@color/light_grey</item>
         <item name="android:background">@drawable/button_nobackground</item>
         <item name="iconTint">@color/light_grey</item>
     </style>
     <style name="LikeButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:background">@drawable/button_nobackground</item>
+        <item name="android:background">@drawable/button_round_nobackground</item>
         <item name="buttonTint">@color/light_grey</item>
     </style>
     <style name="RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">

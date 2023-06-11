@@ -1,21 +1,28 @@
 package com.example.splus;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.splus.my_adapter.CourseViewPagerAdapter;
 import com.example.splus.my_data.Course;
-import com.example.splus.my_viewmodel.CourseViewModel;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import com.example.splus.my_fragment.CommentFragment;
 
 public class CourseActivity extends AppCompatActivity {
     TextView className;
@@ -23,44 +30,28 @@ public class CourseActivity extends AppCompatActivity {
     Button buttonDetailClass;
     Button buttonContactTeacher;
 
+    Course currentCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
-
-        CourseViewModel model = new ViewModelProvider(this).get(CourseViewModel.class);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             return;
         }
 
-        model.setCurrentCourse((Course)bundle.get("course"));
-
-        TabLayout tabLayout = findViewById(R.id.tabLayout_CourseActivity);
-        ViewPager2 viewPager = findViewById(R.id.viewPagerCourse);
-
-        CourseViewPagerAdapter adapter = new CourseViewPagerAdapter(this);
-        tabLayout.addOnTabSelectedListener(adapter);
-        viewPager.setAdapter(adapter);
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                adapter.onTabUnselected(tabLayout.getTabAt(positionOffset < 0.5 ? 1 - position : position));
-                adapter.onTabSelected(tabLayout.getTabAt(positionOffset < 0.5 ? position : 1 - position));
-            }
-        });
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-           if (position == 0) {
-               tab.setText(R.string.lesson_list);
-           } else {
-               tab.setText(R.string.comments);
-               tab.setIcon(R.drawable.baseline_comment_24);
-           }
-        }).attach();
+        currentCourse = (Course)bundle.get("course");
 
         className = findViewById(R.id.textNameCourseActivity);
-        className.setText(model.getCurrentCourse().getCourseName());
+        className.setText(currentCourse.getCourseName());
+
+        RecyclerView recyclerList = findViewById(R.id.listCourseActivity);
+
+        recyclerList.setLayoutManager(new LinearLayoutManager(this));
+
+        Button buttonShowComment = findViewById(R.id.button_ShowComment);
+        buttonShowComment.setOnClickListener(this::ShowComment);
 
         buttonBack = findViewById(R.id.buttonBackCourseActivity);
         buttonBack.setOnClickListener(v -> onBackPressed());
@@ -69,7 +60,7 @@ public class CourseActivity extends AppCompatActivity {
         buttonDetailClass.setOnClickListener(view -> {
             Intent intent = new Intent(CourseActivity.this, DetailCourseActivity.class);
             Bundle b = new Bundle();
-            b.putSerializable("detail_course", model.getCurrentCourse());
+            b.putSerializable("detail_course", currentCourse);
             intent.putExtras(b);
             startActivity(intent);
         });
@@ -82,5 +73,40 @@ public class CourseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    private void ShowComment(View view) {
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_window_comment_reply, null, false);
+        View holderView = findViewById(R.id.commentViewHolder);
+        Transition slideExit = new Slide(Gravity.BOTTOM), slideBegin = new Slide(Gravity.BOTTOM);
+        Display deviceDisplay = getWindowManager().getDefaultDisplay();
+        Point displaySize = new Point();
+        deviceDisplay.getSize(displaySize);
+        PopupWindow popupWindow = new PopupWindow(popupView, displaySize.x, (int)(displaySize.y * 0.85));
+        slideExit.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {}
+
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                holderView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onTransitionCancel(Transition transition) {}
+
+            @Override
+            public void onTransitionPause(Transition transition) {}
+
+            @Override
+            public void onTransitionResume(Transition transition) {}
+        });
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setEnterTransition(slideBegin);
+        popupWindow.setExitTransition(slideExit);
+        popupWindow.setBackgroundDrawable(AppCompatResources.getDrawable(this, R.drawable.popup_background));
+        holderView.setVisibility(View.VISIBLE);
+        popupWindow.showAtLocation(holderView, Gravity.BOTTOM, 0, 0);
     }
 }

@@ -11,12 +11,20 @@
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
     <style name="TextSmall.DisplayName" parent="TextSmall"/>
-    <style name="TextMedium.Comment" parent="TextMedium"/>
+    <style name="TextMedium.Comment" parent="TextMedium">
+        <item name="android:textAllCaps">false</item>
+    </style>
     <style name="TextSmall.Selection" parent="TextSmall">
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextSmall.Selection.ReplyButton"  parent="Widget.MaterialComponents.Button">
         <item name="android:textAppearance">@style/TextSmall.Selection</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:background">@drawable/button_round_nobackground</item>
+        <item name="iconTint">@color/dark_grey</item>
+    </style>
+    <style name="TextMedium.CommentButton"  parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextMedium.Comment</item>
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:background">@drawable/button_nobackground</item>
         <item name="iconTint">@color/dark_grey</item>
@@ -29,7 +37,7 @@
         <item name="android:textAppearance">@style/TextLarge</item>
     </style>
     <style name="LikeButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:background">@drawable/button_nobackground</item>
+        <item name="android:background">@drawable/button_round_nobackground</item>
         <item name="buttonTint">@color/dark_grey</item>
     </style>
     <style name="NotificationTabLayout" parent="Widget.Design.TabLayout">
