@@ -61,6 +61,8 @@
     <string name="support_upper">HỖ TRỢ</string>
 
     <string name="hint_username">Tên người dùng</string>
+    <string name="hint_email">email</string>
+
     <string name="hint_password">Mật khẩu</string>
     <string name="hint_repassword">Nhập lại mật khẩu</string>
 
@@ -179,7 +181,9 @@
     <string name="toast_sign_up_successful">Đăng ký tài khoản thành công</string>
     <string name="toast_sign_up_unsuccessful">Đăng ký thất bại</string>
     <string name="toast_empty_alert">Không được để trống trường này</string>
+
     <string name="toast_password_matching_alert">Nhập lại mật khẩu không khớp</string>
+    <string name="toast_password_min_length_alert" >Mật khẩu chứa tối thiểu 6 kí tự</string>
     <string name="toast_gender_alert">Vui lòng chọn giới tính</string>
     <string name="toast_role_alert">Vui lòng chọn vai trò</string>
     <string name="title_setting">Cài đặt</string>
@@ -243,6 +247,28 @@
     <string name="x" translatable="false">x</string>
     <string name="giai_thua" translatable="false">x!</string>
     <string name="dao_ham" translatable="false">f(x)\'</string>
+    <string name="title_create_course">Tạo lớp học</string>
+    <string name="label_teacher">Giảng viên:</string>
+    <string name="hint_course">Tên lớp học</string>
+    <string name="title_done">Hoàn tất</string>
+    <string name="hint_quantity">Sĩ số</string>
+    <string name="hint_course_code">Mã lớp học</string>
     <string name="edit_topic_question">Chủ đề</string>
+    <string name="TitleCreateAssignment">Tạo bài tập</string>
+    <string name="text_submitted">Đã nộp</string>
+    <string name="text_unsubmitted">Chưa nộp</string>
+
+    <string name="edit_assigment_content">Nội dung bài tập</string>
+    <string name="btn_create">Tạo</string>
+    <string name="TitleCourseName">TÊN KHÓA HỌC</string>
+    <string name="TabCourseName">Tên các tabs của course</string>
+    <string name="TabAssignment">Tên các tabs của mục bài tập</string>
+    <string name="Search_course">Tìm khóa học...</string>
+    <string name="title_create_course">TẠO KHÓA HỌC</string>
+    <string name="edit_course_name">Tên khóa học</string>
+    <string name="edit_creater_name">Tên người tạo</string>
+
+    <string name="toast_min_length_alert">Mật khẩu tối thiểu 6 ký tự</string>
+
 
 </resources>

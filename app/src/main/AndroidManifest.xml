@@ -21,6 +21,9 @@
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
+            android:name=".CreateCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateAssignmentActivity"
             android:exported="false" />
         <activity
@@ -82,8 +85,8 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|screenSize"
-            android:exported="true"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".StudyActivity"

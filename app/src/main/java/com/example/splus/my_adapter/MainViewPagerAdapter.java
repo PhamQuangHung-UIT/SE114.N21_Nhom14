@@ -9,7 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.splus.my_fragment.AccountFragment;
 import com.example.splus.my_fragment.AssignFragment;
 import com.example.splus.my_fragment.AssignmentFragment;
-import com.example.splus.my_fragment.CourseFragment;
+import com.example.splus.my_fragment.CoursesFragment;
 import com.example.splus.my_fragment.HomeFragment;
 
 public class MainViewPagerAdapter extends FragmentStateAdapter {
@@ -24,7 +24,7 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
         switch (position) {
             case 1:
                 //return new ClassFragment();
-                return new CourseFragment();
+                return new CoursesFragment();
             case 2:
                 if (role==0) {
                     //return new HomeworkFragment();

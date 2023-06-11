@@ -4,14 +4,16 @@ public class Question {
     private final int number;
     private final String question;
     private final String answerA, answerB, answerC, answerD;
+    private final char answerKey;
 
-    public Question(int number, String question, String answerA, String answerB, String answerC, String answerD) {
+    public Question(int number, String question, String answerA, String answerB, String answerC, String answerD, char answerKey) {
         this.number = number;
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.answerD = answerD;
+        this.answerKey = answerKey;
     }
 
     public int getNumber() {
@@ -36,5 +38,9 @@ public class Question {
 
     public String getAnswerD() {
         return answerD;
+    }
+
+    public char getAnswerKey() {
+        return answerKey;
     }
 }
