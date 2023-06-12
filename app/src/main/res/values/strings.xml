@@ -245,13 +245,14 @@
     <string name="x" translatable="false">x</string>
     <string name="giai_thua" translatable="false">x!</string>
     <string name="dao_ham" translatable="false">f(x)\'</string>
-    <string name="title_create_course">Tạo lớp học</string>
+
     <string name="label_teacher">Giảng viên:</string>
     <string name="hint_course">Tên lớp học</string>
     <string name="title_done">Hoàn tất</string>
     <string name="hint_quantity">Sĩ số</string>
     <string name="hint_course_code">Mã lớp học</string>
     <string name="edit_topic_question">Chủ đề</string>
+    <string name="edit_ID_lop_hoc">ID lớp học</string>
     <string name="TitleCreateAssignment">Tạo bài tập</string>
     <string name="text_submitted">Đã nộp</string>
     <string name="text_unsubmitted">Chưa nộp</string>
@@ -261,7 +262,7 @@
     <string name="TitleCourseName">TÊN KHÓA HỌC</string>
     <string name="TabCourseName">Tên các tabs của course</string>
     <string name="TabAssignment">Tên các tabs của mục bài tập</string>
-    <string name="Search_course">Tìm khóa học...</string>
+    <string name="Search_course">Tìm khóa học…</string>
     <string name="title_create_course">TẠO KHÓA HỌC</string>
     <string name="edit_course_name">Tên khóa học</string>
     <string name="edit_creater_name">Tên người tạo</string>

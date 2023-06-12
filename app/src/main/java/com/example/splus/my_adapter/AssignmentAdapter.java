@@ -1,7 +1,6 @@
 package com.example.splus.my_adapter;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +92,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             overdueAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
             overdueAssignmentViewHolder.courseName.setText(assignment.getCourseName());
-            overdueAssignmentViewHolder.remainingTime.setText(assignment.getAssignTime());
+            overdueAssignmentViewHolder.remainingTime.setText(String.valueOf(assignment.getAssignTime()));
 
             overdueAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

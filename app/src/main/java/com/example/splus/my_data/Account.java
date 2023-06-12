@@ -41,7 +41,7 @@ public class Account implements Serializable {
         this.email = "todo@splus.edu.vn";
         this.phone = "0987654321";
     }
-    public Account(String accountID,String username,int role,String fullname, String birthday,
+    public Account(String accountID, String username, int role, String fullname, String birthday,
                    int gender, String email) {
         this.accountID = accountID;
         this.avatarID = R.drawable.account_box;

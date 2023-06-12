@@ -3,7 +3,6 @@ package com.example.splus.my_data;
 import java.io.Serializable;
 import java.util.Date;
 import java.sql.Timestamp;
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +16,7 @@ public class Assignment implements Serializable {
     private int minutes;
     private String deadline;
     private int showAnswer;       // 0: no, 1: yes
+    private final String lessonId;
     private final String courseName;
     private boolean status;
 
@@ -26,10 +26,11 @@ public class Assignment implements Serializable {
     public static final boolean SUBMITTED = true;
     public static final boolean UNSUBMITTED = false;
 
-    public Assignment(String id, String name, String details, String courseName) throws JSONException {
+    public Assignment(String id, String name, String details, String lessonId, String courseName) throws JSONException {
         this.id = id;
         this.name = name;
         this.details = details;
+        this.lessonId = lessonId;
         this.courseName = courseName;
         setDetails();
     }
@@ -39,8 +40,9 @@ public class Assignment implements Serializable {
         this.name = "Assignment name";
         this.minutes = 90;
         this.deadline = "2023-05-01 00:00:00";
-        this.details = "";
-        this.courseName = "Course name";
+        this.details = "{\"assignment\":{\"name\":\"Final Exam\",\"format\":0,\"mode\":0,\"deadline\":\"2023-06-12 12:12:12\",\"minutes\":90,\"content\":[{\"question\":\"What is the volume of the shape?\",\"a\":\"The size of the shape\",\"b\":\"The weight of the shape\",\"c\":\"The capacity of the shape\",\"d\":\"The circuit of the shape\",\"key\":\"c\"}]}}";
+        this.lessonId = "lesson";
+        this.courseName = "course name";
         this.format = MULTIPLE_CHOICE;
         this.showAnswer = 0;
         this.status = UNSUBMITTED;
@@ -66,8 +68,8 @@ public class Assignment implements Serializable {
         return details;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getLessonId() {
+        return lessonId;
     }
 
     public int getAssignFormat() {
@@ -117,7 +119,8 @@ public class Assignment implements Serializable {
         // timestamp_example = "2018-09-01 09:01:15";
         Date today = new Date();
         int result = ts.compareTo(today);
-        return result < 0;
+        // return result < 0;
+        return result > 0;
     }
 
     public boolean isSubmitted() {
@@ -161,6 +164,10 @@ public class Assignment implements Serializable {
         answerkey = object.getString("key").charAt(0);
 
         return new Question(index, question, answerA, answerB, answerC, answerD, answerkey);
+    }
+
+    public String getCourseName() {
+        return courseName;
     }
 }
 

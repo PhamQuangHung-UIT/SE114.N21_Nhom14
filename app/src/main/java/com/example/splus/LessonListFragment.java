@@ -16,9 +16,18 @@ import android.view.ViewGroup;
 
 import com.example.splus.my_adapter.LessonAdapter;
 import com.example.splus.my_data.Course;
+import com.example.splus.my_data.Lesson;
 import com.example.splus.my_viewmodel.CourseViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LessonListFragment extends Fragment {
+    MainActivity activity = (MainActivity) getActivity();
+    List<Lesson> listLesson = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +48,8 @@ public class LessonListFragment extends Fragment {
 
         recyclerList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        LessonAdapter lessonAdapter = new LessonAdapter(myClass.getListLesson(), lesson -> {
+        getLessonList(activity.listLessonId);
+        LessonAdapter lessonAdapter = new LessonAdapter(this.listLesson, lesson -> {
             Intent intent = new Intent(getContext(), StudyActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("lesson", lesson);
@@ -49,4 +59,31 @@ public class LessonListFragment extends Fragment {
 
         recyclerList.setAdapter(lessonAdapter);
     }
+
+    private void getLessonList(List<String> listLessonId) {
+        listLesson = new ArrayList<>();
+        for (int index=0; index < listLessonId.size(); index++) {
+            activity.db.collection("lessons").document(listLessonId.get(index))
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document != null) {
+                                    listLesson.add(new Lesson(
+                                            document.getId(),
+                                            document.getString("name"),
+                                            document.getString("content"),
+                                            document.getString("courseName"),
+                                            document.getString("teacherName")
+                                    ));
+                                }
+                            }
+                        }
+                    });
+        }
+
+    }
+
 }

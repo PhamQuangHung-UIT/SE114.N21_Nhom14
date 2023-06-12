@@ -2,6 +2,7 @@ package com.example.splus.my_fragment;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -32,13 +33,12 @@ import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.json.JSONException;
-
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +66,7 @@ public class AssignFragment extends Fragment {
 
         MainActivity activity = (MainActivity) getActivity();
 
-        Account account = activity.getAccount();
+        Account account = activity.account;
 
         ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAssignFragment);
         imageButtonNotif.setOnClickListener(new View.OnClickListener() {
@@ -110,8 +110,6 @@ public class AssignFragment extends Fragment {
             }
         });
 
-        activity = (MainActivity) getActivity();
-
         return view;
     }
 
@@ -123,7 +121,7 @@ public class AssignFragment extends Fragment {
     @NonNull
     private List<Assignment> getAssignment(String courseId) {
         List<Assignment> listAssignment = new ArrayList<>();
-        FirebaseFirestore db = activity.getDb();
+        FirebaseFirestore db = activity.db;
         db.collection("assignments")
                 .whereEqualTo("courseId", courseId)
                 .get()
@@ -146,8 +144,8 @@ public class AssignFragment extends Fragment {
     @NonNull
     private List<Assignment> getAllAssignment() {
         List<Assignment> listAssignment = new ArrayList<>();
-        List<String> listLessonId = activity.getAllLessonId();
-        FirebaseFirestore db = activity.getDb();
+        List<String> listLessonId = activity.listLessonId;
+        FirebaseFirestore db = activity.db;
         for (int index=0; index<listLessonId.size(); index++) {
             db.collection("assignments")
                     .whereEqualTo("lessonId", listLessonId.get(index))
@@ -170,14 +168,21 @@ public class AssignFragment extends Fragment {
         return listAssignment;
     }
 
+    @SuppressLint("SimpleDateFormat")
+    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @NonNull
     private List<Course> getListCourse() {
         List<Course> courseList = new ArrayList<>();
 
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        String timestamp = format.format(ts);
+
         Course classExample = new Course(
                 "0",
                 getString(R.string.text_class_name),
-                getString(R.string.teacher_name_example)
+                getString(R.string.teacher_name_example),
+                timestamp,
+                50
         );
 
         courseList.add(classExample);
@@ -185,13 +190,17 @@ public class AssignFragment extends Fragment {
         courseList.add( new Course(
                 "0",
                 "Giải tích",
-                "ThS. Lê Hoàng Tuấn"
+                "ThS. Lê Hoàng Tuấn",
+                timestamp,
+                50
         ));
 
         courseList.add( new Course(
                 "0",
                 "Đại số tuyến tính",
-                "TS. Dương Ngọc Hảo"
+                "TS. Dương Ngọc Hảo",
+                timestamp,
+                50
         ));
 
         return courseList;

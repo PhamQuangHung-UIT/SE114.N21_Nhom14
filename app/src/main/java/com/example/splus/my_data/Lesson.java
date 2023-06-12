@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lesson implements Serializable {
-    private int lessonID;
+    private String lessonID;
     private String lessonName;
     private String lessonContent;
     private String courseName;
     private String teacherName;
 
-    public Lesson(int lessonID, String lessonName, String lessonContent, String courseName, String teacherName) {
+    public Lesson(String lessonID, String lessonName, String lessonContent, String courseName, String teacherName) {
         this.lessonID = lessonID;
         this.lessonName = lessonName;
         this.lessonContent = lessonContent;
@@ -19,11 +19,11 @@ public class Lesson implements Serializable {
         this.teacherName = teacherName;
     }
 
-    public int getLessonID() {
+    public String getLessonID() {
         return lessonID;
     }
 
-    public void setLessonID(int lessonID) {
+    public void setLessonID(String lessonID) {
         this.lessonID = lessonID;
     }
 

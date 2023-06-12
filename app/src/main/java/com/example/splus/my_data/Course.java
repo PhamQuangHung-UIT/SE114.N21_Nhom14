@@ -1,8 +1,7 @@
 package com.example.splus.my_data;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Course {
     private String courseId;
@@ -10,6 +9,12 @@ public class Course {
     private String createrName;
     private int studentCount;
     private String creationTime;
+
+    public List<Lesson> listLesson = new ArrayList<>();
+
+    public void setListLesson(List<Lesson> list) {
+        this.listLesson = list;
+    }
 
     public Course() {
         // Default constructor for Firebase Firestore
@@ -65,4 +70,5 @@ public class Course {
     public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
+
 }

@@ -21,6 +21,8 @@ import com.example.splus.my_adapter.AssignmentAdapter;
 import com.example.splus.my_data.Assignment;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,35 +41,25 @@ public class OngoingAssignmentFragment extends Fragment {
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         AssignmentAdapter adapter = new AssignmentAdapter(this::onClickGoToOngoingAssignment);
-        adapter.setData(getListOngoingAssignment());
+        try {
+            adapter.setData(getListOngoingAssignment());
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
         list.setAdapter(adapter);
 
         return view;
     }
 
-    private List<Assignment> getListOngoingAssignment() {
+    private List<Assignment> getListOngoingAssignment() throws JSONException {
         List<Assignment> assignmentList = new ArrayList<>();
 
         Assignment example = new Assignment(
-                1,
+                "1",
                 "Kiểm tra cuối khoá",
-                5,
-                "30m",
-                "2023-06-10 00:00:00",
-                "#1\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#2\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#3\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#4\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#5\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n#",
-                0,
-                "Nhập môn toán học",
-                0,
-                0
+                "{\"assignment\":{\"name\":\"Final Exam\",\"format\":0,\"mode\":0,\"deadline\":\"2023-06-12 12:12:12\",\"minutes\":90,\"content\":[{\"question\":\"What is the volume of the shape?\",\"a\":\"The size of the shape\",\"b\":\"The weight of the shape\",\"c\":\"The capacity of the shape\",\"d\":\"The circuit of the shape\",\"key\":\"c\"}]}}",
+                "abc",
+                "Nhập môn toán học"
         );
         assignmentList.add(example);
         assignmentList.add(example);
@@ -94,7 +86,7 @@ public class OngoingAssignmentFragment extends Fragment {
         assignmentQuantity.setText(Integer.toString(assignment.getQuantity()));
 
         TextView assignmentTime = viewDialog.findViewById(R.id.textTimeAssignmentBottomSheet);
-        assignmentTime.setText(assignment.getAssignTime());
+        assignmentTime.setText(String.valueOf(assignment.getAssignTime()));
 
         TextView assignmentDeadline = viewDialog.findViewById(R.id.textDeadlineAssignmentBottomSheet);
         assignmentDeadline.setText(assignment.getAssignDeadline());
