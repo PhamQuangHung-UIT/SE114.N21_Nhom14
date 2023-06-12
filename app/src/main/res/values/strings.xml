@@ -177,6 +177,8 @@
     <string name="toast_sign_up_successful">Đăng ký tài khoản thành công</string>
     <string name="toast_sign_up_unsuccessful">Đăng ký thất bại</string>
     <string name="toast_empty_alert">Không được để trống trường này</string>
+    <string name="toast_email_empty_alert">Bạn chưa nhập email</string>
+    <string name="toast_password_empty_alert">Bạn chưa nhập mật khẩu</string>
 
     <string name="toast_password_matching_alert">Nhập lại mật khẩu không khớp</string>
     <string name="toast_password_min_length_alert" >Mật khẩu chứa tối thiểu 6 kí tự</string>

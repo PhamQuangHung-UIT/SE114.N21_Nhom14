@@ -139,4 +139,6 @@
     <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
     <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
+    <string name="toast_email_empty_alert">Email cannot be empty</string>
+    <string name="toast_password_empty_alert">Password cannot be empty</string>
 </resources>

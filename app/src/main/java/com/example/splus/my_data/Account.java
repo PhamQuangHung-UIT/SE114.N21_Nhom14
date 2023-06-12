@@ -1,9 +1,28 @@
 package com.example.splus.my_data;
 
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.example.splus.LoginActivity;
 import com.example.splus.R;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 public class Account implements Serializable {
@@ -18,6 +37,7 @@ public class Account implements Serializable {
     private int gender;         // 0: male, 1: female, 2: others
     private String email;
     private String phone;
+
 
     public Account() {
         this.accountID = "123";
@@ -109,5 +129,55 @@ public class Account implements Serializable {
     public String toJson(){
         Gson gson =new Gson();
         return gson.toJson(this);
+    }
+    //not Working
+    public  static void getAccount( String userID){
+
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(userID);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    Account account ;//=documentSnapshot.toObject(Account.class);
+                    account = new Account(userID,
+                            documentSnapshot.getString("username"),
+                            Integer.parseInt(documentSnapshot.get("role").toString()),
+                            documentSnapshot.getString("fullname"),
+                            documentSnapshot.getString("birthday"),
+                            Integer.parseInt(documentSnapshot.get("gender").toString()),
+                            documentSnapshot.getString("email")
+                    );
+                }
+            }
+        });
+        return;
+    }
+
+
+    public static List<Account> getListAccount(){
+        List<Account> accountList = new ArrayList<>();
+        FirebaseFirestore.getInstance().collection("Users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                               Account account = new Account(
+
+                                        document.getId(),
+                                        document.getString("username"),
+                                        Integer.parseInt(document.get("role").toString()),
+                                        document.getString("fullname"),
+                                        document.getString("birthday"),
+                                        Integer.parseInt( document.get("gender").toString()),
+                                        document.getString("email")
+                                );
+                                accountList.add(account);
+                            }
+                        }
+                    }
+                });
+        return accountList;
     }
 }
