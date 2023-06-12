@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_dialog.LanguageOptionsDialog;
 
 public class SettingActivity extends AppCompatActivity {
@@ -18,6 +19,8 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        ActivityManager.add(this);
 
         Switch switchReceiveNotification = findViewById(R.id.switchReceiveNotificationSetting);
         switchReceiveNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

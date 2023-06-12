@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Default strings for all language type-->
-
+    <!--TODO: Default strings for all language type-->
     <string name="app_name" translatable="false">S-plus</string>
 
     <string name="logo_des" translatable="false">Splus Official Logo</string>
-
-    <string name="item_name" translatable="false">Item name</string>
 
     <string name="item_des" translatable="false">Description</string>
 
@@ -23,7 +20,39 @@
     <string name="ex_class" translatable="false">KHMT2021</string>
     <string name="ex_email" translatable="false">todo@example.splus.vn</string>
     <string name="ex_stdID" translatable="false">19520001</string>
-    <!--Vietnamese-->
+
+    <string name="teacher_name_example" translatable="false">S-Plus</string>
+    <string name="text_class_name" translatable="false">Nhập môn Toán học</string>
+    <string name="text_lesson_name" translatable="false">Tầm quan trọng của Toán học</string>
+    <string name="lesson_content_example" translatable="false">
+        <br><b>1. Tổng quan về bài học</b>\n</br>
+        <br>\tTrong bài học này chúng ta sẽ tìm hiểu về những khái niệm có liên quan, các chức năng quan trọng chủ yếu và những ứng dụng thực tế của nó.\n</br>
+        <br>2. Các khái niệm liên quan\n</br>
+        <br>\t<b>Toán học</b> hay <b>toán</b> là ngành nghiên cứu trừu tượng về những chủ đề như: lượng (các con số), cấu trúc, không gian, và sự thay đổi.\n</br>
+        <br>\t<b>Giả thiết</b> là một điều kiện mang tính quy ước của người nghiên cứu, nó có thể không tồn tại hoặc không phải lúc nào cũng tồn tại trong thực tế.\n</br>
+        <br>\t<b>Định lý</b> là một mệnh đề phi hiển nhiên đã được chứng minh là đúng, hoặc trên cơ sở dẫn xuất từ các tiên đề hoặc được chứng minh trên cơ sở lấy từ các định lý khác.\n</br>
+        <br><b>2. Các chức năng quan trọng</b>\n</br>
+        <br>\tToán học mang lại cho chúng ta những khả năng sau:\n</br>
+        <br>\t\tSuy nghĩ mạch lạc.\n</br>
+        <br>\t\tLưu ý đến từng chi tiết.\n</br>
+        <br>\t\tLàm chủ những ý tưởng chính xác và phức tạp.\n</br>
+        <br>\t\tLập luận phức tạp.\n</br>
+        <br>\tXây dựng những lý lẽ logic và chỉ ra những lý lẽ phi logic.\n</br>
+        <br><b>3. Một số ứng dụng thực tế</b>\n</br>
+        <br>\t\tĐiều khiển hệ thống xe tự hành và quá trình bốc xếp container trong cảng biển.\n</br>
+        <br>\t\tĐiều khiển quá trình tự động hóa trong hoạt động logistics.\n</br>
+        <br>\t\tTối ưu hóa các quá trình hoạt động của xưởng sản xuất ô tô.\n</br>
+        <br>\t\tĐiều khiển robot.\n</br>
+        <br>\t\tTối ưu hóa đường bay.\n</br>
+        <br>\t\tTối ưu hóa khí động học.\n</br>
+        <br>\t\tỨng dụng trong mã hóa.\n</br>
+        <br>\t\tỨng dụng trong tài chính.\n</br>
+    </string>
+
+    <string name="ex_comment" translatable="false">Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you</string>
+    <string name="formatted_displayName_createDateOffset" translatable="false"><b>%1$s</b>    %2$s</string>
+    <string name="ex_DisplayName_CreatedDateOffset" translatable="false"><b>Rick Astley</b>    Vừa xong</string>
+    <!--__________Vietnamese__________-->
 
     <string name="title_sign_up">Đăng ký</string>
 
@@ -59,48 +88,23 @@
 
     <string name="lesson_id_example" translatable="false">SPLUS-MATHEMATICS</string>
     <string name="lesson_name">Tên bài học</string>
-    <string name="lesson_content_example" translatable="false">
-        <br><b>1. Tổng quan về bài học</b>\n</br>
-        <br>\tTrong bài học này chúng ta sẽ tìm hiểu về những khái niệm có liên quan, các chức năng quan trọng chủ yếu và những ứng dụng thực tế của nó.\n</br>
-        <br>2. Các khái niệm liên quan\n</br>
-        <br>\t<b>Toán học</b> hay <b>toán</b> là ngành nghiên cứu trừu tượng về những chủ đề như: lượng (các con số), cấu trúc, không gian, và sự thay đổi.\n</br>
-        <br>\t<b>Giả thiết</b> là một điều kiện mang tính quy ước của người nghiên cứu, nó có thể không tồn tại hoặc không phải lúc nào cũng tồn tại trong thực tế.\n</br>
-        <br>\t<b>Định lý</b> là một mệnh đề phi hiển nhiên đã được chứng minh là đúng, hoặc trên cơ sở dẫn xuất từ các tiên đề hoặc được chứng minh trên cơ sở lấy từ các định lý khác.\n</br>
-        <br><b>2. Các chức năng quan trọng</b>\n</br>
-        <br>\tToán học mang lại cho chúng ta những khả năng sau:\n</br>
-        <br>\t\tSuy nghĩ mạch lạc.\n</br>
-        <br>\t\tLưu ý đến từng chi tiết.\n</br>
-        <br>\t\tLàm chủ những ý tưởng chính xác và phức tạp.\n</br>
-        <br>\t\tLập luận phức tạp.\n</br>
-        <br>\tXây dựng những lý lẽ logic và chỉ ra những lý lẽ phi logic.\n</br>
-        <br><b>3. Một số ứng dụng thực tế</b>\n</br>
-        <br>\t\tĐiều khiển hệ thống xe tự hành và quá trình bốc xếp container trong cảng biển.\n</br>
-        <br>\t\tĐiều khiển quá trình tự động hóa trong hoạt động logistics.\n</br>
-        <br>\t\tTối ưu hóa các quá trình hoạt động của xưởng sản xuất ô tô.\n</br>
-        <br>\t\tĐiều khiển robot.\n</br>
-        <br>\t\tTối ưu hóa đường bay.\n</br>
-        <br>\t\tTối ưu hóa khí động học.\n</br>
-        <br>\t\tỨng dụng trong mã hóa.\n</br>
-        <br>\t\tỨng dụng trong tài chính.\n</br>
-    </string>
 
     <string name="label_course">Lớp học</string>
     <string name="label_class_name">Tên lớp học</string>
     <string name="label_teacher_name">Tên giảng viên</string>
-
-    <string name="text_class_name" translatable="false">Nhập môn Toán học</string>
-    <string name="text_lesson_name" translatable="false">Tầm quan trọng của Toán học</string>
     <string name="title_teacher_name">Giảng viên</string>
-    <string name="teacher_name_example" translatable="false">S-Plus</string>
 
     <string name="making_question_button">Đặt câu hỏi</string>
 
-    <string name="class_info">Thông tin lớp</string>
+    <string name="lesson_list">Danh sách lớp</string>
+
+    <string name="comments">Bình luận</string>
+
+    <string name="class_detail">Thông tin lớp</string>
 
     <string name="teacher_info">Liên hệ GV</string>
 
-    <string name="splash_description_1">Ứng dụng học toán</string>
-    <string name="splash_description_2">Thế hệ mới</string>
+    <string name="splash_description_1">Ứng dụng học toán\ncao cấp</string>
 
     <string name="label_name">Họ và tên</string>
     <string name="label_id">MSSV</string>
@@ -124,7 +128,7 @@
     <string name="ok">OK</string>
     <string name="tab_study_notification">HỌC VỤ</string>
     <string name="tab_other_notification">KHÁC</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="homework_title">Bài tập Cuối khoá</string>
     <string name="remaining_time">Còn 1 giờ 15 phút</string>
     <string name="timestamp_ex">11:59 04/04/2023</string>
@@ -197,6 +201,11 @@
     <string name="lable_question_number">"Câu "</string>
     <string name="text_question">Nội dung câu hỏi ở dạng văn bản có thể trình bày theo ngôn ngữ tiếng Việt hoặc tiếng Anh</string>
     <string name="text_answer">Nội dung đáp án</string>
+    <string name="reply">Phản hồi</string>
+    <string name="one_reply">1 phản hồi</string>
+    <string name="n_replies">%1$d phản hồi</string>
+    <string name="just_now">Vừa xong</string>
+    <string name="write_a_comment">Viết bình luận…</string>
 
     <!-- button on calculate -->
     <string name="btn_del" translatable="false"> ⌫ </string>
