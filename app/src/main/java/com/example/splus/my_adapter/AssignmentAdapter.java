@@ -70,10 +70,12 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             if (assignment.isSubmitted()) {
                 ongoingAssignmentViewHolder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_check_circle_24, 0, 0, 0);
-                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_submitted));
+//                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_submitted));
+                ongoingAssignmentViewHolder.status.setText("Đã nộp");
             } else {
                 ongoingAssignmentViewHolder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_cancel_24, 0, 0, 0);
-                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_unsubmitted));
+//                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_unsubmitted));
+                ongoingAssignmentViewHolder.status.setText("Chưa nộp");
             }
 
             ongoingAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {

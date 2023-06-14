@@ -1,13 +1,16 @@
 package com.example.splus.my_data;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.TimeZone;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Assignment implements Serializable {
+    private static int TIMEZONE = 7;
     private final String id;
     private final String name;
     private final String details;
@@ -115,12 +118,10 @@ public class Assignment implements Serializable {
      */
 
     public boolean isExpired() {
-        Timestamp ts = Timestamp.valueOf(deadline);
-        // timestamp_example = "2018-09-01 09:01:15";
-        Date today = new Date();
-        int result = ts.compareTo(today);
-        // return result < 0;
-        return result > 0;
+        // timestamp example: "2018-09-01 09:01:15"
+        Timestamp ts = Timestamp.valueOf(this.deadline);
+        Timestamp now = new Timestamp(System.currentTimeMillis() + (1000L * 3600 * TIMEZONE));
+        return ts.compareTo(now) < 0;
     }
 
     public boolean isSubmitted() {
@@ -154,7 +155,7 @@ public class Assignment implements Serializable {
 
     public Question getQuestion(int index) throws JSONException {
         String question, answerA, answerB, answerC, answerD;
-        char answerkey;
+        char selection, answerkey;
         JSONObject object = new JSONObject(details).getJSONObject("assignment").getJSONArray("content").getJSONObject(index);
         question = object.getString("question");
         answerA = object.getString("a");
