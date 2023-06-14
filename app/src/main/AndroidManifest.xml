@@ -18,6 +18,9 @@
         <activity android:name=".CreateCourseActivity"/>
         <activity android:name=".my_fragment.CoursesFragment"/>
         <activity
+            android:name=".CreateCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateAssignmentActivity"
             android:exported="false" />
         <activity
