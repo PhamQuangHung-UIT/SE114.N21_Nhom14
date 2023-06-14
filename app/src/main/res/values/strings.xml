@@ -61,7 +61,7 @@
     <string name="support_upper">HỖ TRỢ</string>
 
     <string name="hint_username">Tên người dùng</string>
-    <string name="hint_email">email</string>
+    <string name="hint_email">Email</string>
 
     <string name="hint_password">Mật khẩu</string>
     <string name="hint_repassword">Nhập lại mật khẩu</string>

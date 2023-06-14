@@ -10,10 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.splus.my_class.ActivityManager;
-import com.example.splus.my_class.LocaleHelper;
 import com.example.splus.my_data.Account;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,8 +19,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        MyCallback myCallback;
         ActivityManager.add(this);
 
         editUsername = findViewById(R.id.editUsernameLoginActivity);
@@ -67,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
             // checkLogin(username, password.sha256())
-            List<Account> accountList = new ArrayList<>();
+           // List<Account> accountList = new ArrayList<>();
             mAuth.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
@@ -104,14 +99,15 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
                 finish();
+
             }
         });
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase));
-    }
+    //@Override
+    //protected void attachBaseContext(Context newBase) {
+        //super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    //}
     private List<Account> checkLogin(String username, String password) {
         List<Account> accountList = new ArrayList<>();
         int role = password.equals("0")? 0:1;

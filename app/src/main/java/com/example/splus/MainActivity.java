@@ -3,10 +3,8 @@ package com.example.splus;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.example.splus.my_adapter.MainViewPagerAdapter;
 import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_class.LocaleHelper;
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         account = (Account) bundle.get("account");
+
 
         navigation = findViewById(R.id.bottomNavigationMainActivity);
         pager = findViewById(R.id.pagerMainActivity);

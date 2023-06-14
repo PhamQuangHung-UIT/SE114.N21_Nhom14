@@ -61,7 +61,8 @@
             android:scaleX="0.8"
             android:scaleY="0.8"
             tools:ignore="ContentDescription,ImageContrastCheck"
-            app:tint="@color/green" />
+            android:scaleType="centerCrop"
+             />
 
         <ImageView
             android:layout_width="100dp"
@@ -70,7 +71,8 @@
             android:scaleY="0.9"
             android:src="@drawable/crop_frame"
             tools:ignore="ContentDescription,ImageContrastCheck"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            />
     </FrameLayout>
 
     <LinearLayout
