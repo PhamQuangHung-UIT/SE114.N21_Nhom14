@@ -142,6 +142,7 @@
     <string name="n_replies">%1$d Replies</string>
     <string name="just_now">Just now</string>
     <string name="write_a_comment">Write a comment…</string>
+    <string name="stay_signed_in">Stay signed in</string>
     <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
     <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>

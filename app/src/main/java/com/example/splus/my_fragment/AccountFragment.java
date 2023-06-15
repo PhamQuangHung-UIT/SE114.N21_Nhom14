@@ -156,6 +156,7 @@ public class AccountFragment extends Fragment {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                firebaseAuth.signOut();
                                 Toast.makeText(getContext(), "Log out successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getActivity(), SplashActivity.class);
                                 startActivity(intent);
@@ -235,8 +236,4 @@ public class AccountFragment extends Fragment {
                     new FirebaseImageLoader.Factory());
         }
     }
-    public ImageView avatarRef() {
-        return avatar;
-    }
-
 }

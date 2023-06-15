@@ -1,9 +1,12 @@
 package com.example.splus;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,8 +29,10 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText editUsername, editPassword;
     Button buttonLogin;
+    CheckBox checkBoxStaySignedIn;
     TextView textSuggestSignUp;
     FirebaseAuth mAuth ;
+
     FirebaseFirestore firestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         ActivityManager.add(this);
 
+        checkBoxStaySignedIn = findViewById(R.id.checkboxStaySignedIn);
         editUsername = findViewById(R.id.editUsernameLoginActivity);
         editPassword = findViewById(R.id.editPasswordLoginActivity);
         buttonLogin = findViewById(R.id.buttonLogin);
         textSuggestSignUp = findViewById(R.id.textSuggestSignUp);
+        checkLogin();
 
         buttonLogin.setOnClickListener(v -> {
             String username = editUsername.getText().toString();
@@ -63,27 +70,15 @@ public class LoginActivity extends AppCompatActivity {
             }
             // checkLogin(username, password.sha256())
            // List<Account> accountList = new ArrayList<>();
+
             mAuth.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull  Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, R.string.toast_login_successful, Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                Bundle bundle = new Bundle();
-                                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(mAuth.getCurrentUser().getUid());
-                                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if (documentSnapshot.exists()) {
-                                            Account account = documentSnapshot.toObject(Account.class);
-                                            bundle.putSerializable("account",account);
-                                            intent.putExtras(bundle);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    }
-                                });
+                                loginWithAuthenticatedUserData();
+
                             } else {
                                 // If sign in fails, display a message to the user.
                                 //Log.w(TAG, "signInWithEmail:failure", task.getException()
@@ -101,19 +96,57 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+        checkBoxStaySignedIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SaveButtonState(checkBoxStaySignedIn.isChecked());                       //Save the button state
+            }
+        });
     }
 
     //@Override
     //protected void attachBaseContext(Context newBase) {
         //super.attachBaseContext(LocaleHelper.onAttach(newBase));
     //}
-    private List<Account> checkLogin(String username, String password) {
-        List<Account> accountList = new ArrayList<>();
-        int role = password.equals("0")? 0:1;
-        accountList.add(new Account("", username, role));
-        return accountList;
+    private void checkLogin() {
+        if(LoadButtonState()){
+            checkBoxStaySignedIn.setChecked(true);
+        }
+        if(mAuth.getCurrentUser() !=null && checkBoxStaySignedIn.isChecked()){
+            loginWithAuthenticatedUserData();
+        }
     }
-    public interface MyCallback {
-        void onCallback(Account account);
+
+    private void loginWithAuthenticatedUserData(){
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(mAuth.getCurrentUser().getUid());
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    Toast.makeText(LoginActivity.this, R.string.toast_login_successful, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Bundle bundle = new Bundle();
+                    Account account = documentSnapshot.toObject(Account.class);
+                    bundle.putSerializable("account",account);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+
     }
+
+    public void SaveButtonState(boolean signIn){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putBoolean("key",signIn);
+        edit.commit();
+    }
+    public boolean LoadButtonState(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean buttonState = preferences.getBoolean("key",true);
+        return buttonState;
+    }
+
 }
