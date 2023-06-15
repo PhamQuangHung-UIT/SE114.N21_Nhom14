@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,10 +13,12 @@ import android.widget.Toast;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.example.splus.my_data.Course;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -36,7 +40,7 @@ public class ExampleInstrumentedTest {
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Test
-    public FirebaseUser signIn() {
+    public void signIn() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         FirebaseApp.initializeApp(appContext);
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -53,6 +57,21 @@ public class ExampleInstrumentedTest {
                     }
                 });
         while (!isSuccessful.get());
-        return auth.getCurrentUser();
+    }
+
+    @Test
+    public void openCourse() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        FirebaseApp.initializeApp(appContext);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword("phamhung7102003@gmail.com", "12345678");
+        Course course = new Course("5HR72xCj5wk4nomk7TSQ", "Lập trình hướng lung tung", "Thành", "", 0);
+        Intent intent = new Intent(appContext, CourseActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("course", course);
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        appContext.startActivity(intent);
+        while (true);
     }
 }

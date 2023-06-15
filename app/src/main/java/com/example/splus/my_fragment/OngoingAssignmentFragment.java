@@ -47,33 +47,6 @@ public class OngoingAssignmentFragment extends Fragment {
 
     private List<Assignment> getListOngoingAssignment() {
         List<Assignment> assignmentList = new ArrayList<>();
-
-        Assignment example = new Assignment(
-                1,
-                "Kiểm tra cuối khoá",
-                5,
-                "30m",
-                "2023-06-10 00:00:00",
-                "#1\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#2\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#3\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#4\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n" +
-                        "#5\nHow to get there?\n" +
-                        "A. I dont know\nB. Okay I see\nC. Oh, that sound great\nD. Cool, you well-done\n#",
-                0,
-                "Nhập môn toán học",
-                0,
-                0
-        );
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
         return assignmentList;
     }
 

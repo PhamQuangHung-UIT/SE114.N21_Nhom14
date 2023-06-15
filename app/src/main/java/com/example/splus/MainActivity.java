@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;
     private ViewPager2 pager;
     public Account account;
-    public FirebaseFirestore db;
+    public FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public List<String> listCourseId;
     public List<String> listLessonId;
@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         ActivityManager.add(this);
 

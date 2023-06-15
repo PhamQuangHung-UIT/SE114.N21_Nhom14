@@ -146,12 +146,12 @@
 
     <string name="edit_assigment_content">Content</string>
     <string name="edit_topic_question">Topic</string>
+    <string name="about_this_course">About this course</string>
     <string name="edit_ID_lop_hoc">ID\'s class</string>
     <string name="TitleCourseName">Course Name</string>
     <string name="TabCourseName">Course tab\'s name</string>
     <string name="TabAssignment">Assignment tab\'s name</string>
-    <string name="Search_course">Search for a course ...</string>
-    <string name="title_create_course">CREATE COURSE</string>
+    <string name="Search_course">Search for a course …</string>
     <string name="btn_create">Create</string>
     <string name="edit_course_name">Course name</string>
     <string name="edit_creater_name">Creater name</string>
@@ -159,12 +159,25 @@
     <string name="reply">Reply</string>
     <string name="one_reply">1 Reply</string>
     <string name="n_replies">%1$d Replies</string>
+    <!--BEGIN TIME OFFSET-->
     <string name="just_now">Just now</string>
+    <string name="n_years_ago">%1$d years ago</string>
+    <string name="one_year_ago">1 year ago</string>
+    <string name="n_months_ago">%1$d months ago</string>
+    <string name="one_month_ago">1 month ago</string>
+    <string name="n_days_ago">%1$d days ago</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="n_hours_ago">%1$d giờ trước</string>
+    <string name="one_hour_ago">1 giờ trước</string>
+    <string name="n_mins_ago">%1$d phút trước</string>
+    <!--END TIME OFFSET-->
     <string name="write_a_comment">Write a comment…</string>
     <string name="TitleCreateAssignment">Title</string>
-    <string name="edit_topic_question">Topic</string>
     <string name="text_submitted">Submitted</string>
     <string name="text_unsubmitted">Unsubmitted</string>
     <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
+    <string name="lesson_numbers_n"><b>Number of lessons:</b>  %1$d</string>
     <string name="send">Send</string>
+    <string name="unexpected_error_msg">Unexpected error found. Please try again.</string>
+    <string name="course_detail">Course detail</string>
 </resources>

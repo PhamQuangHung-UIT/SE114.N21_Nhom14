@@ -19,28 +19,15 @@
         app:srcCompat="@color/green" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_CommentList"
+        android:id="@+id/recyclerView_commentList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:itemCount="3"
         tools:listitem="@layout/item_comment" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/comments"
-        android:textAppearance="@style/TextLarge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_WriteComment"

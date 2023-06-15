@@ -1,5 +1,7 @@
 package com.example.splus.my_data;
 
+import com.google.firebase.Timestamp;
+
 import java.util.Date;
 
 public class Comment {
@@ -10,12 +12,13 @@ public class Comment {
     private String text;
     private int likeCount;
     private int dislikeCount;
-    private Date createdDate;
+    private Timestamp createdDate;
     private Boolean isLike;
+
     private int replyCount;
 
-    public Comment(String id) {
-        this.id = id;
+    public Comment() {
+        // Default constructor for Firebase Firestore
     }
 
     public String getId() {
@@ -70,15 +73,15 @@ public class Comment {
         this.replyCount = replyCount;
     }
 
-    public Date getCreatedDate() {
+    public Timestamp getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Boolean IsLike() {
+    public Boolean isLike() {
         return isLike;
     }
 
@@ -90,24 +93,22 @@ public class Comment {
         this.isLike = isLike;
     }
 
-    public void Like() {
+    public void like() {
         likeCount++;
-        dislikeCount--;
         isLike = true;
     }
 
-    public void Dislike() {
+    public void dislike() {
         dislikeCount++;
-        likeCount--;
         isLike = false;
     }
 
-    public void Unlike() {
+    public void unlike() {
         likeCount--;
         isLike = null;
     }
 
-    public void Undislike() {
+    public void undislike() {
         dislikeCount--;
         isLike = null;
     }

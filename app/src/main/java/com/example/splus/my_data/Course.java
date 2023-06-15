@@ -4,7 +4,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     private String courseId;
     private String courseName;
     private String createrName;

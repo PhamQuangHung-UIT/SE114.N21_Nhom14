@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/transitionShowComment"
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/start"
+        motion:duration="500"
+        motion:motionInterpolator="easeOut"/>
+    <Transition
+        android:id="@+id/transitionSwipeDownFromStartToEnd"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:motionInterpolator="easeOut"
+        motion:duration="500">
+        <OnSwipe
+            motion:touchAnchorId="@+id/motionSwipeArea"
+            motion:touchAnchorSide="middle"
+            motion:dragDirection="dragDown"/>
+    </Transition>
+    <!--Transition
+        android:id="@+id/transitionFromStartToMiddle"
+        motion:constraintSetEnd="@+id/middle"
+        motion:constraintSetStart="@id/begin"
+        motion:autoTransition="animateToStart"
+        motion:motionInterpolator="linear"
+        motion:duration="150"/>
+       <OnSwipe
+           motion:touchAnchorId="@+id/motionSwipeArea"
+           motion:touchAnchorSide="middle"
+           motion:dragDirection="dragDown"/>
+    </Transition-->
+
+    <!--Transition
+        android:id="@+id/transitionFromMiddleToEnd"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/middle"
+        motion:autoTransition="animateToEnd"
+        motion:motionInterpolator="linear"
+        motion:duration="150"/>
+
+    <Transition
+        android:id="@+id/transitionCloseComment"
+        motion:constraintSetStart="@id/begin"
+        motion:constraintSetEnd="@id/end"
+        motion:duration="500"/-->
+
+
+    <!--START PHASE-->
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/motionSwipeArea"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/fragmentContainerView_ShowComment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/motionSwipeArea"/>
+        <Constraint
+            android:id="@+id/commentViewHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="@color/unfocused_background"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <!--END PHASE-->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/motionSwipeArea"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            motion:layout_constraintTop_toBottomOf="@id/constraintLayout_ShowComment"
+            motion:layout_constraintStart_toStartOf="@id/constraintLayout_ShowComment"
+            motion:layout_constraintEnd_toEndOf="@id/constraintLayout_ShowComment"/>
+        <Constraint
+            android:id="@+id/fragmentContainerView_ShowComment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="parent"/>
+        <Constraint
+            android:id="@+id/commentViewHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="@color/transparent"/>
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>

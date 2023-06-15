@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout_Course"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    app:layoutDescription="@xml/popup_window_comment_reply_scene"
     tools:context=".CourseActivity">
 
     <!-- TITLE BAR -->
     <LinearLayout
         android:id="@+id/linearHeaderCourseActivity"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:background="@color/green"
@@ -18,7 +20,6 @@
         android:orientation="horizontal"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/listCourseActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,7 +35,7 @@
             android:src="@drawable/back_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
-        <!-- TITLE CLASS NAME -->
+        <!-- TITLE COURSE NAME -->
         <TextView
             android:id="@+id/textNameCourseActivity"
             android:layout_width="0dp"
@@ -49,16 +50,6 @@
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <!-- NOTIFICATION BUTTON -->
-        <ImageButton
-            android:id="@+id/buttonNotificationCourseActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:contentDescription="@string/title_notification"
-            android:padding="15dp"
-            android:src="@drawable/baseline_notifications_active_24"
-            app:tint="@color/white"
-            tools:ignore="ImageContrastCheck" />
 
     </LinearLayout>
 
@@ -73,66 +64,100 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearHeaderCourseActivity" />
+        app:layout_constraintTop_toBottomOf="@id/layout_ShowCourseDetail" />
 
-    <!-- DETAIL & CONTACT BUTTON -->
+    <!-- COURSE DETAIL -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearButtonCourseActivity"
+        android:id="@+id/layout_ShowCourseDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingVertical="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/listCourseActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearHeaderCourseActivity">
 
-        <Button
-            android:id="@+id/buttonInfoCourseActivity"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView_AboutThisCourse"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/class_detail"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/space"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
-
-        <Button
-            android:id="@+id/buttonContactCourseActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/teacher_info"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/space"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
-
-        <Space
-            android:id="@+id/space"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/about_this_course"
+            android:textAppearance="@style/TextLarge"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_ShowCourseDetail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView_lessonCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_AboutThisCourse"
+            tools:text="@string/demo_lesson_numbers_n" />
+
+        <TextView
+            android:id="@+id/textView_CourseDetail_Short"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="@style/TextSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_lessonCount"
+            tools:text="Trong khóa học này, chúng ta sẽ tìm hiểu về khái quát về ngành Toán học, lịch sử ra đời của Toán học cũng như là các phân ngành của Toán học ngày nay. Thế giới toán học hết sức đồ sộ" />
+
+        <TextView
+            android:id="@+id/textView_CourseDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/course_detail"
+            android:textAppearance="@style/TextMedium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_lessonCount" />
+
+        <ImageButton
+            android:id="@+id/imageButton_ShowCourseDetail"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_nobackground"
+            android:scaleType="fitCenter"
+            app:tint="@color/green"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_AboutThisCourse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_AboutThisCourse"
+            app:srcCompat="@drawable/baseline_arrow_forward_24" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--TƯƠNG TÁC-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearButtonCourseActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -183,6 +208,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--BÌNH LUẬN-->
         <Button
             android:id="@+id/button_ShowComment"
             style="@style/TextMedium.CommentButton"
@@ -207,13 +233,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <!--View holder for comment pop-up window-->
+    <!--TODO: _____This is used for Motion Layout. DO NOT TOUCH IT!!!_____-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/commentViewHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black"
-        android:alpha="0.4"
-        android:visibility="gone"/>
+        tools:visibility="gone"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_ShowComment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:foreground="@drawable/background_popup_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/motionSwipeArea" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/motionSwipeArea"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton_CommentSectionBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_nobackground"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_icon"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/green" />
+
+        <TextView
+            android:id="@+id/textView_CommentSectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/comments"
+            android:textAppearance="@style/TextLarge"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton_CommentSectionBack"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView_ShowComment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/motionSwipeArea"
+        tools:layout="@layout/fragment_comments" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

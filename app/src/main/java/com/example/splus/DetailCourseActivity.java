@@ -14,6 +14,7 @@ import com.example.splus.my_adapter.AccountAdapter;
 import com.example.splus.my_data.Account;
 import com.example.splus.my_data.Course;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailCourseActivity extends AppCompatActivity {
@@ -60,7 +61,7 @@ public class DetailCourseActivity extends AppCompatActivity {
     }
 
     private List<Account> getListStudent(Course course) {
-        return course.getListStudent();
+        return new ArrayList<>();
     }
 
     @Override

@@ -1,40 +1,42 @@
 package com.example.splus;
 
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
+import androidx.constraintlayout.motion.widget.MotionLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.my_data.Course;
 import com.example.splus.my_fragment.CommentFragment;
+import com.example.splus.my_viewmodel.CourseViewModel;
 
 public class CourseActivity extends AppCompatActivity {
+    MotionLayout layout;
     TextView className;
     ImageButton buttonBack;
     Button buttonDetailClass;
     Button buttonContactTeacher;
-
     Course currentCourse;
+
+    private boolean isShowComment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
+        CourseViewModel model = new ViewModelProvider(this).get(CourseViewModel.class);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
@@ -42,6 +44,28 @@ public class CourseActivity extends AppCompatActivity {
         }
 
         currentCourse = (Course)bundle.get("course");
+
+        model.setCurrentCourse(currentCourse);
+
+        layout = findViewById(R.id.motionLayout_Course);
+        layout.addTransitionListener(new MotionLayout.TransitionListener() {
+            @Override
+            public void onTransitionStarted(MotionLayout motionLayout, int startId, int endId) {
+            }
+            @Override
+            public void onTransitionChange(MotionLayout motionLayout, int startId, int endId, float progress) {
+
+            }
+            @Override
+            public void onTransitionCompleted(MotionLayout motionLayout, int currentId) {
+                if (currentId == R.id.transitionSwipeDownFromStartToEnd)
+                    getSupportFragmentManager().popBackStack();
+            }
+            @Override
+            public void onTransitionTrigger(MotionLayout motionLayout, int triggerId, boolean positive, float progress) {
+
+            }
+        });
 
         className = findViewById(R.id.textNameCourseActivity);
         className.setText(currentCourse.getCourseName());
@@ -56,7 +80,7 @@ public class CourseActivity extends AppCompatActivity {
         buttonBack = findViewById(R.id.buttonBackCourseActivity);
         buttonBack.setOnClickListener(v -> onBackPressed());
 
-        buttonDetailClass = findViewById(R.id.buttonInfoCourseActivity);
+        TextView textView = findViewById(R.id.textView_CourseDetail_Short);
         buttonDetailClass.setOnClickListener(view -> {
             Intent intent = new Intent(CourseActivity.this, DetailCourseActivity.class);
             Bundle b = new Bundle();
@@ -64,49 +88,24 @@ public class CourseActivity extends AppCompatActivity {
             intent.putExtras(b);
             startActivity(intent);
         });
-
-        buttonContactTeacher = findViewById(R.id.buttonContactCourseActivity);
-        buttonContactTeacher.setOnClickListener(view
-                -> Toast.makeText(CourseActivity.this, "Contact button is pressed", Toast.LENGTH_SHORT).show());
     }
 
     @Override
     public void onBackPressed() {
-        finish();
+        if (isShowComment) {
+            layout.setTransition(R.id.transitionSwipeDownFromStartToEnd);
+            layout.setProgress(0, 1);
+            isShowComment = false;
+        } else finish();
     }
 
     private void ShowComment(View view) {
-        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_window_comment_reply, null, false);
-        View holderView = findViewById(R.id.commentViewHolder);
-        Transition slideExit = new Slide(Gravity.BOTTOM), slideBegin = new Slide(Gravity.BOTTOM);
-        Display deviceDisplay = getWindowManager().getDefaultDisplay();
-        Point displaySize = new Point();
-        deviceDisplay.getSize(displaySize);
-        PopupWindow popupWindow = new PopupWindow(popupView, displaySize.x, (int)(displaySize.y * 0.85));
-        slideExit.addListener(new Transition.TransitionListener() {
-            @Override
-            public void onTransitionStart(Transition transition) {}
-
-            @Override
-            public void onTransitionEnd(Transition transition) {
-                holderView.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onTransitionCancel(Transition transition) {}
-
-            @Override
-            public void onTransitionPause(Transition transition) {}
-
-            @Override
-            public void onTransitionResume(Transition transition) {}
-        });
-        popupWindow.setFocusable(true);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setEnterTransition(slideBegin);
-        popupWindow.setExitTransition(slideExit);
-        popupWindow.setBackgroundDrawable(AppCompatResources.getDrawable(this, R.drawable.popup_background));
-        holderView.setVisibility(View.VISIBLE);
-        popupWindow.showAtLocation(holderView, Gravity.BOTTOM, 0, 0);
+        layout.setTransition(R.id.transitionShowComment);
+        layout.setProgress(0, 1);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fragmentContainerView_ShowComment, CommentFragment.class, null);
+        transaction.commit();
+        isShowComment = true;
     }
 }
