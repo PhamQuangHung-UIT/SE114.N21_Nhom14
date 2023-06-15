@@ -67,7 +67,6 @@ public class AccountFragment extends Fragment {
         avatar = view.findViewById(R.id.imageAvatarAccountFragment);
         ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAccountFragment);
         ImageView avatar = view.findViewById(R.id.imageAvatarAccountFragment);
-
         storageReference = FirebaseStorage.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         MainActivity mainActivity = (MainActivity) getActivity();
@@ -79,9 +78,7 @@ public class AccountFragment extends Fragment {
             }else if(!user.getPhone().isEmpty()){
                 email.setText(user.getPhone());
             }
-            if(!firebaseAuth.getCurrentUser().getPhotoUrl().toString().isEmpty()) {
-                String temp =
-                        "https://firebasestorage.googleapis.com/v0/b/se114-n21.appspot.com/o/users%2FOAJuvuG6rQVzs5R1sTaV7Cd5Tkz2?alt=media&token=43b7811e-6cc0-45cb-8aec-33af93b737ec";
+            if(firebaseAuth.getCurrentUser().getPhotoUrl()!=null) {
                 Glide.with(this)
                         .load(firebaseAuth.getCurrentUser().getPhotoUrl())
                         .into(avatar);
@@ -238,4 +235,8 @@ public class AccountFragment extends Fragment {
                     new FirebaseImageLoader.Factory());
         }
     }
+    public ImageView avatarRef() {
+        return avatar;
+    }
+
 }

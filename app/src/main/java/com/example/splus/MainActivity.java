@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private ViewPager2 pager;
-    private Account account;
+    public static Account account;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -88,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public Account getAccount() {
-        return this.account;
+    public static Account getAccount() {
+        return account;
+    }
+    public static void setAccount(Account newAccount) {
+        account=newAccount;
+        return;
     }
 }

@@ -130,29 +130,6 @@ public class Account implements Serializable {
         Gson gson =new Gson();
         return gson.toJson(this);
     }
-    //not Working
-    public  static void getAccount( String userID){
-
-        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(userID);
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    Account account ;//=documentSnapshot.toObject(Account.class);
-                    account = new Account(userID,
-                            documentSnapshot.getString("username"),
-                            Integer.parseInt(documentSnapshot.get("role").toString()),
-                            documentSnapshot.getString("fullname"),
-                            documentSnapshot.getString("birthday"),
-                            Integer.parseInt(documentSnapshot.get("gender").toString()),
-                            documentSnapshot.getString("email")
-                    );
-                }
-            }
-        });
-        return;
-    }
-
 
     public static List<Account> getListAccount(){
         List<Account> accountList = new ArrayList<>();

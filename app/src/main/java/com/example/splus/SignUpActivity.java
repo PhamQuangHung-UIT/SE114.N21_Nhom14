@@ -54,7 +54,6 @@ public class SignUpActivity extends AppCompatActivity {
         editEmail=findViewById(R.id.editEmailSignUpActivity);
         editFullname = findViewById(R.id.editFullnameSignUpActivity);
         editBirthday = findViewById(R.id.editBirthdaySignUpActivity);
-
         radioGroupGender = findViewById(R.id.radioGroupGender);
         radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

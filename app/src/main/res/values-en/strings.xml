@@ -7,7 +7,7 @@
 
     <string name="support_upper">SUPPORT</string>
 
-    <string name="hint_username">Enter your username</string>
+    <string name="hint_username">Username</string>
 
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
