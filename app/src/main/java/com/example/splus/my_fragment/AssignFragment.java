@@ -178,7 +178,7 @@ public class AssignFragment extends Fragment {
                 "0",
                 getString(R.string.text_class_name),
                 getString(R.string.teacher_name_example),
-                "", 0
+                "", ""
         );
 
         courseList.add(classExample);
@@ -186,7 +186,7 @@ public class AssignFragment extends Fragment {
         courseList.add( new Course(
                 "0",
                 "Giải tích",
-                "ThS. Lê Hoàng Tuấn", "", 0
+                "ThS. Lê Hoàng Tuấn", "", ""
         ));
 
         return courseList;

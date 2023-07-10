@@ -1,29 +1,25 @@
 package com.example.splus.my_data;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.io.Serializable;
 
 public class Course implements Serializable {
     private String courseId;
     private String courseName;
-    private String createrName;
+    private String creatorName;
     private int studentCount;
     private String creationTime;
+    private String courseDescription;
 
     public Course() {
         // Default constructor for Firebase Firestore
     }
 
-    public Course(String courseId, String courseName, String courseTeacherName, String creationTime, int studentCount) {
+    public Course(String courseId, String courseName, String courseTeacherName, String creationTime, String courseDescription) {
         this.courseId = courseId;
         this.courseName = courseName;
-        this.createrName = courseTeacherName;
+        this.creatorName = courseTeacherName;
         this.creationTime = creationTime;
-        this.studentCount = studentCount;
-
+        this.courseDescription = courseDescription;
     }
 
     // Getters and setters for the attributes
@@ -44,12 +40,12 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
-    public String getCreaterName() {
-        return createrName;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setCreaterName(String createrName) {
-        this.createrName = createrName;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public int getStudentCount() {
@@ -66,5 +62,13 @@ public class Course implements Serializable {
 
     public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public String getCourseDescription() {
+        return courseDescription;
+    }
+
+    public void setCourseDescription(String courseDescription) {
+        this.courseDescription = courseDescription;
     }
 }

@@ -18,7 +18,7 @@
         android:id="@+id/recyclerView_ReplyList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView_Avatar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
         app:srcCompat="@color/green" />
 
     <TextView
-        android:id="@+id/textView_WriteComment"
+        android:id="@+id/textView_WriteReply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"

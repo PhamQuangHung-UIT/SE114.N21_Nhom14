@@ -38,7 +38,7 @@
     <string name="label_course">Class</string>
     <string name="label_class_name">Class name</string>
     <string name="label_teacher_name">Teacher</string>
-    <string name="title_teacher_name">Teacher</string>
+    <string name="title_teacher_name">Instructor</string>
     <string name="making_question_button">Make a question</string>
     <string name="class_detail">Class detail</string>
     <string name="lesson_list">Lesson list</string>
@@ -147,7 +147,6 @@
     <string name="edit_assigment_content">Content</string>
     <string name="edit_topic_question">Topic</string>
     <string name="about_this_course">About this course</string>
-    <string name="edit_ID_lop_hoc">ID\'s class</string>
     <string name="TitleCourseName">Course Name</string>
     <string name="TabCourseName">Course tab\'s name</string>
     <string name="TabAssignment">Assignment tab\'s name</string>
@@ -178,6 +177,11 @@
     <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
     <string name="lesson_numbers_n"><b>Number of lessons:</b>  %1$d</string>
     <string name="send">Send</string>
-    <string name="unexpected_error_msg">Unexpected error found. Please try again.</string>
+    <string name="unreached_server_msg">Unable to reach the server. Please try again.</string>
     <string name="course_detail">Course detail</string>
+    <string name="no_description">No description</string>
+    <string name="unexpected_error_msg">Unexpected error. Please try again.</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="delete_msg">Delete the comment?</string>
 </resources>

@@ -10,42 +10,22 @@
         motion:duration="500"
         motion:motionInterpolator="easeOut"/>
     <Transition
-        android:id="@+id/transitionSwipeDownFromStartToEnd"
+        android:id="@+id/transitionCloseComment"
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
         motion:motionInterpolator="easeOut"
-        motion:duration="500">
+        motion:duration="500"
+        motion:layoutDuringTransition="ignoreRequest">
         <OnSwipe
             motion:touchAnchorId="@+id/motionSwipeArea"
             motion:touchAnchorSide="middle"
             motion:dragDirection="dragDown"/>
+        <KeyFrameSet>
+            <KeyPosition
+                motion:motionTarget="@id/layout_ShowCourseDetail"
+                motion:sizePercent="0"/>
+        </KeyFrameSet>
     </Transition>
-    <!--Transition
-        android:id="@+id/transitionFromStartToMiddle"
-        motion:constraintSetEnd="@+id/middle"
-        motion:constraintSetStart="@id/begin"
-        motion:autoTransition="animateToStart"
-        motion:motionInterpolator="linear"
-        motion:duration="150"/>
-       <OnSwipe
-           motion:touchAnchorId="@+id/motionSwipeArea"
-           motion:touchAnchorSide="middle"
-           motion:dragDirection="dragDown"/>
-    </Transition-->
-
-    <!--Transition
-        android:id="@+id/transitionFromMiddleToEnd"
-        motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@id/middle"
-        motion:autoTransition="animateToEnd"
-        motion:motionInterpolator="linear"
-        motion:duration="150"/>
-
-    <Transition
-        android:id="@+id/transitionCloseComment"
-        motion:constraintSetStart="@id/begin"
-        motion:constraintSetEnd="@id/end"
-        motion:duration="500"/-->
 
 
     <!--START PHASE-->
@@ -73,6 +53,16 @@
                 motion:attributeName="backgroundColor"
                 motion:customColorValue="@color/unfocused_background"/>
         </Constraint>
+        <Constraint
+            android:id="@+id/constraintLayout_ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/linearHeaderCourseActivity"/>
+        <Constraint
+            android:id="@+id/editText_WriteComment"
+            android:visibility="visible"/>
     </ConstraintSet>
 
     <!--END PHASE-->
@@ -100,5 +90,13 @@
                 motion:attributeName="backgroundColor"
                 motion:customColorValue="@color/transparent"/>
         </Constraint>
+        <Constraint
+            android:id="@+id/constraintLayout_ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toTopOf="@id/constraintLayout_ShowComment"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/linearHeaderCourseActivity"/>
     </ConstraintSet>
 </MotionScene>

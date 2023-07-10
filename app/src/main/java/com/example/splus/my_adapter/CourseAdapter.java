@@ -14,16 +14,6 @@ import com.example.splus.my_data.Course;
 
 import java.util.List;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
-
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
   private List<Course> courseList;
@@ -70,7 +60,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     public void bindData(Course course) {
       courseIDTextView.setText("ID: " + course.getCourseId());
       courseNameTextView.setText(course.getCourseName());
-      creatorTextView.setText("Created by: " + course.getCreaterName());
+      creatorTextView.setText("Created by: " + course.getCreatorName());
       creationTimeTextView.setText("Created at: " + course.getCreationTime());
       studentCountTextView.setText("Students: " + course.getStudentCount());
     }

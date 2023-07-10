@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    app:layoutDescription="@xml/popup_window_comment_reply_scene"
+    android:animateLayoutChanges="false"
+    app:layoutDescription="@xml/comment_window_motion_constraint"
     tools:context=".CourseActivity">
 
     <!-- TITLE BAR -->
@@ -53,110 +54,174 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listCourseActivity"
+    <ScrollView
+        android:id="@+id/constraintLayout_ScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/bg_light_white"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_ShowCourseDetail" />
-
-    <!-- COURSE DETAIL -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_ShowCourseDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/listCourseActivity"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout_ShowComment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearHeaderCourseActivity">
 
-        <TextView
-            android:id="@+id/textView_AboutThisCourse"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/about_this_course"
-            android:textAppearance="@style/TextLarge"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton_ShowCourseDetail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_lessonCount"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextMedium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_AboutThisCourse"
-            tools:text="@string/demo_lesson_numbers_n" />
+            android:layout_height="wrap_content">
+            <!-- COURSE DETAIL -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_ShowCourseDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/listCourseActivity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView_CourseDetail_Short"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="@style/TextSmall"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_lessonCount"
-            tools:text="Trong khóa học này, chúng ta sẽ tìm hiểu về khái quát về ngành Toán học, lịch sử ra đời của Toán học cũng như là các phân ngành của Toán học ngày nay. Thế giới toán học hết sức đồ sộ" />
+                <TextView
+                    android:id="@+id/textView_CourseName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/text_class_name"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_Course"
+                    app:layout_constraintStart_toEndOf="@+id/textView_Course"
+                    app:layout_constraintTop_toTopOf="@+id/textView_Course" />
 
-        <TextView
-            android:id="@+id/textView_CourseDetail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/course_detail"
-            android:textAppearance="@style/TextMedium"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_lessonCount" />
+                <TextView
+                    android:id="@+id/textView_Instructor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/title_teacher_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_Course" />
 
-        <ImageButton
-            android:id="@+id/imageButton_ShowCourseDetail"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/button_nobackground"
-            android:scaleType="fitCenter"
-            app:tint="@color/green"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_AboutThisCourse"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView_AboutThisCourse"
-            app:srcCompat="@drawable/baseline_arrow_forward_24" />
+                <TextView
+                    android:id="@+id/textView_Course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/label_course"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textView_InstructorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/teacher_name_example"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_Instructor"
+                    app:layout_constraintStart_toStartOf="@+id/textView_CourseName"
+                    app:layout_constraintTop_toTopOf="@+id/textView_Instructor" />
+
+                <TextView
+                    android:id="@+id/textView_AboutThisCourse"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/about_this_course"
+                    android:textAppearance="@style/TextLarge"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_ShowCourseDetail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_lessonCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/demo_lesson_numbers_n"
+                    android:textAppearance="@style/TextMedium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_AboutThisCourse" />
+
+                <TextView
+                    android:id="@+id/textView_CourseDetail_Short"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextSmall"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_lessonCount"
+                    tools:text="Trong khóa học này, chúng ta sẽ tìm hiểu về khái quát về ngành Toán học, lịch sử ra đời của Toán học cũng như là các phân ngành của Toán học ngày nay. Thế giới toán học hết sức đồ sộ" />
+
+                <TextView
+                    android:id="@+id/textView_CourseDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/course_detail"
+                    android:textAppearance="@style/TextMedium"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_lessonCount" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_ShowCourseDetail"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_nobackground"
+                    android:contentDescription="@string/course_detail"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_AboutThisCourse"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_AboutThisCourse"
+                    app:srcCompat="@drawable/baseline_arrow_forward_24"
+                    app:tint="@color/green" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listCourseActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_light_white"
+                android:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_ShowCourseDetail"
+                tools:itemCount="10"
+                tools:listitem="@layout/item_lesson" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <!--TƯƠNG TÁC-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -235,13 +300,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--View holder for comment pop-up window-->
+    <!--Hướng dẫn: Nhấn đúp vào ô trạng thái "Motion Layout" (cạnh 2 trạng thái Start và End) để xem trạng thái mặc định-->
     <!--TODO: _____This is used for Motion Layout. DO NOT TOUCH IT!!!_____-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/commentViewHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="gone"/>
+        tools:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_ShowComment"

@@ -10,13 +10,15 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout_writeComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:alpha="1"
+        android:animateLayoutChanges="false"
         android:background="@drawable/popup_background"
-        android:paddingVertical="10dp">
+        app:layoutDescription="@xml/dialog_fragment_write_comment_scene">
 
         <ImageView
             android:id="@+id/imageView_Avatar_writeComment"
@@ -24,6 +26,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
             android:foreground="@drawable/crop_frame"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,12 +38,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/background_edittext_border_round"
             android:ems="10"
             android:hint="@string/write_a_comment"
             android:inputType="text"
             android:textAppearance="@style/TextSmall"
             android:textColor="@color/black"
+            android:textCursorDrawable="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_CommitComment"
             app:layout_constraintStart_toEndOf="@+id/imageView_Avatar_writeComment"
@@ -51,6 +56,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/button_round_nobackground"
             android:clickable="true"
             android:contentDescription="@string/send"
@@ -59,5 +65,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_send" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </RelativeLayout>

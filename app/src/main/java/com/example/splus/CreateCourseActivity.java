@@ -50,7 +50,7 @@ public class CreateCourseActivity extends AppCompatActivity {
       Course course = new Course();
       course.setCourseId(courseId);
       course.setCourseName(courseName);
-      course.setCreaterName(creatorName);
+      course.setCreatorName(creatorName);
 
 
       databaseReference.child(courseId).setValue(course)
