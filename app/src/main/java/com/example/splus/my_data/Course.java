@@ -93,4 +93,5 @@ public class Course implements Parcelable {
         dest.writeLong(creationTime.getTime());
         dest.writeInt(studentCount);
     }
+
 }
