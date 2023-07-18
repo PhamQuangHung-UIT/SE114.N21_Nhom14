@@ -1,7 +1,6 @@
 package com.example.splus.my_adapter;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,10 +70,12 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             if (assignment.isSubmitted()) {
                 ongoingAssignmentViewHolder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_check_circle_24, 0, 0, 0);
-                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_submitted));
+//                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_submitted));
+                ongoingAssignmentViewHolder.status.setText("Đã nộp");
             } else {
                 ongoingAssignmentViewHolder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_cancel_24, 0, 0, 0);
-                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_unsubmitted));
+//                ongoingAssignmentViewHolder.status.setText(String.valueOf(R.string.text_unsubmitted));
+                ongoingAssignmentViewHolder.status.setText("Chưa nộp");
             }
 
             ongoingAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +94,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             overdueAssignmentViewHolder.assignmentName.setText(assignment.getAssignName());
             overdueAssignmentViewHolder.courseName.setText(assignment.getCourseName());
-            overdueAssignmentViewHolder.remainingTime.setText(assignment.getAssignTime());
+            overdueAssignmentViewHolder.remainingTime.setText(String.valueOf(assignment.getAssignTime()));
 
             overdueAssignmentViewHolder.assignmentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
