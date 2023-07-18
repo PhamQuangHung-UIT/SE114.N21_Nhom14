@@ -144,14 +144,12 @@
     <string name="hint_course_code">Course code</string>
 
     <string name="edit_assigment_content">Content</string>
-    <string name="edit_topic_question">Topic</string>
     <string name="empty_state_message">No results found</string>
     <string name="edit_ID_lop_hoc">ID\'s class</string>
     <string name="TitleCourseName">Course Name</string>
     <string name="TabCourseName">Course tab\'s name</string>
     <string name="TabAssignment">Assignment tab\'s name</string>
     <string name="Search_course">Search for a course ...</string>
-    <string name="title_create_course">CREATE COURSE</string>
     <string name="btn_create">Create</string>
     <string name="edit_course_name">Course name</string>
     <string name="edit_creater_name">Creater name</string>
@@ -161,7 +159,6 @@
     <string name="n_replies">%1$d Replies</string>
     <string name="just_now">Just now</string>
     <string name="write_a_comment">Write a comment…</string>
-    <string name="TitleCreateAssignment">Title</string>
     <string name="edit_topic_question">Topic</string>
     <string name="text_submitted">Submitted</string>
     <string name="text_unsubmitted">Unsubmitted</string>
