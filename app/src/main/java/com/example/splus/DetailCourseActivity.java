@@ -14,8 +14,6 @@ import com.example.splus.my_adapter.AccountAdapter;
 import com.example.splus.my_data.Account;
 import com.example.splus.my_data.Course;
 
-import java.util.List;
-
 public class DetailCourseActivity extends AppCompatActivity {
     ImageButton buttonBack;
     TextView textCourseName;
@@ -37,14 +35,14 @@ public class DetailCourseActivity extends AppCompatActivity {
         textCourseName.setText(course.getCourseName());
 
         textTeacherName = findViewById(R.id.textTeacherDetailCourse);
-        textTeacherName.setText(course.getCreaterName());
+        textTeacherName.setText(course.getCreatorName());
 
-        RecyclerView recyclerListStudent = findViewById(R.id.recyclerListStudentDetailCourse);
-        recyclerListStudent.setLayoutManager(new LinearLayoutManager(DetailCourseActivity.this));
+        //RecyclerView recyclerListStudent = findViewById(R.id.recyclerListStudentDetailCourse);
+        //recyclerListStudent.setLayoutManager(new LinearLayoutManager(DetailCourseActivity.this));
 
-        AccountAdapter accountAdapter = new AccountAdapter(getListStudent(course), this::onClickGoToAccount);
+        //AccountAdapter accountAdapter = new AccountAdapter(getListStudent(course), this::onClickGoToAccount);
 
-        recyclerListStudent.setAdapter(accountAdapter);
+        //recyclerListStudent.setAdapter(accountAdapter);
 
         buttonBack = findViewById(R.id.buttonBackDetailCourse);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +57,8 @@ public class DetailCourseActivity extends AppCompatActivity {
         Toast.makeText(this, account.getFullname(), Toast.LENGTH_SHORT).show();
     }
 
-    private List<Account> getListStudent(Course course) {
-        return course.getListStudent();
+    private int getStudenyCount(Course course) {
+        return course.getStudentCount();
     }
 
     @Override

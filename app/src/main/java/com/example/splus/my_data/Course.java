@@ -1,30 +1,48 @@
 package com.example.splus.my_data;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Course {
+import java.util.Date;
+
+public class Course implements Parcelable {
     private String courseId;
     private String courseName;
-    private String createrName;
+    private String creatorName;
     private int studentCount;
-    private String creationTime;
+    private Date creationTime;
 
     public Course() {
-        // Default constructor for Firebase Firestore
+        // Empty constructor for Firebase Firestore
     }
 
-    public Course(String courseId, String courseName, String courseTeacherName, String creationTime, int studentCount) {
+    public Course(String courseId, String courseName, String creatorName, int studentCount) {
         this.courseId = courseId;
         this.courseName = courseName;
-        this.createrName = courseTeacherName;
-        this.creationTime = creationTime;
+        this.creatorName = creatorName;
         this.studentCount = studentCount;
-
+        this.creationTime = new Date(); // Set current time as creation time
     }
 
-    // Getters and setters for the attributes
+    protected Course(Parcel in) {
+        courseId = in.readString();
+        courseName = in.readString();
+        creatorName = in.readString();
+        creationTime = new Date(in.readLong());
+        studentCount = in.readInt();
+    }
+
+    public static final Creator<Course> CREATOR = new Creator<Course>() {
+        @Override
+        public Course createFromParcel(Parcel in) {
+            return new Course(in);
+        }
+
+        @Override
+        public Course[] newArray(int size) {
+            return new Course[size];
+        }
+    };
 
     public String getCourseId() {
         return courseId;
@@ -42,12 +60,12 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String getCreaterName() {
-        return createrName;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setCreaterName(String createrName) {
-        this.createrName = createrName;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public int getStudentCount() {
@@ -58,11 +76,21 @@ public class Course {
         this.studentCount = studentCount;
     }
 
-    public String getCreationTime() {
+    public Date getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(String creationTime) {
-        this.creationTime = creationTime;
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(courseId);
+        dest.writeString(courseName);
+        dest.writeString(creatorName);
+        dest.writeLong(creationTime.getTime());
+        dest.writeInt(studentCount);
     }
 }

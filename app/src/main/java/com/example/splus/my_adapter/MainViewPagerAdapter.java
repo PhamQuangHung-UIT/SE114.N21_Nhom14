@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.splus.my_fragment.AccountFragment;
-import com.example.splus.my_fragment.AssignFragment;
 import com.example.splus.my_fragment.AssignmentFragment;
 import com.example.splus.my_fragment.CoursesFragment;
 import com.example.splus.my_fragment.HomeFragment;
@@ -30,7 +29,7 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
                     //return new HomeworkFragment();
                     return new AssignmentFragment();
                 } else {
-                    return new AssignFragment();
+                    return new AssignmentFragment();
                 }
             case 3:
                 // return new SettingFragment();

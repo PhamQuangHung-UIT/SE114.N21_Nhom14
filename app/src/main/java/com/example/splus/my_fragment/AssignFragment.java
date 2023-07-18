@@ -1,7 +1,5 @@
 package com.example.splus.my_fragment;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,14 +27,6 @@ import com.example.splus.my_adapter.SpinnerCourseAdapter;
 import com.example.splus.my_data.Account;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +39,6 @@ public class AssignFragment extends Fragment {
     private SpinnerCourseAdapter spinnerCourseAdapter;
 
     private Button buttonCreateAssignment;
-
-    MainActivity activity;
 
     public AssignFragment() {
         // Required empty public constructor
@@ -109,9 +96,6 @@ public class AssignFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        activity = (MainActivity) getActivity();
-
         return view;
     }
 
@@ -121,53 +105,53 @@ public class AssignFragment extends Fragment {
     }
 
     @NonNull
-    private List<Assignment> getAssignment(String courseId) {
-        List<Assignment> listAssignment = new ArrayList<>();
-        FirebaseFirestore db = activity.getDb();
-        db.collection("assignments")
-                .whereEqualTo("courseId", courseId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                listAssignment.add((Assignment) document.getData());
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        return listAssignment;
+    private List<Assignment> getAssignment(int courseID) {
+        // Query SELECT * FROM assignment WHERE assign_id= :classID
+        List<Assignment> assignmentList = new ArrayList<>();
+
+        Assignment example = new Assignment(
+                1,
+                "Kiểm tra cuối khoá",
+                10,
+                "30m",
+                "2023-06-10 00:00:00",
+                "",
+                courseID,
+                "Nhập môn toán học",
+                0,
+                0
+        );
+        assignmentList.add(example);
+        assignmentList.add(example);
+        assignmentList.add(example);
+        assignmentList.add(example);
+        assignmentList.add(example);
+        return assignmentList;
     }
 
     @NonNull
     private List<Assignment> getAllAssignment() {
-        List<Assignment> listAssignment = new ArrayList<>();
-        List<String> listLessonId = activity.getAllLessonId();
-        FirebaseFirestore db = activity.getDb();
-        for (int index=0; index<listLessonId.size(); index++) {
-            db.collection("assignments")
-                    .whereEqualTo("lessonId", listLessonId.get(index))
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    listAssignment.add((Assignment) document.getData());
-                                }
-                            } else {
-                                Log.d(TAG, "Error getting documents: ", task.getException());
-                            }
-                        }
-                    });
-        }
+        List<Assignment> assignmentList = new ArrayList<>();
 
-        return listAssignment;
+        Assignment example = new Assignment(
+                1,
+                "Kiểm tra cuối khoá",
+                10,
+                "30m",
+                "2023-06-10 00:00:00",
+                "",
+                0,
+                "Nhập môn toán học",
+                0,
+                0
+        );
+        assignmentList.add(example);
+        assignmentList.add(example);
+        assignmentList.add(example);
+        assignmentList.add(example);
+        assignmentList.add(example);
+
+        return assignmentList;
     }
 
     @NonNull
@@ -175,7 +159,7 @@ public class AssignFragment extends Fragment {
         List<Course> courseList = new ArrayList<>();
 
         Course classExample = new Course(
-                "0",
+                0,
                 getString(R.string.text_class_name),
                 getString(R.string.teacher_name_example)
         );
@@ -183,13 +167,13 @@ public class AssignFragment extends Fragment {
         courseList.add(classExample);
 
         courseList.add( new Course(
-                "0",
+                0,
                 "Giải tích",
                 "ThS. Lê Hoàng Tuấn"
         ));
 
         courseList.add( new Course(
-                "0",
+                0,
                 "Đại số tuyến tính",
                 "TS. Dương Ngọc Hảo"
         ));

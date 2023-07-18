@@ -27,11 +27,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Tên khóa học"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:text="Tên khóa học"
+            android:textColor="@color/black" />
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/creatorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,21 +43,49 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/creationTimeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Thời gian tạo lớp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
             android:id="@+id/studentCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Số lượng sinh viên tham gia"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="Số lượng sinh viên tham gia"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/lessonCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="Số lượng bài học"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+                <Button
+                    android:id="@+id/editButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_edit"
+                    android:layout_margin="10dp"
+                    android:drawableLeft="@drawable/baseline_edit_24"
+                    android:drawableTint="@color/white"/>
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_delete"
+                    android:layout_margin="10dp"
+                    android:drawableLeft="@drawable/baseline_delete_24"
+                    android:backgroundTint="@color/red"/>
+        </LinearLayout>
+
 
 </LinearLayout>
