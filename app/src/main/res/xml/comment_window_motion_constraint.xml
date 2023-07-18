@@ -5,37 +5,41 @@
 
     <Transition
         android:id="@+id/transitionShowComment"
-        motion:constraintSetStart="@+id/end"
         motion:constraintSetEnd="@+id/start"
+        motion:constraintSetStart="@+id/end"
         motion:duration="500"
-        motion:motionInterpolator="easeOut"/>
+        motion:motionInterpolator="easeOut">
+    </Transition>
     <Transition
         android:id="@+id/transitionCloseComment"
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
-        motion:motionInterpolator="easeOut"
         motion:duration="500"
-        motion:layoutDuringTransition="ignoreRequest">
+        motion:motionInterpolator="easeOut">
         <OnSwipe
             motion:touchAnchorId="@+id/motionSwipeArea"
             motion:touchAnchorSide="middle"
             motion:dragDirection="dragDown"/>
-        <KeyFrameSet>
-            <KeyPosition
-                motion:motionTarget="@id/layout_ShowCourseDetail"
-                motion:sizePercent="0"/>
-        </KeyFrameSet>
     </Transition>
-
 
     <!--START PHASE-->
     <ConstraintSet android:id="@+id/start">
         <Constraint
+            android:id="@+id/button_ShowComment">
+            <CustomAttribute
+                motion:attributeName="enabled"
+                motion:customBoolean="false"/>
+        </Constraint>
+        <Constraint
+            android:id="@+id/button_enroll">
+            <CustomAttribute
+                motion:attributeName="enabled"
+                motion:customBoolean="false"/>
+        </Constraint>
+        <Constraint
             android:id="@+id/motionSwipeArea"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/fragmentContainerView_ShowComment"
@@ -54,13 +58,6 @@
                 motion:customColorValue="@color/unfocused_background"/>
         </Constraint>
         <Constraint
-            android:id="@+id/constraintLayout_ScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/linearHeaderCourseActivity"/>
-        <Constraint
             android:id="@+id/editText_WriteComment"
             android:visibility="visible"/>
     </ConstraintSet>
@@ -71,9 +68,7 @@
             android:id="@+id/motionSwipeArea"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            motion:layout_constraintTop_toBottomOf="@id/constraintLayout_ShowComment"
-            motion:layout_constraintStart_toStartOf="@id/constraintLayout_ShowComment"
-            motion:layout_constraintEnd_toEndOf="@id/constraintLayout_ShowComment"/>
+            motion:layout_constraintTop_toBottomOf="parent" />
         <Constraint
             android:id="@+id/fragmentContainerView_ShowComment"
             android:layout_width="match_parent"
@@ -90,13 +85,5 @@
                 motion:attributeName="backgroundColor"
                 motion:customColorValue="@color/transparent"/>
         </Constraint>
-        <Constraint
-            android:id="@+id/constraintLayout_ScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toTopOf="@id/constraintLayout_ShowComment"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/linearHeaderCourseActivity"/>
     </ConstraintSet>
 </MotionScene>

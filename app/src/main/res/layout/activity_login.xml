@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -23,23 +24,23 @@
 
     <EditText
         android:id="@+id/editUsernameLoginActivity"
-        android:background="@color/light_grey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/headerLoginActivity"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
+        android:background="@color/light_grey"
         android:fontFamily="@font/montserrat"
         android:hint="Email"
         android:inputType="text"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="15dp"
         android:textColor="@color/dark_grey"
         android:textColorHint="@color/dark_grey"
         android:textSize="14sp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
         tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <EditText
@@ -65,19 +66,19 @@
 
     <Button
         android:id="@+id/buttonLogin"
-        android:backgroundTint="@color/green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editPasswordLoginActivity"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/green"
         android:fontFamily="@font/montserrat"
+        android:padding="15dp"
         android:text="@string/title_log_in"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:padding="15dp"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize" />
 
     <LinearLayout
@@ -86,12 +87,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonLogin"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:text="@string/text_suggest_sign_up"
@@ -109,29 +112,19 @@
             android:id="@+id/textSuggestSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginVertical="12dp"
+            android:layout_weight="1.5"
             android:fontFamily="@font/montserrat"
+            android:paddingTop="4dp"
+            android:paddingBottom="5dp"
             android:text="@string/text_sign_up_underline"
             android:textAlignment="center"
             android:textColor="@color/green"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:padding="15dp"
             tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/linearSuggestSignUp"
-    android:layout_centerVertical="true"
-    android:paddingTop="50dp"
-
-
-    >
-
-
-</LinearLayout>
 
 </RelativeLayout>
 

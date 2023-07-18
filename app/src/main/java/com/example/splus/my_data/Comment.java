@@ -11,9 +11,10 @@ public class Comment {
     @DocumentId
     private String id;
     private String courseId;
-    private String replyCommentId;
+    private String replyOwnerId;
     private String parentCommentId;
     private String ownerDisplayName;
+    private String replyOwnerName;
     private String ownerId;
     private String text;
     private int likeCount;
@@ -21,7 +22,7 @@ public class Comment {
     @ServerTimestamp
     private Timestamp createdDate;
     @Exclude
-    private Boolean isLike;
+    private Boolean like;
 
     private int replyCount;
 
@@ -86,32 +87,29 @@ public class Comment {
         this.createdDate = createdDate;
     }
 
-    public Boolean isLike() {
-        return isLike;
+    @Exclude
+    public Boolean getLike() {
+        return like;
     }
 
-    public void setLike(Boolean isLike) {
-        this.isLike = isLike;
+    public void setLike(Boolean like) {
+        this.like = like;
     }
 
     public void like() {
         likeCount++;
-        isLike = true;
     }
 
     public void dislike() {
         dislikeCount++;
-        isLike = false;
     }
 
     public void unlike() {
         likeCount--;
-        isLike = null;
     }
 
     public void undislike() {
         dislikeCount--;
-        isLike = null;
     }
 
     public String getOwnerId() {
@@ -130,12 +128,12 @@ public class Comment {
         this.courseId = courseId;
     }
 
-    public String getReplyCommentId() {
-        return replyCommentId;
+    public String getReplyOwnerId() {
+        return replyOwnerId;
     }
 
-    public void setReplyCommentId(String replyCommentId) {
-        this.replyCommentId = replyCommentId;
+    public void setReplyOwnerId(String replyOwnerId) {
+        this.replyOwnerId = replyOwnerId;
     }
 
     public String getParentCommentId() {
@@ -146,6 +144,14 @@ public class Comment {
         this.parentCommentId = parentCommentId;
     }
 
+    public String getReplyOwnerName() {
+        return replyOwnerName;
+    }
+
+    public void setReplyOwnerName(String replyOwnerName) {
+        this.replyOwnerName = replyOwnerName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -153,17 +159,17 @@ public class Comment {
         Comment comment = (Comment) o;
         return likeCount == comment.likeCount && dislikeCount == comment.dislikeCount
                 && replyCount == comment.replyCount && Objects.equals(courseId, comment.courseId)
-                && Objects.equals(replyCommentId, comment.replyCommentId)
+                && Objects.equals(replyOwnerId, comment.replyOwnerId)
                 && Objects.equals(parentCommentId, comment.parentCommentId)
                 && Objects.equals(ownerDisplayName, comment.ownerDisplayName)
                 && Objects.equals(ownerId, comment.ownerId)
                 && Objects.equals(text, comment.text)
                 && Objects.equals(createdDate, comment.createdDate)
-                && Objects.equals(isLike, comment.isLike);
+                && Objects.equals(like, comment.like);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(courseId, replyCommentId, parentCommentId, ownerDisplayName, ownerId, text, likeCount, dislikeCount, createdDate, isLike, replyCount);
+        return Objects.hash(courseId, replyOwnerId, parentCommentId, ownerDisplayName, ownerId, text, likeCount, dislikeCount, createdDate, like, replyCount);
     }
 }

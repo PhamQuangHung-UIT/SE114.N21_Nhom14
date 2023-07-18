@@ -1,68 +1,78 @@
 package com.example.splus.my_adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.R;
 import com.example.splus.my_data.Course;
+import com.example.splus.my_interface.IClickCourseListener;
 
+import java.text.DateFormat;
+import java.util.Locale;
 
-import java.util.List;
+public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewHolder> {
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
+    private final IClickCourseListener listener;
 
-  private List<Course> courseList;
+    private final Context context;
 
-  public CourseAdapter(List<Course> courseList) {
-    this.courseList = courseList;
-  }
+    public static final DiffUtil.ItemCallback<Course> DIFF_CALLBACK = new DiffUtil.ItemCallback<>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Course oldItem, @NonNull Course newItem) {
+            return oldItem == newItem;
+        }
 
-  @NonNull
-  @Override
-  public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_course, parent, false);
-    return new CourseViewHolder(view);
-  }
+        @Override
+        public boolean areContentsTheSame(@NonNull Course oldItem, @NonNull Course newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 
-  @Override
-  public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
-    Course course = courseList.get(position);
-    holder.bindData(course);
-  }
-
-  @Override
-  public int getItemCount() {
-    return courseList.size();
-  }
-
-  public class CourseViewHolder extends RecyclerView.ViewHolder {
-    private TextView courseIDTextView;
-    private TextView courseNameTextView;
-    private TextView creatorTextView;
-    private TextView creationTimeTextView;
-    private TextView studentCountTextView;
-
-    public CourseViewHolder(@NonNull View itemView) {
-      super(itemView);
-
-      courseIDTextView = itemView.findViewById(R.id.courseIdTextView);
-      courseNameTextView = itemView.findViewById(R.id.courseNameTextView);
-      creatorTextView = itemView.findViewById(R.id.creatorTextView);
-      creationTimeTextView = itemView.findViewById(R.id.creationTimeTextView);
-      studentCountTextView = itemView.findViewById(R.id.studentCountTextView);
+    public CourseAdapter(Context context, IClickCourseListener listener) {
+        super(DIFF_CALLBACK);
+        this.listener = listener;
+        this.context = context;
     }
 
-    public void bindData(Course course) {
-      courseIDTextView.setText("ID: " + course.getCourseId());
-      courseNameTextView.setText(course.getCourseName());
-      creatorTextView.setText("Created by: " + course.getCreatorName());
-      creationTimeTextView.setText("Created at: " + course.getCreationTime());
-      studentCountTextView.setText("Students: " + course.getStudentCount());
+    @NonNull
+    @Override
+    public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_course, parent, false);
+        return new CourseViewHolder(view);
     }
-  }
+
+    @Override
+    public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
+        Course course = getCurrentList().get(position);
+        DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("vn"));
+        holder.courseNameTextView.setText(course.getCourseName());
+        holder.creatorTextView.setText(context.getString(R.string.title_teacher_placeholder, course.getCreatorName()));
+        holder.creationTimeTextView.setText(context.getString(R.string.title_create_date_placeholder,  formatter.format(course.getCreationTime().toDate())));
+        holder.studentCountTextView.setText(context.getString(R.string.title_student_count_placeholder, course.getStudentCount()));
+        holder.itemView.setOnClickListener(view -> listener.onClickCourse(course));
+    }
+
+    public static class CourseViewHolder extends RecyclerView.ViewHolder {
+        private final TextView courseNameTextView;
+        private final TextView creatorTextView;
+        private final TextView creationTimeTextView;
+        private final TextView studentCountTextView;
+
+        public CourseViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            courseNameTextView = itemView.findViewById(R.id.courseNameTextView);
+            creatorTextView = itemView.findViewById(R.id.creatorTextView);
+            creationTimeTextView = itemView.findViewById(R.id.creationTimeTextView);
+            studentCountTextView = itemView.findViewById(R.id.studentCountTextView);
+        }
+    }
 }

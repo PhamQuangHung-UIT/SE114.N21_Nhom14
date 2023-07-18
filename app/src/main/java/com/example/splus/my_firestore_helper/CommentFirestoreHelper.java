@@ -2,9 +2,8 @@ package com.example.splus.my_firestore_helper;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.example.splus.my_data.Comment;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,29 +24,66 @@ public class CommentFirestoreHelper {
     public static final int LIKE = 1;
     public static final int DISLIKE = -1;
     public static final int NULL = 0;
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    private final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
     private static CommentFirestoreHelper instance;
-
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private FireStoreEventListener
             onGetCommentListListener,
-            onGetCommentDataListener,
-            onAddNewCommentListener,
-            onDeleteListener,
+            onGetReplyListListener,
             onEditListener,
+            onDeleteListener,
             onLikeChangeListener,
             onDislikeChangeListener;
+    private GetCommentDataListener onGetCommentDataListener;
+    private AddNewCommentListener onAddNewCommentListener;
 
     public static CommentFirestoreHelper getInstance() {
         if (instance == null)
             instance = new CommentFirestoreHelper();
+        Log.d("DEBUG", "UID: " + instance.user.getUid());
+        Log.d("DEBUG", "DisplayName:" + instance.user.getDisplayName());
         return instance;
     }
 
-    public List<Comment> getListComment(String courseID, String parentCommentID) {
+    public List<Comment> getListComment(String courseID) {
         onGetCommentListListener.onStart();
+        List<Comment> commentList = new ArrayList<>();
+        Query query = db.collection("comment")
+                .whereEqualTo("courseId", courseID)
+                .whereEqualTo("parentCommentId", null)
+                .orderBy("createdDate", Query.Direction.DESCENDING);
+        query.get().addOnCompleteListener(commentTask -> {
+            if (commentTask.isSuccessful()) {
+                for (QueryDocumentSnapshot document : commentTask.getResult()) {
+                    Comment comment = document.toObject(Comment.class);
+                    commentList.add(comment);
+                }
+            }
+        }).continueWithTask(task -> {
+            // Create a query to "commentReact" collection
+            return db.collection("commentReact")
+                    .whereEqualTo("courseId", courseID)
+                    .whereEqualTo("userId", user.getUid())
+                    .get();
+        }).addOnCompleteListener(commentReactTask -> {
+            if (commentReactTask.isSuccessful()) {
+                for (QueryDocumentSnapshot document : commentReactTask.getResult()) {
+                    Optional<Comment> result = commentList.stream()
+                            .filter(cmt -> cmt.getId().equals(document.get("commentId", String.class)))
+                            .findFirst();
+                    if (result.isPresent()) {
+                        Comment comment = result.get();
+                        comment.setLike("like".equals(document.get("react", String.class)));
+                    }
+                }
+            }
+            onGetCommentListListener.onComplete(commentReactTask.isSuccessful(), commentReactTask.getException());
+        });
+        return commentList;
+    }
+
+    public List<Comment> getListReply(String courseID, String parentCommentID) {
+        onGetReplyListListener.onStart();
         List<Comment> commentList = new ArrayList<>();
         Query query = db.collection("comment")
                 .whereEqualTo("courseId", courseID)
@@ -60,7 +96,6 @@ public class CommentFirestoreHelper {
                     commentList.add(comment);
                 }
             }
-            onGetCommentListListener.onComplete(commentTask.isSuccessful(), commentTask.getException());
         }).continueWithTask(task -> {
             // Create a query to "commentReact" collection
             return db.collection("commentReact")
@@ -78,48 +113,52 @@ public class CommentFirestoreHelper {
                     }
                 }
             }
-            onGetCommentListListener.onComplete(commentReactTask.isSuccessful(), commentReactTask.getException());
+            onGetReplyListListener.onComplete(commentReactTask.isSuccessful(), commentReactTask.getException());
         });
         return commentList;
     }
 
-    public Comment getComment(String commentId) {
-        // Create an atomic result by creating a 1-element array
-        Comment[] result = new Comment[1];
-        synchronized (result) {
-            db.collection("comment").document(commentId).get().addOnCompleteListener(task -> {
-                if (task.isComplete())
-                    result[0] = task.getResult().toObject(Comment.class);
-                onGetCommentDataListener.onComplete(task.isSuccessful(), task.getException());
-                synchronized (result) {
-                    result.notify();
-                }
-            });
-            onGetCommentDataListener.onStart();
-            try {
-                result.wait();
-            } catch (InterruptedException e) {
-                Log.e("Error", "getComment", e);
+    public void getComment(String commentId) {
+        db.collection("comment").document(commentId).get().addOnCompleteListener(task -> {
+            if (task.isComplete()) {
+                Comment result = task.getResult().toObject(Comment.class);
+                onGetCommentDataListener.onSuccess(result);
             }
-            return result[0];
-        }
+            onGetCommentDataListener.onComplete(task.isSuccessful(), task.getException());
+        });
+        onGetCommentDataListener.onStart();
     }
 
-    public void addNewComment(String courseId, String parentCommentId, String replyCommentId, String text) {
+    public void addNewComment(String courseId, String parentCommentId, String replyOwnerId, String replyOwnerName, String text) {
         onAddNewCommentListener.onStart();
         Comment comment = new Comment();
         comment.setCourseId(courseId);
         comment.setParentCommentId(parentCommentId);
-        comment.setReplyCommentId(replyCommentId);
+        comment.setReplyOwnerId(replyOwnerId);
+        comment.setReplyOwnerName(replyOwnerName);
+        comment.setOwnerId(user.getUid());
+        comment.setOwnerDisplayName(user.getDisplayName());
         comment.setText(text);
-        db.collection("comment").add(comment).addOnCompleteListener(result ->
+        Task<?> task = db.collection("comment").add(comment);
+        if (parentCommentId != null)
+            task = task.continueWithTask(t -> db.runTransaction(transaction -> {
+                DocumentReference ref = db.collection("comment").document(parentCommentId);
+                int replyCount = transaction.get(ref).get("replyCount", Integer.class);
+                transaction.update(ref, "replyCount", ++replyCount);
+                return replyCount;
+            }));
+        task.addOnSuccessListener(result -> onAddNewCommentListener.onSuccess((int)result)).addOnCompleteListener(result ->
                 onAddNewCommentListener.onComplete(result.isSuccessful(), result.getException()));
     }
 
 
-    public void edit(String editCommentID, String text) {
+    public void edit(String editCommentID, String replyOwnerId, String replyOwnerName, String text) {
         onEditListener.onStart();
-        db.collection("comment").document(editCommentID).update("text", text)
+        Map<String, Object> map = new HashMap<>();
+        map.put("text", text);
+        map.put("replyOwnerId", replyOwnerId);
+        map.put("replyOwnerName", replyOwnerName);
+        db.collection("comment").document(editCommentID).update(map)
                 .addOnCompleteListener(task -> onEditListener.onComplete(task.isSuccessful(), task.getException()));
     }
 
@@ -143,54 +182,14 @@ public class CommentFirestoreHelper {
             try {
                 DocumentReference ref = db.collection("comment").document(comment.getId());
                 int likeCount = transaction.get(ref).get("likeCount", Integer.class);
-                if (state == NULL)
+                if (state == LIKE)
                     likeCount++;
                 else likeCount--;
                 if (previousState == DISLIKE) {
-                    int dislikeCount = transaction.get(ref).get("likeCount", Integer.class);
+                    int dislikeCount = transaction.get(ref).get("dislikeCount", Integer.class);
                     transaction.update(ref, "dislikeCount", --dislikeCount);
                 }
                 transaction.update(ref, "likeCount", likeCount);
-            } catch (NullPointerException npe) {
-                throw new FirebaseFirestoreException("Unexisted comment", FirebaseFirestoreException.Code.NOT_FOUND, npe);
-            }
-            return null;
-        }).continueWithTask(
-                task -> db.collection("commentReact")
-                                .whereEqualTo("commentId", comment.getId())
-                                .whereEqualTo("userId", user.getUid())
-                                .get()
-        ).continueWithTask(task -> {
-            DocumentReference ref;
-            if (task.getResult().size() != 0) {
-                ref = task.getResult().getDocuments().get(0).getReference();
-                if (state == NULL)
-                    return ref.delete();
-                else return ref.update("react","like");
-            } else {
-                Map<String, Object> map = new HashMap<>();
-                map.put("commentId", comment.getId());
-                map.put("userId", user.getUid());
-                map.put("react", "like");
-                ref = db.collection("commentReact").document();
-                return ref.set(map);
-            }
-        }).addOnCompleteListener(task -> onLikeChangeListener.onComplete(task.isSuccessful(), task.getException()));
-    }
-
-    public void dislikeChange(Comment comment, int state, int previousState) {
-        db.runTransaction(transaction -> {
-            try {
-                DocumentReference ref = db.collection("comment").document(comment.getId());
-                int likeCount = transaction.get(ref).get("dislikeCount", Integer.class);
-                if (state == DISLIKE)
-                    likeCount++;
-                else likeCount--;
-                if (previousState == LIKE) {
-                    int dislikeCount = transaction.get(ref).get("likeCount", Integer.class);
-                    transaction.update(ref, "dislikeCount", --dislikeCount);
-                }
-                transaction.update(ref, "dislikeCount", likeCount);
             } catch (NullPointerException npe) {
                 throw new FirebaseFirestoreException("Unexisted comment", FirebaseFirestoreException.Code.NOT_FOUND, npe);
             }
@@ -206,9 +205,51 @@ public class CommentFirestoreHelper {
                 ref = task.getResult().getDocuments().get(0).getReference();
                 if (state == NULL)
                     return ref.delete();
-                else return ref.update("react","dislike");
+                else return ref.update("react", "like");
             } else {
                 Map<String, Object> map = new HashMap<>();
+                map.put("courseId", comment.getCourseId());
+                map.put("commentId", comment.getId());
+                map.put("userId", user.getUid());
+                map.put("react", "like");
+                ref = db.collection("commentReact").document();
+                return ref.set(map);
+            }
+        }).addOnCompleteListener(task -> onLikeChangeListener.onComplete(task.isSuccessful(), task.getException()));
+    }
+
+    public void dislikeChange(Comment comment, int state, int previousState) {
+        db.runTransaction(transaction -> {
+            try {
+                DocumentReference ref = db.collection("comment").document(comment.getId());
+                int dislikeCount = transaction.get(ref).get("dislikeCount", Integer.class);
+                if (state == DISLIKE)
+                    dislikeCount++;
+                else dislikeCount--;
+                if (previousState == LIKE) {
+                    int likeCount = transaction.get(ref).get("likeCount", Integer.class);
+                    transaction.update(ref, "likeCount", --likeCount);
+                }
+                transaction.update(ref, "dislikeCount", dislikeCount);
+            } catch (NullPointerException npe) {
+                throw new FirebaseFirestoreException("Unexisted comment", FirebaseFirestoreException.Code.NOT_FOUND, npe);
+            }
+            return null;
+        }).continueWithTask(
+                task -> db.collection("commentReact")
+                        .whereEqualTo("commentId", comment.getId())
+                        .whereEqualTo("userId", user.getUid())
+                        .get()
+        ).continueWithTask(task -> {
+            DocumentReference ref;
+            if (task.getResult().size() != 0) {
+                ref = task.getResult().getDocuments().get(0).getReference();
+                if (state == NULL)
+                    return ref.delete();
+                else return ref.update("react", "dislike");
+            } else {
+                Map<String, Object> map = new HashMap<>();
+                map.put("courseId", comment.getCourseId());
                 map.put("commentId", comment.getId());
                 map.put("userId", user.getUid());
                 map.put("react", "dislike");
@@ -222,11 +263,11 @@ public class CommentFirestoreHelper {
         this.onGetCommentListListener = onGetCommentListListener;
     }
 
-    public void setOnGetCommentDataListener(FireStoreEventListener onGetCommentDataListener) {
+    public void setOnGetCommentDataListener(GetCommentDataListener onGetCommentDataListener) {
         this.onGetCommentDataListener = onGetCommentDataListener;
     }
 
-    public void setOnAddNewCommentListener(FireStoreEventListener onAddNewCommentListener) {
+    public void setOnAddNewCommentListener(AddNewCommentListener onAddNewCommentListener) {
         this.onAddNewCommentListener = onAddNewCommentListener;
     }
 
@@ -246,8 +287,22 @@ public class CommentFirestoreHelper {
         this.onDislikeChangeListener = onDislikeChangeListener;
     }
 
+    public void setOnGetReplyListListener(FireStoreEventListener onGetReplyListListener) {
+        this.onGetReplyListListener = onGetReplyListListener;
+    }
+
     public interface FireStoreEventListener {
-        void onStart();
+        default void onStart() {
+        }
+
         void onComplete(boolean isSuccessful, Exception exception);
+    }
+
+    public interface GetCommentDataListener extends FireStoreEventListener {
+        void onSuccess(Comment comment);
+    }
+
+    public interface AddNewCommentListener extends FireStoreEventListener {
+        void onSuccess(int replyCount);
     }
 }

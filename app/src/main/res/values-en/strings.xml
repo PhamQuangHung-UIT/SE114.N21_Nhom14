@@ -7,7 +7,7 @@
 
     <string name="support_upper">SUPPORT</string>
 
-    <string name="hint_username">Enter your username</string>
+    <string name="hint_phone_number">Enter your username</string>
 
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -37,7 +37,7 @@
     <string name="lesson_name">Lesson name</string>
     <string name="label_course">Class</string>
     <string name="label_class_name">Class name</string>
-    <string name="label_teacher_name">Teacher</string>
+    <string name="label_teacher_name">Instructor</string>
     <string name="title_teacher_name">Instructor</string>
     <string name="making_question_button">Make a question</string>
     <string name="class_detail">Class detail</string>
@@ -90,8 +90,8 @@
     <string name="notif_time">05/04/2023 14:31</string>
     <string name="account_information">Account information</string>
     <string name="title_update_information">UPDATE INFORMATION</string>
-    <string name="button_ask">Ask teacher</string>
-    <string name="hint_make_question">Write a question to send to the teacher …</string>
+    <string name="button_ask">Ask instructor</string>
+    <string name="hint_make_question">Write a question to send to the instructor …</string>
     <string name="action_setting">Account</string>
     <string name="update_button">UPDATE</string>
     <string name="hint_fullname">Eg: James Lincoln</string>
@@ -116,7 +116,7 @@
     <string name="hint_birthday">dd/mm/yyyy</string>
     <string name="label_role">Your role</string>
     <string name="text_role_student">Student</string>
-    <string name="text_role_teacher">Teacher</string>
+    <string name="text_role_teacher">Instructor</string>
     <string name="toast_sign_up_successful">Sign up succcessful</string>
     <string name="toast_sign_up_unsuccessful">Fail to sign up</string>
     <string name="toast_min_length_alert">Password must be at least 6 characters</string>
@@ -138,7 +138,7 @@
     <string name="text_question">Content of question, can be display by English or Vietnamese</string>
     <string name="text_answer">Content of answer</string>
     <string name="title_create_course">Create a course</string>
-    <string name="label_teacher">Teacher:</string>
+    <string name="label_teacher">Instructor:</string>
     <string name="hint_course">Course name</string>
     <string name="title_done">Done</string>
     <string name="hint_quantity">Course size</string>
@@ -166,9 +166,9 @@
     <string name="one_month_ago">1 month ago</string>
     <string name="n_days_ago">%1$d days ago</string>
     <string name="yesterday">Yesterday</string>
-    <string name="n_hours_ago">%1$d giờ trước</string>
-    <string name="one_hour_ago">1 giờ trước</string>
-    <string name="n_mins_ago">%1$d phút trước</string>
+    <string name="n_hours_ago">%1$d hours ago</string>
+    <string name="one_hour_ago">1 hour ago</string>
+    <string name="n_mins_ago">%1$d minutes ago</string>
     <!--END TIME OFFSET-->
     <string name="write_a_comment">Write a comment…</string>
     <string name="TitleCreateAssignment">Title</string>
@@ -177,11 +177,25 @@
     <string name="toast_password_min_length_alert">Password must be at least 6 characters</string>
     <string name="lesson_numbers_n"><b>Number of lessons:</b>  %1$d</string>
     <string name="send">Send</string>
-    <string name="unreached_server_msg">Unable to reach the server. Please try again.</string>
     <string name="course_detail">Course detail</string>
     <string name="no_description">No description</string>
     <string name="unexpected_error_msg">Unexpected error. Please try again.</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="delete_msg">Delete the comment?</string>
+    <string name="cancel">Cancel</string>
+    <string name="enroll">Enroll</string>
+    <string name="unenroll">Unenroll</string>
+    <string name="unenroll_msg">Unenroll this course?</string>
+    <string name="enroll_success_msg">Enroll successfully</string>
+    <string name="undo">Undo</string>
+    <string name="title_teacher_placeholder">Instructor: %1$s</string>
+    <string name="title_create_date_placeholder">Create date: %1$s</string>
+    <string name="title_student_count_placeholder">Enroll: %1$,d people</string>
+    <string name="empty_username_msg">Empty username field</string>
+    <string name="empty_password_msg">Empty password field</string>
+    <string name="show_password">Show Password</string>
+    <string name="email_already_in_use_error_msg">This email has already in used. Please use different email.</string>
+    <string name="retry">Retry</string>
+    <string name="connection_error_msg">Unable to connect to the server. Please check your internet connection and try again.</string>
 </resources>

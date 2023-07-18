@@ -32,6 +32,9 @@ import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -110,7 +113,7 @@ public class AssignFragment extends Fragment {
             }
         });
 
-        activity = (MainActivity) getActivity();
+        activity = (MainActivity) requireActivity();
 
         return view;
     }
@@ -137,6 +140,7 @@ public class AssignFragment extends Fragment {
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
+                            Snackbar.make(getView(), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -152,14 +156,11 @@ public class AssignFragment extends Fragment {
             db.collection("assignments")
                     .whereEqualTo("lessonId", listLessonId.get(index))
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    .addOnCompleteListener(new OnCompleteListener<>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    listAssignment.add((Assignment) document.getData());
-                                }
+                                listAssignment.addAll(task.getResult().toObjects(Assignment.class));
                             } else {
                                 Log.d(TAG, "Error getting documents: ", task.getException());
                             }
@@ -173,22 +174,16 @@ public class AssignFragment extends Fragment {
     @NonNull
     private List<Course> getListCourse() {
         List<Course> courseList = new ArrayList<>();
-
-        Course classExample = new Course(
-                "0",
-                getString(R.string.text_class_name),
-                getString(R.string.teacher_name_example),
-                "", ""
-        );
-
-        courseList.add(classExample);
-
-        courseList.add( new Course(
-                "0",
-                "Giải tích",
-                "ThS. Lê Hoàng Tuấn", "", ""
-        ));
-
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("courses").whereEqualTo("creatorId", user).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful())
+                courseList.addAll(task.getResult().toObjects(Course.class));
+            else {
+                Log.e("Error", "Error in get course list", task.getException());
+                Snackbar.make(getView(), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
+            }
+        });
         return courseList;
     }
 

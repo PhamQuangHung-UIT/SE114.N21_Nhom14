@@ -1,28 +1,27 @@
 package com.example.splus.my_data;
 
 import com.example.splus.R;
+import com.google.firebase.firestore.DocumentId;
+import com.google.gson.Gson;
 
 import java.io.Serializable;
 
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 public class Account implements Serializable {
-    private String accountID;
-    private int avatarID;
 
-    private String username;
+    @DocumentId
+    private String accountID;  // user.getUID()
+
+    private String avatarUrl;  // user.getPhotoUrl()
     private int role;           // 0: student, 1: teacher
-    private String fullname;
-
+    private String fullname;    // user.getDisplayName();
     private String birthday;
     private int gender;         // 0: male, 1: female, 2: others
-    private String email;
-    private String phone;
+    private String email;       // user.getEmail()
+    private String phone;       // user.getPhoneNumber();
 
     public Account() {
         this.accountID = "123";
-        this.avatarID = R.drawable.account_box;
-        this.username = "username";
+        //this.avatarID = R.drawable.account_box;
         this.role = 0;
         this.fullname = "Nguyễn Văn B";
         this.birthday = "01/01/2001";
@@ -30,22 +29,20 @@ public class Account implements Serializable {
         this.email = "todo@splus.edu.vn";
         this.phone = "0987654321";
     }
-    public Account(String accountID, String username, int role) {
-        this.accountID = accountID;
-        this.avatarID = R.drawable.account_box;
-        this.username = username;
+
+    public Account(String accountID, String fullname, int role) {
+        this.accountID = accountID;;
         this.role = role;
-        this.fullname = "Nguyễn Văn C";
+        this.fullname = fullname;
         this.birthday = "01/01/2001";
         this.gender = 0;
         this.email = "todo@splus.edu.vn";
         this.phone = "0987654321";
     }
-    public Account(String accountID,String username,int role,String fullname, String birthday,
+
+    public Account(String accountID, int role, String fullname, String birthday,
                    int gender, String email) {
         this.accountID = accountID;
-        this.avatarID = R.drawable.account_box;
-        this.username = username;
         this.role = role;
         this.fullname = fullname;
         this.birthday = birthday;
@@ -53,61 +50,68 @@ public class Account implements Serializable {
         this.email = email;
         this.phone = "";
     }
+
     public String getAccountID() {
         return accountID;
     }
+
     public void setAccountID(String accountID) {
         this.accountID = accountID;
     }
-    public int getAvatarID() {
-        return avatarID;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
-    public void setAvatarID(int avatarID) {
-        this.avatarID = avatarID;
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
     public int getRole() {
         return role;
     }
+
     public void setRole(int role) {
         this.role = role;
     }
+
     public String getFullname() {
         return fullname;
     }
+
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
+
     public String getBirthday() {
         return birthday;
     }
+
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
+
     public int getGender() {
         return gender;
     }
+
     public void setGender(int gender) {
         this.gender = gender;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getPhone() {
         return phone;
     }
-    public void setPhone(String phone) {this.phone = phone; }
 
-    public String toJson(){
-        Gson gson =new Gson();
-        return gson.toJson(this);
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

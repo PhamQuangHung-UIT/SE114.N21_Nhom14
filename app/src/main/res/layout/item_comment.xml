@@ -14,9 +14,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/crop_frame"
+        android:scaleType="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/green" />
+        app:srcCompat="@drawable/account_box_small" />
 
     <TextView
         android:id="@+id/textView_DisplayName"

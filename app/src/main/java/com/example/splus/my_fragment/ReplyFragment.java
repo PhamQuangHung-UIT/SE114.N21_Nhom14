@@ -5,11 +5,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,13 +18,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.R;
-import com.example.splus.WriteCommentDialog;
+import com.example.splus.my_adapter.my_item_animator.CustomItemAnimator;
+import com.example.splus.my_dialog.LoadingDialog;
+import com.example.splus.my_dialog.WriteCommentDialog;
 import com.example.splus.my_adapter.CommentAdapter;
 import com.example.splus.my_data.Comment;
 import com.example.splus.my_firestore_helper.CommentFirestoreHelper;
+import com.example.splus.my_firestore_helper.FirebaseStorageHelper;
 import com.example.splus.my_viewmodel.CourseViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReplyFragment extends Fragment implements CommentAdapter.CommentOptionListener {
 
@@ -31,6 +37,8 @@ public class ReplyFragment extends Fragment implements CommentAdapter.CommentOpt
 
     private CourseViewModel model;
     private Comment comment;
+
+    private LoadingDialog dialog;
 
     CommentFirestoreHelper helper = CommentFirestoreHelper.getInstance();
     @Nullable
@@ -43,71 +51,103 @@ public class ReplyFragment extends Fragment implements CommentAdapter.CommentOpt
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         View commentView = view.findViewById(R.id.comment_view);
         model = new ViewModelProvider(requireActivity()).get(CourseViewModel.class);
-        boolean createReply = getArguments().getBoolean("createReply");
+        model.getFragmentType().setValue(CourseViewModel.REPLY);
+        AtomicBoolean createReply = new AtomicBoolean(getArguments().getBoolean("createReply"));
 
+        ImageView imageView_avatar = view.findViewById(R.id.imageView_AvatarWriteComment);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView_ReplyList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         CommentAdapter adapter = new CommentAdapter(getContext());
         adapter.setCommentOptionListener(this);
         recyclerView.setAdapter(adapter);
-        helper.setOnGetCommentDataListener(new CommentFirestoreHelper.FireStoreEventListener() {
+        recyclerView.setItemAnimator(new CustomItemAnimator());
+
+        FirebaseStorageHelper.updateAvatar(FirebaseAuth.getInstance().getCurrentUser().getUid(), imageView_avatar);
+
+        model.getCommitSuccess().observe(getViewLifecycleOwner(), success -> {
+            if (success && model.getFragmentType().getValue() == CourseViewModel.REPLY) {
+                createReply.set(false);
+                replyList = helper.getListReply(model.getCurrentCourse().getCourseId(), model.getParentCommentId());
+            }
+        });
+        helper.setOnGetCommentDataListener(new CommentFirestoreHelper.GetCommentDataListener() {
             @Override
             public void onStart() {
-                // TODO: Start the loading screen
+                startLoading();
+            }
+
+            @Override
+            public void onSuccess(Comment comment) {
+                ReplyFragment.this.comment = comment;
+                replyList = helper.getListReply(model.getCurrentCourse().getCourseId(), model.getParentCommentId());
             }
 
             @Override
             public void onComplete(boolean isSuccessful, Exception exception) {
                 // Has error
                 if (exception != null || !isSuccessful) {
-                    Toast.makeText(getContext(), R.string.unreached_server_msg, Toast.LENGTH_SHORT).show();
-                    // TODO: Stop the loading screen
+                    Toast.makeText(getContext(), R.string.unexpected_error_msg, Toast.LENGTH_SHORT).show();
+                    stopLoading();
                 } else {
-                    helper.setOnGetCommentListListener(new CommentFirestoreHelper.FireStoreEventListener() {
-                        @Override
-                        public void onStart() {
-                            // ignored
-                        }
-
-                        @Override
-                        public void onComplete(boolean isSuccessful, Exception exception) {
-                            // TODO: Stop the loading screen
-                            if (!isSuccessful) {
-                                Log.e("Error", "error in get comment list", exception);
-                                Toast.makeText(getContext(), R.string.unexpected_error_msg, Toast.LENGTH_SHORT).show();
-                            } else {
-                                CommentAdapter.CommentViewHolder holder = new CommentAdapter.CommentViewHolder(commentView);
-                                adapter.applyViewHolder(holder, comment, CommentAdapter.REPLY);
-                                adapter.submitList(replyList);
-                                if (createReply)
-                                   writeNewComment("");
-                            }
-                        }
-                    });
-                    replyList = helper.getListComment(model.getCurrentCourse().getCourseId(), model.getParentCommentId());
+                    CommentAdapter.CommentViewHolder holder = new CommentAdapter.CommentViewHolder(commentView);
+                    adapter.applyViewHolder(holder, comment, CommentAdapter.REPLY);
                 }
             }
         });
-        comment = helper.getComment(model.getParentCommentId());
+        helper.setOnGetReplyListListener(new CommentFirestoreHelper.FireStoreEventListener() {
+            @Override
+            public void onStart() {
+                // ignored
+            }
+
+            @Override
+            public void onComplete(boolean isSuccessful, Exception exception) {
+                if (!isSuccessful) {
+                    Log.e("Error", "error in get comment list", exception);
+                    Toast.makeText(getContext(), R.string.unexpected_error_msg, Toast.LENGTH_SHORT).show();
+                } else {
+                    adapter.submitList(replyList);
+                    if (createReply.get())
+                        onCreateReply(comment);
+                }
+                stopLoading();
+            }
+        });
+
+        helper.getComment(model.getParentCommentId());
+    }
+
+    @Override
+    public void onDestroyView() {
+        model.getCommentText().setValue("");
+        super.onDestroyView();
     }
 
     @Override
     public void onCreateReply(Comment comment) {
         model.setEditCommentId(null);
-        TextView textView_WriteReply = getView().findViewById(R.id.textView_WriteReply);
-        writeNewComment(textView_WriteReply.getText().toString());
+        model.getReplyToOwnerName().setValue(comment.getOwnerDisplayName());
+        model.getReplyToOwnerId().setValue(comment.getOwnerId());
+        model.getFragmentType().setValue(CourseViewModel.REPLY);
+        writeNewComment("");
     }
 
     @Override
     public void onEdit(Comment comment) {
         model.setEditCommentId(comment.getId());
+        model.getFragmentType().setValue(CourseViewModel.REPLY);
         writeNewComment(comment.getText());
-
     }
 
     @Override
     public void onDelete(Comment comment) {
-
+        model.getFragmentType().setValue(CourseViewModel.REPLY);
+        AlertDialog.Builder builder = new AlertDialog
+                .Builder(getContext())
+                .setMessage(R.string.delete_msg)
+                .setNegativeButton(R.string.cancel, (dialog, flag) -> dialog.dismiss())
+                .setPositiveButton(R.string.delete, (dialog, flag) -> CommentFirestoreHelper.getInstance().delete(comment));
+        builder.create().show();
     }
 
     @Override
@@ -128,5 +168,18 @@ public class ReplyFragment extends Fragment implements CommentAdapter.CommentOpt
             transaction.remove(fragment);
         WriteCommentDialog dialog = WriteCommentDialog.newInstance();
         dialog.show(transaction, "dialog");
+    }
+
+    private void startLoading() {
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        Fragment fragment = getParentFragmentManager().findFragmentByTag("loading");
+        if (fragment != null)
+            transaction.remove(fragment);
+        dialog = LoadingDialog.getInstance();
+        dialog.show(transaction, "loading");
+    }
+
+    private void stopLoading() {
+        dialog.dismiss();
     }
 }

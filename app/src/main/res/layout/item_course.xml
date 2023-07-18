@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeItemCourse"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
     android:layout_marginStart="15dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="15dp"
-    android:background="@drawable/bg_light_white"
-    android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/courseIdTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:text="Id khóa học"
-            android:textColor="@color/green"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"/>
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_light_white">
 
         <TextView
             android:id="@+id/courseNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Tên khóa học"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/creatorTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:text="Tên khóa học" />
 
         <TextView
             android:id="@+id/creatorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/label_teacher_name"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            app:layout_constraintBottom_toTopOf="@+id/creationTimeTextView"
+            app:layout_constraintStart_toStartOf="@+id/courseNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/courseNameTextView"
+            tools:text="@string/label_teacher_name" />
 
         <TextView
             android:id="@+id/creationTimeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Thời gian tạo lớp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            app:layout_constraintBottom_toTopOf="@+id/studentCountTextView"
+            app:layout_constraintStart_toStartOf="@+id/creatorTextView"
+            app:layout_constraintTop_toBottomOf="@+id/creatorTextView"
+            tools:text="Thời gian tạo lớp" />
 
         <TextView
             android:id="@+id/studentCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Số lượng sinh viên tham gia"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/montserrat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/creationTimeTextView"
+            app:layout_constraintTop_toBottomOf="@+id/creationTimeTextView"
+            tools:text="Số lượng sinh viên tham gia" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

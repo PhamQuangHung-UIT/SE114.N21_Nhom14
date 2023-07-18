@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -60,26 +61,16 @@
         android:layout_marginTop="20dp"
         android:contentDescription="@string/logo_des"
         android:foreground="@drawable/crop_frame"
+        android:scaleType="center"
         android:src="@color/green"
+        app:srcCompat="@drawable/account_box"
         tools:ignore="ImageContrastCheck" />
 
-    <TextView
-        android:id="@+id/textUsernameAccountActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageAvatarAccountActivity"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/hint_username"
-        android:textColor="@color/green"
-        android:textSize="14sp"
-        tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textUsernameAccountActivity"
+        android:layout_below="@+id/imageAvatarAccountActivity"
         android:layout_above="@+id/buttonUpdateAccountActivity"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
@@ -125,6 +116,7 @@
                 android:textSize="12sp"/>
 
             <RadioGroup
+                android:id="@+id/radioGroupGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
@@ -157,18 +149,6 @@
                     tools:ignore="VisualLintButtonSize" />
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/editIdAccountActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:fontFamily="@font/montserrat"
-                android:hint="@string/ex_stdID"
-                android:textColor="@color/dark_grey"
-                android:textSize="14sp"
-                android:inputType="text"
-                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -194,26 +174,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/label_courses"
-                android:textColor="@color/dark_grey"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/editClassAccountActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:fontFamily="@font/montserrat"
-                android:hint="@string/ex_class"
-                android:textColor="@color/dark_grey"
-                android:textSize="14sp"
-                android:inputType="text"
-                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/montserrat_bold"
                 android:text="@string/label_phone"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp"/>
@@ -224,26 +184,6 @@
                 android:autofillHints=""
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/ex_phone"
-                android:textColor="@color/dark_grey"
-                android:textSize="14sp"
-                android:inputType="text"
-                tools:ignore="DuplicateSpeakableTextCheck,LabelFor,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/label_email"
-                android:textColor="@color/dark_grey"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/editEmailAccountActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:fontFamily="@font/montserrat"
-                android:hint="@string/ex_email"
                 android:textColor="@color/dark_grey"
                 android:textSize="14sp"
                 android:inputType="text"

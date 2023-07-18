@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Splus"
         tools:targetApi="31">
         <activity
-            android:name=".WriteCommentDialog"
+            android:name=".my_dialog.WriteCommentDialog"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
