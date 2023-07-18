@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -75,4 +76,45 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
             studentCountTextView = itemView.findViewById(R.id.studentCountTextView);
         }
     }
+  /*public class ViewHolder extends RecyclerView.ViewHolder {
+    private TextView textViewCourseName;
+    private TextView textViewCreatorName;
+    private Button buttonEdit;
+    private Button buttonDelete;
+
+    public ViewHolder(@NonNull View itemView) {
+      super(itemView);
+      textViewCourseName = itemView.findViewById(R.id.courseNameTextView);
+      textViewCreatorName = itemView.findViewById(R.id.creatorTextView);
+      buttonEdit = itemView.findViewById(R.id.editButton);
+      buttonDelete = itemView.findViewById(R.id.deleteButton);
+    }
+
+    public void bind(Course course, OnItemClickListener listener) {
+      textViewCourseName.setText(course.getCourseName());
+      textViewCreatorName.setText(course.getCreatorName());
+
+      buttonEdit.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          listener.onEditButtonClick(course);
+        }
+      });
+
+      buttonDelete.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          listener.onDeleteButtonClick(course);
+        }
+      });
+    }
+  }
+
+  public interface OnItemClickListener {
+    void onItemClick(Course course);
+
+    void onEditButtonClick(Course course);
+
+    void onDeleteButtonClick(Course course);
+  }*/
 }

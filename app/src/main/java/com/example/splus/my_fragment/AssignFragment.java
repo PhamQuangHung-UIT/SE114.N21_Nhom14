@@ -1,7 +1,5 @@
 package com.example.splus.my_fragment;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,8 +50,6 @@ public class AssignFragment extends Fragment {
     private SpinnerCourseAdapter spinnerCourseAdapter;
 
     private Button buttonCreateAssignment;
-
-    MainActivity activity;
 
     public AssignFragment() {
         // Required empty public constructor
@@ -112,7 +107,6 @@ public class AssignFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         activity = (MainActivity) requireActivity();
 
         return view;

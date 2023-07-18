@@ -2,35 +2,37 @@ package com.example.splus;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.splus.my_data.Course;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class CreateCourseActivity extends AppCompatActivity {
+public class CreateCourseActivity extends Fragment {
   private EditText editTextCourseName;
   private EditText editTextCreatorName;
-  private DatabaseReference databaseReference;
+  private FirebaseFirestore firestore;
 
+  @Nullable
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_create_course);
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.activity_create_course, container, false);
 
-    databaseReference = FirebaseDatabase.getInstance().getReference("courses");
+    firestore = FirebaseFirestore.getInstance();
 
-    editTextCourseName = findViewById(R.id.editTextCourseName);
-    editTextCreatorName = findViewById(R.id.editTextCreatorName);
-    Button buttonCreateCourse = findViewById(R.id.buttonCreateCourse);
+    editTextCourseName = view.findViewById(R.id.editTextCourseName);
+    editTextCreatorName = view.findViewById(R.id.editTextCreatorName);
+    Button buttonCreateCourse = view.findViewById(R.id.buttonCreateCourse);
 
     buttonCreateCourse.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -38,6 +40,8 @@ public class CreateCourseActivity extends AppCompatActivity {
         createCourse();
       }
     });
+
+    return view;
   }
 
   private void createCourse() {
@@ -45,30 +49,30 @@ public class CreateCourseActivity extends AppCompatActivity {
     String creatorName = editTextCreatorName.getText().toString().trim();
 
     if (!TextUtils.isEmpty(courseName) && !TextUtils.isEmpty(creatorName)) {
-      String courseId = databaseReference.push().getKey(); // create ID
+      String courseId = firestore.collection("courses").document().getId(); // Generate ID
 
       Course course = new Course();
       course.setCourseId(courseId);
       course.setCourseName(courseName);
       course.setCreatorName(creatorName);
 
-
-      databaseReference.child(courseId).setValue(course)
+      firestore.collection("courses").document(courseId).set(course)
           .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-              Toast.makeText(CreateCourseActivity.this, "Course created successfully", Toast.LENGTH_SHORT).show();
-              finish();
+              Toast.makeText(requireContext(), "Course created successfully", Toast.LENGTH_SHORT).show();
+              // Navigate back to the CoursesFragment
+              requireActivity().onBackPressed();
             }
           })
           .addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-              Toast.makeText(CreateCourseActivity.this, "Failed to create course", Toast.LENGTH_SHORT).show();
+              Toast.makeText(requireContext(), "Failed to create course", Toast.LENGTH_SHORT).show();
             }
           });
     } else {
-      Toast.makeText(this, "Please enter all the information", Toast.LENGTH_SHORT).show();
+      Toast.makeText(requireContext(), "Please enter all the information", Toast.LENGTH_SHORT).show();
     }
   }
 }

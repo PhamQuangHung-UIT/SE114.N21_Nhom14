@@ -25,7 +25,7 @@ public class Course implements Serializable, Parcelable {
     private String courseDescription;
 
     public Course() {
-        // Default constructor for Firebase Firestore
+        // Empty constructor for Firebase Firestore
     }
 
     public Course(String courseId, String courseName, String courseTeacherName, Timestamp creationTime, String courseDescription) {
@@ -35,8 +35,34 @@ public class Course implements Serializable, Parcelable {
         this.creationTime = creationTime;
         this.courseDescription = courseDescription;
     }
+/*
+    public Course(String courseId, String courseName, String creatorName, int studentCount) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.creatorName = creatorName;
+        this.studentCount = studentCount;
+        this.creationTime = new Date(); // Set current time as creation time
+    }
 
-    // Getters and setters for the attributes
+    protected Course(Parcel in) {
+        courseId = in.readString();
+        courseName = in.readString();
+        creatorName = in.readString();
+        creationTime = new Date(in.readLong());
+        studentCount = in.readInt();
+*/
+
+    public static final Creator<Course> CREATOR = new Creator<Course>() {
+        @Override
+        public Course createFromParcel(Parcel in) {
+            return new Course(in);
+        }
+
+        @Override
+        public Course[] newArray(int size) {
+            return new Course[size];
+        }
+    };
 
     protected Course(Parcel in) {
         courseId = in.readString();

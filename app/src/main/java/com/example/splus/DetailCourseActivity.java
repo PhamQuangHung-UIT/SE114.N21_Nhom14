@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.splus.my_data.Account;
 
+
 public class DetailCourseActivity extends AppCompatActivity {
     ImageButton buttonBack;
 

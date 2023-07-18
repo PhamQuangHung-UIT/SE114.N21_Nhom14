@@ -27,6 +27,7 @@
             tools:text="Tên khóa học" />
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/creatorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
             tools:text="@string/label_teacher_name" />
 
         <TextView
-            android:id="@+id/creationTimeTextView"
+            android:id="@+id/studentCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -49,7 +50,7 @@
             tools:text="Thời gian tạo lớp" />
 
         <TextView
-            android:id="@+id/studentCountTextView"
+            android:id="@+id/lessonCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
