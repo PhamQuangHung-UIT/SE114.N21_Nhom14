@@ -31,7 +31,9 @@
 
     <string name="support_upper">HỖ TRỢ</string>
 
-    <string name="hint_username">Tên người dùng</string>
+    <string name="hint_phone_number">Số điện thoại</string>
+    <string name="hint_email">Email</string>
+
     <string name="hint_password">Mật khẩu</string>
     <string name="hint_repassword">Nhập lại mật khẩu</string>
 
@@ -82,7 +84,7 @@
         <br>\t\tỨng dụng trong tài chính.\n</br>
     </string>
 
-    <string name="label_course">Lớp học</string>
+    <string name="label_course">Khóa học</string>
     <string name="label_class_name">Tên lớp học</string>
     <string name="label_teacher_name">Tên giảng viên</string>
 
@@ -171,7 +173,7 @@
     <string name="hint_birthday">dd/mm/yyyy</string>
     <string name="label_role">Chọn vai trò</string>
     <string name="text_role_student">Học sinh</string>
-    <string name="text_role_teacher">Giáo viên</string>
+    <string name="text_role_teacher">Giảng viên</string>
     <string name="toast_sign_up_successful">Đăng ký tài khoản thành công</string>
     <string name="toast_sign_up_unsuccessful">Đăng ký thất bại</string>
     <string name="toast_empty_alert">Không được để trống trường này</string>
@@ -191,6 +193,27 @@
     <string name="lable_question_number">"Câu "</string>
     <string name="text_question">Nội dung câu hỏi ở dạng văn bản có thể trình bày theo ngôn ngữ tiếng Việt hoặc tiếng Anh</string>
     <string name="text_answer">Nội dung đáp án</string>
+    <string name="reply">Phản hồi</string>
+    <string name="one_reply">1 phản hồi</string>
+    <string name="n_replies">%1$d phản hồi</string>
+    <string name="just_now">Vừa xong</string>
+    <string name="n_years_ago">%1$d năm trước</string>
+    <string name="one_year_ago">1 năm trước</string>
+    <string name="n_months_ago">%1$d tháng trước</string>
+    <string name="one_month_ago">1 tháng trước</string>
+    <string name="n_days_ago">%1$d ngày trước</string>
+    <string name="yesterday">Hôm qua</string>
+    <string name="n_hours_ago">%1$d giờ trước</string>
+    <string name="one_hour_ago">1 giờ trước</string>
+    <string name="n_mins_ago">%1$d phút trước</string>
+    <string name="write_a_comment">Viết bình luận…</string>
+    <string name="lesson_numbers_n"><b>Tổng số bài học:</b>  %1$d</string>
+    <string name="about_this_course">Về khóa học này</string>
+    <string name="course_detail">Chi tiết khóa học</string>
+    <string name="send">Gửi</string>
+    <string name="tagOwnerName" translatable="false"><u>@%1$s</u> %2$s</string>
+    <string name="unexpected_error_msg">Lỗi không xác định. Vui lòng thử lại.</string>
+
 
     <!-- button on calculate -->
     <string name="btn_del" translatable="false"> ⌫ </string>
@@ -232,6 +255,7 @@
     <string name="x" translatable="false">x</string>
     <string name="giai_thua" translatable="false">x!</string>
     <string name="dao_ham" translatable="false">f(x)\'</string>
+
     <string name="label_teacher">Giảng viên:</string>
     <string name="hint_course">Tên lớp học</string>
     <string name="title_done">Hoàn tất</string>
@@ -246,13 +270,31 @@
     <string name="TitleCourseName">TÊN KHÓA HỌC</string>
     <string name="TabCourseName">Tên các tabs của course</string>
     <string name="TabAssignment">Tên các tabs của mục bài tập</string>
-    <string name="Search_course">Tìm khóa học...</string>
+    <string name="Search_course">Tìm khóa học…</string>
     <string name="title_create_course">TẠO KHÓA HỌC</string>
     <string name="edit_course_name">Tên khóa học</string>
     <string name="edit_creater_name">Tên người tạo</string>
-    <string name="empty_state_message">không tím thấy kết quả</string>
-    <string name="edit_ID_lop_hoc">ID lớp học</string>
-    <string name="btn_save">Lưu</string>
-    <string name="btn_edit">Chỉnh sửa</string>
-    <string name="btn_delete">Xóa</string>
+
+    <string name="toast_min_length_alert">Mật khẩu tối thiểu 6 ký tự</string>
+    <string name="no_description">Không có mô tả</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="delete">Xóa</string>
+    <string name="delete_msg">Xóa bình luận?</string>
+    <string name="cancel">Hủy</string>
+    <string name="enroll">Đăng ký</string>
+    <string name="unenroll">Hủy đăng ký</string>
+    <string name="unenroll_msg">Hủy đăng ký khóa học?</string>
+    <string name="enroll_success_msg">Đăng ký khóa học thành công</string>
+    <string name="undo">Hoàn tác</string>
+    <string name="title_teacher_placeholder">Giảng viên: %1$s</string>
+    <string name="title_create_date_placeholder">Ngày tạo: %1$s</string>
+    <string name="title_student_count_placeholder">Đã đăng ký: %1$,d người</string>
+    <string name="empty_username_msg">Vui lòng nhập tên đăng nhập</string>
+    <string name="empty_password_msg">Vui lòng nhập mật khẩu</string>
+    <string name="show_password">Hiển thị mật khẩu</string>
+    <string name="email_already_in_use_error_msg">Email này đã tồn tại. Vui lòng nhập email khác.</string>
+    <string name="retry">Thử lại</string>
+    <string name="connection_error_msg">Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối internet của bạn và thử lại.</string>
+
+
 </resources>

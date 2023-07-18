@@ -36,7 +36,11 @@ public class DoHomeworkActivity extends AppCompatActivity {
         int number = assignment.getQuantity();
         List<Question> questionList = new ArrayList<>();
         for (int i=0; i<number; i++) {
-            questionList.add(assignment.getQuestion(i));
+            try {
+                questionList.add(assignment.getQuestion(i));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             System.out.println(questionList.get(i).getQuestion());
         }
 

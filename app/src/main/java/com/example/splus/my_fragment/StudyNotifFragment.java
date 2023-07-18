@@ -124,37 +124,13 @@ public class StudyNotifFragment extends Fragment {
                 startActivity(intent);
                 break;
             case NOTIFICATION_HOMEWORK:
-                Assignment assignment = new Assignment(
-                        1,
-                        "Kiểm tra cuối khoá",
-                        10,
-                        "30m",
-                        "2023-06-10 00:00:00",
-                        "",
-                        0,
-                        "Nhập môn toán học",
-                        0,
-                        0
-                );
+                Assignment assignment = null;
                 bundle.putSerializable("assignment", assignment);
                 onClickGoToOngoingAssignment(assignment);
                 break;
             case NOTIFICATION_SUBMISSION:
                 intent = new Intent(this.getActivity(), SubmissionActivity.class);
-                Assignment submission = new Assignment(
-                        1,
-                        "Kiểm tra giữa khoá",
-                        10,
-                        "30m",
-                        "2023-05-10 00:00:00",
-                        "",
-                        0,
-                        "Nhập môn toán học",
-                        0,
-                        0
-                );
-                submission.setResult(9.8);
-                submission.setSubmit_time("2023-05-09 23:59:12");
+                Assignment submission = null;
                 bundle.putSerializable("submission", submission);
                 intent.putExtras(bundle);
                 startActivity(intent);

@@ -3,19 +3,39 @@ package com.example.splus.my_data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
+import androidx.annotation.NonNull;
 
-public class Course implements Parcelable {
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Course implements Serializable, Parcelable {
+
+    @DocumentId
     private String courseId;
     private String courseName;
+    private String creatorId;
     private String creatorName;
     private int studentCount;
-    private Date creationTime;
+    @ServerTimestamp
+    private Timestamp creationTime;
+    private String courseDescription;
 
     public Course() {
         // Empty constructor for Firebase Firestore
     }
 
+    public Course(String courseId, String courseName, String courseTeacherName, Timestamp creationTime, String courseDescription) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.creatorName = courseTeacherName;
+        this.creationTime = creationTime;
+        this.courseDescription = courseDescription;
+    }
+/*
     public Course(String courseId, String courseName, String creatorName, int studentCount) {
         this.courseId = courseId;
         this.courseName = courseName;
@@ -30,9 +50,31 @@ public class Course implements Parcelable {
         creatorName = in.readString();
         creationTime = new Date(in.readLong());
         studentCount = in.readInt();
-    }
+*/
 
     public static final Creator<Course> CREATOR = new Creator<Course>() {
+        @Override
+        public Course createFromParcel(Parcel in) {
+            return new Course(in);
+        }
+
+        @Override
+        public Course[] newArray(int size) {
+            return new Course[size];
+        }
+    };
+
+    protected Course(Parcel in) {
+        courseId = in.readString();
+        courseName = in.readString();
+        creatorId = in.readString();
+        creatorName = in.readString();
+        studentCount = in.readInt();
+        creationTime = in.readParcelable(Timestamp.class.getClassLoader());
+        courseDescription = in.readString();
+    }
+
+    public static final Creator<Course> CREATOR = new Creator<>() {
         @Override
         public Course createFromParcel(Parcel in) {
             return new Course(in);
@@ -76,8 +118,28 @@ public class Course implements Parcelable {
         this.studentCount = studentCount;
     }
 
-    public Date getCreationTime() {
+    public Timestamp getCreationTime() {
         return creationTime;
+    }
+
+    public void setCreationTime(Timestamp creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public String getCourseDescription() {
+        return courseDescription;
+    }
+
+    public void setCourseDescription(String courseDescription) {
+        this.courseDescription = courseDescription;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
     @Override
@@ -86,11 +148,33 @@ public class Course implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(courseId);
-        dest.writeString(courseName);
-        dest.writeString(creatorName);
-        dest.writeLong(creationTime.getTime());
-        dest.writeInt(studentCount);
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+
+        parcel.writeString(courseId);
+        parcel.writeString(courseName);
+        parcel.writeString(creatorId);
+        parcel.writeString(creatorName);
+        parcel.writeInt(studentCount);
+        parcel.writeParcelable(creationTime, i);
+        parcel.writeString(courseDescription);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return studentCount == course.studentCount
+                && courseId.equals(course.courseId)
+                && Objects.equals(courseName, course.courseName)
+                && creatorId.equals(course.creatorId)
+                && Objects.equals(creatorName, course.creatorName)
+                && Objects.equals(creationTime, course.creationTime)
+                && Objects.equals(courseDescription, course.courseDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseId, courseName, creatorId, creatorName, studentCount, creationTime, courseDescription);
     }
 }

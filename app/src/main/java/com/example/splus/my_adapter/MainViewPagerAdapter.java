@@ -22,17 +22,14 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
-                //return new ClassFragment();
                 return new CoursesFragment();
             case 2:
                 if (role==0) {
-                    //return new HomeworkFragment();
                     return new AssignmentFragment();
                 } else {
                     return new AssignmentFragment();
                 }
             case 3:
-                // return new SettingFragment();
                 return new AccountFragment();
             default:
                 return new HomeFragment();

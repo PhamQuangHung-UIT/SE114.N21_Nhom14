@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -125,32 +126,6 @@
                 android:padding="15dp"
                 tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
 
-            <!-- USERNAME -->
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/hint_username"
-                android:textColor="@color/dark_grey"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="TextContrastCheck" />
-            <EditText
-                android:id="@+id/editUsernameSignUpActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@color/light_grey"
-                android:fontFamily="@font/montserrat"
-                android:hint="@string/hint_username"
-                android:inputType="text"
-                android:textColor="@color/dark_grey"
-                android:textColorHint="@color/dark_grey"
-                android:textSize="14sp"
-                android:padding="15dp"
-                tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
-
             <!-- PASSWORD -->
             <TextView
                 android:layout_width="wrap_content"
@@ -176,10 +151,19 @@
                 android:padding="15dp"
                 tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
 
+            <CheckBox
+                android:id="@+id/checkbox_showPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/show_password"
+                android:textColor="@color/dark_grey" />
+
             <!-- RETYPE PASSWORD -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/hint_repassword"
                 android:textColor="@color/dark_grey"
@@ -300,6 +284,33 @@
                 android:textSize="14sp"
                 android:padding="15dp"
                 tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+            <!-- PHONE NUMBER -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/hint_phone_number"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/editPhoneNumberSignUpActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/light_grey"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/hint_phone_number"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp"
+                tools:ignore="Autofill,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
 
             <!-- ROLE -->
             <TextView

@@ -11,12 +11,13 @@
         style="@style/AvatarForeground"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/crop_frame"
+        android:scaleType="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/green" />
+        app:srcCompat="@drawable/account_box_small" />
 
     <TextView
         android:id="@+id/textView_DisplayName"
@@ -32,12 +33,11 @@
 
     <TextView
         android:id="@+id/textView_CommentText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:textAppearance="@style/TextMedium.Comment"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView_DisplayName"
@@ -49,26 +49,27 @@
         style="@style/TextSmall.Selection.ReplyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/reply"
         app:icon="@drawable/baseline_comment_24"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_Dislike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_CommentDislike"
         app:layout_constraintTop_toBottomOf="@+id/textView_CommentText" />
 
     <ImageButton
-        android:id="@+id/imageButton_More"
+        android:id="@+id/imageButton_CommentOption"
         style="@style/ImageButton"
         android:layout_width="28dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/button_nobackground"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_round_nobackground"
         app:layout_constraintBottom_toBottomOf="@+id/textView_DisplayName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView_DisplayName"
         app:srcCompat="@drawable/baseline_more_vert_24" />
 
     <CheckBox
-        android:id="@+id/checkBox_Like"
+        android:id="@+id/checkBox_CommentLike"
         style="@style/LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,11 +82,11 @@
         app:layout_constraintTop_toTopOf="@+id/button_Reply" />
 
     <CheckBox
-        android:id="@+id/checkBox_Dislike"
+        android:id="@+id/checkBox_CommentDislike"
         style="@style/LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="28dp"
         android:button="@drawable/button_dislike"
         android:textAppearance="@style/TextSmall.Selection"
         app:layout_constraintBottom_toBottomOf="@+id/button_Reply"
@@ -104,7 +105,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/checkBox_Like"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_CommentLike"
         app:layout_constraintTop_toBottomOf="@+id/button_Reply"
         tools:text="12 phản hồi" />
 
@@ -114,9 +115,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-8dp"
         android:textAppearance="@style/TextSmall.Selection"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox_Like"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_Like"
-        app:layout_constraintTop_toTopOf="@+id/checkBox_Like"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox_CommentLike"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_CommentLike"
+        app:layout_constraintTop_toTopOf="@+id/checkBox_CommentLike"
         tools:text="120" />
 
     <TextView
@@ -125,9 +126,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-8dp"
         android:textAppearance="@style/TextSmall.Selection"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox_Dislike"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_Dislike"
-        app:layout_constraintTop_toTopOf="@+id/checkBox_Dislike"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox_CommentDislike"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_CommentDislike"
+        app:layout_constraintTop_toTopOf="@+id/checkBox_CommentDislike"
         tools:text="96" />
 
     <TextView

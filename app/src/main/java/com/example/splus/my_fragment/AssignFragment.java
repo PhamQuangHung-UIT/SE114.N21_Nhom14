@@ -27,6 +27,17 @@ import com.example.splus.my_adapter.SpinnerCourseAdapter;
 import com.example.splus.my_data.Account;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +107,8 @@ public class AssignFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        activity = (MainActivity) requireActivity();
+
         return view;
     }
 
@@ -105,79 +118,66 @@ public class AssignFragment extends Fragment {
     }
 
     @NonNull
-    private List<Assignment> getAssignment(int courseID) {
-        // Query SELECT * FROM assignment WHERE assign_id= :classID
-        List<Assignment> assignmentList = new ArrayList<>();
-
-        Assignment example = new Assignment(
-                1,
-                "Kiểm tra cuối khoá",
-                10,
-                "30m",
-                "2023-06-10 00:00:00",
-                "",
-                courseID,
-                "Nhập môn toán học",
-                0,
-                0
-        );
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        return assignmentList;
+    private List<Assignment> getAssignment(String courseId) {
+        List<Assignment> listAssignment = new ArrayList<>();
+        FirebaseFirestore db = activity.getDb();
+        db.collection("assignments")
+                .whereEqualTo("courseId", courseId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                listAssignment.add((Assignment) document.getData());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                            Snackbar.make(getView(), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        return listAssignment;
     }
 
     @NonNull
     private List<Assignment> getAllAssignment() {
-        List<Assignment> assignmentList = new ArrayList<>();
+        List<Assignment> listAssignment = new ArrayList<>();
+        List<String> listLessonId = activity.getAllLessonId();
+        FirebaseFirestore db = activity.getDb();
+        for (int index=0; index<listLessonId.size(); index++) {
+            db.collection("assignments")
+                    .whereEqualTo("lessonId", listLessonId.get(index))
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                listAssignment.addAll(task.getResult().toObjects(Assignment.class));
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+        }
 
-        Assignment example = new Assignment(
-                1,
-                "Kiểm tra cuối khoá",
-                10,
-                "30m",
-                "2023-06-10 00:00:00",
-                "",
-                0,
-                "Nhập môn toán học",
-                0,
-                0
-        );
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-
-        return assignmentList;
+        return listAssignment;
     }
 
     @NonNull
     private List<Course> getListCourse() {
         List<Course> courseList = new ArrayList<>();
-
-        Course classExample = new Course(
-                0,
-                getString(R.string.text_class_name),
-                getString(R.string.teacher_name_example)
-        );
-
-        courseList.add(classExample);
-
-        courseList.add( new Course(
-                0,
-                "Giải tích",
-                "ThS. Lê Hoàng Tuấn"
-        ));
-
-        courseList.add( new Course(
-                0,
-                "Đại số tuyến tính",
-                "TS. Dương Ngọc Hảo"
-        ));
-
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("courses").whereEqualTo("creatorId", user).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful())
+                courseList.addAll(task.getResult().toObjects(Course.class));
+            else {
+                Log.e("Error", "Error in get course list", task.getException());
+                Snackbar.make(getView(), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
+            }
+        });
         return courseList;
     }
 

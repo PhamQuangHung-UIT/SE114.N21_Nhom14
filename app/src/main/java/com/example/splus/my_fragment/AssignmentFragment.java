@@ -51,7 +51,7 @@ public class AssignmentFragment extends Fragment {
 
         TabLayout tabLayout = view.findViewById(R.id.tabAssignmentFragment);
         ViewPager viewPager = view.findViewById(R.id.pagerAssignmentFragment);
-        AssignmentViewPagerAdapter assignmentViewPagerAdapter = new AssignmentViewPagerAdapter(getParentFragmentManager(), this.getActivity());
+        AssignmentViewPagerAdapter assignmentViewPagerAdapter = new AssignmentViewPagerAdapter(getChildFragmentManager(), this.getActivity());
         viewPager.setAdapter(assignmentViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -72,7 +72,7 @@ public class AssignmentFragment extends Fragment {
         int quantity = listAssignmentId.size();
         for (int index=0; index<quantity; index++) {
             db.collection("assignments").document(listAssignmentId.get(index)).get()
-                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    .addOnCompleteListener(new OnCompleteListener<>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
@@ -86,7 +86,7 @@ public class AssignmentFragment extends Fragment {
                                                 document.getData().get("details").toString(),
                                                 document.getData().get("courseName").toString()
                                         ));
-                                        listAssignment.get(listAssignment.size()-1).setStatus(false);
+                                        listAssignment.get(listAssignment.size() - 1).setStatus(false);
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
