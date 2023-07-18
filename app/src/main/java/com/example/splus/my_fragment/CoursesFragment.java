@@ -1,5 +1,6 @@
 package com.example.splus.my_fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.example.splus.my_adapter.CourseAdapter;
 import com.example.splus.my_data.Course;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,7 +35,7 @@ import com.google.firebase.firestore.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoursesFragment extends Fragment implements CourseAdapter.OnItemClickListener {
+public abstract class CoursesFragment extends Fragment implements CourseAdapter.OnItemClickListener {
 
   private CourseAdapter courseAdapter;
   private List<Course> courseList;
@@ -81,6 +83,7 @@ public class CoursesFragment extends Fragment implements CourseAdapter.OnItemCli
     loadCourses();
   }
 
+  @SuppressLint("NotifyDataSetChanged")
   private void loadCourses() {
     Query query = firestore.collection("courses");
 
@@ -125,17 +128,9 @@ public class CoursesFragment extends Fragment implements CourseAdapter.OnItemCli
   }
 
   @Override
-  public void onEditButtonClick(Course course) {
-    // Implement the edit course functionality
-    Intent intent = new Intent(getActivity(), EditCourseActivity.class);
-    intent.putExtra("course", course);
-    startActivity(intent);
-  }
-
-  @Override
   public void onDeleteButtonClick(Course course) {
     // Implement the delete course functionality
-    firestore.collection("courses")
+    Task<Void> task = firestore.collection("courses")
         .document(course.getCourseId())
         .delete()
         .addOnSuccessListener(new OnSuccessListener<Void>() {
