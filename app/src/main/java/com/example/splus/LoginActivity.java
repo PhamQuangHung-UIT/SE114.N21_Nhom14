@@ -3,41 +3,43 @@ package com.example.splus;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_class.LocaleHelper;
 import com.example.splus.my_data.Account;
-
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.splus.my_dialog.LoadingDialog;
 import com.google.android.gms.tasks.Task;
-
-import com.google.firebase.auth.AuthResult;
+import com.google.android.gms.tasks.Tasks;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.concurrent.ExecutionException;
+
 public class LoginActivity extends AppCompatActivity {
+
     EditText editUsername, editPassword;
     Button buttonLogin;
     TextView textSuggestSignUp;
-    FirebaseAuth mAuth ;
-    FirebaseFirestore firestore;
-    Account account;
+    FirebaseAuth mAuth;
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        firestore = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         ActivityManager.add(this);
 
@@ -46,48 +48,46 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.buttonLogin);
         textSuggestSignUp = findViewById(R.id.textSuggestSignUp);
 
+        textSuggestSignUp.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SignUpActivity.class);
+            startActivity(intent);
+        });
+
         buttonLogin.setOnClickListener(v -> {
             String username = editUsername.getText().toString();
             String password = editPassword.getText().toString();
+            // Check username or password blank
+            if (username.isBlank() || password.isBlank()) {
+                if (username.isBlank())
+                    editUsername.setError(getString(R.string.empty_username_msg));
+                if (password.isBlank())
+                    editPassword.setError(getString(R.string.empty_password_msg));
+                return;
+            }
 
+            startLoading();
             mAuth.signInWithEmailAndPassword(username, password)
-                    .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-
-                                String userId = mAuth.getCurrentUser().getUid();
-                                DocumentReference ref = firestore.collection("Users").document(userId);
-                                ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document != null) {
-                                                account = new Account(
-                                                        userId,
-                                                        username,
-                                                        Math.toIntExact(document.getLong("role")),
-                                                        document.getString("fullname"),
-                                                        document.getString("birthday"),
-                                                        Math.toIntExact(document.getLong("gender")),
-                                                        document.getString("email")
-                                                );
-                                                Toast.makeText(LoginActivity.this, R.string.toast_login_successful, Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                                Bundle bundle = new Bundle();
-                                                bundle.putSerializable("account", account);
-                                                intent.putExtras(bundle);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                        }
-                                    }
-                                });
-
-                            } else {
-                                Toast.makeText(LoginActivity.this, R.string.toast_login_unsuccessful, Toast.LENGTH_SHORT).show();
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            try {
+                                String id = mAuth.getCurrentUser().getUid();
+                                Task<DocumentSnapshot> findAccountTask = db.collection("Users").document(id).get();
+                                Account account = Tasks.await(findAccountTask).toObject(Account.class);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("account", account);
+                                intent.putExtras(bundle);
+                                stopLoading();
+                                startActivity(intent);
+                                finish();
+                            } catch (InterruptedException | ExecutionException e) {
+                                Log.wtf("ERROR", "Error in get account data", e);
+                                Snackbar.make(findViewById(R.id.layout), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
                             }
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            //Log.w(TAG, "signInWithEmail:failure", task.getException()
+                            Snackbar.make(findViewById(R.id.layout), R.string.toast_login_unsuccessful, Snackbar.LENGTH_SHORT).show();
                         }
                     });
         });
@@ -107,4 +107,15 @@ public class LoginActivity extends AppCompatActivity {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
+    private void startLoading() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag("loading");
+        if (fragment != null)
+            transaction.remove(fragment);
+        LoadingDialog.getInstance().show(transaction, "loading");
+    }
+
+    private void stopLoading() {
+        LoadingDialog.getInstance().dismiss();
+    }
 }

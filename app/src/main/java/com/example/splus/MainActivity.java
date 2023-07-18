@@ -1,8 +1,11 @@
 package com.example.splus;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +15,11 @@ import com.example.splus.my_adapter.MainViewPagerAdapter;
 import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_class.LocaleHelper;
 import com.example.splus.my_data.Account;
-
+import com.example.splus.my_data.Assignment;
+import com.example.splus.my_data.Lesson;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager2 pager;
     public Account account;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public List<String> listCourseId, listLessonId, listAssignId;
+
+    public List<String> listCourseId;
+    public List<String> listLessonId;
+    public List<String> listAssignmentId;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -40,79 +46,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // get data from login activity
+        ActivityManager.add(this);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             return;
-        } else {
-            account = (Account) bundle.get("account");
         }
 
-        listCourseId = new ArrayList<>();
-        listLessonId = new ArrayList<>();
-        listAssignId = new ArrayList<>();
-
-        if (account.getRole() == STUDENT_ROLE) {
-
-            db.collection("enrollment")
-                    .whereEqualTo("accountId", account.getAccountID())
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot documentCourses : task.getResult()) {
-                                    listCourseId.add((String) documentCourses.getData().get("courseId"));
-            db.collection("lessons")
-                    .whereEqualTo("courseId", listCourseId.get(listCourseId.size()-1))
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot documentLesson : task.getResult()) {
-                                    listLessonId.add((String) documentLesson.getId());
-            db.collection("assignments")
-                    .whereEqualTo("lessonId", listLessonId.get(listLessonId.size()-1))
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot documentAssignment : task.getResult()) {
-                                    listAssignId.add((String) documentAssignment.getId());
-                                }
-                            }
-                        }
-                    });
-                                }
-                            }
-                        }
-                    });
-                                }
-                            }
-                        }
-                    });
-        } else if (account.getRole() == TEACHER_ROLE) {
-            listCourseId = new ArrayList<>();
-            db.collection("courses")
-                    .whereEqualTo("accountId", account.getAccountID())
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    listCourseId.add((String) document.getId());
-                                }
-                            }
-                        }
-                    });
-        } else {
-            return;
-        }
-
-        ActivityManager.add(this);
+        account = (Account) bundle.get("account");
 
         navigation = findViewById(R.id.bottomNavigationMainActivity);
         pager = findViewById(R.id.pagerMainActivity);
@@ -143,8 +84,144 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+
+        listCourseId = getCourseId();
+        listLessonId = getAllLessonId();
+        listAssignmentId = getAllAssignmentId();
+
     }
 
+    public List<String> getCourseId() {
+        List<String> listCourse = new ArrayList<>();
+        if (account.getRole() == STUDENT_ROLE) {
+            db.collection("enrollment")
+                    .whereEqualTo("accountId", this.account.getAccountID())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    listCourse.add((String) document.getData().get("courseId"));
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+        } else {
+            db.collection("courses")
+                    .whereEqualTo("ownerId", this.account.getAccountID())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    listCourse.add((String) document.getData().get("courseId"));
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+        }
+        return listCourse;
+    }
+
+    public List<String> getLessonId(String courseId) {
+        List<String> listLessonId = new ArrayList<>();
+
+        db.collection("lesson")
+                .whereEqualTo("courseId", courseId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                listLessonId.add(document.getId());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return listLessonId;
+    }
+
+    public List<String> getAllLessonId() {
+        List<String> listLessonId = new ArrayList<>();
+        int quantity = this.listCourseId.size();
+        for (int index=0; index < quantity; index++) {
+            db.collection("lessons")
+                    .whereEqualTo("courseId", this.listCourseId.get(index))
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    listLessonId.add(document.getId());
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+        }
+        return listLessonId;
+    }
+
+    public List<String> getAssignmentId(String lessonId) {
+        List<String> listAssignmentId = new ArrayList<>();
+
+        db.collection("assignment")
+                .whereEqualTo("lessonId", lessonId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                listAssignmentId.add(document.getId());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return listAssignmentId;
+    }
+
+    public List<String> getAllAssignmentId() {
+        List<String> listAssignmentId = new ArrayList<>();
+        int quantity = this.listLessonId.size();
+        for (int index=0; index < quantity; index++) {
+            db.collection("lessons")
+                    .whereEqualTo("courseId", this.listLessonId.get(index))
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    listAssignmentId.add(document.getId());
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+        }
+        return listAssignmentId;
+    }
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase));
@@ -157,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpViewPager() {
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), this.account.getRole());
+
         pager.setAdapter(adapter);
 
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -167,4 +245,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public Account getAccount() {
+        return this.account;
+    }
+
+    public FirebaseFirestore getDb() {
+        return this.db;
+    }
+
 }

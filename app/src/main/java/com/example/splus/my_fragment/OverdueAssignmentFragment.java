@@ -4,17 +4,15 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.splus.MainActivity;
 import com.example.splus.R;
@@ -25,7 +23,6 @@ import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Submission;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -37,16 +34,11 @@ import java.util.List;
 
 public class OverdueAssignmentFragment extends Fragment {
 
+    public Submission submission;
     MainActivity activity;
     Account account;
-
     FirebaseFirestore db;
-
     AssignmentFragment parent_fragment;
-
-    public Submission submission;
-
-    public List<Assignment> listAssignment;
 
     public OverdueAssignmentFragment() {
         // Required empty public constructor
@@ -59,36 +51,9 @@ public class OverdueAssignmentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_overdue_assignment, container, false);
 
         activity = (MainActivity) getActivity();
-
-        account = activity.account;
-        listAssignment = new ArrayList<>();
-
-        for (int index=0; index<activity.listAssignId.size(); index++) {
-            activity.db.collection("assignments").document(activity.listAssignId.get(index))
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                System.out.println(document.getData());
-                                if (document != null) {
-                                    try {
-                                        listAssignment.add(new Assignment(
-                                                document.getId(),
-                                                document.getString("name"),
-                                                document.getString("details"),
-                                                document.getString("lessonId"),
-                                                document.getString("courseName")
-                                        ));
-                                    } catch (JSONException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                }
-                            }
-                        }
-                    });
-        }
+        parent_fragment = (AssignmentFragment) getParentFragment();
+        account = activity.getAccount();
+        db = activity.getDb();
 
         RecyclerView list = view.findViewById(R.id.recyclerOverdueAssignmentFragment);
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -114,77 +79,39 @@ public class OverdueAssignmentFragment extends Fragment {
 
     private List<Assignment> getListOverdueAssignment() {
 
+        List<Assignment> assignmentList = this.parent_fragment.listAssignment;
         List<Assignment> overdueAsmList = new ArrayList<>();
 
-        int quantity = this.listAssignment.size();
-        if (quantity != 0) {
-            for (int index=0; index<quantity; index++) {
-                if (this.listAssignment.get(index).isExpired()) {
-                    overdueAsmList.add(this.listAssignment.get(index));
-                }
+        int quantity = assignmentList.size();
+        for (int index = 0; index < quantity; index++) {
+            if (assignmentList.get(index).isExpired()) {
+                overdueAsmList.add(assignmentList.get(index));
             }
         }
-        System.out.print("Overdue Assignment: ");
-        System.out.println(overdueAsmList.size());
+
         return overdueAsmList;
-    }
 
-    private void getListAssignment(List<String> listAssignmentId) {
-        int quantity = listAssignmentId.size();
-        System.out.print("Get List Assignment: ");
-        System.out.println(quantity);
-        for (int index=0; index<quantity; index++) {
-            System.out.print("Get Assignment with ID: ");
-            System.out.println(listAssignmentId.get(index));
-            activity.db.collection("assignments").document(listAssignmentId.get(index)).get()
-                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    try {
-                                        listAssignment.add(new Assignment(
-                                                document.getId(),
-                                                document.getString("name"),
-                                                document.getString("details"),
-                                                document.getString("lessonId"),
-                                                document.getString("courseName")
-                                        ));
-                                        listAssignment.get(listAssignment.size()-1).setStatus(false);
-                                        Toast.makeText(activity, "Yes", Toast.LENGTH_SHORT).show();
-                                    } catch (JSONException e) {
-                                        throw new RuntimeException(e);
-                                    }
+        /*
+        List<String> listAssignmentId = activity.listAssignmentId;
 
-                                } else {
-                                    Log.d(TAG, "Error getting documents: ", task.getException());
-                                }
+        db.collection("assignment")
+                .whereArrayContainsAny("course_id", activity.getCourseId())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                assignmentList.add((Assignment) document.getData());
                             }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-                    });
-            // check if assignment is submitted
-            activity.db.collection("submission")
-                    .whereEqualTo("assignmentId", listAssignmentId.get(index))
-                    .whereEqualTo("accountId", account.getAccountID())
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    listAssignment.get(listAssignment.size()-1).setStatus(true);
-                                    System.out.print("An assignment is submitted: ID = ");
-                                    System.out.println(listAssignment.get(listAssignment.size()-1).getAssignID());
-                                }
-                            } else {
-                                Log.d(TAG, "Error getting documents: ", task.getException());
-                            }
-                        }
-                    });
-        }
+                    }
+                });
+         */
+
     }
 
     private void getSubmission(boolean isSubmitted, String assignmentId, String accountId) {

@@ -21,8 +21,6 @@ import com.example.splus.my_adapter.AssignmentAdapter;
 import com.example.splus.my_data.Assignment;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,31 +39,14 @@ public class OngoingAssignmentFragment extends Fragment {
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         AssignmentAdapter adapter = new AssignmentAdapter(this::onClickGoToOngoingAssignment);
-        try {
-            adapter.setData(getListOngoingAssignment());
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
+        adapter.setData(getListOngoingAssignment());
         list.setAdapter(adapter);
 
         return view;
     }
 
-    private List<Assignment> getListOngoingAssignment() throws JSONException {
+    private List<Assignment> getListOngoingAssignment() {
         List<Assignment> assignmentList = new ArrayList<>();
-
-        Assignment example = new Assignment(
-                "1",
-                "Kiểm tra cuối khoá",
-                "{\"assignment\":{\"name\":\"Final Exam\",\"format\":0,\"mode\":0,\"deadline\":\"2023-06-12 12:12:12\",\"minutes\":90,\"content\":[{\"question\":\"What is the volume of the shape?\",\"a\":\"The size of the shape\",\"b\":\"The weight of the shape\",\"c\":\"The capacity of the shape\",\"d\":\"The circuit of the shape\",\"key\":\"c\"}]}}",
-                "abc",
-                "Nhập môn toán học"
-        );
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
-        assignmentList.add(example);
         return assignmentList;
     }
 
@@ -86,7 +67,7 @@ public class OngoingAssignmentFragment extends Fragment {
         assignmentQuantity.setText(Integer.toString(assignment.getQuantity()));
 
         TextView assignmentTime = viewDialog.findViewById(R.id.textTimeAssignmentBottomSheet);
-        assignmentTime.setText(String.valueOf(assignment.getAssignTime()));
+        assignmentTime.setText(assignment.getAssignTime());
 
         TextView assignmentDeadline = viewDialog.findViewById(R.id.textDeadlineAssignmentBottomSheet);
         assignmentDeadline.setText(assignment.getAssignDeadline());

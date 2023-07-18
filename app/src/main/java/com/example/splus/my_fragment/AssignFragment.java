@@ -1,8 +1,5 @@
 package com.example.splus.my_fragment;
 
-import static android.content.ContentValues.TAG;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +29,16 @@ import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Course;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +50,6 @@ public class AssignFragment extends Fragment {
     private SpinnerCourseAdapter spinnerCourseAdapter;
 
     private Button buttonCreateAssignment;
-
-    MainActivity activity;
 
     public AssignFragment() {
         // Required empty public constructor
@@ -66,7 +64,7 @@ public class AssignFragment extends Fragment {
 
         MainActivity activity = (MainActivity) getActivity();
 
-        Account account = activity.account;
+        Account account = activity.getAccount();
 
         ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAssignFragment);
         imageButtonNotif.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +107,7 @@ public class AssignFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        activity = (MainActivity) requireActivity();
 
         return view;
     }
@@ -121,7 +120,7 @@ public class AssignFragment extends Fragment {
     @NonNull
     private List<Assignment> getAssignment(String courseId) {
         List<Assignment> listAssignment = new ArrayList<>();
-        FirebaseFirestore db = activity.db;
+        FirebaseFirestore db = activity.getDb();
         db.collection("assignments")
                 .whereEqualTo("courseId", courseId)
                 .get()
@@ -135,6 +134,7 @@ public class AssignFragment extends Fragment {
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
+                            Snackbar.make(getView(), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -144,20 +144,17 @@ public class AssignFragment extends Fragment {
     @NonNull
     private List<Assignment> getAllAssignment() {
         List<Assignment> listAssignment = new ArrayList<>();
-        List<String> listLessonId = activity.listLessonId;
-        FirebaseFirestore db = activity.db;
+        List<String> listLessonId = activity.getAllLessonId();
+        FirebaseFirestore db = activity.getDb();
         for (int index=0; index<listLessonId.size(); index++) {
             db.collection("assignments")
                     .whereEqualTo("lessonId", listLessonId.get(index))
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    .addOnCompleteListener(new OnCompleteListener<>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    listAssignment.add((Assignment) document.getData());
-                                }
+                                listAssignment.addAll(task.getResult().toObjects(Assignment.class));
                             } else {
                                 Log.d(TAG, "Error getting documents: ", task.getException());
                             }
@@ -168,41 +165,19 @@ public class AssignFragment extends Fragment {
         return listAssignment;
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @NonNull
     private List<Course> getListCourse() {
         List<Course> courseList = new ArrayList<>();
-
-        Timestamp ts = new Timestamp(System.currentTimeMillis());
-        String timestamp = format.format(ts);
-
-        Course classExample = new Course(
-                "0",
-                getString(R.string.text_class_name),
-                getString(R.string.teacher_name_example),
-                timestamp,
-                50
-        );
-
-        courseList.add(classExample);
-
-        courseList.add( new Course(
-                "0",
-                "Giải tích",
-                "ThS. Lê Hoàng Tuấn",
-                timestamp,
-                50
-        ));
-
-        courseList.add( new Course(
-                "0",
-                "Đại số tuyến tính",
-                "TS. Dương Ngọc Hảo",
-                timestamp,
-                50
-        ));
-
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("courses").whereEqualTo("creatorId", user).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful())
+                courseList.addAll(task.getResult().toObjects(Course.class));
+            else {
+                Log.e("Error", "Error in get course list", task.getException());
+                Snackbar.make(getView(), R.string.unexpected_error_msg, Snackbar.LENGTH_SHORT).show();
+            }
+        });
         return courseList;
     }
 

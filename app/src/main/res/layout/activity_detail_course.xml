@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,11 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:orientation="horizontal"
+        android:background="@color/green"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
-        android:background="@color/green">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- BACK BUTTON -->
         <!-- back to fragment class-->
@@ -33,92 +37,38 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/class_info_upper"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_weight="1"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_square_24"
             android:padding="15dp"
+            android:src="@drawable/baseline_square_24"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView_courseDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearHeaderDetailCourse"
+        tools:text="Đây là phần nội dung" />
+
     <!-- COURSE NAME -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearHeaderDetailCourse"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/label_course"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/textNameDetailCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearHeaderDetailCourse"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="120dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/text_class_name"
-        android:textSize="14sp"
-        android:textStyle="bold" />
 
     <!-- TEACHER NAME -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textNameDetailCourse"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/title_teacher_name"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/textTeacherDetailCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textNameDetailCourse"
-        android:layout_marginTop="10dp"
-        android:layout_alignStart="@+id/textNameDetailCourse"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/teacher_name_example"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        />
 
     <!-- STUDENT LIST -->
-    <TextView
-        android:id="@+id/textStudentListTitleDetailCourse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textTeacherDetailCourse"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/student_list_title"
-        android:textAlignment="center"
-        android:textColor="@color/green"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerListStudentDetailCourse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textStudentListTitleDetailCourse"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

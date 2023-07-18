@@ -16,10 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.splus.AccountActivity;
+import com.example.splus.MainActivity;
 import com.example.splus.NotificationActivity;
 import com.example.splus.R;
 import com.example.splus.SettingActivity;
 import com.example.splus.SplashActivity;
+import com.example.splus.my_data.Account;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AccountFragment extends Fragment {
     @Nullable
@@ -35,18 +38,13 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        ImageView avatar = view.findViewById(R.id.imageAvatarAccountFragment);
-        avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Change avatar image", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         ImageButton buttonUpdateInfo = view.findViewById(R.id.buttonUpdateAccountFragment);
         buttonUpdateInfo.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AccountActivity.class);
             Bundle bundle = new Bundle();
+            Account account = ((MainActivity)requireActivity()).getAccount();
+            bundle.putSerializable("account", account);
             intent.putExtras(bundle);
             startActivity(intent);
         });
@@ -98,6 +96,7 @@ public class AccountFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getContext(), "Log out successful", Toast.LENGTH_SHORT).show();
+                                FirebaseAuth.getInstance().signOut();
                                 Intent intent = new Intent(getActivity(), SplashActivity.class);
                                 startActivity(intent);
                             }

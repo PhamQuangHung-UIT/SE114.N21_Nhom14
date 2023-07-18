@@ -113,7 +113,7 @@ public class StudyNotifFragment extends Fragment {
                 intent = new Intent(this.getActivity(), StudyActivity.class);
                 // get a lesson data from lesson_id = sourceId
                 Lesson lesson = new Lesson(
-                        "",
+                        0,
                         "Lesson 1",
                         "Content",
                         "Course name",
@@ -124,13 +124,13 @@ public class StudyNotifFragment extends Fragment {
                 startActivity(intent);
                 break;
             case NOTIFICATION_HOMEWORK:
-                Assignment assignment = new Assignment();
+                Assignment assignment = null;
                 bundle.putSerializable("assignment", assignment);
                 onClickGoToOngoingAssignment(assignment);
                 break;
             case NOTIFICATION_SUBMISSION:
                 intent = new Intent(this.getActivity(), SubmissionActivity.class);
-                Assignment submission = new Assignment();
+                Assignment submission = null;
                 bundle.putSerializable("submission", submission);
                 intent.putExtras(bundle);
                 startActivity(intent);

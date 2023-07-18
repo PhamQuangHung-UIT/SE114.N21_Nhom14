@@ -62,7 +62,7 @@ public class CourseInfoFragment extends Fragment {
         });
   }
 
-  private class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder> {
+  private static class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder> {
 
     private List<Student> studentList;
 
@@ -90,10 +90,10 @@ public class CourseInfoFragment extends Fragment {
       return studentList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-      private TextView textViewName;
-      private TextView textViewEmail;
+      private final TextView textViewName;
+      private final TextView textViewEmail;
 
       public ViewHolder(@NonNull View itemView) {
         super(itemView);

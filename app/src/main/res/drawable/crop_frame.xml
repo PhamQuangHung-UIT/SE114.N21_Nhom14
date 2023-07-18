@@ -9,6 +9,6 @@
         <path
             android:pathData="M958.5,154.9C514.7,154.9 154.9,514.9 154.9,959 154.9,1403.1 514.7,1763.1 958.5,1763.1 1402.3,1763.1 1762.1,1403.1 1762.1,959 1762.1,514.9 1402.3,154.9 958.5,154.9ZM0,0 L1917,0 1917,1918 0,1918Z"
             android:fillColor="#FFFFFF"
-            android:fillType="evenOdd"/>
+            android:fillType="nonZero"/>
     </group>
 </vector>

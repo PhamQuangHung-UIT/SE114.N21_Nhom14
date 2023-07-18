@@ -16,8 +16,6 @@ import com.example.splus.my_adapter.QuestionAdapter;
 import com.example.splus.my_data.Assignment;
 import com.example.splus.my_data.Question;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class DoHomeworkActivity extends AppCompatActivity {
         for (int i=0; i<number; i++) {
             try {
                 questionList.add(assignment.getQuestion(i));
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
             System.out.println(questionList.get(i).getQuestion());

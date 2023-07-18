@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+    <Transition
+        android:id="@+id/transition_loading_screen"
+        motion:constraintSetEnd="@+id/endLoadingScreen"
+        motion:constraintSetStart="@id/startLoadingScreen"
+        motion:duration="1000"
+        motion:motionInterpolator="linear"
+        motion:autoTransition="animateToEnd">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startLoadingScreen">
+        <Constraint
+            android:id="@+id/image_loading"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="0dp"
+            android:rotation="0"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endLoadingScreen">
+        <Constraint
+            android:id="@+id/image_loading"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:rotation="360"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+</MotionScene>
