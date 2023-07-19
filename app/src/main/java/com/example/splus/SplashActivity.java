@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.animation.Animation;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +24,6 @@ import java.util.concurrent.ExecutionException;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity implements MotionLayout.TransitionListener {
-    Animation animation;
     MotionLayout splashScreen;
 
     @Override
@@ -40,9 +37,6 @@ public class SplashActivity extends AppCompatActivity implements MotionLayout.Tr
         splashScreen = findViewById(R.id.layoutSplashActivity);
         splashScreen.setTransitionListener(this);
 
-        /*animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-
-        splashScreen.startAnimation(animation);*/
 
         startLoading();
 

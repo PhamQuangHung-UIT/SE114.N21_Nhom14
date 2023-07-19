@@ -15,8 +15,6 @@ import com.example.splus.my_adapter.MainViewPagerAdapter;
 import com.example.splus.my_class.ActivityManager;
 import com.example.splus.my_class.LocaleHelper;
 import com.example.splus.my_data.Account;
-import com.example.splus.my_data.Assignment;
-import com.example.splus.my_data.Lesson;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,10 +28,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final int STUDENT_ROLE = 0;
-    public static final int TEACHER_ROLE = 1;
     private BottomNavigationView navigation;
     private ViewPager2 pager;
-    public Account account;
+    public static Account account;
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public List<String> listCourseId;
@@ -54,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         account = (Account) bundle.get("account");
+
 
         navigation = findViewById(R.id.bottomNavigationMainActivity);
         pager = findViewById(R.id.pagerMainActivity);
@@ -160,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             db.collection("lessons")
                     .whereEqualTo("courseId", this.listCourseId.get(index))
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    .addOnCompleteListener(new OnCompleteListener<>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -183,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         db.collection("assignment")
                 .whereEqualTo("lessonId", lessonId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addOnCompleteListener(new OnCompleteListener<>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -206,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             db.collection("lessons")
                     .whereEqualTo("courseId", this.listLessonId.get(index))
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    .addOnCompleteListener(new OnCompleteListener<>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -246,12 +244,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public Account getAccount() {
-        return this.account;
+    public static Account getAccount() {
+        return account;
     }
-
-    public FirebaseFirestore getDb() {
-        return this.db;
+    public static void setAccount(Account newAccount) {
+        account=newAccount;
     }
-
 }
