@@ -139,6 +139,7 @@
     <string name="text_answer">Content of answer</string>
     <string name="title_create_course">Create a course</string>
     <string name="label_teacher">Instructor:</string>
+    <string name="label_teacher">Teacher:</string>
     <string name="hint_course">Course name</string>
     <string name="title_done">Done</string>
     <string name="hint_quantity">Course size</string>

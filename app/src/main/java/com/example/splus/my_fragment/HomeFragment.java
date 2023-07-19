@@ -55,28 +55,28 @@ public class HomeFragment extends Fragment {
     private List<Lesson> getRecentLesson() {
         List<Lesson> lessonList = new ArrayList<>();
         lessonList.add(new Lesson(
-                0,
+                "",
                 "Lesson 1",
                 "Content",
                 "Course name",
                 "Teacher name"
         ));
         lessonList.add(new Lesson(
-                0,
+                "",
                 "Lesson 2",
                 "Content",
                 "Course name",
                 "Teacher name"
         ));
         lessonList.add(new Lesson(
-                0,
+                "",
                 "Lesson 3",
                 "Content",
                 "Course name",
                 "Teacher name"
         ));
         lessonList.add(new Lesson(
-                0,
+                "",
                 "Lesson 4",
                 "Content",
                 "Course name",
