@@ -269,6 +269,7 @@
     <string name="hint_quantity">Sĩ số</string>
     <string name="hint_course_code">Mã lớp học</string>
     <string name="edit_topic_question">Chủ đề</string>
+    <string name="edit_ID_lop_hoc">ID lớp học</string>
     <string name="TitleCreateAssignment">Tạo bài tập</string>
     <string name="text_submitted">Đã nộp</string>
     <string name="text_unsubmitted">Chưa nộp</string>

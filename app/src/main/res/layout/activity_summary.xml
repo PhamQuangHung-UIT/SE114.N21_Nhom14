@@ -70,22 +70,13 @@
         android:textColor="@color/dark_grey"
         />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutSummaryAct"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSummaryAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textTitleHomeworkSummaryAct"
         android:layout_marginTop="10dp"
-        android:background="@color/light_grey"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tabLayoutSummaryAct"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>
