@@ -3,11 +3,9 @@ package com.example.splus;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.splus.my_data.Account;
 
 
 public class DetailCourseActivity extends AppCompatActivity {
@@ -25,8 +23,8 @@ public class DetailCourseActivity extends AppCompatActivity {
 
         String detail = bundle.getString("courseDetail");
 
-
-        //AccountAdapter accountAdapter = new AccountAdapter(getListStudent(course), this::onClickGoToAccount);
+        TextView textView = findViewById(R.id.textView_courseDescription);
+        textView.setText(detail);
 
 
         buttonBack = findViewById(R.id.buttonBackDetailCourse);
