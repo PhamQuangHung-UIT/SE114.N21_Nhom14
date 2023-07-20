@@ -1,6 +1,8 @@
 package com.example.splus;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
@@ -129,7 +131,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
+                    .addOnCompleteListener(runnable -> new Handler(Looper.myLooper()).post(runnable), task -> {
                         try {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();

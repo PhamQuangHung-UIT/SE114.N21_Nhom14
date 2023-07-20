@@ -53,15 +53,15 @@
         android:layout_below="@+id/headerAccountFragment"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp">
+
         <ImageView
             android:id="@+id/imageAvatarAccountFragment"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@color/green"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            tools:ignore="ContentDescription,ImageContrastCheck"
-            app:tint="@color/green" />
+            android:src="@color/green"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <ImageView
             android:layout_width="100dp"
@@ -79,10 +79,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/frameAvatarAccountFragment"
         android:layout_alignBottom="@+id/frameAvatarAccountFragment"
-        android:layout_toEndOf="@+id/frameAvatarAccountFragment"
         android:layout_marginStart="10dp"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:layout_toEndOf="@+id/frameAvatarAccountFragment"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textFullnameAccountFragment"
@@ -101,7 +101,7 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/ex_email"
             android:textColor="@color/dark_grey"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
     </LinearLayout>
 
     <ImageButton

@@ -146,8 +146,8 @@ public class CommentFirestoreHelper {
                 int replyCount = transaction.get(ref).get("replyCount", Integer.class);
                 transaction.update(ref, "replyCount", ++replyCount);
                 return replyCount;
-            }));
-        task.addOnSuccessListener(result -> onAddNewCommentListener.onSuccess((int)result)).addOnCompleteListener(result ->
+            })).addOnSuccessListener(result -> onAddNewCommentListener.onSuccess((int)result));
+        task.addOnCompleteListener(result ->
                 onAddNewCommentListener.onComplete(result.isSuccessful(), result.getException()));
     }
 

@@ -61,6 +61,7 @@ public class CommentFragment extends Fragment implements CommentAdapter.CommentO
         model = new ViewModelProvider(requireActivity()).get(CourseViewModel.class);
         model.getFragmentType().setValue(CourseViewModel.COMMENT);
         // Avoid self-trigger observer when re-add the observer
+        model.getCommitSuccess().setValue(false);
 
         TextView textView_WriteComment = view.findViewById(R.id.textView_WriteComment);
         RecyclerView commentRecyclerView = view.findViewById(R.id.recyclerView_commentList);
@@ -203,9 +204,9 @@ public class CommentFragment extends Fragment implements CommentAdapter.CommentO
                 .setNegativeButton(R.string.cancel, (dialog, flag) -> dialog.dismiss())
                 .setPositiveButton(R.string.delete, (dialog, flag) -> CommentFirestoreHelper.getInstance().delete(comment));
         AlertDialog dialog = builder.create();
+        dialog.show();
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setAllCaps(false);
         dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setAllCaps(false);
-        dialog.show();
     }
 
     @Override
@@ -222,7 +223,7 @@ public class CommentFragment extends Fragment implements CommentAdapter.CommentO
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         Fragment fragment = getParentFragmentManager().findFragmentByTag("loading");
         if (fragment != null)
-            transaction.remove(fragment);
+            return;
         dialog = LoadingDialog.getInstance();
         dialog.show(transaction, "loading");
     }

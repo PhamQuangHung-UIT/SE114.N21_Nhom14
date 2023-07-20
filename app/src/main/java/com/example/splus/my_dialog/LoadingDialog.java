@@ -1,6 +1,5 @@
 package com.example.splus.my_dialog;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,8 @@ import com.example.splus.R;
 
 public class LoadingDialog extends DialogFragment implements MotionLayout.TransitionListener {
 
-    private static LoadingDialog instance;
     public static LoadingDialog getInstance() {
-        if (instance == null)
-            instance = new LoadingDialog();
-        return instance;
+        return new LoadingDialog();
     }
 
     @Nullable

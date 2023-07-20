@@ -269,7 +269,6 @@
     <string name="hint_quantity">Sĩ số</string>
     <string name="hint_course_code">Mã lớp học</string>
     <string name="edit_topic_question">Chủ đề</string>
-    <string name="edit_ID_lop_hoc">ID lớp học</string>
     <string name="TitleCreateAssignment">Tạo bài tập</string>
     <string name="text_submitted">Đã nộp</string>
     <string name="text_unsubmitted">Chưa nộp</string>
@@ -283,9 +282,10 @@
     <string name="title_create_course">TẠO KHÓA HỌC</string>
     <string name="edit_course_name">Tên khóa học</string>
     <string name="edit_creater_name">Tên người tạo</string>
-
+    <string name="empty_state_message">không tìm thấy kết quả</string>
     <string name="toast_min_length_alert">Mật khẩu tối thiểu 6 ký tự</string>
     <string name="no_description">Không có mô tả</string>
+    <string name="save">Lưu</string>
     <string name="edit">Chỉnh sửa</string>
     <string name="delete">Xóa</string>
     <string name="delete_msg">Xóa bình luận?</string>
@@ -294,6 +294,7 @@
     <string name="unenroll">Hủy đăng ký</string>
     <string name="unenroll_msg">Hủy đăng ký khóa học?</string>
     <string name="enroll_success_msg">Đăng ký khóa học thành công</string>
+    <string name="unenroll_success_msg">Hủy đăng ký khóa học thành công</string>
     <string name="undo">Hoàn tác</string>
     <string name="title_teacher_placeholder">Giảng viên: %1$s</string>
     <string name="title_create_date_placeholder">Ngày tạo: %1$s</string>
@@ -305,8 +306,9 @@
     <string name="retry">Thử lại</string>
     <string name="connection_error_msg">Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối internet của bạn và thử lại.</string>
     <string name="permission_denied_msg">Quyền truy cập bị từ chối.</string>
-    <string name="btn_save">Lưu thay đổi</string>
-    <string name="empty_state_message"> </string>
+    <string name="hint_description">Mô tả khóa học</string>
+    <string name="title_edit_course">Chỉnh sửa khóa học</string>
+    <string name="empty_course_name">Tên khóa học không được để trống</string>
 
 
 </resources>
