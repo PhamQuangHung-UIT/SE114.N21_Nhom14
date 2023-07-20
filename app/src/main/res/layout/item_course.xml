@@ -11,6 +11,19 @@
     android:layout_marginBottom="10dp"
     android:background="@drawable/bg_light_white">
 
+        <ImageButton
+            android:id="@+id/imageButton_delete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_nobackground"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/baseline_delete_24"
+            app:tint="@android:color/holo_red_dark" />
+
         <TextView
             android:id="@+id/courseNameTextView"
             android:layout_width="wrap_content"
@@ -27,16 +40,27 @@
             tools:text="Tên khóa học" />
 
         <TextView
-            android:textColor="@color/black"
             android:id="@+id/creatorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat"
-            app:layout_constraintBottom_toTopOf="@+id/creationTimeTextView"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/courseNameTextView"
             app:layout_constraintTop_toBottomOf="@+id/courseNameTextView"
             tools:text="@string/label_teacher_name" />
+
+        <TextView
+            android:id="@+id/creationTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/montserrat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/courseNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/studentCountTextView"
+            tools:text="Thời gian tạo lớp" />
 
         <TextView
             android:id="@+id/studentCountTextView"
@@ -44,21 +68,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat"
-            app:layout_constraintBottom_toTopOf="@+id/studentCountTextView"
-            app:layout_constraintStart_toStartOf="@+id/creatorTextView"
+            app:layout_constraintStart_toStartOf="@+id/courseNameTextView"
             app:layout_constraintTop_toBottomOf="@+id/creatorTextView"
-            tools:text="Thời gian tạo lớp" />
-
-        <TextView
-            android:id="@+id/lessonCountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/creationTimeTextView"
-            app:layout_constraintTop_toBottomOf="@+id/creationTimeTextView"
             tools:text="Số lượng sinh viên tham gia" />
+
+        <ImageButton
+            android:id="@+id/imageButton_edit"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/button_nobackground"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_edit_24"
+            app:tint="@color/green" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

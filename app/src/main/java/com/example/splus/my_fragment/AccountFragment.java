@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,12 +24,21 @@ import com.example.splus.SettingActivity;
 import com.example.splus.SplashActivity;
 import com.example.splus.my_data.Account;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class AccountFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        TextView textView_fullname = view.findViewById(R.id.textFullnameAccountFragment);
+        TextView textView_email = view.findViewById(R.id.textEmailAccountFragment);
+        ImageView imageView_avatar = view.findViewById(R.id.imageAvatarAccountFragment);
+
+        textView_fullname.setText(MainActivity.getAccount().getFullname());
+        textView_email.setText(MainActivity.getAccount().getEmail());
+        Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl()).into(imageView_avatar);
 
         ImageButton imageButtonNotif = view.findViewById(R.id.buttonNotificationAccountFragment);
         imageButtonNotif.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +53,7 @@ public class AccountFragment extends Fragment {
         buttonUpdateInfo.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AccountActivity.class);
             Bundle bundle = new Bundle();
-            Account account = ((MainActivity)requireActivity()).getAccount();
+            Account account = MainActivity.getAccount();
             bundle.putSerializable("account", account);
             intent.putExtras(bundle);
             startActivity(intent);

@@ -9,10 +9,9 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.ServerTimestamp;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Course implements Serializable, Parcelable {
+public class Course implements Parcelable {
 
     @DocumentId
     private String courseId;
@@ -35,34 +34,6 @@ public class Course implements Serializable, Parcelable {
         this.creationTime = creationTime;
         this.courseDescription = courseDescription;
     }
-/*
-    public Course(String courseId, String courseName, String creatorName, int studentCount) {
-        this.courseId = courseId;
-        this.courseName = courseName;
-        this.creatorName = creatorName;
-        this.studentCount = studentCount;
-        this.creationTime = new Date(); // Set current time as creation time
-    }
-
-    protected Course(Parcel in) {
-        courseId = in.readString();
-        courseName = in.readString();
-        creatorName = in.readString();
-        creationTime = new Date(in.readLong());
-        studentCount = in.readInt();
-*/
-
-    public static final Creator<Course> CREATOR = new Creator<Course>() {
-        @Override
-        public Course createFromParcel(Parcel in) {
-            return new Course(in);
-        }
-
-        @Override
-        public Course[] newArray(int size) {
-            return new Course[size];
-        }
-    };
 
     protected Course(Parcel in) {
         courseId = in.readString();

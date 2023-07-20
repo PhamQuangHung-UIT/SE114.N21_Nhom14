@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.splus.my_data.Account;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -151,18 +152,21 @@ public class AccountActivity extends AppCompatActivity {
             newUser.put("fullname", fullname);
             newUser.put("birthday", birthday);
             newUser.put("gender", gender);
-            fireStore.collection("Users").document(UserID).update(newUser)
-                    .continueWithTask(task -> {
+            Task<?> newTask = fireStore.collection("Users").document(UserID).update(newUser);
+            if (imageUrl != null)
+                    newTask.continueWithTask(task -> {
                         StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("usersAvatar/" + user.getAccountID());
                         return imageRef.putFile(imageUrl);
                     }).continueWithTask(task -> task.getResult().getMetadata().getReference().getDownloadUrl())
                     .continueWithTask(task -> {
                         UserProfileChangeRequest.Builder builder = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(fullname)
                                 .setPhotoUri(task.getResult());
                         mAuth.getCurrentUser().updateProfile(builder.build());
                         return fireStore.collection("Users").document(mAuth.getCurrentUser().getUid())
                                 .update("avatarUrl", task.getResult().toString());
-                    }).addOnSuccessListener(aVoid -> {
+                    });
+            newTask.addOnSuccessListener(aVoid -> {
                         setResult(RESULT_OK);
                         finish();
                     }).addOnFailureListener(exception -> {

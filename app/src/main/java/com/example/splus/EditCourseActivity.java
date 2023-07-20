@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,75 +18,81 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditCourseActivity extends AppCompatActivity {
 
-  private EditText courseNameEditText;
-  private EditText creatorNameEditText;
+    private EditText courseNameEditText, editTextCourseDescription;
 
-  private Course course;
+    private Course course;
 
-  @SuppressLint("WrongViewCast")
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_edit_course);
+    @SuppressLint("WrongViewCast")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_course);
 
-    courseNameEditText = findViewById(R.id.editCourseNameEditText);
-    creatorNameEditText = findViewById(R.id.editCourseCreatorEditText);
-    Button saveButton = findViewById(R.id.saveButton);
+        course = getIntent().getParcelableExtra("course");
 
-    // Get the selected course from the intent
-    course = getIntent().getParcelableExtra("course");
-
-    if (course != null) {
-      // Populate the EditText fields with the course details
-      courseNameEditText.setText(course.getCourseName());
-      creatorNameEditText.setText(course.getCreatorName());
-    }
-
-    saveButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        saveCourseChanges();
-      }
-    });
-  }
-
-  private void saveCourseChanges() {
-    String courseName = courseNameEditText.getText().toString().trim();
-    String creatorName = creatorNameEditText.getText().toString().trim();
-
-    if (TextUtils.isEmpty(courseName)) {
-      courseNameEditText.setError("Course name is required");
-      return;
-    }
-
-    if (TextUtils.isEmpty(creatorName)) {
-      creatorNameEditText.setError("Creator name is required");
-      return;
-    }
-
-    // Update the course object with the new values
-    course.setCourseName(courseName);
-    course.setCreatorName(creatorName);
-
-    // Save the updated course to Firestore
-    FirebaseFirestore.getInstance().collection("courses")
-        .document(course.getCourseId())
-        .set(course)
-        .addOnSuccessListener(new OnSuccessListener<Void>() {
-          @Override
-          public void onSuccess(Void aVoid) {
-            Toast.makeText(EditCourseActivity.this, "Course updated successfully", Toast.LENGTH_SHORT).show();
+        courseNameEditText = findViewById(R.id.editCourseNameEditText);
+        editTextCourseDescription = findViewById(R.id.editTextCourseDescription);
+        Button saveButton = findViewById(R.id.saveButton);
+        ImageButton backButton = findViewById(R.id.buttonBackEditCourseActivity);
+        backButton.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
             finish();
-          }
-        })
-        .addOnFailureListener(new OnFailureListener() {
-          @Override
-          public void onFailure(@NonNull Exception e) {
-            Toast.makeText(EditCourseActivity.this, "Failed to update course", Toast.LENGTH_SHORT).show();
-            Log.e("EditCourseActivity", "Failed to update course", e);
-          }
         });
-  }
+
+        // Get the selected course from the intent
+        course = getIntent().getParcelableExtra("course");
+
+        if (course != null) {
+            // Populate the EditText fields with the course details
+            courseNameEditText.setText(course.getCourseName());
+            editTextCourseDescription.setText(course.getCreatorName());
+        }
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveCourseChanges();
+            }
+        });
+    }
+
+    private void saveCourseChanges() {
+        String courseName = courseNameEditText.getText().toString().trim();
+        String courseDescription = editTextCourseDescription.getText().toString().trim();
+
+        if (TextUtils.isEmpty(courseName)) {
+            Toast.makeText(this, R.string.empty_course_name, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Update the course object with the new values
+        Map<String, Object> map = new HashMap<>();
+        map.put("courseName", courseDescription);
+        map.put("courseDescription", editTextCourseDescription);
+
+        // Save the updated course to Firestore
+        FirebaseFirestore.getInstance().collection("courses")
+                .document(course.getCourseId())
+                .update(map)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(EditCourseActivity.this, "Course updated successfully", Toast.LENGTH_SHORT).show();
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(EditCourseActivity.this, "Failed to update course", Toast.LENGTH_SHORT).show();
+                        Log.e("EditCourseActivity", "Failed to update course", e);
+                    }
+                });
+    }
 }

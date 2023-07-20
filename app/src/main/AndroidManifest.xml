@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Splus"
         tools:targetApi="31">
-        <activity android:name=".CreateCourseActivity"/>
         <activity android:name=".my_fragment.CoursesFragment"/>
         <activity
             android:name=".my_dialog.WriteCommentDialog"

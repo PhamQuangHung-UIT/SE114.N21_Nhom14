@@ -139,7 +139,6 @@
     <string name="text_answer">Content of answer</string>
     <string name="title_create_course">Create a course</string>
     <string name="label_teacher">Instructor:</string>
-    <string name="label_teacher">Teacher:</string>
     <string name="hint_course">Course name</string>
     <string name="title_done">Done</string>
     <string name="hint_quantity">Course size</string>
@@ -181,6 +180,7 @@
     <string name="course_detail">Course detail</string>
     <string name="no_description">No description</string>
     <string name="unexpected_error_msg">Unexpected error. Please try again.</string>
+    <string name="save">Save</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="delete_msg">Delete the comment?</string>
@@ -189,6 +189,7 @@
     <string name="unenroll">Unenroll</string>
     <string name="unenroll_msg">Unenroll this course?</string>
     <string name="enroll_success_msg">Enroll successfully</string>
+    <string name="unenroll_success_msg">Unenroll successfully</string>
     <string name="undo">Undo</string>
     <string name="title_teacher_placeholder">Instructor: %1$s</string>
     <string name="title_create_date_placeholder">Create date: %1$s</string>
@@ -200,4 +201,8 @@
     <string name="retry">Retry</string>
     <string name="connection_error_msg">Unable to connect to the server. Please check your internet connection and try again.</string>
     <string name="permission_denied_msg">Permission is denied.</string>
+    <string name="empty_state_message">No result can be found</string>
+    <string name="hint_description">Description of the course</string>
+    <string name="title_edit_course">Edit course</string>
+    <string name="empty_course_name">Course name must not be empty</string>
 </resources>

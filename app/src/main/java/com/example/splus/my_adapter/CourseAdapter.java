@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,16 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.splus.R;
 import com.example.splus.my_data.Course;
-import com.example.splus.my_interface.IClickCourseListener;
 
 import java.text.DateFormat;
 import java.util.Locale;
 
 public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewHolder> {
 
-    private final IClickCourseListener listener;
+    private final OnItemClickListener listener;
 
     private final Context context;
+
+    private final int role;
 
     public static final DiffUtil.ItemCallback<Course> DIFF_CALLBACK = new DiffUtil.ItemCallback<>() {
         @Override
@@ -37,10 +38,11 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
         }
     };
 
-    public CourseAdapter(Context context, IClickCourseListener listener) {
+    public CourseAdapter(Context context, OnItemClickListener listener, int role) {
         super(DIFF_CALLBACK);
         this.listener = listener;
         this.context = context;
+        this.role = role;
     }
 
     @NonNull
@@ -58,7 +60,13 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
         holder.creatorTextView.setText(context.getString(R.string.title_teacher_placeholder, course.getCreatorName()));
         holder.creationTimeTextView.setText(context.getString(R.string.title_create_date_placeholder,  formatter.format(course.getCreationTime().toDate())));
         holder.studentCountTextView.setText(context.getString(R.string.title_student_count_placeholder, course.getStudentCount()));
-        holder.itemView.setOnClickListener(view -> listener.onClickCourse(course));
+        holder.itemView.setOnClickListener(view -> listener.onItemClick(course));
+        if (role == 0) {
+            holder.editButton.setVisibility(View.GONE);
+            holder.deleteButton.setVisibility(View.GONE);
+        }
+        holder.editButton.setOnClickListener(view -> listener.onEditButtonClick(course));
+        holder.deleteButton.setOnClickListener(view -> listener.onDeleteButtonClick(course));
     }
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
@@ -67,6 +75,8 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
         private final TextView creationTimeTextView;
         private final TextView studentCountTextView;
 
+        private final ImageButton editButton, deleteButton;
+
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -74,6 +84,8 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
             creatorTextView = itemView.findViewById(R.id.creatorTextView);
             creationTimeTextView = itemView.findViewById(R.id.creationTimeTextView);
             studentCountTextView = itemView.findViewById(R.id.studentCountTextView);
+            editButton = itemView.findViewById(R.id.imageButton_edit);
+            deleteButton = itemView.findViewById(R.id.imageButton_delete);
         }
     }
   /*public class ViewHolder extends RecyclerView.ViewHolder {
@@ -108,7 +120,7 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
         }
       });
     }
-  }
+  }*/
 
   public interface OnItemClickListener {
     void onItemClick(Course course);
@@ -116,5 +128,5 @@ public class CourseAdapter extends ListAdapter<Course, CourseAdapter.CourseViewH
     void onEditButtonClick(Course course);
 
     void onDeleteButtonClick(Course course);
-  }*/
+  }
 }

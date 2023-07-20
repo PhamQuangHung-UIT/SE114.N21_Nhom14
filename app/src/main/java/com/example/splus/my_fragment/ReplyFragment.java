@@ -174,7 +174,7 @@ public class ReplyFragment extends Fragment implements CommentAdapter.CommentOpt
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         Fragment fragment = getParentFragmentManager().findFragmentByTag("loading");
         if (fragment != null)
-            transaction.remove(fragment);
+            return;
         dialog = LoadingDialog.getInstance();
         dialog.show(transaction, "loading");
     }

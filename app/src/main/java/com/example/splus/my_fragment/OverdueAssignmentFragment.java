@@ -53,7 +53,7 @@ public class OverdueAssignmentFragment extends Fragment {
         activity = (MainActivity) getActivity();
         parent_fragment = (AssignmentFragment) getParentFragment();
         account = activity.getAccount();
-        db = activity.getDb();
+        db = FirebaseFirestore.getInstance();
 
         RecyclerView list = view.findViewById(R.id.recyclerOverdueAssignmentFragment);
         list.setLayoutManager(new LinearLayoutManager(getActivity()));

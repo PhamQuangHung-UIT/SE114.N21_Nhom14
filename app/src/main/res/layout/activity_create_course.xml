@@ -3,43 +3,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="top|left"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".CreateCourseActivity">
 
-    <TextView
-        android:textColor="@color/green"
-        android:gravity="center"
+    <!-- TITLE BAR -->
+
+    <LinearLayout
+        android:id="@+id/linearHeaderCreateCourseActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_create_course"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="15dp"
+        android:background="@color/green"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
+
+        <!-- BACK BUTTON -->
+        <!-- back to fragment class-->
+        <ImageButton
+            android:id="@+id/buttonBackCreateCourseActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:padding="15dp"
+            android:src="@drawable/back_icon"
+            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+
+        <!-- TITLE COURSE NAME -->
+        <TextView
+            android:id="@+id/textNameCreateCourseActivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/title_create_course"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/editTextCourseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_course_name"
-        android:inputType="text"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        android:autofillHints="" />
+        android:autofillHints=""
+        android:hint="@string/edit_course_name"
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/editTextCreatorName"
+        android:id="@+id/editTextCourseDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_creater_name"
-        android:inputType="text"
+        android:layout_height="320dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:autofillHints="" />
+        android:autofillHints=""
+        android:gravity="top|left"
+        android:hint="@string/hint_description"
+        android:inputType="text"
+        android:maxLength="500" />
 
     <Button
-        android:layout_gravity="center"
         android:id="@+id/buttonCreateCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_create"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_create" />
 
 </LinearLayout>

@@ -68,7 +68,7 @@ public class AssignmentFragment extends Fragment {
     }
 
     private void getListAssignment(List<String> listAssignmentId) {
-        FirebaseFirestore db = activity.getDb();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         int quantity = listAssignmentId.size();
         for (int index=0; index<quantity; index++) {
             db.collection("assignments").document(listAssignmentId.get(index)).get()
@@ -84,8 +84,8 @@ public class AssignmentFragment extends Fragment {
                                                 document.getId(),
                                                 document.getData().get("name").toString(),
                                                 document.getData().get("details").toString(),
-                                                document.getData().get("courseName").toString()
-                                        ));
+                                                document.getData().get("lessonId").toString(),
+                                                document.getData().get("courseName").toString()));
                                         listAssignment.get(listAssignment.size() - 1).setStatus(false);
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);

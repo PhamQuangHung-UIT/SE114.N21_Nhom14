@@ -201,8 +201,12 @@ public class CourseActivity extends AppCompatActivity implements MotionLayout.Tr
         })).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 currentCourse.setStudentCount(task.getResult());
-                 Snackbar.make(findViewById(R.id.motionLayout_Course), R.string.enroll_success_msg, Snackbar.LENGTH_SHORT)
+                if (hasEnroll)
+                     Snackbar.make(findViewById(R.id.motionLayout_Course), R.string.enroll_success_msg, Snackbar.LENGTH_SHORT)
+                            .setAction(R.string.undo, view -> buttonEnroll.performClick()).show();
+                else Snackbar.make(findViewById(R.id.motionLayout_Course), R.string.unenroll_success_msg, Snackbar.LENGTH_SHORT)
                         .setAction(R.string.undo, view -> buttonEnroll.performClick()).show();
+                setResult(RESULT_OK);
             } else {
                 // Rollback transaction
                 hasEnroll = !hasEnroll;
@@ -232,7 +236,7 @@ public class CourseActivity extends AppCompatActivity implements MotionLayout.Tr
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment fragment = getSupportFragmentManager().findFragmentByTag("loading");
         if (fragment != null)
-            transaction.remove(fragment);
+            return;
         dialog = LoadingDialog.getInstance();
         dialog.show(transaction, "loading");
     }
