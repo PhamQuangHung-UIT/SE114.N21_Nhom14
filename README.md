@@ -2,9 +2,9 @@
 Đồ án Nhập môn ứng dụng di động của nhóm 14
 
 ## Hướng dẫn cài đặt
-Bước 1. Download file .apk tại đường dẫn https://drive.google.com/file/d/1wYTA9S1d-gQy0wqcN7Ei0nDD7tQAoon4/view?usp=sharing
-Bước 2. Sau khi tải xuống hoàn thành, nhấn chọn trực tiếp vào file cài đặt .apk, lưu ý cấp quyền cài đặt nếu có yêu cầu
-Bước 3. Cài đặt hoàn thành, nhấn vào icon trên danh sách ứng dụng để sử dụng
+- Bước 1. Download file .apk tại đường dẫn https://drive.google.com/file/d/1wYTA9S1d-gQy0wqcN7Ei0nDD7tQAoon4/view?usp=sharing
+- Bước 2. Sau khi tải xuống hoàn thành, nhấn chọn trực tiếp vào file cài đặt .apk, lưu ý cấp quyền cài đặt nếu có yêu cầu
+- Bước 3. Cài đặt hoàn thành, nhấn vào icon trên danh sách ứng dụng để sử dụng
 
 ## Các tính năng của ứng dụng
 1. Xem bài giảng
