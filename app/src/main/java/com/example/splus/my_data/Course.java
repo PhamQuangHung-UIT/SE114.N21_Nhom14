@@ -52,18 +52,6 @@ public class Course implements Serializable, Parcelable {
         studentCount = in.readInt();
 */
 
-    public static final Creator<Course> CREATOR = new Creator<Course>() {
-        @Override
-        public Course createFromParcel(Parcel in) {
-            return new Course(in);
-        }
-
-        @Override
-        public Course[] newArray(int size) {
-            return new Course[size];
-        }
-    };
-
     protected Course(Parcel in) {
         courseId = in.readString();
         courseName = in.readString();

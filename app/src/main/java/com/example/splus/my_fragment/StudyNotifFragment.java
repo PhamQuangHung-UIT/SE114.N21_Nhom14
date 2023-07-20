@@ -113,7 +113,7 @@ public class StudyNotifFragment extends Fragment {
                 intent = new Intent(this.getActivity(), StudyActivity.class);
                 // get a lesson data from lesson_id = sourceId
                 Lesson lesson = new Lesson(
-                        0,
+                        "0",
                         "Lesson 1",
                         "Content",
                         "Course name",
